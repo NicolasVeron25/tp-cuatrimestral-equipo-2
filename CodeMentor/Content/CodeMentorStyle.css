@@ -1,0 +1,140 @@
+﻿:root {
+    --aquamarine: #00e4b5ff;
+    --electric-indigo: #7200faff;
+    --raisin-black: #1c1b1eff;
+    --white: #ffffffff;
+    --platinum: #e2e3e4ff;
+}
+
+body {
+    background: var(--white);
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+
+header {
+    background: var(--raisin-black);
+    height: auto;
+}
+
+/*BOTONES*/
+
+#btnIngresar {
+    background: var(--aquamarine);
+    color: var(--raisin-black);
+    font-weight: bold;
+    border-color: transparent;
+}
+
+#btnRegistrarse {
+    background: var(--aquamarine);
+    color: var(--raisin-black);
+    font-weight: bold;
+    border-color: transparent;
+}
+
+#btnBuscar {
+    border: none;
+    outline: none;
+}
+
+    #btnBuscar:hover {
+        border: none;
+        outline: none;
+    }
+
+/*FOOTER*/
+
+.footer {
+    background-color: var(--raisin-black);
+    color: var(--white);
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 10px;
+}
+
+    .footer-column h4 {
+        margin-bottom: 10px;
+        color: var(--aquamarine);
+    }
+
+    .footer-column ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+            .footer-column ul li a {
+                color: var(--white);
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+                .footer-column ul li a:hover {
+                    color: var(--aquamarine);
+                }
+
+    .footer-column .social-links {
+        display: flex;
+        gap: 10px;
+    }
+
+        .footer-column .social-links a {
+            color: var(--white);
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+            .footer-column .social-links a:hover {
+                color: var(--aquamarine);
+            }
+
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #333;
+    margin-top: 20px;
+}
+
+    .footer-bottom p {
+        margin: 0;
+    }
+
+/*CARDS*/
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn {
+    align-self: flex-end;
+    background-color: var(--electric-indigo);
+    color: var(--white);
+    border: none;
+}
+.btn:hover {
+    background-color: #5a00cc; /*--electric-indigo mas oscuro*/
+    color: var(--white);
+}
