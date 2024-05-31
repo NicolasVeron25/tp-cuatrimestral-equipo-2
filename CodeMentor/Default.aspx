@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Inicio" Language="C#" MasterPageFile="~/Masters/MasterUsuario.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="CodeMentor.Inicio" %>
+﻿<%@ Page Title="Inicio" Language="C#" MasterPageFile="~/Masters/MasterUsuario.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="CodeMentor.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -31,7 +31,7 @@
         </button>
     </div>
 
-     <div class="container mt-5">
+    <div class="container mt-5">
         <div class="row">
             <div class="col-md-4">
                 <div class="card" style="width: 18rem;">
