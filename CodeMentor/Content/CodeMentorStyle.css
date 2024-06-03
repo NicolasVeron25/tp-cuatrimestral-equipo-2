@@ -21,14 +21,6 @@ header {
 #btnIngresar {
     background: var(--aquamarine);
     color: var(--raisin-black);
-    font-weight: bold;
-    border-color: transparent;
-}
-
-#btnRegistrarse {
-    background: var(--aquamarine);
-    color: var(--raisin-black);
-    font-weight: bold;
     border-color: transparent;
 }
 
