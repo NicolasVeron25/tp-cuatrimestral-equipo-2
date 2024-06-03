@@ -50,7 +50,7 @@
                         <button class="btn btn-lg btn-primary w-100 fs-6">Ingresar</button>
                     </div>
                     <div class="row">
-                        <small>¿Aún no te has registrado? <a href="#">Registrarme</a></small>
+                        <small>¿Aún no te has registrado? <a href="Registrar.aspx">Registrarme</a></small>
                     </div>
                 </div>
             </div>
@@ -60,23 +60,21 @@
     <!-------------------------- ESTILOS ---------------------------->
 
     <style>
-
         /*------------ CONTENEDOR DE LOGEO ------------*/
 
-        .box-area{ /*MANTIENE TODO EN UN RECUADRO MAS CHICO*/
+        .box-area { /*MANTIENE TODO EN UN RECUADRO MAS CHICO*/
             width: 930px;
         }
 
         /*------------ BOX DE LA IZQUIERDA ------------*/
 
-        .left-box{
-
+        .left-box {
             background: var(--electric-indigo);
             position: relative;
             overflow: hidden;
         }
 
-        .full-image{ /*HACE QUE LA IMAGEN OCUPE LA TOTALIDAD DE LA BOX*/
+        .full-image { /*HACE QUE LA IMAGEN OCUPE LA TOTALIDAD DE LA BOX*/
             position: absolute;
             top: 0;
             left: 0;
@@ -87,28 +85,27 @@
 
         /*------------ BOX DE LA DERECHA ------------*/
 
-        .right-box{
+        .right-box {
             padding: 40px 30px 40px 40px;
         }
 
         /*------------ MODIFICACIONES PARA PANTALLAS MAS CHICAS ------------*/
 
-        @media only screen and (max-width: 768px){ /*SIN ESTAS MODIFICACIONES LA IMAGEN SE ROMPE AL ACHICAR LA PANTALLA*/
+        @media only screen and (max-width: 768px) { /*SIN ESTAS MODIFICACIONES LA IMAGEN SE ROMPE AL ACHICAR LA PANTALLA*/
 
-            .box-area{
+            .box-area {
                 margin: 0 10px;
             }
 
-            .left-box{
+            .left-box {
                 height: 100px;
                 overflow: hidden;
             }
 
-            .right-box{
+            .right-box {
                 padding: 20px;
             }
         }
-
     </style>
 
 </asp:Content>
