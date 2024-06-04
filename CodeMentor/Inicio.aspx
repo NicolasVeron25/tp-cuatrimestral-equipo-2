@@ -6,7 +6,8 @@
 
     <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+
+            <button type="button"   data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
@@ -39,7 +40,7 @@
                     <div class="card-body">
                         <h5 class="card-title">CURSO</h5>
                         <p>Breve descripcion del curso</p>
-                        <a href="#" class="btn">Ver</a>
+                        <a href="#" class="btn btnBonito">Ver</a>
                     </div>
                 </div>
             </div>
@@ -49,7 +50,7 @@
                     <div class="card-body">
                         <h5 class="card-title">CURSO</h5>
                         <p>Breve descripcion del curso</p>
-                        <a href="#" class="btn">Ver</a>
+                        <a href="#" class="btn btnBonito">Ver</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +60,7 @@
                     <div class="card-body">
                         <h5 class="card-title">CURSO</h5>
                         <p>Breve descripcion del curso</p>
-                        <a href="#" class="btn">Ver</a>
+                        <a href="#" class="btn btnBonito">Ver</a>
                     </div>
                 </div>
             </div>

@@ -67,20 +67,68 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Compra.aspx" />
+    <Content Include="ContentBs\bootstrap-grid.css" />
+    <Content Include="ContentBs\bootstrap-grid.min.css" />
+    <Content Include="ContentBs\bootstrap-grid.rtl.css" />
+    <Content Include="ContentBs\bootstrap-grid.rtl.min.css" />
+    <Content Include="ContentBs\bootstrap-reboot.css" />
+    <Content Include="ContentBs\bootstrap-reboot.min.css" />
+    <Content Include="ContentBs\bootstrap-reboot.rtl.css" />
+    <Content Include="ContentBs\bootstrap-reboot.rtl.min.css" />
+    <Content Include="ContentBs\bootstrap-utilities.css" />
+    <Content Include="ContentBs\bootstrap-utilities.min.css" />
+    <Content Include="ContentBs\bootstrap-utilities.rtl.css" />
+    <Content Include="ContentBs\bootstrap-utilities.rtl.min.css" />
+    <Content Include="ContentBs\bootstrap.css" />
+    <Content Include="ContentBs\bootstrap.min.css" />
+    <Content Include="ContentBs\bootstrap.rtl.css" />
+    <Content Include="ContentBs\bootstrap.rtl.min.css" />
+    <Content Include="ContentBs\Site.css" />
+    <Content Include="ContentBs\StyleSheetGlobal.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\CodeMentorStyle.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\StyleSheetGlobal.css" />
+    <Content Include="Inicio.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Ingresar.aspx" />
+    <Content Include="InicioRegistrado.aspx" />
     <Content Include="Registrar.aspx" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Compra.aspx.cs">
+      <DependentUpon>Compra.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Compra.aspx.designer.cs">
+      <DependentUpon>Compra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -91,6 +139,13 @@
     </Compile>
     <Compile Include="Ingresar.aspx.designer.cs">
       <DependentUpon>Ingresar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InicioRegistrado.aspx.cs">
+      <DependentUpon>InicioRegistrado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioRegistrado.aspx.designer.cs">
+      <DependentUpon>InicioRegistrado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Masters\MasterUsuario.Master.cs">
       <DependentUpon>MasterUsuario.Master</DependentUpon>
@@ -110,7 +165,43 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Masters\MasterUsuario.Master" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="ContentBs\bootstrap-grid.css.map" />
+    <Content Include="ContentBs\bootstrap-grid.min.css.map" />
+    <Content Include="ContentBs\bootstrap-grid.rtl.css.map" />
+    <Content Include="ContentBs\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="ContentBs\bootstrap-reboot.css.map" />
+    <Content Include="ContentBs\bootstrap-reboot.min.css.map" />
+    <Content Include="ContentBs\bootstrap-reboot.rtl.css.map" />
+    <Content Include="ContentBs\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="ContentBs\bootstrap-utilities.css.map" />
+    <Content Include="ContentBs\bootstrap-utilities.min.css.map" />
+    <Content Include="ContentBs\bootstrap-utilities.rtl.css.map" />
+    <Content Include="ContentBs\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="ContentBs\bootstrap.css.map" />
+    <Content Include="ContentBs\bootstrap.min.css.map" />
+    <Content Include="ContentBs\bootstrap.rtl.css.map" />
+    <Content Include="ContentBs\bootstrap.rtl.min.css.map" />
     <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

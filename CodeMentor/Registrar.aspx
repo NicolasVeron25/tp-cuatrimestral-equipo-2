@@ -61,7 +61,7 @@
                         </select>
                     </div>
                     <div class="input-group mb-3">
-                        <button class="btn btn-lg btn-primary w-100 fs-6">Registrarse</button>
+                        <button class="btn btnBonito btn-lg btn-primary w-100 fs-6">Registrarse</button>
                     </div>
                     <div class="row">
                         <small>¿Ya tienes una cuenta? <a href="Ingresar.aspx">Ingresar</a></small>

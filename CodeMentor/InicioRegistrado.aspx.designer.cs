@@ -11,7 +11,7 @@ namespace CodeMentor
 {
 
 
-    public partial class Default
+    public partial class InicioRegistrado
     {
     }
 }
