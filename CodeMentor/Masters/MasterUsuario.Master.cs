@@ -11,7 +11,13 @@ namespace CodeMentor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+        }
 
+        protected void BtnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();//limpia la session
+            Response.Redirect("Inicio.aspx",false); //redirige a la pagina de login
         }
     }
 }

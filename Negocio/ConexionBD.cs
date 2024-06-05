@@ -22,7 +22,8 @@ namespace Negocio
         public ConexionBD()
         {           
             _Conexion = new SqlConnection(@"server =.\SQLEXPRESS;database=CODEMENTOR; integrated security = true"); 
-
+            //inicializar Comando
+            _Comando = new SqlCommand();
         }
      
         public void setQuery(string query)

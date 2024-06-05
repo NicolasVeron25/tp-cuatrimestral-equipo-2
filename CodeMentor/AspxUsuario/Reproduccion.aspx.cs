@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace CodeMentor
 {
-    public partial class Ingresar : System.Web.UI.Page
+    public partial class Reproduccion : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

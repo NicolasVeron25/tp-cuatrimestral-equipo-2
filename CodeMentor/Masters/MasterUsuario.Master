@@ -52,7 +52,18 @@
                     <%--------------------BOTONES A LA DERECHA--------------------%>
                     <div class="col-md-4 d-flex justify-content-center">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="Ingresar.aspx"  id="btnIngresar2" class="btn btn-primary me-md-2">Ingresar</a>
+                            <%-- BTN INGRESOS --%>
+                            <%if (!Validaciones.Seguridad.Login(Session["Usuario"]))
+                                {  %>
+                             <a href="Ingresar.aspx"  id="btnIngresar2" class="btn btn-primary me-md-2">Ingresar</a>
+
+                            <a href="Registrar.aspx"  id="BtnRegistrar" class="btn btn-primary me-md-2">Registrarse</a>
+                            <%} // BTN YA INGRESADO --%>
+                               <%else 
+                                   {  %>
+                            <a href="PerfilUsuario.aspx"  id="BtnPerfil" class="btn btn-primary me-md-2">Perfil</a>
+                            <asp:Button Text="Cerrar Sesion" Id="BtnLogout" CssClass="btnMaster btn btn-primary me-md-2 " OnClick="BtnLogout_Click" runat="server" />
+                            <%} %>
 
                         </div>
                     </div>

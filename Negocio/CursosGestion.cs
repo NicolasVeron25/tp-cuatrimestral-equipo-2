@@ -16,7 +16,7 @@ namespace Negocio
 
             try
             {
-                AccesoBD.setQuery("SELECT * from CURSOS as c WHERE c.IDCURSO=@IdCurso");
+                AccesoBD.setQuery("SELECT NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA,FECHA_CREACION from CURSOS as c WHERE c.IDCURSO=@IdCurso");
                 AccesoBD.setParametro("@IdCurso", Id);
                 AccesoBD.ejecutarLectura();
                 if (AccesoBD.Lector.Read())
@@ -59,7 +59,7 @@ namespace Negocio
 
             try
             {
-                AccesoBD.setQuery("SELECT * from CURSOS as c WHERE c.IDCURSO=@IdCurso");               
+                AccesoBD.setQuery("SELECT IDCURSO NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA,FECHA_CREACION from CURSOS as c WHERE ");               
                 AccesoBD.ejecutarLectura();
                 while (AccesoBD.Lector.Read())
                 {
