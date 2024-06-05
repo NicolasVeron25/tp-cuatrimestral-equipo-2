@@ -24,7 +24,7 @@
 
                         </div>
                         <div style="margin-top: 30px">
-                            <a href="#" style="margin-right: 50px; margin-left: 30px" class="btn btn-primary">Ver Contenido </a>
+                            <a href="DetalleCurso.Aspx" style="margin-right: 50px; margin-left: 30px" class="btn btn-primary">Ver Contenido </a>
                             <a href="Compra.aspx" class="btn btn-primary">Comprar Curso </a>
                         </div>
 
