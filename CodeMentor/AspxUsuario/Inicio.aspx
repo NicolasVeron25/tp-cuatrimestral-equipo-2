@@ -40,7 +40,7 @@
                     <div class="card-body">
                         <h5 class="card-title">CURSO</h5>
                         <p>Breve descripcion del curso</p>
-                        <a href="#" class="btn btnBonito">Ver</a>
+                        <a href="DetalleCurso.aspx" class="btn btnBonito">Ver</a>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                     <div class="card-body">
                         <h5 class="card-title">CURSO</h5>
                         <p>Breve descripcion del curso</p>
-                        <a href="#" class="btn btnBonito">Ver</a>
+                        <a href="DetalleCurso.aspx"  class="btn btnBonito">Ver</a>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     <div class="card-body">
                         <h5 class="card-title">CURSO</h5>
                         <p>Breve descripcion del curso</p>
-                        <a href="#" class="btn btnBonito">Ver</a>
+                        <a href="DetalleCurso.aspx" class="btn btnBonito">Ver</a>
                     </div>
                 </div>
             </div>

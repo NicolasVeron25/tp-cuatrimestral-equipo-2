@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CodeMentor.AspxUsuario;
+using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,7 +16,7 @@ namespace CodeMentor
             //page contiene objeto(el aspx) a la cual se ejecuta la pagina hija
             //prop page = objeto = puedo manejar accesos a cada pagina mediante
 
-            if (!(Page is Ingresar || Page is Registrar))
+            if (!(Page is Ingresar || Page is Registrar || Page is Default || Page is DetalleCurso))
             {
                 // si la pagina NO ES alguna de esas
 

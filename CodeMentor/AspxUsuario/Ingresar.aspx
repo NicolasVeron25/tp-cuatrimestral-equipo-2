@@ -16,7 +16,7 @@
 
             <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box">
                 <div class="featured-image mb-3">
-                    <img src="https://i.ibb.co/M25sk2m/codementor-isotipo-blanco-con-fondo.png" class="img-fluid full-image">
+                    <img src="https://i.ibb.co/GcYcNGy/programming-background-with-person-working-with-codes-computer.jpg" class="img-fluid full-image">
                 </div>
             </div>
 
