@@ -11,7 +11,7 @@ namespace CodeMentor.Masters
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //validar mediante Page solo ADMIN 
         }
     }
 }

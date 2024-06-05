@@ -18,7 +18,7 @@ namespace CodeMentor
             {
                 LblErrorLogin.Visible = false;
             }
-            if (Validaciones.Seguridad.Login(Session["Usuario"])) Response.Redirect("InicioRegistrado.aspx"); // si ya esta logueado , no puede volver a ingresar
+      //if (Validaciones.Seguridad.Login(Session["Usuario"])) Response.Redirect("InicioRegistrado.aspx"); // si ya esta logueado , no puede volver a ingresar
 
         }
 
