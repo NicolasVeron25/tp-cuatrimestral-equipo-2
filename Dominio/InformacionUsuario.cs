@@ -23,5 +23,15 @@ namespace Dominio
         public string Sexo { get; set; } 
 
         public string UrlFotoPerfil { get; set; }
+
+        //prop para no evaluar en todos lados!
+        public string SexoCompleto
+        {
+            get
+            {
+                return Sexo.ToUpper() == "M" ? "Masculino" : "Femenino"; // =  si es m devuelvo masculino, sino femenino
+            }
+        }
+
     }
 }

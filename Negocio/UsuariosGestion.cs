@@ -46,7 +46,44 @@ namespace Negocio
             }
 
         }
+        public InformacionUsuario ObtenerDatos(int id)
+        {
+            var Acceso = new ConexionBD();
+            var datos = new InformacionUsuario();
 
+            try
+            {
+
+                Acceso.SetQuery("SELECT NOMBRE,APELLIDO,FECHA_NACIMIENTO,IDPAIS,CELULAR,SEXO,URL_FOTOPERFIL FROM INFORMACION_USUARIO WHERE IDUSUARIO = @ID");
+                Acceso.SetParametro("@ID",id);
+                Acceso.EjecutarLectura();
+                if (Acceso.Lector.Read())
+                {
+                    datos.Nombre = (string)Acceso.Lector["NOMBRE"];
+                    datos.Apellido = (string)Acceso.Lector["APELLIDO"];
+                    datos.FechaNacimiento = (DateTime)Acceso.Lector["FECHA_NACIMIENTO"];
+                    datos.IdPais = (int)Acceso.Lector["IDPAIS"];
+                    datos.Celular = (string)Acceso.Lector["CELULAR"];
+                    datos.Sexo = (string)Acceso.Lector["SEXO"];
+                    //validamos nulidad x que es opcional la foto!
+                    if (!(Acceso.Lector["URL_FOTOPERFIL"] is DBNull))
+                    {
+                        datos.UrlFotoPerfil = (string)Acceso.Lector["URL_FOTOPERFIL"];
+                    }
+                }
+                return datos;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+
+        }
 
         public Usuario ValidarYObtenerUser(string email, string password)
         {
