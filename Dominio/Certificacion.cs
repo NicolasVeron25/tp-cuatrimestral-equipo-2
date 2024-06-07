@@ -8,9 +8,9 @@ namespace Dominio
 {
     public class Certificacion
     {
-        public int Idcertificaciones { get; set; }
+        public int IdCertificacion { get; set; }
 
-        public int Idinscripcion { get; set; }
+        public int IdInscripcion { get; set; }
 
     }
 }

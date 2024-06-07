@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class Curso
     {
-        public int Idcurso { get; set; }
+        public int IdCurso { get; set; }
 
         public string Nombre { get; set; } 
 
@@ -20,7 +20,7 @@ namespace Dominio
 
         public string UrlPortada { get; set; } 
 
-        public int Idcategoria { get; set; }
+        public int IdCategoria { get; set; }
 
         public DateTime? FechaCreacion { get; set; } // ? = acepta nulos
 

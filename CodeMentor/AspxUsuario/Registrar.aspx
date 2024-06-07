@@ -23,45 +23,53 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Nombre">
+                        <asp:TextBox runat="server" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Nombre" ID="TxtNombre" />
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Apellido">
+                        <asp:TextBox runat="server" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Apellido" ID="TxtApellido" />
                     </div>
                     <div class="input-group mb-3">
-                        <input type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Fecha de Nacimiento">
+                        <asp:TextBox runat="server" type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Fecha de Nacimiento" ID="TxtFechaNacimiento" />
                     </div>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control form-control-lg bg-light fs-6" placeholder="Correo Electrónico">
+                        <asp:TextBox runat="server" type="email" class="form-control form-control-lg bg-light fs-6" placeholder="Correo Electrónico" ID="TxtEmail" />
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Contraseña">
+                        <asp:TextBox runat="server" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Contraseña" ID="TxtPass" />
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Repetir Contraseña">
+                        <asp:TextBox runat="server" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Repetir Contraseña" ID="TxtRepetirPass" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div>
+                            <asp:Label Text="Pais : " CssClass=" form-control form-label bg-light fs-6 " runat="server"></asp:Label>
+                        </div>
+                        <div>
+                            <asp:DropDownList runat="server" ID="DdlPais" CssClass="form-select  form-control-lg bg-light fs-6">
+                            </asp:DropDownList>
+
+                        </div>
+
                     </div>
                     <div class="input-group mb-3">
-                        <select class="form-control form-control-lg bg-light fs-6">
-                            <option value="" disabled selected>País</option>
-                            <option value="Argentina">Argentina</option>
-                            <option value="Brasil">Brasil</option>
-                            <option value="Uruguay">Uruguay</option>
-                            <option value="Otro">Otro</option>
-                        </select>
+                        <asp:TextBox runat="server" class="form-control form-control-lg bg-light fs-6" type="tel" placeholder="Numero Celular " ID="TxtCelular" />
+
                     </div>
                     <div class="input-group mb-3">
-                        <input type="tel" class="form-control form-control-lg bg-light fs-6" placeholder="Celular">
+                        <div>
+                            <asp:Label Text="Sexo : " CssClass=" form-control form-label bg-light fs-6 "  style="margin-right:20px" runat="server"></asp:Label>
+                        </div>
+                        <div style="margin-left: 40px">
+                            <asp:DropDownList runat="server" ID="DdlSexo" CssClass="form-select  form-control-lg bg-light fs-6" >
+                            </asp:DropDownList>
+
+
+                        </div>
+
                     </div>
                     <div class="input-group mb-3">
-                        <select class="form-control form-control-lg bg-light fs-6">
-                            <option value="" disabled selected>Sexo</option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Femenino">Femenino</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                    </div>
-                    <div class="input-group mb-3">
-                        <button class="btn btnBonito btn-lg btn-primary w-100 fs-6">Registrarse</button>
+                        <asp:Button Text="Registrarse" ID="BtnRegistro" OnClick="BtnRegistro_Click" runat="server" CssClass="btn btnBonito btn-lg btn-primary w-100 fs-6" />
                     </div>
                     <div class="row">
                         <small>¿Ya tienes una cuenta? <a href="Ingresar.aspx">Ingresar</a></small>

@@ -13,26 +13,7 @@ namespace CodeMentor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //page contiene objeto(el aspx) a la cual se ejecuta la pagina hija
-            //prop page = objeto = puedo manejar accesos a cada pagina mediante
-
-            if (!(Page is Ingresar || Page is Registrar || Page is Default )) //ACA SOLO PUEDE ACCEDER SI NO ESTA LOGUEADO
-            {
-                // si la pagina NO ES alguna de esas
-
-                if (!Validaciones.Seguridad.Login(Session["Usuario"])) // si no esta logueado , no puede entrar a las paginas de usuario
-                {
-                    Response.Redirect("Ingresar.aspx", false);
-                }
-            }
-            else // AHORA SI NO ES UNA DE ESAS ES XQUE ES INGRESAR O REGISTRAR
-            {
-                if (Validaciones.Seguridad.Login(Session["Usuario"]))
-                {
-                    Response.Redirect("InicioRegistrado.aspx", false); // SI YA ESTA LOGUEADO , NO PUEDE VOLVER A INGRESAR
-                }
-
-            }
+           //Validar por Pagina . Porque hay Paginas que accede logueado no!.
 
         }
 

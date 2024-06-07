@@ -8,12 +8,9 @@ namespace Dominio
 {
     public class Pais
     {
-        public int Idpais { get; set; }
+        public int IdPais { get; set; }
 
         public string Nombre { get; set; }
-
-        public string Codigopais2 { get; set; }
-
         public string Codigopais3 { get; set; }
     }
 }

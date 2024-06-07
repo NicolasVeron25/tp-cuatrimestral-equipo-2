@@ -8,11 +8,11 @@ namespace Dominio
 {
     public class Inscripcion
     {
-        public int Idinscripcion { get; set; }
+        public int IdInscripcion { get; set; }
 
-        public int Idcurso { get; set; }
+        public int IdCurso { get; set; }
 
-        public int Idusuario { get; set; }
+        public int IdUsuario { get; set; }
 
         public DateTime? Fecha { get; set; } // SE CARGA EN BD
     }

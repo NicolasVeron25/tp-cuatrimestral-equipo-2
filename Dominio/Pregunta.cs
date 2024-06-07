@@ -8,11 +8,11 @@ namespace Dominio
 {
     public class Pregunta
     {
-        public int Idpregunta { get; set; }
+        public int IdPregunta { get; set; }
 
-        public int Idcurso { get; set; }
+        public int IdCurso { get; set; }
 
-        public int Idusuario { get; set; }
+        public int IdUsuario { get; set; }
 
         public DateTime? Fecha { get; set; } // la fecha se carga sola en la BD
 

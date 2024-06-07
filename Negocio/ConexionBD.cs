@@ -26,14 +26,14 @@ namespace Negocio
             _Comando = new SqlCommand();
         }
      
-        public void setQuery(string query)
+        public void SetQuery(string query)
         {
             _Comando.CommandType = System.Data.CommandType.Text;
             _Comando.CommandText = query; 
 
         }
 
-        public void ejecutarLectura()
+        public void EjecutarLectura()
         {
             _Comando.Connection = _Conexion; 
             try
@@ -48,13 +48,13 @@ namespace Negocio
             }
 
         }
-        public void ejecutarAccion()
+        public void EjecutarAccion()
         {
             _Comando.Connection = _Conexion;
             try
             {
                 _Conexion.Open();
-                _Comando.ExecuteNonQuery();
+                _Comando.ExecuteNonQuery(); // DEVUELVE CANT FILAS AFECTADAS
             }
             catch (Exception ex)
             {
@@ -62,17 +62,39 @@ namespace Negocio
                 throw ex;
             }
         }
-
-        public void cerrarConexion()
+        public void SetSP(string sp)
         {
-            if (Lector != null) 
+            _Comando.CommandType = System.Data.CommandType.StoredProcedure;
+            _Comando.CommandText= sp;
+        }
+        public void CerrarConexion()
+        {
+            if (Lector != null)
+            {
+                Lector.Close();
                 _Conexion.Close();
+            }
         }
 
-        public void setParametro(string name, object value) 
+        public int  EjecutarScalar() //SCALAR  = 1 ENTERO DE RESULTADO.
+        {
+            _Comando.Connection = _Conexion;
+            try
+            {
+                _Conexion.Open();
+               return int.Parse (_Comando.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public void SetParametro(string name, object value) 
         {
             _Comando.Parameters.AddWithValue(name, value);
         }
+        
     }
 }
 

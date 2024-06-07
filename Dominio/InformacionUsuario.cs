@@ -16,12 +16,12 @@ namespace Dominio
 
         public DateTime FechaNacimiento { get; set; }
 
-        public int Idpais { get; set; }
+        public int IdPais { get; set; }
 
         public string Celular { get; set; } 
 
         public string Sexo { get; set; } 
 
-        public string UrlFotoperfil { get; set; }
+        public string UrlFotoPerfil { get; set; }
     }
 }

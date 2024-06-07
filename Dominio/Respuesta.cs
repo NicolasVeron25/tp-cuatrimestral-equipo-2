@@ -8,9 +8,9 @@ namespace Dominio
 {
     public class Respuesta
     {
-        public int Idrespuesta { get; set; }
+        public int IdRespuesta { get; set; }
 
-        public int Idpregunta { get; set; }
+        public int IdPregunta { get; set; }
 
         public string Cuerpo { get; set; }
 

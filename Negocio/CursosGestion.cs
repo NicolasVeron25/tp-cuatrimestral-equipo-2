@@ -16,19 +16,19 @@ namespace Negocio
 
             try
             {
-                AccesoBD.setQuery("SELECT NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA,FECHA_CREACION from CURSOS as c WHERE c.IDCURSO=@IdCurso");
-                AccesoBD.setParametro("@IdCurso", Id);
-                AccesoBD.ejecutarLectura();
+                AccesoBD.SetQuery("SELECT NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA,FECHA_CREACION from CURSOS as c WHERE c.IDCURSO=@IdCurso");
+                AccesoBD.SetParametro("@IdCurso", Id);
+                AccesoBD.EjecutarLectura();
                 if (AccesoBD.Lector.Read())
                 {
                     Curso curso = new Curso();
-                    curso.Idcurso = Id;
+                    curso.IdCurso = Id;
                     curso.Nombre = (string)AccesoBD.Lector["NOMBRE"];
                     curso.Descripcion = (string)AccesoBD.Lector["DESCRIPCION"];
                     curso.Requisitos = (string)AccesoBD.Lector["REQUISITOS"];
                     curso.Importe = (decimal)AccesoBD.Lector["IMPORTE"];
                     curso.UrlPortada = (string)AccesoBD.Lector["URL_PORTADA"];
-                    curso.Idcategoria = (int)AccesoBD.Lector["IDCATEGORIA"];
+                    curso.IdCategoria = (int)AccesoBD.Lector["IDCATEGORIA"];
                     curso.FechaCreacion = (DateTime)AccesoBD.Lector["FECHA_CREACION"];
                     return curso;
                 }
@@ -41,12 +41,11 @@ namespace Negocio
             catch (Exception ex)
             {
                 throw ex;
-
             }
 
             finally
             {
-                AccesoBD.cerrarConexion();
+                AccesoBD.CerrarConexion();
             }
 
 
@@ -59,18 +58,18 @@ namespace Negocio
 
             try
             {
-                AccesoBD.setQuery("SELECT IDCURSO NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA,FECHA_CREACION from CURSOS as c WHERE ");               
-                AccesoBD.ejecutarLectura();
+                AccesoBD.SetQuery("SELECT IDCURSO NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA,FECHA_CREACION from CURSOS as c WHERE ");               
+                AccesoBD.EjecutarLectura();
                 while (AccesoBD.Lector.Read())
                 {
                     Curso curso = new Curso();
-                    curso.Idcurso = (int)AccesoBD.Lector["IDCURSO"];
+                    curso.IdCurso = (int)AccesoBD.Lector["IDCURSO"];
                     curso.Nombre = (string)AccesoBD.Lector["NOMBRE"];
                     curso.Descripcion = (string)AccesoBD.Lector["DESCRIPCION"];
                     curso.Requisitos = (string)AccesoBD.Lector["REQUISITOS"];
                     curso.Importe = (decimal)AccesoBD.Lector["IMPORTE"];
                     curso.UrlPortada = (string)AccesoBD.Lector["URL_PORTADA"];
-                    curso.Idcategoria = (int)AccesoBD.Lector["IDCATEGORIA"];
+                    curso.IdCategoria = (int)AccesoBD.Lector["IDCATEGORIA"];
                     curso.FechaCreacion = (DateTime)AccesoBD.Lector["FECHA_CREACION"];
                     listCurso.Add(curso);
                 }
@@ -85,7 +84,7 @@ namespace Negocio
 
             finally
             {
-                AccesoBD.cerrarConexion();
+                AccesoBD.CerrarConexion();
             }
 
         }   
