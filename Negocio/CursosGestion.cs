@@ -9,7 +9,36 @@ namespace Negocio
 {
     public class CursosGestion
     {
-        
+        public List<Curso> CursosInscripto(int IdUsuario) // uso : solo mostrar los cursos que esta inscripto el usuario
+        {
+            ConexionBD AccesoBD = new ConexionBD();
+
+            try
+            {
+                string query = "SELECT C.ID ,C.NOMBRE FROM CURSOS AS C INNER JOIN INSCRIPCIONES AS I ON I.IDCURSO = C.IDCURSO WHERE I.IDUSUARIO = @IDUSER";
+                AccesoBD.SetQuery(query);
+                AccesoBD.SetParametro("@IDUSER", IdUsuario);    
+                AccesoBD.EjecutarLectura();
+                var ListCursos= new List<Curso>();
+                while (AccesoBD.Lector.Read())
+                {
+                    Curso curso = new Curso();
+                    curso.IdCurso = (int)AccesoBD.Lector["ID"];
+                    curso.Nombre = (string)AccesoBD.Lector["NOMBRE"];
+                    ListCursos.Add(curso);
+                }
+                return ListCursos; // List usa Interfaz Ienum asique podemos retornarla. 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+        }
         public Curso Existencia(int Id)
         {
             ConexionBD AccesoBD = new ConexionBD();
@@ -58,7 +87,7 @@ namespace Negocio
 
             try
             {
-                AccesoBD.SetQuery("SELECT IDCURSO NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA,FECHA_CREACION from CURSOS as c WHERE ");               
+                AccesoBD.SetQuery("SELECT IDCURSO NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA,FECHA_CREACION from CURSOS as c WHERE ");
                 AccesoBD.EjecutarLectura();
                 while (AccesoBD.Lector.Read())
                 {
@@ -73,7 +102,7 @@ namespace Negocio
                     curso.FechaCreacion = (DateTime)AccesoBD.Lector["FECHA_CREACION"];
                     listCurso.Add(curso);
                 }
-               return listCurso;
+                return listCurso;
             }
 
             catch (Exception ex)
@@ -87,7 +116,7 @@ namespace Negocio
                 AccesoBD.CerrarConexion();
             }
 
-        }   
+        }
 
 
 

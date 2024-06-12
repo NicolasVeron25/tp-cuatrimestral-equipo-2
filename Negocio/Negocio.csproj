@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConexionBD.cs" />
+    <Compile Include="CategoriasGestion.cs" />
+    <Compile Include="Conexion_Datos\ConexionBD.cs" />
     <Compile Include="CursosGestion.cs" />
     <Compile Include="PaisesGestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

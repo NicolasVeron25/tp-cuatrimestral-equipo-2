@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
+    <div class="container ">
+        <div class="row" style="margin-top: 3%">
+            <div class="col-md-6  offset-md-3">
                 <div class="card">
                     <div class="card-header">
                         <h3>User Details</h3>
@@ -25,28 +25,30 @@
                             <asp:Label ID="LblApellido" runat="server" CssClass="form-control"></asp:Label>
                         </div>
                         <div class="form-group">
-                            <label >Fecha de Nacimiento:</label>
+                            <label>Fecha de Nacimiento:</label>
                             <asp:Label ID="LblFechaNacimiento" runat="server" CssClass="form-control"></asp:Label>
                         </div>
                         <div class="form-group">
-                            <label >País:</label>
+                            <label>País:</label>
                             <asp:Label ID="LblPais" runat="server" CssClass="form-control"></asp:Label>
                         </div>
                         <div class="form-group">
-                            <label ">Celular:</label>
+                            <label>Celular:</label>
                             <asp:Label ID="LblCelular" runat="server" CssClass="form-control"></asp:Label>
                         </div>
                         <div class="form-group">
-                            <label >Sexo:</label>
+                            <label>Sexo:</label>
                             <asp:Label ID="LblSexo" runat="server" CssClass="form-control"></asp:Label>
                         </div>
                         <div class="form-group">
-                            <label > Foto de Perfil:</label>
-                            <asp:Image id="ImgPerfil" runat="server" />
+                            <label>Foto de Perfil:</label>
+                            <asp:Image ID="ImgPerfil" runat="server" Style="width: 350px; height: 350px" />
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
 </asp:Content>

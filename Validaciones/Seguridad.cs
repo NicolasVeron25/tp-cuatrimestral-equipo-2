@@ -11,7 +11,19 @@ namespace Validaciones
     {
         public static bool Login(object usuario) //se lo pasa desde Session
         {
-            Usuario user = usuario != null ? (Usuario)usuario : null; // valida si es null o no y transforma de object a Usuario
+            //     Usuario user = usuario != null ? (Usuario)usuario : null; // valida si es null o no y transforma de object a Usuario
+
+
+            Usuario user;
+            if(usuario != null)
+            {
+                user = (Usuario)usuario;
+
+            }
+            else
+            {
+                user = null;
+            }
 
             if (user != null )
             {
@@ -25,6 +37,7 @@ namespace Validaciones
 
 
         }
+      
 
     }
 }

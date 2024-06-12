@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Compra" Language="C#" MasterPageFile="~/Masters/MasterUsuario.Master" AutoEventWireup="true" CodeBehind="Compra.aspx.cs" Inherits="CodeMentor.Compra" %>
+﻿<%@ Page Title="Adquirir" Language="C#" MasterPageFile="~/Masters/MasterUsuario.Master" AutoEventWireup="true" CodeBehind="Adquirir.aspx.cs" Inherits="CodeMentor.Adquirir" %>
 
 <asp:Content ID="Content" ContentPlaceHolderID="head" runat="server">
   
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                         <div style="margin-left: 15%; margin-top: 5%">
-                            <asp:Button style="margin-left:3%" Text="Abonar Curso" runat="server" CssClass="btn btn-dark"/>
+                            <asp:Button style="margin-left:3%" Text="Adquirir" runat="server" CssClass="btn btn-dark"/>
                         </div>
                     </div>
 

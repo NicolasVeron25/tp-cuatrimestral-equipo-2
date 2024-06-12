@@ -65,8 +65,9 @@
     <Content Include="AspxAdmin\AdminPreguntas.aspx" />
     <Content Include="AspxAdmin\AdminUsuarios.aspx" />
     <Content Include="AspxAdmin\BackOffice.aspx" />
-    <Content Include="AspxUsuario\Compra.aspx" />
+    <Content Include="AspxUsuario\Adquirir.aspx" />
     <Content Include="AspxUsuario\DetalleCurso.aspx" />
+    <Content Include="AspxUsuario\MisCursos.aspx" />
     <Content Include="ContentBs\bootstrap-grid.css" />
     <Content Include="ContentBs\bootstrap-grid.min.css" />
     <Content Include="ContentBs\bootstrap-grid.rtl.css" />
@@ -131,12 +132,12 @@
     <Compile Include="AspxAdmin\BackOffice.aspx.designer.cs">
       <DependentUpon>BackOffice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AspxUsuario\Compra.aspx.cs">
-      <DependentUpon>Compra.aspx</DependentUpon>
+    <Compile Include="AspxUsuario\Adquirir.aspx.cs">
+      <DependentUpon>Adquirir.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AspxUsuario\Compra.aspx.designer.cs">
-      <DependentUpon>Compra.aspx</DependentUpon>
+    <Compile Include="AspxUsuario\Adquirir.aspx.designer.cs">
+      <DependentUpon>Adquirir.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxUsuario\DetalleCurso.aspx.cs">
       <DependentUpon>DetalleCurso.aspx</DependentUpon>
@@ -151,6 +152,13 @@
     </Compile>
     <Compile Include="AspxUsuario\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxUsuario\MisCursos.aspx.cs">
+      <DependentUpon>MisCursos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxUsuario\MisCursos.aspx.designer.cs">
+      <DependentUpon>MisCursos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

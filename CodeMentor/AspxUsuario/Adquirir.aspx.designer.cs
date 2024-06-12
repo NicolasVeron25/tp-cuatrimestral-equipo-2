@@ -11,7 +11,7 @@ namespace CodeMentor
 {
 
 
-    public partial class Compra
+    public partial class Adquirir
     {
 
         /// <summary>

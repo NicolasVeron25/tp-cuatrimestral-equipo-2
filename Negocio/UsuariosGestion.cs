@@ -11,6 +11,8 @@ namespace Negocio
     {
 
         //DEVUELVE EL ID INSERTADO. PORQUE ES NECESARIO PARA METERLO EN SESSION
+
+
         public int InsertarUsuarioSP(string email, string pass, InformacionUsuario datos)
         {
             var Acceso = new ConexionBD();

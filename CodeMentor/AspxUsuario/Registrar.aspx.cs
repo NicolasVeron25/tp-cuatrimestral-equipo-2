@@ -17,8 +17,12 @@ namespace CodeMentor
             {
                 Response.Redirect("InicioRegistrado.aspx", false);
             }
-            DdlListaPaises();
-            DdlLlenarSexo();
+            if (!IsPostBack)
+            {
+                DdlListaPaises();
+                DdlLlenarSexo();
+
+            }
             //FALTA FOTO DE PERFIL QUE INGRESE!!
             //OPCION DE VER CONTRASEÑA
             //VALIDACION COINCIDENCIA DE PASS 
@@ -31,6 +35,8 @@ namespace CodeMentor
         protected void BtnRegistro_Click(object sender, EventArgs e)
         {
             InsertarUsuario();
+            Response.Redirect("InicioRegistrado.aspx", false);
+
         }
 
         private void InsertarUsuario()
