@@ -38,7 +38,6 @@ namespace Negocio
             }
 
         }
-
         public List<Categoria> ListarCategorias()
         {
             var Acceso = new ConexionBD();
