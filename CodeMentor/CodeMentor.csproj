@@ -68,6 +68,7 @@
     <Content Include="AspxUsuario\Adquirir.aspx" />
     <Content Include="AspxUsuario\DetalleCurso.aspx" />
     <Content Include="AspxUsuario\MisCursos.aspx" />
+    <Content Include="AspxUsuario\PreguntaDetalle.aspx" />
     <Content Include="ContentBs\bootstrap-grid.css" />
     <Content Include="ContentBs\bootstrap-grid.min.css" />
     <Content Include="ContentBs\bootstrap-grid.rtl.css" />
@@ -95,6 +96,7 @@
     <Content Include="AspxUsuario\PerfilUsuario.aspx" />
     <Content Include="AspxUsuario\Registrar.aspx" />
     <Content Include="AspxUsuario\Reproduccion.aspx" />
+    <Content Include="AspxUsuario\PreguntasRespuestas.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -160,6 +162,13 @@
     <Compile Include="AspxUsuario\MisCursos.aspx.designer.cs">
       <DependentUpon>MisCursos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AspxUsuario\PreguntaDetalle.aspx.cs">
+      <DependentUpon>PreguntaDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxUsuario\PreguntaDetalle.aspx.designer.cs">
+      <DependentUpon>PreguntaDetalle.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,6 +213,13 @@
     </Compile>
     <Compile Include="AspxUsuario\PerfilUsuario.aspx.designer.cs">
       <DependentUpon>PerfilUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxUsuario\PreguntasRespuestas.aspx.cs">
+      <DependentUpon>PreguntasRespuestas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxUsuario\PreguntasRespuestas.aspx.designer.cs">
+      <DependentUpon>PreguntasRespuestas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AspxUsuario\Registrar.aspx.cs">

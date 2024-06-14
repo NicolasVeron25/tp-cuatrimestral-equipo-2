@@ -18,14 +18,24 @@
         }
 
         .ImgCursosInscrip {
-            margin-top: 2.3%;
-            padding-right: 3%;
+            margin: 1%;
             max-width: fit-content;
         }
 
+        .imgCard {
+            width: 100%;
+            height: 151px;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
         .BodyCard {
-            border-top: solid 1px #f3f3f3;
             border-radius: 5px;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 8%;
+            margin-left: 2.5%;
+            margin-right: 2.5%;
         }
 
         .RowBienvenida {
@@ -45,81 +55,83 @@
         }
 
         .CardCompleta {
-            width: 25rem;
+            padding: 0;
+            width: 23rem;
             margin-top: 0.5%;
             margin-left: 10.3%;
-            margin-bottom: 8%;
+            height: fit-content;
+            border-radius: 20px;
         }
     </style>
 
     <div class="container Bienvenida" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">
         <div class="row-cols-1 RowBienvenida ">
             <div>
-                <h2 style="margin-left: 8%">Hola de nuevo (Nombre User) ! %></h2>
+                <h2 style="margin-left: 8%">Hola de nuevo <%:InfoUser.Nombre.ToUpperInvariant() %>!</h2>
             </div>
 
         </div>
+        <% if (CursosInscripto != null)
+            { %>
 
         <div class="row-cols-1 Cursando" style="background-color: white;">
-            <div class="" style="background-color: white; padding: 2%">
-                <h3 class="CursandoH3">Cursando</h3>
+            <div  style="background-color: white; padding: 2%">
+                <h3 class="CursandoH3">Cursando :</h3>
 
             </div>
-            <div class=" row-cols-3 ">
-               <!-- <%// foreach (var curso in CursosInscripto)
-                   // {  %>
-
+            <div class="row col-md">
+                <% foreach (var curso in CursosInscripto)
+                    {  %>
 
                 <div class="card CardCompleta">
-                    <%//:ImageCurso.ImageUrl = curso.UrlPortada %>
-                    <asp:Image ID="ImageCurso" class="card-img-top ImgCursosInscrip" alt="Img Curso" runat="server" />
-                    <div class="card-body BodyCard">
+                    <div style= "border-radius:15px; overflow:hidden; width: 100%; height:245px">
+                        <% ImageCurso.ImageUrl=curso.UrlPortada;%>
+                        <asp:Image ID="ImageCurso" class="card-img-top " Style=" height: 100%;width:100%" alt="Img Curso" runat="server" />
+                    </div>
+
+
+                    <div class="BodyCard">
                         <div class="row" style="margin-top: 1%">
                             <div class=" col-6">
-                                <h5 style="margin-top: 1%" class="card-title"><%//:curso.Nombre %></h5>
+                                <h5 style="margin-top: 1%" class="card-title"><%:curso.Nombre %></h5>
                             </div>
                             <div class="col-6">
-                                <asp:Button Text="Ir al Curso" href="Reproduccion.Aspx" Style="width: 100%" CssClass="btn btn-outline-dark " runat="server" />
+                                <a href="Reproduccion.aspx" Style="width: 100%" class="btn btn-outline-dark ">Ir al Curso</a>
                             </div>
                         </div>
 
                         <div>
+                            <% BarraProgreso(curso.IdCurso);%>
+
                             <p>Progreso</p>
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" runat="server" id="BarraProgresoCurso" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
+
                             <p runat="server" id="pProgreso"></p>
-                   <%//BarraProgreso(curso.id) %>
                         </div>
                     </div>
                 </div>
-                <%//} %>
-                <!-- EJEMPLO -->
-                <div class="card CardCompleta">
-                    <asp:Image ID="Image1" ImageUrl="https://www.ibm.com/content/dam/adobe-cms/instana/media_logo/Java.component.complex-narrative-xl.ts=1692900329414.png/content/adobe-cms/es/es/products/instana/supported-technologies/java-monitoring/_jcr_content/root/table_of_contents/body/content_section_styled/content-section-body/complex_narrative/logoimage" class="card-img-top ImgCursosInscrip" alt="Img Curso" runat="server" />
-                    <div class="card-body BodyCard">
-                        <div class="row" style="margin-top: 1%">
-                            <div class=" col-6">
-                                <h5 style="margin-top: 1%" class="card-title">Curso de Java</h5>
-                            </div>
-                            <div class="col-6">
-                                <asp:Button Text="Ir al Curso" href="Reproduccion.Aspx" Style="width: 100%" CssClass="btn btn-outline-dark " runat="server" />
-                            </div>
-                        </div>
+                <%}
+                    }
+                    else
+                    { %>
 
-                        <div>
-                            <p>Progreso</p>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" runat="server" id="Div1" aria-valuenow="25" style="width:30%" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <p runat="server" id="p">30%</p>
-                        </div>
+                <div class="row col Cursando" style="background-color: white; margin: 0">
+                    <div class="mb-3" style="margin-top: 3%">
+                        <h3 style="margin-left: 9.7%">No se ha inscripto a ningun curso.</h3>
+                    </div>
+                    <div class="mb-3" style="margin-top: 2.5%;">
+                        <a href="InicioRegistrado.aspx" class="btn btn-dark" style="margin-left: 9.8%">Ver Cursos disponibles</a>
                     </div>
                 </div>
-
+                <div style="margin-top: 20%">
+                </div>
+                <%} %>
             </div>
 
 
         </div>
     </div>
+
 </asp:Content>

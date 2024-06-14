@@ -10,7 +10,7 @@
 
         <!----------------------- LOGEO -------------------------->
 
-        <div class="row border rounded-5 p-3 bg-white shadow box-area">
+        <div class="row border rounded-5 p-3 bg-white shadow box-area" style="margin-bottom:10%">
 
             <!--------------------------- BOX DE LA IZQUIERDA (IMAGEN) ----------------------------->
 

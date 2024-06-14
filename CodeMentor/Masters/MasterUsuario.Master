@@ -28,10 +28,20 @@
                     <%--------------------LOGO A LA IZQUIERDA--------------------%>
 
                     <div class="container col-md-4 d-flex justify-content-center">
+                        <%if (!Validaciones.Seguridad.Login(Session["Usuario"])) {  %>
+
                         <a class="navbar-brand" href="Inicio.aspx">
                             <img src="https://i.ibb.co/MNF3Wc5/codementor-imagotipo-blanco.png" alt="CODEMENTOR" height="70">
                         </a>
-                    </div>
+                        <% }else {
+                            %>
+                        <a class="navbar-brand" href="InicioRegistrado.aspx">
+                            <img src="https://i.ibb.co/MNF3Wc5/codementor-imagotipo-blanco.png" alt="CODEMENTOR" height="70">
+                        </a>
+                            
+
+                        <%} %>
+                        </div>
 
                     <%--------------------BUSCADOR--------------------%>
 

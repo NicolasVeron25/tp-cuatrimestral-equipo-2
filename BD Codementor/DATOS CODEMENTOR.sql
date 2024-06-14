@@ -472,8 +472,7 @@ INSERT INTO UNIDADES_FINALIZADAS (IDUNIDAD, IDUSUARIO) VALUES
 (21, 1),
 (22, 1),
 (23, 1),
-(24, 1),
-(25, 1);
+(24, 1)
 
 --COMO FINALIZO TODAS UNIDADES .. GENERAMOS CERTIFICACIONES. IMPORTANTE DATOS CONSISTENTES.
 GO
@@ -490,8 +489,8 @@ INSERT INTO PREGUNTAS (IDCURSO, IDUSUARIO, TITULO, CUERPO) VALUES
 
 GO
 INSERT INTO PREGUNTAS (IDCURSO, IDUSUARIO, TITULO, CUERPO) VALUES
-(5, 1, 'Optimización de rendimiento en Angular', '¿Cuáles son las mejores prácticas para optimizar el rendimiento de una aplicación Angular? ¿Hay herramientas específicas que se recomienden para este propósito?'),
-(5, 1, 'Seguridad en aplicaciones Angular', '¿Cómo puedo asegurar mi aplicación Angular contra vulnerabilidades comunes como XSS, CSRF o inyección de código? ¿Qué prácticas de seguridad se recomiendan en el desarrollo de aplicaciones Angular?');
+(2, 1, 'Optimización de rendimiento en Angular', '¿Cuáles son las mejores prácticas para optimizar el rendimiento de una aplicación Angular? ¿Hay herramientas específicas que se recomienden para este propósito?'),
+(2, 1, 'Seguridad en aplicaciones Angular', '¿Cómo puedo asegurar mi aplicación Angular contra vulnerabilidades comunes como XSS, CSRF o inyección de código? ¿Qué prácticas de seguridad se recomiendan en el desarrollo de aplicaciones Angular?');
 GO
 INSERT INTO PREGUNTAS (IDCURSO, IDUSUARIO, TITULO, CUERPO) VALUES
 (4, 1, 'Manejo avanzado de estado en React', '¿Cuáles son las mejores prácticas para manejar el estado en aplicaciones React más grandes y complejas? ¿Hay herramientas o librerías que faciliten este proceso?'),

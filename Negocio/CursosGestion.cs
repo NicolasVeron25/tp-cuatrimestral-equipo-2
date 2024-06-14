@@ -15,7 +15,7 @@ namespace Negocio
 
             try
             {
-                string query = "SELECT C.ID ,C.NOMBRE FROM CURSOS AS C INNER JOIN INSCRIPCIONES AS I ON I.IDCURSO = C.IDCURSO WHERE I.IDUSUARIO = @IDUSER";
+                string query = "SELECT C.IDCURSO ,C.NOMBRE,C.URL_PORTADA FROM CURSOS AS C INNER JOIN INSCRIPCIONES AS I ON I.IDCURSO = C.IDCURSO WHERE I.IDUSUARIO = @IDUSER";
                 AccesoBD.SetQuery(query);
                 AccesoBD.SetParametro("@IDUSER", IdUsuario);    
                 AccesoBD.EjecutarLectura();
@@ -23,8 +23,9 @@ namespace Negocio
                 while (AccesoBD.Lector.Read())
                 {
                     Curso curso = new Curso();
-                    curso.IdCurso = (int)AccesoBD.Lector["ID"];
+                    curso.IdCurso = (int)AccesoBD.Lector["IDCURSO"];
                     curso.Nombre = (string)AccesoBD.Lector["NOMBRE"];
+                    curso.UrlPortada = (string)AccesoBD.Lector["URL_PORTADA"];
                     ListCursos.Add(curso);
                 }
                 return ListCursos; // List usa Interfaz Ienum asique podemos retornarla. 

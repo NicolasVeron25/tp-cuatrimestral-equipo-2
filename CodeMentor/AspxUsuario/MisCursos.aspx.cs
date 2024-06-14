@@ -14,43 +14,45 @@ namespace CodeMentor.AspxUsuario
     {
         public List<Curso> CursosInscripto { get; set; }
         public InformacionUsuario InfoUser { get; set; }
-        public Usuario UsuarioSession { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-          /*  if (!Validaciones.Seguridad.Login(Session["Usuario"]))
+            if (!Validaciones.Seguridad.Login(Session["Usuario"]))
             
             {
                 Response.Redirect("Ingresar.aspx");
             }
-          */
             if (!IsPostBack)
             {
-                // ObtenerUsuarioconDatos();
-                // LlenarLista();
-                BarraProgreso();
+               InfoUser=  Validaciones.Helper.ObtenerDatos(Session["Usuario"]);
+                
+                 LlenarLista();
             }
            
         }
-        public void BarraProgreso( )
+        public void  BarraProgreso( int idCurso )
         {
-            //OBTENER A PARTIR DE UNIDADES FINALIZADAS. 
+            // obtengo cantidad de unidades primero
+            var UserGestion = new UsuariosGestion();
+            int Unidades = UserGestion.UnidadesXCurso(idCurso);
+            // obtengo unidades finalizadas
+            int UnidadesFinalizadas = UserGestion.UnidadesFinalizadas(idCurso, InfoUser.Idusuario).Count;
+            //calculo progreso
+            int Progreso = (UnidadesFinalizadas * 100) / Unidades;
+            string progreso = Progreso.ToString() + "%";
+
             //simulo dato  
-            string progreso = "90%";
             BarraProgresoCurso.Style.Add("width", progreso); // obtner dato mediante calculo
             pProgreso.InnerText = progreso;
+
+
         }
-        public void ObtenerUsuarioconDatos()
-        {
-            var UserGestion = new UsuariosGestion();
-            UsuarioSession = (Usuario)Session["Usuario"];
-            InfoUser = new InformacionUsuario();
-            InfoUser = UserGestion.ObtenerDatos(UsuarioSession.IdUsuario);
-        }
+       
         public void LlenarLista()
         {
             var CursoGestion = new CursosGestion();
             CursosInscripto = new List<Curso>();
-            CursosInscripto = CursoGestion.CursosInscripto(UsuarioSession.IdUsuario);
+            CursosInscripto = CursoGestion.CursosInscripto(InfoUser.Idusuario);
         }
         
     }

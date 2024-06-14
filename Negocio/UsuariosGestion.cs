@@ -12,7 +12,62 @@ namespace Negocio
 
         //DEVUELVE EL ID INSERTADO. PORQUE ES NECESARIO PARA METERLO EN SESSION
 
+       public int UnidadesXCurso(int curso)
+        {
+            var Acceso = new ConexionBD();
+            try
+            {
+                Acceso.SetQuery("SELECT COUNT(IDUNIDAD) AS CANTIDAD FROM UNIDADES WHERE IDCURSO = @IDCURSO");
+                Acceso.SetParametro("@IDCURSO", curso);
+                Acceso.EjecutarLectura();
+                if (Acceso.Lector.Read())
+                {
+                    return (int)Acceso.Lector["CANTIDAD"];
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
+        public List<Unidad> UnidadesFinalizadas(int idCurso,int idUser)
+        {
 
+
+            var Acceso = new ConexionBD();
+            var Unidades = new List<Unidad>();
+            try
+            {
+                //JOINEAMOS A UNIDADES X QUE AHI ESTA EL ID DEL CURSO!
+                Acceso.SetQuery("SELECT UF.IDUNIDAD FROM UNIDADES_FINALIZADAS UF INNER JOIN UNIDADES U ON U.IDUNIDAD = UF.IDUNIDAD AND  UF.IDUSUARIO = @IDUSER AND U.IDCURSO = @IDCURSO");
+                Acceso.SetParametro("@IDUSER", idUser);
+                Acceso.SetParametro("@IDCURSO", idCurso);
+                Acceso.EjecutarLectura();
+                while (Acceso.Lector.Read())
+                {
+                    Unidad unidad = new Unidad();
+                    unidad.IdUnidad = (int)Acceso.Lector["IDUNIDAD"];
+                    Unidades.Add(unidad);
+                }
+                return Unidades;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
         public int InsertarUsuarioSP(string email, string pass, InformacionUsuario datos)
         {
             var Acceso = new ConexionBD();
@@ -136,6 +191,41 @@ namespace Negocio
             {
                 Acceso.CerrarConexion();
             }
+        }
+        public InformacionUsuario ObtenerAdmin()
+        {
+            var Acceso = new ConexionBD();
+            try
+            {
+                string query = "SELECT UF.NOMBRE,UF.APELLIDO,UF.FECHA_NACIMIENTO,UF.IDPAIS,UF.CELULAR,UF.SEXO,UF.URL_FOTOPERFIL FROM INFORMACION_USUARIO UF INNER JOIN USUARIOS U ON U.IDUSUARIO = UF.IDUSUARIO WHERE U.ES_ADMIN=1";
+                    Acceso.SetQuery(query);
+                Acceso.EjecutarLectura();
+                InformacionUsuario InfoAdmin = new InformacionUsuario();
+                if (Acceso.Lector.Read())
+                {
+                    InfoAdmin.Nombre = (string)Acceso.Lector["NOMBRE"];
+                    InfoAdmin.Apellido = (string)Acceso.Lector["APELLIDO"];
+                    InfoAdmin.FechaNacimiento = (DateTime)Acceso.Lector["FECHA_NACIMIENTO"];
+                    InfoAdmin.IdPais = (int)Acceso.Lector["IDPAIS"];
+                    InfoAdmin.Celular = (string)Acceso.Lector["CELULAR"];
+                    InfoAdmin.Sexo = (string)Acceso.Lector["SEXO"];
+                    if (!(Acceso.Lector["URL_FOTOPERFIL"] is DBNull)) // DISTINTO DE NULO
+                    {
+                        InfoAdmin.UrlFotoPerfil = (string)Acceso.Lector["URL_FOTOPERFIL"];
+                    }
+                }
+                return InfoAdmin;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+
         }
 
         public void ResetPassword(string email, string newPass)

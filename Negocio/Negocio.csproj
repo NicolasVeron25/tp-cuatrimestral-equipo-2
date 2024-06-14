@@ -45,7 +45,9 @@
     <Compile Include="Conexion_Datos\ConexionBD.cs" />
     <Compile Include="CursosGestion.cs" />
     <Compile Include="PaisesGestion.cs" />
+    <Compile Include="PreguntasGestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RespuestasGestion.cs" />
     <Compile Include="UsuariosGestion.cs" />
   </ItemGroup>
   <ItemGroup>
