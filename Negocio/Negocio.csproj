@@ -46,6 +46,7 @@
     <Compile Include="CursosGestion.cs" />
     <Compile Include="PaisesGestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnidadGestion.cs" />
     <Compile Include="UsuariosGestion.cs" />
   </ItemGroup>
   <ItemGroup>
