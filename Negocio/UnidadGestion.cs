@@ -10,7 +10,7 @@ namespace Negocio
     public class UnidadGestion
     {
         
-        public Unidad UnidadCurso(int IdCurso) // TRAER UNIDAD
+        public Unidad ObtenerUnidad(int IdCurso) // OBTENER UNIDAD DE UN CURSO
         {
             var Acceso = new ConexionBD();
             try
