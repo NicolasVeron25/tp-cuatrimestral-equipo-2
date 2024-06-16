@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriasGestion.cs" />
+    <Compile Include="ClaseGestion.cs" />
     <Compile Include="Conexion_Datos\ConexionBD.cs" />
     <Compile Include="CursosGestion.cs" />
+    <Compile Include="LenguajesGestion.cs" />
     <Compile Include="PaisesGestion.cs" />
     <Compile Include="PreguntasGestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
