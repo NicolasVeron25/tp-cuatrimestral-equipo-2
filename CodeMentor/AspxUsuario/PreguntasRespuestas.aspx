@@ -51,13 +51,13 @@
                             <h5 class="mb-1"><%:Preguntas.Titulo %></h5>
                             <div class="mb-3">
                                 <small style="margin-top: 0.5%;"><%:UsuarioActual.Nombre + "  " + UsuarioActual.Apellido %></small>
-                                <%//if (RespuestaFront != null)
-//{  %>
-                                <a href="PreguntaDetalle.aspx?Modificar=<%:Preguntas.IdPregunta %>" >
+                                <%if (RespuestaFront != null)
+                                    {  %>
+                                <a href="PreguntaDetalle.aspx?Modificar=<%:Preguntas.IdPregunta %>">
                                     <img src="https://static.thenounproject.com/png/3082103-200.png" style="width: 30px; height: 30px" />
                                 </a>
 
-                                <%//} %>
+                                <%} %>
                             </div>
 
                         </div>
@@ -119,7 +119,6 @@
     </asp:Panel>
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-            <!-- UTILIDAD = VISIBILIDAD -->
             <asp:Panel runat="server" ID="PanelPreguntasRespuestas">
                 <!-- preguntas y respuestas-->
                 <div class="row col-8" style="margin-left: 20%">

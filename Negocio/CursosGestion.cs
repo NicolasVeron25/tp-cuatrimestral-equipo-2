@@ -88,7 +88,7 @@ namespace Negocio
 
             try
             {
-                AccesoBD.SetQuery("SELECT IDCURSO NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA,FECHA_CREACION from CURSOS as c WHERE ");
+                AccesoBD.SetQuery("SELECT IDCURSO ,NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA,FECHA_CREACION from CURSOS  ");
                 AccesoBD.EjecutarLectura();
                 while (AccesoBD.Lector.Read())
                 {

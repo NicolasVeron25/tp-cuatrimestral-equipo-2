@@ -116,7 +116,7 @@ namespace Negocio
             try
             {
                 // IMPORTANTE = FECHA AUTOMATICA EN BD. PARA MAYORIA CASOS ES ASI!
-                string query = "INSERT INTO RESPUESTAS (IDPREGUNTACUERPO) VALUES (@IDPREGUNTA,@BODY)";
+                string query = "INSERT INTO RESPUESTAS (IDPREGUNTA,CUERPO) VALUES (@IDPREGUNTA,@BODY)";
                 AccesoBD.SetQuery(query);
                 AccesoBD.SetParametro("@IDPREGUNTA", Resp.IdPregunta);
                 AccesoBD.SetParametro("@BODY", Resp.Cuerpo);

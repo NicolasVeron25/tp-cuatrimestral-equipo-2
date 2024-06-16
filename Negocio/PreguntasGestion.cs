@@ -11,7 +11,41 @@ namespace Negocio
 {
     public class PreguntasGestion
     {
-        public Pregunta Obtener(int id,int iduser)
+        public List<Pregunta> SinRespuestas()
+        {
+
+            var AccesoBD = new ConexionBD();
+            List<Pregunta> listPreg = new List<Pregunta>();
+            try
+
+            {
+                string query = "SELECT P.IDPREGUNTA,P.IDCURSO,P.IDUSUARIO,P.TITULO,P.CUERPO,P.FECHA FROM  PREGUNTAS P INNER JOIN RESPUESTAS R ON R.IDPREGUNTA = P.IDPREGUNTA WHERE R.IDPREGUNTA IS NULL";
+                AccesoBD.SetQuery(query);
+                AccesoBD.EjecutarLectura();
+                while (AccesoBD.Lector.Read())
+                {
+                    Pregunta preg = new Pregunta();
+                    preg.IdPregunta = (int)AccesoBD.Lector["IDPREGUNTA"];
+                    preg.IdCurso = (int)AccesoBD.Lector["IDCURSO"];
+                    preg.IdUsuario = (int)AccesoBD.Lector["IDUSUARIO"];
+                    preg.Titulo = (string)AccesoBD.Lector["TITULO"];
+                    preg.Cuerpo = (string)AccesoBD.Lector["CUERPO"];
+                    preg.Fecha = (DateTime)AccesoBD.Lector["FECHA"];
+                    listPreg.Add(preg);
+                }
+                return listPreg;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+        }
+        public Pregunta Obtener(int id, int iduser)
         {
             var AccesoBD = new ConexionBD();
             try
@@ -117,6 +151,43 @@ namespace Negocio
                 AccesoBD.CerrarConexion();
             }
         }
+        public Pregunta UltimaPregunta()
+        {
+            var AccesoBD = new ConexionBD();
+            
+            try
+            {
+                string query = "SELECT TOP(1)  IDPREGUNTA,IDCURSO,IDUSUARIO,TITULO,CUERPO,FECHA from PREGUNTAS ORDER BY IDPREGUNTA DESC";
+                AccesoBD.SetQuery(query);
+                AccesoBD.EjecutarLectura();
+                Pregunta preg = new Pregunta();
+                if (AccesoBD.Lector.Read())
+                {
+                    preg.IdPregunta = (int)AccesoBD.Lector["IDPREGUNTA"];
+                    preg.IdCurso = (int)AccesoBD.Lector["IDCURSO"];
+                    preg.IdUsuario = (int)AccesoBD.Lector["IDUSUARIO"];
+                    preg.Titulo = (string)AccesoBD.Lector["TITULO"];
+                    preg.Cuerpo = (string)AccesoBD.Lector["CUERPO"];
+                    preg.Fecha = (DateTime)AccesoBD.Lector["FECHA"];
+                }
+                if(preg == null)
+                {
+                    return null;
+                }
+                return preg;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+
+        }
+
 
         public List<Pregunta> ListadoPreguntas(int IdCurso) //USO = MOSTRAR PREGUNTAS DE UN CURSO, LINQ PARA FILTRAR POR USUARIO  Y POR USUARIO Y CURSO!
         {
