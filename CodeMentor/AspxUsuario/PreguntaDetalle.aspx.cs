@@ -17,7 +17,7 @@ namespace CodeMentor.AspxUsuario
         public Pregunta Modificar { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Validaciones.Seguridad.Login(Session["Usuario"]) == false)
+            if (Validaciones.Seguridad.Login(Session["Usuario"]) == false)
             {
                 Response.Redirect("Ingresar.aspx");
             }
@@ -27,34 +27,41 @@ namespace CodeMentor.AspxUsuario
                 UsuarioActual = Validaciones.Helper.ObtenerDatos(Session["Usuario"]);
 
 
-                PanelPreguntasUsuario.Visible = true;
+                PregUsuario.Visible = true;
                 if (PreguntaModificar() == 0)
                 {
                     Response.Redirect("InicioRegistrado.aspx");
                 }
-                BtnConfirmarBorrar.Visible = false;
-                TxtCuerpo.Text= Modificar.Cuerpo;
-                TxtTitulo.Text = Modificar.Titulo;
-                LblNoCambios.Visible = false;
+                if (!IsPostBack)
+                {
+                    BtnConfirmarBorrar.Visible = false;
+                    TxtCuerpo.Text = Modificar.Cuerpo;
+                    TxtTitulo.Text = Modificar.Titulo;
+                    LblNoCambios.Visible = false;
+                }
             }
-            
+            else
+            {
+                Response.Redirect("PreguntasRespuestas.aspx");
+            }
+
         }
-       
+
         public int PreguntaModificar()
         {
             int IdPregunta = int.Parse(Request.QueryString["Modificar"]);
             var PregGestion = new PreguntasGestion();
-            Modificar = PregGestion.Obtener(IdPregunta, UsuarioActual.Idusuario); //validamos que no acceda donde no debe! por eso que coincidan ambas en la query
+            Modificar = PregGestion.Obtener(IdPregunta); //validamos que no acceda donde no debe! por eso que coincidan ambas en la query
             if (Modificar == null)
             {
                 return 0;
             }
             return 1;
         }
-       
-        
 
-      
+
+
+
         protected void BtnConfirmarBorrar_Click(object sender, EventArgs e)
         {
             var PregGestion = new PreguntasGestion();
@@ -68,7 +75,8 @@ namespace CodeMentor.AspxUsuario
 
         protected void BtnGuardarCambios_Click(object sender, EventArgs e)
         {
-            if(TxtCuerpo.Text == Modificar.Cuerpo && TxtTitulo.Text == Modificar.Titulo)
+            PreguntaModificar();
+            if (TxtCuerpo.Text == Modificar.Cuerpo && TxtTitulo.Text == Modificar.Titulo)
             {
                 LblNoCambios.Visible = true;
                 return;
@@ -79,6 +87,7 @@ namespace CodeMentor.AspxUsuario
             Pregunta.Titulo = TxtTitulo.Text;
             var GestionPreg = new PreguntasGestion();
             GestionPreg.ModificarPregunta(Pregunta);
+            Response.Redirect("PreguntaDetalle.aspx?Modificar=" + Pregunta.IdPregunta);
         }
     }
 }

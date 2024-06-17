@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <style>
         .Acomodar {
             margin-top: 6.5%;
@@ -11,12 +12,12 @@
             margin-bottom: 11%;
         }
     </style>
-    <asp:Panel runat="server" ID="PanelPreguntasUsuario">
+   
+    <asp:Panel runat="server" ID="PregUsuario">
 
-
+       
         <%if (Modificar != null)
             { %>
-        <asp:Panel ID="PanelBorrarPregunta" runat="server">
 
             <div class="list-group Acomodar">
                 <div class="mb-3">
@@ -48,8 +49,9 @@
                 </div>
             </div>
 
-        </asp:Panel>
 
         <%} %>
+               
     </asp:Panel>
+
 </asp:Content>

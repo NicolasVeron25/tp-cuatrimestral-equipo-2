@@ -15,22 +15,13 @@ namespace CodeMentor.AspxUsuario
     {
 
         /// <summary>
-        /// Control PanelPreguntasUsuario.
+        /// Control PregUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelPreguntasUsuario;
-
-        /// <summary>
-        /// Control PanelBorrarPregunta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelBorrarPregunta;
+        protected global::System.Web.UI.WebControls.Panel PregUsuario;
 
         /// <summary>
         /// Control TxtTitulo.

@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using Negocio;
+using Validaciones;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,10 @@ namespace CodeMentor.AspxUsuario
             // obtengo cantidad de unidades primero
             var UserGestion = new UsuariosGestion();
             int Unidades = UserGestion.UnidadesXCurso(idCurso);
+
             // obtengo unidades finalizadas
             int UnidadesFinalizadas = UserGestion.UnidadesFinalizadas(idCurso, InfoUser.Idusuario).Count;
+
             //calculo progreso
             int Progreso = (UnidadesFinalizadas * 100) / Unidades;
             string progreso = Progreso.ToString() + "%";

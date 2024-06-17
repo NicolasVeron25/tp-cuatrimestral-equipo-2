@@ -60,6 +60,15 @@ namespace CodeMentor
         protected global::System.Web.UI.WebControls.Button BtnVerTodas;
 
         /// <summary>
+        /// Control PanelPreguntas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelPreguntas;
+
+        /// <summary>
         /// Control PanelPreguntasUsuario.
         /// </summary>
         /// <remarks>
@@ -112,14 +121,5 @@ namespace CodeMentor
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnCancelarAñadirPregunta;
-
-        /// <summary>
-        /// Control PanelPreguntasRespuestas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelPreguntasRespuestas;
     }
 }

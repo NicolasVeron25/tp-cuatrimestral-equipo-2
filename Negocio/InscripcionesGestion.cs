@@ -11,7 +11,7 @@ namespace Negocio
     internal class InscripcionesGestion
     {
 
-        public List<dtoInscripcionesGestion> ListarInscripciones() 
+        public List<InscripcionesGestionDto> ListarInscripciones() 
         {
             ConexionBD AccesoBD = new ConexionBD();
 
@@ -20,10 +20,10 @@ namespace Negocio
                 string query = "SELECT i.APELLIDO , i.NOMBRE, c.NOMBRE as NombreCurso, ins.IDINSCRIPCION  FROM INFORMACION_USUARIO i INNER JOIN INSCRIPCIONES ins on ins.IDUSUARIO=i.IDUSUARIO INNER JOIN CURSOS c on c.IDCURSO=ins.IDCURSO";
                 AccesoBD.SetQuery(query);         
                 AccesoBD.EjecutarLectura();
-                var ListaInscripciones = new List<dtoInscripcionesGestion>();
+                var ListaInscripciones = new List<InscripcionesGestionDto>();
                 while (AccesoBD.Lector.Read())
                 {
-              dtoInscripcionesGestion inscripcion= new dtoInscripcionesGestion();
+              InscripcionesGestionDto inscripcion= new InscripcionesGestionDto();
                     inscripcion.Nombre = (string)AccesoBD.Lector["NOMBRE"];
                     inscripcion.Apellido = (string)AccesoBD.Lector["APELLIDO"];
                     inscripcion.NombreCurso = (string)AccesoBD.Lector["NombreCurso"];

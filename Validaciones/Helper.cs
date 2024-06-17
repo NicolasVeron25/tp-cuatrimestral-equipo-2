@@ -21,6 +21,7 @@ namespace Validaciones
             return InfoUser;
 
         }
+
         public static string  ObtenerNombreAdmin()
         {
             var UserGestion = new UsuariosGestion();

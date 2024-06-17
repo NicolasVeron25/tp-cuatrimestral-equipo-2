@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.DTOS
 {
-    public class dtoInscripcionesGestion
+    public class InscripcionesGestionDto
     {
 
         public string Nombre { get; set; }

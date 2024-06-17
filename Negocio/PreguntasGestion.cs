@@ -45,7 +45,7 @@ namespace Negocio
                 AccesoBD.CerrarConexion();
             }
         }
-        public Pregunta Obtener(int id, int iduser)
+        public Pregunta Obtener(int id)
         {
             var AccesoBD = new ConexionBD();
             try
@@ -53,7 +53,6 @@ namespace Negocio
                 string query = "SELECT IDPREGUNTA,IDCURSO,IDUSUARIO,TITULO,CUERPO,FECHA FROM PREGUNTAS WHERE IDPREGUNTA=@IDPREG AND IDUSUARIO = @IDUSER";
                 AccesoBD.SetQuery(query);
                 AccesoBD.SetParametro("@IDPREG", id);
-                AccesoBD.SetParametro("@IDUSER", iduser);
                 AccesoBD.EjecutarLectura();
                 Pregunta preg = new Pregunta();
 
@@ -61,7 +60,7 @@ namespace Negocio
                 {
                     preg.IdPregunta = id;
                     preg.IdCurso = (int)AccesoBD.Lector["IDCURSO"];
-                    preg.IdUsuario = iduser;
+                    preg.IdUsuario = (int)AccesoBD.Lector["IDUSUARIO"];
                     preg.Titulo = (string)AccesoBD.Lector["TITULO"];
                     preg.Cuerpo = (string)AccesoBD.Lector["CUERPO"];
                     preg.Fecha = (DateTime)AccesoBD.Lector["FECHA"];
@@ -95,6 +94,7 @@ namespace Negocio
                 AccesoBD.SetParametro("@IDUSER", Preg.IdUsuario);
                 AccesoBD.SetParametro("@TIT", Preg.Titulo);
                 AccesoBD.SetParametro("@BODY", Preg.Cuerpo);
+                AccesoBD.EjecutarAccion();
             }
             catch (Exception ex)
             {
@@ -154,7 +154,7 @@ namespace Negocio
         public Pregunta UltimaPregunta()
         {
             var AccesoBD = new ConexionBD();
-            
+
             try
             {
                 string query = "SELECT TOP(1)  IDPREGUNTA,IDCURSO,IDUSUARIO,TITULO,CUERPO,FECHA from PREGUNTAS ORDER BY IDPREGUNTA DESC";
@@ -170,7 +170,7 @@ namespace Negocio
                     preg.Cuerpo = (string)AccesoBD.Lector["CUERPO"];
                     preg.Fecha = (DateTime)AccesoBD.Lector["FECHA"];
                 }
-                if(preg == null)
+                if (preg == null)
                 {
                     return null;
                 }
@@ -189,16 +189,26 @@ namespace Negocio
         }
 
 
-        public List<Pregunta> ListadoPreguntas(int IdCurso) //USO = MOSTRAR PREGUNTAS DE UN CURSO, LINQ PARA FILTRAR POR USUARIO  Y POR USUARIO Y CURSO!
+        public List<Pregunta> ListadoPreguntas(int IdCurso = 0) //USO = MOSTRAR PREGUNTAS DE UN CURSO, LINQ PARA FILTRAR POR USUARIO  Y POR USUARIO Y CURSO!
         {
 
             var AccesoBD = new ConexionBD();
             List<Pregunta> listPreg = new List<Pregunta>();
             try
             {
-                string query = "SELECT IDPREGUNTA,IDCURSO,IDUSUARIO,TITULO,CUERPO,FECHA FROM PREGUNTAS WHERE IDCURSO=@IDCURSO";
-                AccesoBD.SetQuery(query);
-                AccesoBD.SetParametro("@IDCURSO", IdCurso);
+                if (IdCurso != 0)
+                {
+                    string query = "SELECT IDPREGUNTA,IDCURSO,IDUSUARIO,TITULO,CUERPO,FECHA FROM PREGUNTAS WHERE IDCURSO=@IDCURSO";
+                    AccesoBD.SetQuery(query);
+                    AccesoBD.SetParametro("@IDCURSO", IdCurso);
+
+                }
+                else // si es 0, traigo todas las preguntas
+                {
+                    string query = "SELECT IDPREGUNTA,IDCURSO,IDUSUARIO,TITULO,CUERPO,FECHA FROM PREGUNTAS ";
+                    AccesoBD.SetQuery(query);
+
+                }
                 AccesoBD.EjecutarLectura();
                 while (AccesoBD.Lector.Read())
                 {

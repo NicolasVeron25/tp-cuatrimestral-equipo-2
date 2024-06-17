@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    internal class ClaseGestion
+    public class ClaseGestion
     {
         public Clase ClaseUnidad(int IdUnidad)
         {
@@ -51,7 +51,7 @@ namespace Negocio
                 {
                     var clase = new Clase();
                     clase.IdClase = (int)Acceso.Lector["Id"];
-                    clase.Descripcion = (string)Acceso.Lector["Descripcion"];                   
+                    clase.Descripcion = (string)Acceso.Lector["Descripcion"];
                     ListaClase.Add(clase);
                 }
                 return ListaClase;
@@ -69,7 +69,7 @@ namespace Negocio
         }
 
 
-        public void InsertarClase(Clase clase) 
+        public void InsertarClase(Clase clase)
         {
             var Acceso = new ConexionBD();
             try
@@ -137,7 +137,7 @@ namespace Negocio
         }
 
     }
+
+
 }
-
-
 

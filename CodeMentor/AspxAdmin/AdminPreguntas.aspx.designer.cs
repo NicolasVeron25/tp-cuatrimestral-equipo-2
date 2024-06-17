@@ -24,13 +24,13 @@ namespace CodeMentor.AdminAspx
         protected global::System.Web.UI.WebControls.Panel PanelNavegacion;
 
         /// <summary>
-        /// Control BtnUltimaPreg.
+        /// Control BtnPreguntasSinResponder.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnUltimaPreg;
+        protected global::System.Web.UI.WebControls.Button BtnPreguntasSinResponder;
 
         /// <summary>
         /// Control RptCursos.
@@ -42,93 +42,75 @@ namespace CodeMentor.AdminAspx
         protected global::System.Web.UI.WebControls.Repeater RptCursos;
 
         /// <summary>
-        /// Control PanelUltima.
+        /// Control BtnUltimaSemana.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelUltima;
+        protected global::System.Web.UI.WebControls.Button BtnUltimaSemana;
 
         /// <summary>
-        /// Control TxtUltimaModificarCuerpoRespuesta.
+        /// Control BtnVerTodas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtUltimaModificarCuerpoRespuesta;
+        protected global::System.Web.UI.WebControls.Button BtnVerTodas;
 
         /// <summary>
-        /// Control BtnUltimaCancelarCambios.
+        /// Control PreguntasRespuestasAdmin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnUltimaCancelarCambios;
+        protected global::System.Web.UI.WebControls.Panel PreguntasRespuestasAdmin;
 
         /// <summary>
-        /// Control BtnUltimaModificarRespuesta.
+        /// Control TxtRespuesta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnUltimaModificarRespuesta;
+        protected global::System.Web.UI.WebControls.TextBox TxtRespuesta;
 
         /// <summary>
-        /// Control BtnUltimaGuardarCambios.
+        /// Control BtnResponder.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnUltimaGuardarCambios;
+        protected global::System.Web.UI.WebControls.Button BtnResponder;
 
         /// <summary>
-        /// Control TxtUltimaCuerpoRespuesta.
+        /// Control BtnCancelarRespuesta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtUltimaCuerpoRespuesta;
+        protected global::System.Web.UI.WebControls.Button BtnCancelarRespuesta;
 
         /// <summary>
-        /// Control BtnUltimaEnviarRespuesta.
+        /// Control BtnEnviarRespuesta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnUltimaEnviarRespuesta;
+        protected global::System.Web.UI.WebControls.Button BtnEnviarRespuesta;
 
         /// <summary>
-        /// Control PanelSinResponder.
+        /// Control Panelpepito.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelSinResponder;
-
-        /// <summary>
-        /// Control RptPreguntasSinResponder.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptPreguntasSinResponder;
-
-        /// <summary>
-        /// Control RptPreguntasCurso.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptPreguntasCurso;
+        protected global::System.Web.UI.WebControls.Panel Panelpepito;
     }
 }

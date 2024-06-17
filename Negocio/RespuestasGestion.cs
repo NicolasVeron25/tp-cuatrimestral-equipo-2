@@ -120,6 +120,7 @@ namespace Negocio
                 AccesoBD.SetQuery(query);
                 AccesoBD.SetParametro("@IDPREGUNTA", Resp.IdPregunta);
                 AccesoBD.SetParametro("@BODY", Resp.Cuerpo);
+                AccesoBD.EjecutarAccion();
             }
             catch (Exception ex)
             {

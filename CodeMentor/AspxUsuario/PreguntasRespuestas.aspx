@@ -6,13 +6,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server" />
 
-
-
-
     <asp:Panel runat="server" ID="PanelUltimasPreg">
         <div class="row" style="margin-top: 2%; margin-left: 20%">
             <div class="col-6">
-                <h3>Ultimas Preguntas en : <%:CursoActual.Nombre %> </h3>
+                <h3>Preguntas en : <%:CursoActual.Nombre %> </h3>
 
             </div>
         </div>
@@ -24,74 +21,83 @@
             <div class="col-md-6 text-right">
 
                 <asp:Button runat="server" class="btn btn-primary" Text="Nueva pregunta" ID="BtnAñadirPregunta" OnClick="BtnAñadirPregunta_Click" />
-                <!-- aca? o en pagina nueva?-->
                 <asp:Button runat="server" class="btn btn-secondary" Text="Ver mis preguntas" ID="BtnVerPreguntasUsuario" OnClick="BtnVerPreguntasUsuario_Click" />
-
                 <asp:Button runat="server" class="btn btn-secondary" Text="Ver Todas las preguntas" OnClick="BtnVerTodas_Click" ID="BtnVerTodas" />
 
             </div>
         </div>
     </asp:Panel>
 
-    <asp:Panel runat="server" ID="PanelPreguntasUsuario">
+    <asp:Panel runat="server" ID="PanelPreguntas">
 
-        <div class="row col-8" style="margin-left: 20%">
-            <div>
-                <%  
-                    if (ListadoPreguntas != null)
-                    {  %>
+        <div class="row col-8" style="margin-left: 20%; margin-bottom: 7%">
 
-                <% foreach (var Preguntas in ListadoPreguntas.Where(x => x.IdUsuario == UsuarioActual.Idusuario))
-                    {
-                %>
+            <div class="list-group">
 
-                <div class="list-group">
-                    <div class="list-group-item" style="margin-bottom: 2%; border-radius: 15px">
-                        <div class="d-flex w-100 justify-content-between" style="margin-top: 0.8%">
-                            <h5 class="mb-1"><%:Preguntas.Titulo %></h5>
-                            <div class="mb-3">
-                                <small style="margin-top: 0.5%;"><%:UsuarioActual.Nombre + "  " + UsuarioActual.Apellido %></small>
-                                <%if (RespuestaFront != null)
-                                    {  %>
-                                <a href="PreguntaDetalle.aspx?Modificar=<%:Preguntas.IdPregunta %>">
-                                    <img src="https://static.thenounproject.com/png/3082103-200.png" style="width: 30px; height: 30px" />
-                                </a>
+                <%foreach (var preg in ListadoPreguntasRespuestas)
+                    { %>
 
-                                <%} %>
+                <div class="list-group-item" style="margin-bottom: 2%; border-radius: 15px; border: solid lightgrey 1px;">
+                    <div class="d-flex w-100 justify-content-between" style="margin-top: 0.8%">
+                        <h5 class="mb-1"><%:preg.TituloPregunta %></h5>
+                        <div class="mb-3">
+                        <small><%:preg.NombreApellidoUser%></small>
+
+                        <%if (!ObtenerRespuesta(preg.IdPregunta) && ViendoUsuarios){ %>
+                        <a href="PreguntaDetalle.aspx?Modificar=<%:preg.IdPregunta %>">
+                            <img src="https://static.thenounproject.com/png/3082103-200.png" style="width: 30px; height: 30px" />
+                        </a>
+
+                        <% } %>
                             </div>
+                    </div>
+                    <p class="mb-1"><%:preg.CuerpoPregunta%></p>
 
-                        </div>
-                        <p class="mb-1"><%:Preguntas.Cuerpo%></p>
+                    <small><%:preg.FechaPregunta %></small>
 
-                        <small><%:Preguntas.Fecha %></small>
+                    <%if (ObtenerRespuesta(preg.IdPregunta))
+                        {  %>
+                    <div class="ml-4 mt-3">
+                        <div class="card" style="border-radius: 15px">
+                            <div class="card-body">
+                                <p class="card-text"><%:preg.CuerpoRespuesta %></p>
 
-                        <% ObtenerRespuesta(Preguntas.IdPregunta); %>
+                                <small class="text-muted">Respondido por : <%:Validaciones.Helper.ObtenerNombreAdmin() %> </small>
+                                <small><%:preg.FechaRespuesta %></small>
 
-                        <%if (RespuestaFront != null)
-                            {  %>
-
-                        <div class="ml-4 mt-3">
-                            <div class="card" style="border-radius: 15px">
-                                <div class="card-body">
-                                    <p class="card-text"><%:RespuestaFront.Cuerpo %></p>
-                                    <small class="text-muted">Respondido por : <%:Validaciones.Helper.ObtenerNombreAdmin() %> </small>
-
-                                    <small><%:RespuestaFront.Fecha %></small>
-
-                                </div>
                             </div>
                         </div>
-
-
                     </div>
 
+                    <%}
+                        else
+                        {  %>
+                    <div class="ml-4 mt-3">
+                        <div class="card" style="border-radius: 15px">
+                            <div class="card-body">
+                                <h6 style="color: cornflowerblue">Consulta pendiente de Respuesta.</h6>
+
+                            </div>
+                        </div>
+                    </div>
+                    <%} %>
                 </div>
-                <%}
-                        }
-                    }%>
+
+
+
+                <% } %>
+                <!-- validar aca si no existen preguntas todavia-->
+
             </div>
         </div>
 
+
+
+
+    </asp:Panel>
+
+
+    <asp:Panel runat="server" ID="PanelPreguntasUsuario">
     </asp:Panel>
 
     <asp:Panel runat="server" ID="PanelNuevaPregunta">
@@ -117,107 +123,8 @@
         </div>
 
     </asp:Panel>
-    <asp:UpdatePanel runat="server">
-        <ContentTemplate>
-            <asp:Panel runat="server" ID="PanelPreguntasRespuestas">
-                <!-- preguntas y respuestas-->
-                <div class="row col-8" style="margin-left: 20%">
-                    <div>
-                        <%  int con = 0;
-
-                            if (ListadoPreguntas != null)
-                            {// SECCION PRIMERAS TRES  %>
-                        <%if (!VerTodas)
-                            { %>
-                        <% foreach (var Preguntas in ListadoPreguntas)
-                            {
-                                con++; %>
-                        <%if (con <= 1)
-                            {  %>
-                        <div class="list-group">
-                            <!-- PREGUNTA -->
-                            <div class="list-group-item" style="margin-bottom: 2%; border-radius: 15px">
-                                <div class="d-flex w-100 justify-content-between" style="margin-top: 0.8%">
-                                    <h5 class="mb-1"><%:Preguntas.Titulo %></h5>
-
-                                    <small><%:UsuarioActual.Nombre +" "+ UsuarioActual.Apellido %></small>
-                                </div>
-                                <p class="mb-1"><%:Preguntas.Cuerpo%></p>
-
-                                <small><%:Preguntas.Fecha %></small>
-
-                                <% ObtenerRespuesta(Preguntas.IdPregunta); %>
-                                <!-- LLamado a metodo PARA CARGAR LA RESPUESTA A ESTA PREGUNTA-->
-                                <%if (RespuestaFront != null)
-                                    { %>
-                                <!-- RESPUESTAS  -->
-                                <div class="ml-4 mt-3">
-                                    <div class="card" style="border-radius: 15px">
-                                        <div class="card-body">
-                                            <p class="card-text"><%:RespuestaFront.Cuerpo %></p>
-                                            <!--obtener bd -->
-                                            <small class="text-muted">Respondido por : <%:Validaciones.Helper.ObtenerNombreAdmin() %> </small>
-                                            <!--obtener bd -->
-                                            <small><%:RespuestaFront.Fecha %></small>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <%}
-                                    }
-                                }
-                            }%>
-
-                        <% if (VerTodas)
-                            {  %>
-
-                        <% foreach (var Preguntas in ListadoPreguntas)
-                            {%>
-
-                        <div class="list-group">
-                            <div class="list-group-item" style="margin-bottom: 2%; border-radius: 15px">
-                                <div class="d-flex w-100 justify-content-between" style="margin-top: 0.8%">
-                                    <h5 class="mb-1"><%:Preguntas.Titulo %></h5>
-
-                                    <small><%:UsuarioActual.Nombre + " "+ UsuarioActual.Apellido %> </small>
-                                </div>
-                                <p class="mb-1"><%:Preguntas.Cuerpo%></p>
-
-                                <small><%:Preguntas.Fecha %></small>
-
-                                <%ObtenerRespuesta(Preguntas.IdPregunta); %>
-
-                                <%if (RespuestaFront != null)
-                                    {  %>
 
 
-                                <div class="ml-4 mt-3">
-                                    <div class="card" style="border-radius: 15px">
-                                        <div class="card-body">
-                                            <p class="card-text"><%:RespuestaFront.Cuerpo %></p>
 
-                                            <small class="text-muted">Respondido por : <%:Validaciones.Helper.ObtenerNombreAdmin() %> </small>
 
-                                            <small><%:RespuestaFront.Fecha %></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <%}
-                                    }
-                                }
-
-                            } //Distinto Null%>
-                    </div>
-                </div>
-
-            </asp:Panel>
-        </ContentTemplate>
-
-    </asp:UpdatePanel>
 </asp:Content>
