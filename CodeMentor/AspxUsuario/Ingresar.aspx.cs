@@ -31,11 +31,19 @@ namespace CodeMentor
             {
                 var User = UsuarioGestion.ValidarYObtenerUser(TxtEmailLogin.Text, TxtPassLogin.Text);
 
+                
                 if (User != null)
                 {
                     Session["Usuario"] = User;
-                    if (User.EsAdmin==true)
-                        Response.Redirect("~/AspxAdmin/BackOffice.aspx", false); // Response.Redirect("InicioRegistrado.aspx",false); //capturar en inicioRegistrado  y trabajar en base
+                    if (User.EsAdmin == true)
+                    {
+                        Response.Redirect("~/AspxAdmin/BackOffice.aspx", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("InicioRegistrado.aspx", false);
+                    }
+                    
                 }
                 else
                 {

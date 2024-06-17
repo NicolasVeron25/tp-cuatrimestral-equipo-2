@@ -8,14 +8,9 @@ using Dominio.DTOS;
 
 namespace Negocio
 {
-    internal class InscripcionesGestion
+    public class InscripcionesGestion
     {
-
-<<<<<<< HEAD
-        public List<InscripcionesGestionDto> ListarInscripciones() 
-=======
-        public List<dtoInscripcionesGestion> ListarInscripciones()
->>>>>>> fd64c1ed7768f5045abdd181235ea09c5ae66e46
+        public List<InscripcionesGestionDto> ListarInscripciones()
         {
             ConexionBD AccesoBD = new ConexionBD();
 
@@ -27,11 +22,8 @@ namespace Negocio
                 var ListaInscripciones = new List<InscripcionesGestionDto>();
                 while (AccesoBD.Lector.Read())
                 {
-<<<<<<< HEAD
-              InscripcionesGestionDto inscripcion= new InscripcionesGestionDto();
-=======
-                    dtoInscripcionesGestion inscripcion = new dtoInscripcionesGestion();
->>>>>>> fd64c1ed7768f5045abdd181235ea09c5ae66e46
+                    InscripcionesGestionDto inscripcion = new InscripcionesGestionDto();
+
                     inscripcion.Nombre = (string)AccesoBD.Lector["NOMBRE"];
                     inscripcion.Apellido = (string)AccesoBD.Lector["APELLIDO"];
                     inscripcion.NombreCurso = (string)AccesoBD.Lector["NombreCurso"];
@@ -109,11 +101,11 @@ namespace Negocio
         public void EliminbarInscripcion(int Id)
         {
             ConexionBD Acceso = new ConexionBD();
-            
+
             try
             {
                 Acceso.SetQuery("DELETE FROM INSCRIPCIONES WHERE IDINSCRIPCION=@IDInscripcion");
-                Acceso.SetParametro("IDInscripcion",Id);
+                Acceso.SetParametro("IDInscripcion", Id);
                 Acceso.EjecutarAccion();
 
             }
@@ -122,14 +114,15 @@ namespace Negocio
 
                 throw ex;
             }
-            finally {
+            finally
+            {
 
-                Acceso.CerrarConexion() ;
+                Acceso.CerrarConexion();
 
 
 
-        }
-        
+            }
+
 
         }
 

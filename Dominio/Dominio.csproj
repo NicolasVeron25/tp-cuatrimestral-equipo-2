@@ -45,11 +45,7 @@
     <Compile Include="Certificacion.cs" />
     <Compile Include="Clase.cs" />
     <Compile Include="Curso.cs" />
-<<<<<<< HEAD
     <Compile Include="DataTransferObjects\InscripcionesGestionDto.cs" />
-=======
-    <Compile Include="DataTransferObjects\dtoInscripcionesGestion.cs" />
->>>>>>> fd64c1ed7768f5045abdd181235ea09c5ae66e46
     <Compile Include="DataTransferObjects\PreguntaRespuestaDto.cs" />
     <Compile Include="DataTransferObjects\ReseñasDto.cs" />
     <Compile Include="InformacionUsuario.cs" />
