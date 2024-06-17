@@ -10,9 +10,9 @@ namespace Dominio
     {
         public int IdClase { get; set; }
         public int IdUnidad { get; set; }
+        public int Numero { get; set; }
         public string Descripcion { get; set; }
         public int Duracion { get; set; }
-
         public string UrlVideo { get; set; }
 
     }

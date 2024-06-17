@@ -2,8 +2,6 @@
 
 <asp:Content ID="ContentRegistrado" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
-
     <div class="container ">
         <div class="row">
             <div class="col-md-12">
@@ -34,17 +32,6 @@
         <!--  ACA VALIDAR SI EXISTE UN CURSO COMPRADO POR ESTE USUARIO y mostrar algo.. como continuar curso o algo asi-->
         <div class="row">
             <div class=""></div>
-
         </div>
-
-
     </div>
-
-
-
-
-
-
-
-
 </asp:Content>

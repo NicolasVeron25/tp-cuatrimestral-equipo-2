@@ -68,15 +68,58 @@ namespace Negocio
 
         }
 
+        public List<Clase> ObtenerClasesPorUnidad(int idUnidad) // OBTENER CLASES DE UNA UNIDAD
+        {
+            // Obtengo una lista de clases asociados a una unidad utilizando la tabla CLASES
+            // Ya que peude ser mas de una clase por unidad
+
+            var Acceso = new ConexionBD();
+            try
+            {
+                string query = "SELECT IDCLASE, IDUNIDAD, NUMERO, DESCRIPCION, DURACION, URL_VIDEO FROM CLASES WHERE IDUNIDAD = @idUnidad";
+                Acceso.SetQuery(query);
+                Acceso.SetParametro("@idUnidad", idUnidad);
+                Acceso.EjecutarLectura();
+                var ListaClases = new List<Clase>();
+
+                while (Acceso.Lector.Read())
+                {
+                    var Clas = new Clase();
+                    Clas.IdClase = (int)Acceso.Lector["IDCLASE"];
+                    Clas.IdUnidad = (int)Acceso.Lector["IDUNIDAD"];
+                    Clas.Numero = (int)Acceso.Lector["NUMERO"];
+                    Clas.Descripcion = (string)Acceso.Lector["DESCRIPCION"];
+                    Clas.Duracion = (int)Acceso.Lector["DURACION"];
+                    Clas.UrlVideo = (string)Acceso.Lector["URL_VIDEO"];
+                    ListaClases.Add(Clas);
+                }
+
+                return ListaClases;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
 
         public void InsertarClase(Clase clase)
         {
             var Acceso = new ConexionBD();
             try
-            {
-                string query = "Insert into Clases (Descripcion) values (@Descripcion)";
-                Acceso.SetQuery(query);
+            {  
+                // ATENCION: EN DOMINIO CLASE NO TIENE PROP DE NUMERO PERO EN LA BD SI // agrege prop numero en Dominio/Clase.cs
+                Acceso.SetQuery("INSERT INTO CLASES (IDUNIDAD,NUMERO,DESCRIPCION,DURACION,URL_VIDEO) VALUES(@IDUnidad,@Numero,@Descripcion,@Duracion,@UrlVideo)");
+                Acceso.SetParametro("@IDUnidad", clase.IdUnidad);
+                Acceso.SetParametro("@Numero", clase.Numero);
                 Acceso.SetParametro("@Descripcion", clase.Descripcion);
+                Acceso.SetParametro("@Duracion", clase.Duracion);
+                Acceso.SetParametro("@UrlVideo", clase.UrlVideo);
                 Acceso.EjecutarAccion();
             }
             catch (Exception ex)
@@ -95,10 +138,14 @@ namespace Negocio
             var Acceso = new ConexionBD();
             try
             {
-                string query = "Update Clases set Descripcion = @Descripcion where IdClase = @Id";
-                Acceso.SetQuery(query);
+                
+                Acceso.SetQuery("UPDATE CLASES SET IDUNIDAD=@IDUnidad,NUMERO=@Numero,DESCRIPCION=@Descripcion,DURACION=@Duracion,URL_VIDEO=@UrlVideo WHERE IDCLASE=@IDClase ");
+                Acceso.SetParametro("@IDUnidad", clase.IdUnidad);
+                Acceso.SetParametro("@Numero", clase.Numero);
                 Acceso.SetParametro("@Descripcion", clase.Descripcion);
-                Acceso.SetParametro("@Id", clase.IdClase);
+                Acceso.SetParametro("@Duracion", clase.Duracion);
+                Acceso.SetParametro("@UrlVideo", clase.UrlVideo);
+                Acceso.SetParametro("@@IDClase", clase.IdClase);
                 Acceso.EjecutarAccion();
             }
             catch (Exception ex)

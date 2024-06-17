@@ -21,7 +21,7 @@ namespace CodeMentor
       //if (Validaciones.Seguridad.Login(Session["Usuario"])) Response.Redirect("InicioRegistrado.aspx"); // si ya esta logueado , no puede volver a ingresar
 
         }
-
+        
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
             var UsuarioGestion = new UsuariosGestion();
@@ -34,7 +34,8 @@ namespace CodeMentor
                 if (User != null)
                 {
                     Session["Usuario"] = User;
-                    Response.Redirect("InicioRegistrado.aspx",false); //capturar en inicioRegistrado  y trabajar en base
+                    if (User.EsAdmin==true)
+                        Response.Redirect("~/AspxAdmin/BackOffice.aspx", false); // Response.Redirect("InicioRegistrado.aspx",false); //capturar en inicioRegistrado  y trabajar en base
                 }
                 else
                 {
