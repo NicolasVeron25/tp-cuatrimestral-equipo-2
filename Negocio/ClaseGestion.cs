@@ -68,6 +68,45 @@ namespace Negocio
 
         }
 
+        public List<Clase> ObtenerClasesPorUnidad(int idUnidad) // OBTENER CLASES DE UNA UNIDAD
+        {
+            // Obtengo una lista de clases asociados a una unidad utilizando la tabla CLASES
+            // Ya que peude ser mas de una clase por unidad
+
+            var Acceso = new ConexionBD();
+            try
+            {
+                string query = "SELECT IDCLASE, IDUNIDAD, NUMERO, DESCRIPCION, DURACION, URL_VIDEO FROM CLASES WHERE IDUNIDAD = @idUnidad";
+                Acceso.SetQuery(query);
+                Acceso.SetParametro("@idUnidad", idUnidad);
+                Acceso.EjecutarLectura();
+                var ListaClases = new List<Clase>();
+
+                while (Acceso.Lector.Read())
+                {
+                    var Clas = new Clase();
+                    Clas.IdClase = (int)Acceso.Lector["IDCLASE"];
+                    Clas.IdUnidad = (int)Acceso.Lector["IDUNIDAD"];
+                    Clas.Numero = (int)Acceso.Lector["NUMERO"];
+                    Clas.Descripcion = (string)Acceso.Lector["DESCRIPCION"];
+                    Clas.Duracion = (int)Acceso.Lector["DURACION"];
+                    Clas.UrlVideo = (string)Acceso.Lector["URL_VIDEO"];
+                    ListaClases.Add(Clas);
+                }
+
+                return ListaClases;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
 
         public void InsertarClase(Clase clase) 
         {
