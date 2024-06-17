@@ -250,5 +250,42 @@ namespace Negocio
 
 
         }
+
+       public List<InformacionUsuario> ListarUsuarios()
+        {
+            List<InformacionUsuario> list = new List<InformacionUsuario>();
+            ConexionBD Acceso = new ConexionBD();
+            try
+            {
+                Acceso.SetQuery("SELECT * FROM INFORMACION_USUARIO");
+                Acceso.EjecutarLectura();
+                while (Acceso.Lector.Read()) 
+                {
+                InformacionUsuario user = new InformacionUsuario();
+                user.Idusuario=(int)Acceso.Lector["IDUSUARIO"];
+                    user.Nombre = (string)Acceso.Lector["NOMBRE"];
+                    user.Apellido = (string)Acceso.Lector["APELLIDO"];
+                    user.FechaNacimiento = (DateTime)Acceso.Lector["FECHA_NACIMIENTO"];
+                    user.IdPais = (int)Acceso.Lector["IDPAIS"];
+                    user.Celular = (string)Acceso.Lector["CELULAR"];
+                    user.Sexo = (string)Acceso.Lector["SEXO"];
+                    user.UrlFotoPerfil = (string)Acceso.Lector["URL_FOTOPERFIL"];
+                    list.Add(user);
+
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally {
+                Acceso.CerrarConexion();
+            }
+        }
     }
 }
+
+

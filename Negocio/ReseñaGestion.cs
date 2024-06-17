@@ -12,7 +12,7 @@ namespace Negocio
     public class ReseñaGestion
     {
         
-        List<ReseñasDto> ListarReseñas(int IdCurso)
+      public List<ReseñasDto> ListarReseñas(int IdCurso)
         {
             ConexionBD Acceso = new ConexionBD();
             List<ReseñasDto> listareseña = new List<ReseñasDto>();
