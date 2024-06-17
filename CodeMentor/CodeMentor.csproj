@@ -61,8 +61,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AspxAdmin\AdminCategorias.aspx" />
     <Content Include="AspxAdmin\AdminCursos.aspx" />
+    <Content Include="AspxAdmin\AdminInscripciones.aspx" />
     <Content Include="AspxAdmin\AdminPreguntas.aspx" />
+    <Content Include="AspxAdmin\AdminReseñas.aspx" />
     <Content Include="AspxAdmin\AdminUsuarios.aspx" />
     <Content Include="AspxAdmin\BackOffice.aspx" />
     <Content Include="AspxUsuario\Adquirir.aspx" />
@@ -106,6 +109,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AspxAdmin\AdminCategorias.aspx.cs">
+      <DependentUpon>AdminCategorias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxAdmin\AdminCategorias.aspx.designer.cs">
+      <DependentUpon>AdminCategorias.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AspxAdmin\AdminCursos.aspx.cs">
       <DependentUpon>AdminCursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -113,12 +123,26 @@
     <Compile Include="AspxAdmin\AdminCursos.aspx.designer.cs">
       <DependentUpon>AdminCursos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AspxAdmin\AdminInscripciones.aspx.cs">
+      <DependentUpon>AdminInscripciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxAdmin\AdminInscripciones.aspx.designer.cs">
+      <DependentUpon>AdminInscripciones.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AspxAdmin\AdminPreguntas.aspx.cs">
       <DependentUpon>AdminPreguntas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AspxAdmin\AdminPreguntas.aspx.designer.cs">
       <DependentUpon>AdminPreguntas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxAdmin\AdminReseñas.aspx.cs">
+      <DependentUpon>AdminReseñas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxAdmin\AdminReseñas.aspx.designer.cs">
+      <DependentUpon>AdminReseñas.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxAdmin\AdminUsuarios.aspx.cs">
       <DependentUpon>AdminUsuarios.aspx</DependentUpon>
