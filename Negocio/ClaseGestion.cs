@@ -73,10 +73,14 @@ namespace Negocio
         {
             var Acceso = new ConexionBD();
             try
-            {
-                string query = "Insert into Clases (Descripcion) values (@Descripcion)";
-                Acceso.SetQuery(query);
+            {  
+                // ATENCION: EN DOMINIO CLASE NO TIENE PROP DE NUMERO PERO EN LA BD SI // agrege prop numero en Dominio/Clase.cs
+                Acceso.SetQuery("INSERT INTO CLASES (IDUNIDAD,NUMERO,DESCRIPCION,DURACION,URL_VIDEO) VALUES(@IDUnidad,@Numero,@Descripcion,@Duracion,@UrlVideo)");
+                Acceso.SetParametro("@IDUnidad", clase.IdUnidad);
+                Acceso.SetParametro("@Numero", clase.Numero);
                 Acceso.SetParametro("@Descripcion", clase.Descripcion);
+                Acceso.SetParametro("@Duracion", clase.Duracion);
+                Acceso.SetParametro("@UrlVideo", clase.UrlVideo);
                 Acceso.EjecutarAccion();
             }
             catch (Exception ex)
@@ -95,10 +99,14 @@ namespace Negocio
             var Acceso = new ConexionBD();
             try
             {
-                string query = "Update Clases set Descripcion = @Descripcion where IdClase = @Id";
-                Acceso.SetQuery(query);
+                
+                Acceso.SetQuery("UPDATE CLASES SET IDUNIDAD=@IDUnidad,NUMERO=@Numero,DESCRIPCION=@Descripcion,DURACION=@Duracion,URL_VIDEO=@UrlVideo WHERE IDCLASE=@IDClase ");
+                Acceso.SetParametro("@IDUnidad", clase.IdUnidad);
+                Acceso.SetParametro("@Numero", clase.Numero);
                 Acceso.SetParametro("@Descripcion", clase.Descripcion);
-                Acceso.SetParametro("@Id", clase.IdClase);
+                Acceso.SetParametro("@Duracion", clase.Duracion);
+                Acceso.SetParametro("@UrlVideo", clase.UrlVideo);
+                Acceso.SetParametro("@@IDClase", clase.IdClase);
                 Acceso.EjecutarAccion();
             }
             catch (Exception ex)

@@ -45,8 +45,9 @@
     <Compile Include="Certificacion.cs" />
     <Compile Include="Clase.cs" />
     <Compile Include="Curso.cs" />
-    <Compile Include="DTOS\dtoInscripcionesGestion.cs" />
+    <Compile Include="DataTransferObjects\dtoInscripcionesGestion.cs" />
     <Compile Include="DataTransferObjects\PreguntaRespuestaDto.cs" />
+    <Compile Include="DataTransferObjects\ReseñasDto.cs" />
     <Compile Include="InformacionUsuario.cs" />
     <Compile Include="Inscripcion.cs" />
     <Compile Include="Lenguaje.cs" />
