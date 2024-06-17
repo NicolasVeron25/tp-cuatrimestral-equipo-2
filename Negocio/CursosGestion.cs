@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,9 @@ namespace Negocio
             {
                 string query = "SELECT C.IDCURSO ,C.NOMBRE,C.URL_PORTADA FROM CURSOS AS C INNER JOIN INSCRIPCIONES AS I ON I.IDCURSO = C.IDCURSO WHERE I.IDUSUARIO = @IDUSER";
                 AccesoBD.SetQuery(query);
-                AccesoBD.SetParametro("@IDUSER", IdUsuario);    
+                AccesoBD.SetParametro("@IDUSER", IdUsuario);
                 AccesoBD.EjecutarLectura();
-                var ListCursos= new List<Curso>();
+                var ListCursos = new List<Curso>();
                 while (AccesoBD.Lector.Read())
                 {
                     Curso curso = new Curso();
@@ -119,9 +120,71 @@ namespace Negocio
 
         }
 
+        void ModificarCurso(Curso curso)
+        {
+            ConexionBD Acceso = new ConexionBD();
+            try
+            {
+                Acceso.SetQuery("UPDATE CURSOS  SET NOMBRE=@Nombre, DESCRIPCION=@Descripcion, REQUISITOS=@Requisitos, IMPORTE=@Importe, URL_PORTADA=@UrlPortada,IDCATEGORIA=IDCATEGORIA,FECHA_CREACION=@FechaCreacion WHERE IDCURSO=@IDCURSO");
+                Acceso.SetParametro("@IDCurso", curso.IdCurso);
+                Acceso.SetParametro("@Nombre", curso.Nombre);
+                Acceso.SetParametro("@Descripcion", curso.Descripcion);
+                Acceso.SetParametro("@Requisitos", curso.Requisitos);
+                Acceso.SetParametro("@Importe", curso.Importe);
+                Acceso.SetParametro("@UrlPortada", curso.UrlPortada);
+                Acceso.SetParametro("@IDCategoria", curso.IdCategoria);
+                Acceso.SetParametro("@FechaCreacion", curso.FechaCreacion);
+                Acceso.EjecutarAccion();
+
+            }
+            
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+
+
+
+        }
+        void EliminarCurso(int Id)
+        {
+            ConexionBD Acceso = new ConexionBD();
+            try
+            {
+                Acceso.SetQuery("DELETE FROM CURSOS WHERE IDCURSO=@IDCurso");
+                Acceso.SetParametro("@IDCurso", Id);
+                Acceso.EjecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+
+
+
+        }
+
+
+
+
+
+
+
 
 
     }
+
 }
 
 
