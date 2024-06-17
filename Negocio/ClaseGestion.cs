@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Negocio
 {
-    internal class ClaseGestion
+    public class ClaseGestion
     {
         public Clase ClaseUnidad(int IdUnidad)
         {
