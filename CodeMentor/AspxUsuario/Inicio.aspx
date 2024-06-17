@@ -51,7 +51,7 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"><%:curso.Nombre %></h5>
-                            <a href="DetalleCurso.aspx?id=<%:curso.IdCurso %>" class="btn btnBonito">Ver curso</a>
+                            <a href="DetalleCurso.aspx?idCurso=<%:curso.IdCurso %>" class="btn btnBonito">Ver curso</a>
                         </div>
                     </div>
                 </div>

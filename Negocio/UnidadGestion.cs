@@ -9,30 +9,33 @@ namespace Negocio
 {
     public class UnidadGestion
     {
-        
-        public Unidad ObtenerUnidad(int IdCurso) // OBTENER UNIDAD DE UN CURSO
+        public List<Unidad> ObtenerUnidadesPorCurso(int idCurso) // OBTENER UNIDADES DE UN CURSO
         {
+            // Obtengo una lista de unidades asociados a un curso utilizando la tabla UNIDADES
+            // Ya que peude ser mas de un lenguaje por curso
+
             var Acceso = new ConexionBD();
             try
             {
 
-                string query = "SELECT IDUNIDAD, NUMERO, NOMBRE, DESCRIPCION, IDCURSO FROM UNIDADES WHERE IDCURSO = @idcurso";
+                string query = "SELECT IDUNIDAD, NUMERO, NOMBRE, DESCRIPCION, IDCURSO FROM UNIDADES WHERE IDCURSO = @idCurso";
                 Acceso.SetQuery(query);
-                Acceso.SetParametro("@idcurso", IdCurso);
+                Acceso.SetParametro("@idCurso", idCurso);
                 Acceso.EjecutarLectura();
-                var Uni = new Unidad();
+                var ListaUnidades = new List<Unidad>();
 
-                if (Acceso.Lector.Read())
+                while (Acceso.Lector.Read())
                 {
-
+                    var Uni = new Unidad();
                     Uni.IdUnidad = (int)Acceso.Lector["IDUNIDAD"];
                     Uni.Numero = (int)Acceso.Lector["NUMERO"];
-                    Uni.Descripcion = (string)Acceso.Lector["DESCRIPCION"];
                     Uni.Nombre = (string)Acceso.Lector["NOMBRE"];
+                    Uni.Descripcion = (string)Acceso.Lector["DESCRIPCION"];
                     Uni.IdCurso = (int)Acceso.Lector["IDCURSO"];
+                    ListaUnidades.Add(Uni);
                 }
 
-                return Uni; 
+                return ListaUnidades; 
 
             }
             catch (Exception ex)
