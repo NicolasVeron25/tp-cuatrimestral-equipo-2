@@ -10,6 +10,51 @@ namespace Negocio
 {
     public class InscripcionesGestion
     {
+        public int CantCertificaciones()
+        {
+            ConexionBD conexionBD = new ConexionBD();
+            try
+            {
+                string query = "SELECT COUNT(IDCERTIFICACIONES) FROM CERTIFICACIONES";
+                conexionBD.SetQuery(query);
+                conexionBD.EjecutarLectura();
+                conexionBD.Lector.Read();
+                int cant = (int)conexionBD.Lector[0];
+                return cant;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                conexionBD.CerrarConexion();
+            }
+        }
+
+        public int CantidadInscriptos()
+        {
+            ConexionBD AccesoBD = new ConexionBD();
+            try
+            {
+                string query = "SELECT COUNT(IDINSCRIPCION) FROM INSCRIPCIONES";
+                AccesoBD.SetQuery(query);
+                AccesoBD.EjecutarLectura();
+                AccesoBD.Lector.Read();
+                int cant = (int)AccesoBD.Lector[0];
+                return cant;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+        }
         public List<InscripcionesGestionDto> ListarInscripciones()
         {
             ConexionBD AccesoBD = new ConexionBD();
@@ -98,7 +143,7 @@ namespace Negocio
 
         }
 
-        public void EliminbarInscripcion(int Id)
+        public void EliminarInscripcion(int Id)
         {
             ConexionBD Acceso = new ConexionBD();
 

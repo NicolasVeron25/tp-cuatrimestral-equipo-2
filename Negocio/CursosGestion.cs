@@ -120,7 +120,7 @@ namespace Negocio
 
         }
 
-        void ModificarCurso(Curso curso)
+       public void ModificarCurso(Curso curso)
         {
             ConexionBD Acceso = new ConexionBD();
             try
@@ -151,7 +151,7 @@ namespace Negocio
 
 
         }
-        void EliminarCurso(int Id)
+        public void EliminarCurso(int Id)
         {
             ConexionBD Acceso = new ConexionBD();
             try

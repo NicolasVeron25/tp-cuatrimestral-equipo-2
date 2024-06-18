@@ -50,7 +50,7 @@ namespace Negocio
             var AccesoBD = new ConexionBD();
             try
             {
-                string query = "SELECT IDPREGUNTA,IDCURSO,IDUSUARIO,TITULO,CUERPO,FECHA FROM PREGUNTAS WHERE IDPREGUNTA=@IDPREG AND IDUSUARIO = @IDUSER";
+                string query = "SELECT IDPREGUNTA,IDCURSO,IDUSUARIO,TITULO,CUERPO,FECHA FROM PREGUNTAS WHERE IDPREGUNTA=@IDPREG ";
                 AccesoBD.SetQuery(query);
                 AccesoBD.SetParametro("@IDPREG", id);
                 AccesoBD.EjecutarLectura();

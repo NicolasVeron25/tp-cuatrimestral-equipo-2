@@ -10,6 +10,7 @@ namespace Validaciones
 {
     public static class Helper
     {
+        
         public static InformacionUsuario ObtenerDatos(object user)
         {
             var UserGestion = new UsuariosGestion();

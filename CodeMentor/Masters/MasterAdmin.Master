@@ -64,25 +64,32 @@
                 .sidebar a:hover {
                     color: #fff;
                 }
+
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <style>
+            .AcomodarIcono {
+                margin-right: 15px;
+            }
+        </style>
         <div class="d-flex" id="wrapper">
             <div class="sidebar" id="sidebar-wrapper">
-                <div class="sidebar-heading ">Administracion</div>
-                <div class="sidebar list-group">
-                    <a href="AdminCursos.aspx">Cursos</a>
-                    <a href="AdminLenguajes.aspx">Lenguajes de Programación</a>
-                    <a href="AdminCategorias.aspx">Categorías</a>
-                    <a href="AdminUsuarios.aspx">Usuarios</a>
-                    <a href="AdminCertificados.aspx">Certificados</a>
-                    <a href="AdminInscripciones.aspx">Inscripciones</a>
-                    <a href="AdminPreguntasRespuestas.aspx">Preguntas y Respuestas</a>
-                    <a href="AdminReseñas.aspx">Reseñas</a>
+                <div class="sidebar-heading">
+                    <a href="BackOffice.aspx" class="sidebar-heading">Administracion</a>
                 </div>
-
+                <div class="list-group">
+                    <a href="AdminCursos.aspx"><i class="fas fa-book AcomodarIcono"></i>Cursos</a>
+                    <a href="AdminLenguajes.aspx"><i class="fas fa-code AcomodarIcono "></i>Lenguajes de Programación</a>
+                    <a href="AdminCategorias.aspx"><i class="fas fa-list AcomodarIcono"></i>Categorías</a>
+                    <a href="AdminUsuarios.aspx"><i class="fas fa-users AcomodarIcono"></i>Usuarios</a>
+                    <a href="AdminCertificados.aspx"><i class="fas fa-certificate AcomodarIcono"></i>Certificados</a>
+                    <a href="AdminInscripciones.aspx"><i class="fas fa-address-book AcomodarIcono"></i>Inscripciones</a>
+                    <a href="AdminPreguntas.aspx"><i class="fas fa-question-circle AcomodarIcono"></i>Preguntas y Respuestas</a>
+                    <a href="AdminReseñas.aspx"><i class="fas fa-star AcomodarIcono"></i>Reseñas</a>
+                </div>
             </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>

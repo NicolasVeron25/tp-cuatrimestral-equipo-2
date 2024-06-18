@@ -12,13 +12,21 @@ namespace Negocio
     public class ReseñaGestion
     {
         
-      public List<ReseñasDto> ListarReseñas(int IdCurso)
+      public List<ReseñasDto> ListarReseñas(int IdCurso=0 ) //devuelve todas o por curso. MANEJA DTO
         {
             ConexionBD Acceso = new ConexionBD();
             List<ReseñasDto> listareseña = new List<ReseñasDto>();
             try
             {
-                Acceso.SetQuery("SELECT iu.APELLIDO, iu.NOMBRE,c.NOMBRE as NOMBRECURSO,,r.PUNTAJE,r.DESCRIPCION FROM INFORMACION_USUARIO iu INNER JOIN INSCRIPCIONES i on i.IDUSUARIO=iu.IDUSUARIO INNER JOIN RESEÑAS r on r.IDINSCRIPCION=i.IDINSCRIPCION INNER JOIN CURSOS c on c.IDCURSO=i.IDCURSO WHERE c.IDCURSO=@IDCurso");
+                if (IdCurso != 0)
+                {
+                    Acceso.SetQuery("SELECT iu.APELLIDO, iu.NOMBRE,c.NOMBRE as NOMBRECURSO,r.PUNTAJE,r.DESCRIPCION FROM INFORMACION_USUARIO iu INNER JOIN INSCRIPCIONES i on i.IDUSUARIO=iu.IDUSUARIO INNER JOIN RESEÑAS r on r.IDINSCRIPCION=i.IDINSCRIPCION INNER JOIN CURSOS c on c.IDCURSO=i.IDCURSO WHERE c.IDCURSO=@IDCurso");
+                }
+                else
+                {
+                    Acceso.SetQuery("SELECT iu.APELLIDO, iu.NOMBRE,c.NOMBRE as NOMBRECURSO,r.PUNTAJE,r.DESCRIPCION FROM INFORMACION_USUARIO iu INNER JOIN INSCRIPCIONES i on i.IDUSUARIO=iu.IDUSUARIO INNER JOIN RESEÑAS r on r.IDINSCRIPCION=i.IDINSCRIPCION INNER JOIN CURSOS c on c.IDCURSO=i.IDCURSO ");
+
+                }
                 Acceso.EjecutarLectura();
                 while (Acceso.Lector.Read()) {
                 ReseñasDto reseña = new ReseñasDto();
