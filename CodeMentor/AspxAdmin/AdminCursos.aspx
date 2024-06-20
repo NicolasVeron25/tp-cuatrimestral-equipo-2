@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/MasterAdmin.Master" AutoEventWireup="true" CodeBehind="AdminCursos.aspx.cs" Inherits="CodeMentor.AdminAspx.AdminCursos" %>
+﻿<%@ Page Title="titulo" Language="C#" MasterPageFile="~/Masters/MasterAdmin.Master" AutoEventWireup="true" CodeBehind="AdminCursos.aspx.cs" Inherits="CodeMentor.AdminAspx.AdminCursos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -14,7 +14,7 @@
                             <p class="card-text"> <%#Eval("Descripcion") %></p>
                                   <h5 class="card-title"> Requisitos </h5>
                             <p class="card-text"> <%#Eval("Requisitos") %></p>
-                            <asp:Button ID="ButtonModificar" runat="server"  CssClass="btn-success" Text="Modificar" />
+                            <asp:Button ID="ButtonModificar" runat="server"  CssClass="btn-success" Text="Modificar" CommandArgument='<%#Eval("IdCurso")%>' CommandName="CursoId" OnClick="ButtonModificar_Click" />
                         </div>
                     </div>
                 </div>
