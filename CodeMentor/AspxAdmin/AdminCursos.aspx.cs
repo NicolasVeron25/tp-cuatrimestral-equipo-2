@@ -15,9 +15,18 @@ namespace CodeMentor.AdminAspx
         {
             CursosGestion curso = new CursosGestion();
             List<Curso> cursoList = curso.Listado();
+            if (!IsPostBack)
+            {
             repRepetidor.DataSource = cursoList;
             repRepetidor.DataBind();
 
+            }
+
+        }
+
+        protected void ButtonModificar_Click(object sender, EventArgs e)
+        {
+            string valor = ((Button)sender).CommandArgument;
         }
     }
 }
