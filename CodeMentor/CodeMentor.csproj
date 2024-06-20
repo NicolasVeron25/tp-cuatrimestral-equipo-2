@@ -69,6 +69,7 @@
     <Content Include="AspxAdmin\AdminResponder.aspx" />
     <Content Include="AspxAdmin\AdminUsuarios.aspx" />
     <Content Include="AspxAdmin\BackOffice.aspx" />
+    <Content Include="AspxAdmin\Categorias2.aspx" />
     <Content Include="AspxUsuario\Adquirir.aspx" />
     <Content Include="AspxUsuario\DetalleCurso.aspx" />
     <Content Include="AspxUsuario\MisCursos.aspx" />
@@ -165,6 +166,13 @@
     </Compile>
     <Compile Include="AspxAdmin\BackOffice.aspx.designer.cs">
       <DependentUpon>BackOffice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxAdmin\Categorias2.aspx.cs">
+      <DependentUpon>Categorias2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxAdmin\Categorias2.aspx.designer.cs">
+      <DependentUpon>Categorias2.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxUsuario\Adquirir.aspx.cs">
       <DependentUpon>Adquirir.aspx</DependentUpon>
