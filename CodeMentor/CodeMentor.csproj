@@ -61,7 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AspxAdmin\AdminCategorias.aspx" />
+    <Content Include="AspxAdmin\AdminCategoria.aspx" />
     <Content Include="AspxAdmin\AdminCursos.aspx" />
     <Content Include="AspxAdmin\AdminInscripciones.aspx" />
     <Content Include="AspxAdmin\AdminPreguntas.aspx" />
@@ -69,7 +69,6 @@
     <Content Include="AspxAdmin\AdminResponder.aspx" />
     <Content Include="AspxAdmin\AdminUsuarios.aspx" />
     <Content Include="AspxAdmin\BackOffice.aspx" />
-    <Content Include="AspxAdmin\Categorias2.aspx" />
     <Content Include="AspxUsuario\Adquirir.aspx" />
     <Content Include="AspxUsuario\DetalleCurso.aspx" />
     <Content Include="AspxUsuario\MisCursos.aspx" />
@@ -111,12 +110,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AspxAdmin\AdminCategorias.aspx.cs">
-      <DependentUpon>AdminCategorias.aspx</DependentUpon>
+    <Compile Include="AspxAdmin\AdminCategoria.aspx.cs">
+      <DependentUpon>AdminCategoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AspxAdmin\AdminCategorias.aspx.designer.cs">
-      <DependentUpon>AdminCategorias.aspx</DependentUpon>
+    <Compile Include="AspxAdmin\AdminCategoria.aspx.designer.cs">
+      <DependentUpon>AdminCategoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxAdmin\AdminCursos.aspx.cs">
       <DependentUpon>AdminCursos.aspx</DependentUpon>
@@ -166,13 +165,6 @@
     </Compile>
     <Compile Include="AspxAdmin\BackOffice.aspx.designer.cs">
       <DependentUpon>BackOffice.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AspxAdmin\Categorias2.aspx.cs">
-      <DependentUpon>Categorias2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AspxAdmin\Categorias2.aspx.designer.cs">
-      <DependentUpon>Categorias2.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxUsuario\Adquirir.aspx.cs">
       <DependentUpon>Adquirir.aspx</DependentUpon>

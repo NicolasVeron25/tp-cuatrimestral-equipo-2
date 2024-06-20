@@ -23,7 +23,7 @@
             <div class="row-cols-1 Cursando">
 
                 <div style="padding: 2%">
-                    <h3 class="CursandoH3">Mis curso:</h3>
+                    <h3 class="CursandoH3">Mis cursos:</h3>
                 </div>
 
                 <div class="row col-md">

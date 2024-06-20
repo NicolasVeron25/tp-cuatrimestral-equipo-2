@@ -13,11 +13,13 @@ namespace CodeMentor.AdminAspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CursosGestion curso = new CursosGestion();
-            List<Curso> cursoList = curso.Listado();
-            repRepetidor.DataSource = cursoList;
-            repRepetidor.DataBind();
-
+            if (!IsPostBack)
+            {
+                CursosGestion curso = new CursosGestion();
+                List<Curso> cursoList = curso.Listado();
+                repRepetidor.DataSource = cursoList;
+                repRepetidor.DataBind();
+            }
         }
     }
 }
