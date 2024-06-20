@@ -1,4 +1,6 @@
 ﻿using Dominio;
+using Dominio.DataTransferObjects;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +11,7 @@ namespace Negocio
 {
     public class UsuariosGestion
     {
-
+        
         //DEVUELVE EL ID INSERTADO. PORQUE ES NECESARIO PARA METERLO EN SESSION
 
        public int UnidadesXCurso(int curso)
@@ -251,25 +253,27 @@ namespace Negocio
 
         }
 
-       public List<InformacionUsuario> ListarUsuarios()
-        {
-            List<InformacionUsuario> list = new List<InformacionUsuario>();
+       public List<InfoUsuarioDto> ListarUsuarios() { 
+        
+            
+            List<InfoUsuarioDto> list = new List<InfoUsuarioDto>();
             ConexionBD Acceso = new ConexionBD();
             try
             {
-                Acceso.SetQuery("SELECT * FROM INFORMACION_USUARIO");
+                Acceso.SetQuery("SELECT I.IDUSUARIO, I.NOMBRE, I.APELLIDO, I.FECHA_NACIMIENTO,P.NOMBRE as NOMBREPAIS,I.CELULAR,I.SEXO,I.URL_FOTOPERFIL FROM INFORMACION_USUARIO I INNER JOIN PAISES P ON P.IDPAIS=I.IDPAIS");
                 Acceso.EjecutarLectura();
                 while (Acceso.Lector.Read()) 
                 {
-                InformacionUsuario user = new InformacionUsuario();
-                user.Idusuario=(int)Acceso.Lector["IDUSUARIO"];
-                    user.Nombre = (string)Acceso.Lector["NOMBRE"];
-                    user.Apellido = (string)Acceso.Lector["APELLIDO"];
-                    user.FechaNacimiento = (DateTime)Acceso.Lector["FECHA_NACIMIENTO"];
-                    user.IdPais = (int)Acceso.Lector["IDPAIS"];
-                    user.Celular = (string)Acceso.Lector["CELULAR"];
-                    user.Sexo = (string)Acceso.Lector["SEXO"];
-                    user.UrlFotoPerfil = (string)Acceso.Lector["URL_FOTOPERFIL"];
+                    InfoUsuarioDto user = new InfoUsuarioDto();
+        
+                    user.Idusuario= Acceso.Lector["IDUSUARIO"] != DBNull.Value ? (int)Acceso.Lector["IDUSUARIO"] : 0;
+                    user.Nombre = Acceso.Lector["NOMBRE"] != DBNull.Value ? (string)Acceso.Lector["NOMBRE"] : "";
+                    user.Apellido = Acceso.Lector["APELLIDO"] != DBNull.Value ? (string)Acceso.Lector["APELLIDO"] : "";
+                    user.FechaNacimiento = Acceso.Lector["FECHA_NACIMIENTO"] != DBNull.Value ? (DateTime)Acceso.Lector["FECHA_NACIMIENTO"] : DateTime.MinValue;
+                    user.Pais = Acceso.Lector["NOMBREPAIS"] != DBNull.Value ? (string)Acceso.Lector["NOMBREPAIS"] : "";
+                    user.Celular = Acceso.Lector["CELULAR"] != DBNull.Value ? (string)Acceso.Lector["CELULAR"] : "";
+                    user.Sexo = Acceso.Lector["SEXO"] != DBNull.Value ? (string)Acceso.Lector["SEXO"] : "";
+                    user.UrlFotoPerfil = Acceso.Lector["URL_FOTOPERFIL"] != DBNull.Value ? (string)Acceso.Lector["URL_FOTOPERFIL"] : "";
                     list.Add(user);
 
                 }
