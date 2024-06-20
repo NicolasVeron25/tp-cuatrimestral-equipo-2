@@ -14,6 +14,8 @@ namespace CodeMentor.AdminAspx
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
         List<InfoUsuarioDto> listaUsuarios = new List<InfoUsuarioDto>();
         UsuariosGestion userGestion = new UsuariosGestion();
         listaUsuarios = userGestion.ListarUsuarios();
@@ -21,12 +23,13 @@ namespace CodeMentor.AdminAspx
             gviewUsuarios.DataBind();
             gviewUsuarios.Visible = false;
             btnOcultar.Visible = false;
-            if (listaUsuarios.Count == 0)
+            if (listaUsuarios.Count != 0)
             {
        
             lblCantUsuarios.Text = listaUsuarios.Count.ToString();
             }
-         
+
+            }
 
         }
 
@@ -43,6 +46,7 @@ namespace CodeMentor.AdminAspx
         protected void btnOcultar_Click(object sender, EventArgs e)
         {
             gviewUsuarios.Visible=false;
+            btnOcultar.Visible=false;
         }
 
         protected void gviewUsuarios_SelectedIndexChanged(object sender, EventArgs e)
