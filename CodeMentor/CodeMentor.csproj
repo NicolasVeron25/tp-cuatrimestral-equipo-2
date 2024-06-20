@@ -66,6 +66,7 @@
     <Content Include="AspxAdmin\AdminInscripciones.aspx" />
     <Content Include="AspxAdmin\AdminPreguntas.aspx" />
     <Content Include="AspxAdmin\AdminReseñas.aspx" />
+    <Content Include="AspxAdmin\AdminResponder.aspx" />
     <Content Include="AspxAdmin\AdminUsuarios.aspx" />
     <Content Include="AspxAdmin\BackOffice.aspx" />
     <Content Include="AspxUsuario\Adquirir.aspx" />
@@ -143,6 +144,13 @@
     </Compile>
     <Compile Include="AspxAdmin\AdminReseñas.aspx.designer.cs">
       <DependentUpon>AdminReseñas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxAdmin\AdminResponder.aspx.cs">
+      <DependentUpon>AdminResponder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxAdmin\AdminResponder.aspx.designer.cs">
+      <DependentUpon>AdminResponder.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxAdmin\AdminUsuarios.aspx.cs">
       <DependentUpon>AdminUsuarios.aspx</DependentUpon>

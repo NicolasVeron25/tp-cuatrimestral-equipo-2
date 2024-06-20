@@ -7,66 +7,39 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CodeMentor.AdminAspx
+namespace CodeMentor.AspxAdmin
 {
 
 
-    public partial class AdminPreguntas
+    public partial class AdminResponder
     {
 
         /// <summary>
-        /// Control PanelNavegacion.
+        /// Control TxtRespuestaModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PanelNavegacion;
+        protected global::System.Web.UI.WebControls.TextBox TxtRespuestaModificar;
 
         /// <summary>
-        /// Control BtnPreguntasSinResponder.
+        /// Control BtnModificar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnPreguntasSinResponder;
+        protected global::System.Web.UI.WebControls.Button BtnModificar;
 
         /// <summary>
-        /// Control RptCursos.
+        /// Control BtnGuardarCambios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptCursos;
-
-        /// <summary>
-        /// Control BtnUltimaSemana.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnUltimaSemana;
-
-        /// <summary>
-        /// Control BtnVerTodas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnVerTodas;
-
-        /// <summary>
-        /// Control PreguntasRespuestasAdmin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PreguntasRespuestasAdmin;
+        protected global::System.Web.UI.WebControls.Button BtnGuardarCambios;
 
         /// <summary>
         /// Control TxtRespuesta.
@@ -76,5 +49,14 @@ namespace CodeMentor.AdminAspx
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TxtRespuesta;
+
+        /// <summary>
+        /// Control BtnEnviarRespuesta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnEnviarRespuesta;
     }
 }

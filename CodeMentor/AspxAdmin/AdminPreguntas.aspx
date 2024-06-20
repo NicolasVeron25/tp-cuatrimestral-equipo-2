@@ -58,7 +58,12 @@
                                     <h5 class="mb-1"><%:preg.TituloPregunta %></h5>
                                     <div class="mb-3">
                                         <small><%:preg.NombreApellidoUser%></small>
-                                      
+                                        <%if (preg.IdRespuesta != null)
+                                        { %>
+                                        <a href="AdminResponder.aspx?IdModificar=<%:preg.IdPregunta %>">
+                                            <img src="https://static.thenounproject.com/png/3082103-200.png" style="width: 30px; height: 30px" />
+                                        </a>
+                                        <%} %>
                                     </div>
                                 </div>
                                 <p class="mb-1"><%:preg.CuerpoPregunta%></p>
@@ -76,7 +81,7 @@
 
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                                 <%}
@@ -86,73 +91,32 @@
                                     <div class="card" style="border-radius: 15px">
                                         <div class="card-body">
 
-                                            <asp:TextBox runat="server" Id="TxtRespuesta" CssClass=" form-control form-text" PlaceHolder="Responda" TextMode="MultiLine" Rows="5" />
+                                            <asp:TextBox runat="server" ID="TxtRespuesta" CssClass=" form-control form-text" PlaceHolder="Responda" TextMode="MultiLine" Rows="5" />
                                             <h6 class="form-text" style="color: cornflowerblue">Consulta pendiente de Respuesta.</h6>
                                         </div>
                                     </div>
-                                    <div>
-                                        <a href="#">content</a>
-                                        <asp:Button runat="server" Text="Responder" CssClass="btn btn-primary" CommandName="Responder" ID="BtnResponder" CommandArgument='<%#Eval("IdPregunta") %>' OnClick="BtnResponder_Click" />
-                                        <asp:Button runat="server" Text="Cancelar" CssClass="btn btn btn-danger" ID="BtnCancelarRespuesta" OnClick="BtnCancelarRespuesta_Click"  />
-                                        <asp:Button Text="Enviar " CssClass="btn btn-success" ID="BtnEnviarRespuesta" OnClick="BtnEnviarRespuesta_Click" runat="server" CommandName="Responder" CommandArgument='<%#Eval("IdPregunta") %>' />
+                                    <div class="mb-3" style="margin-top: 1%">
+                                        <a href="AdminResponder.aspx?Id=<%:preg.IdPregunta %>" class="btn btn-primary">Responder</a>
 
                                     </div>
                                 </div>
                                 <%} %>
                             </div>
 
-
-
                             <% } %>
                             <!-- validar aca si no existen preguntas todavia-->
 
                         </div>
                     </div>
-                    <%if (ListadoPreguntasRespuestasAdmin.Count == 0 || ListadoPreguntasRespuestasAdmin ==null)
+                    <%if (ListadoPreguntasRespuestasAdmin.Count == 0 || ListadoPreguntasRespuestasAdmin == null)
                         {  %>
-                    <div class="mb-3" style="margin-left:20%; "> 
-                        <h3 >No se han realizado preguntas para este curso.</h3>
+                    <div class="mb-3" style="margin-left: 20%;">
+                        <h3>No hay preguntas en esta Seccion o Curso.</h3>
                     </div>
 
                     <%} %>
                 </asp:Panel>
             </ContentTemplate>
         </asp:UpdatePanel>
-
-        <!--
-                <asp:Panel runat="server" Id="Panelpepito">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small>3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small>Donec id elit non mi porta.</small>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">List group item heading</h5>
-                                <small class="text-muted">3 days ago</small>
-                            </div>
-                            <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                            <small class="text-muted">Donec id elit non mi porta.</small>
-                        </a>
-                    </div>
-                </asp:Panel>  -->
-
-
-
     </div>
-
-
-
 </asp:Content>

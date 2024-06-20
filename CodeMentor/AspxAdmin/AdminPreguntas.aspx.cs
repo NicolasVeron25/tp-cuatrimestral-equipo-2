@@ -88,33 +88,6 @@ namespace CodeMentor.AdminAspx
 
         }
 
-        /*
-        
-
-        protected void BtnUltimaModificarRespuesta_Click(object sender, EventArgs e)
-        {
-            //LLenarUltimaPregunta(0);
-            BtnUltimaGuardarCambios.Visible = true;
-            BtnUltimaModificarRespuesta.Visible = false;
-            BtnUltimaCancelarCambios.Visible = true;
-            TxtUltimaModificarCuerpoRespuesta.Enabled = true;
-
-        }
-
-        protected void BtnUltimaGuardarCambios_Click(object sender, EventArgs e)
-        {
-            //LLenarUltimaPregunta(0);
-            string Cuerpo = TxtUltimaModificarCuerpoRespuesta.Text;
-            var Resp = new Respuesta();
-            Resp.IdRespuesta = UltimaPregunta.IdRespuesta.Value;
-            Resp.Cuerpo = Cuerpo;
-            Resp.Fecha = DateTime.Now; //actualizamos la fecha tambien
-            Resp.IdPregunta = UltimaPregunta.IdPregunta;
-           // RespGestion.ModificarRespuesta(Resp);
-            Response.Redirect("AdminPreguntas.aspx");
-
-        }
-        */
         protected void BtnPreguntasSinResponder_Click(object sender, EventArgs e)
         {
             LLenarListado();
@@ -144,43 +117,7 @@ namespace CodeMentor.AdminAspx
         }
 
 
-        protected void BtnResponder_Click(object sender, EventArgs e)
-        {
-            TxtRespuesta.Visible = true;
-            TxtRespuesta.Enabled = true;
-            BtnResponder.Visible = false;
-            LLenarListado();
-            string IdPreg = ((Button)sender).CommandArgument;
-            int IdPregunta = int.Parse(IdPreg);
-            ListadoPreguntasRespuestasAdmin = ListadoPreguntasRespuestasAdmin.Where(x => x.IdRespuesta == null).OrderBy(x => x.FechaPregunta).ToList();
-        }
-
-        protected void BtnCancelarRespuesta_Click(object sender, EventArgs e)
-        {
-            BtnResponder.Visible = true;
-            BtnCancelarRespuesta.Visible = false;
-            BtnEnviarRespuesta.Visible = false;
-            LLenarListado();
-            ListadoPreguntasRespuestasAdmin = ListadoPreguntasRespuestasAdmin.Where(x => x.IdRespuesta == null).OrderBy(x => x.FechaPregunta).ToList();
-        }
-
-        protected void BtnEnviarRespuesta_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(TxtRespuesta.Text))
-            {
-                return;
-            }
-            var RespGestion = new RespuestasGestion();
-            var Resp = new Respuesta();
-            Resp.Cuerpo = TxtRespuesta.Text;
-            string IdPreg = ((Button)sender).CommandArgument;
-            Resp.IdPregunta = int.Parse(IdPreg);
-            RespGestion.AltaRespuesta(Resp);
-
-            BtnCancelarRespuesta.Visible = false;
-            BtnEnviarRespuesta.Visible = false;
-            TxtRespuesta.Enabled = false;
-            //BtnMofidicarRespuesta.Visible = true;
-        }
+      
+        
     }
 }
