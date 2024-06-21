@@ -11,10 +11,40 @@ namespace Negocio
 {
     public class UsuariosGestion
     {
-        
-        //DEVUELVE EL ID INSERTADO. PORQUE ES NECESARIO PARA METERLO EN SESSION
 
-       public int UnidadesXCurso(int curso)
+        //DEVUELVE EL ID INSERTADO. PORQUE ES NECESARIO PARA METERLO EN SESSION
+        public Usuario ObtenerUsuario(int id)
+        {
+            var Acceso = new ConexionBD();
+            try
+            {
+                Acceso.SetQuery("SELECT IDUSUARIO,EMAIL,ES_ADMIN,FECHA_CREACION FROM USUARIOS WHERE IDUSUARIO = @ID");
+                Acceso.SetParametro("@ID", id);
+                Acceso.EjecutarLectura();
+                if (Acceso.Lector.Read())
+                {
+                    Usuario user = new Usuario();
+                    user.IdUsuario = (int)Acceso.Lector["IDUSUARIO"];
+                    user.Email = (string)Acceso.Lector["EMAIL"];
+                    user.EsAdmin = (bool)Acceso.Lector["ES_ADMIN"];
+                    user.FechaCreacion = (DateTime)Acceso.Lector["FECHA_CREACION"];
+                    return user;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
+        public int UnidadesXCurso(int curso)
         {
             var Acceso = new ConexionBD();
             try
@@ -40,7 +70,7 @@ namespace Negocio
                 Acceso.CerrarConexion();
             }
         }
-        public List<Unidad> UnidadesFinalizadas(int idCurso,int idUser)
+        public List<Unidad> UnidadesFinalizadas(int idCurso, int idUser)
         {
 
 
@@ -114,7 +144,7 @@ namespace Negocio
             {
 
                 Acceso.SetQuery("SELECT NOMBRE,APELLIDO,FECHA_NACIMIENTO,IDPAIS,CELULAR,SEXO,URL_FOTOPERFIL FROM INFORMACION_USUARIO WHERE IDUSUARIO = @ID");
-                Acceso.SetParametro("@ID",id);
+                Acceso.SetParametro("@ID", id);
                 Acceso.EjecutarLectura();
                 if (Acceso.Lector.Read())
                 {
@@ -200,7 +230,7 @@ namespace Negocio
             try
             {
                 string query = "SELECT UF.NOMBRE,UF.APELLIDO,UF.FECHA_NACIMIENTO,UF.IDPAIS,UF.CELULAR,UF.SEXO,UF.URL_FOTOPERFIL FROM INFORMACION_USUARIO UF INNER JOIN USUARIOS U ON U.IDUSUARIO = UF.IDUSUARIO WHERE U.ES_ADMIN=1";
-                    Acceso.SetQuery(query);
+                Acceso.SetQuery(query);
                 Acceso.EjecutarLectura();
                 InformacionUsuario InfoAdmin = new InformacionUsuario();
                 if (Acceso.Lector.Read())
@@ -253,20 +283,21 @@ namespace Negocio
 
         }
 
-       public List<InfoUsuarioDto> ListarUsuarios() { 
-        
-            
+        public List<InfoUsuarioDto> ListarUsuarios()
+        {
+
+
             List<InfoUsuarioDto> list = new List<InfoUsuarioDto>();
             ConexionBD Acceso = new ConexionBD();
             try
             {
                 Acceso.SetQuery("SELECT I.IDUSUARIO, I.NOMBRE, I.APELLIDO, I.FECHA_NACIMIENTO,P.NOMBRE as NOMBREPAIS,I.CELULAR,I.SEXO,I.URL_FOTOPERFIL FROM INFORMACION_USUARIO I INNER JOIN PAISES P ON P.IDPAIS=I.IDPAIS");
                 Acceso.EjecutarLectura();
-                while (Acceso.Lector.Read()) 
+                while (Acceso.Lector.Read())
                 {
                     InfoUsuarioDto user = new InfoUsuarioDto();
-        
-                    user.Idusuario= Acceso.Lector["IDUSUARIO"] != DBNull.Value ? (int)Acceso.Lector["IDUSUARIO"] : 0;
+
+                    user.Idusuario = Acceso.Lector["IDUSUARIO"] != DBNull.Value ? (int)Acceso.Lector["IDUSUARIO"] : 0;
                     user.Nombre = Acceso.Lector["NOMBRE"] != DBNull.Value ? (string)Acceso.Lector["NOMBRE"] : "";
                     user.Apellido = Acceso.Lector["APELLIDO"] != DBNull.Value ? (string)Acceso.Lector["APELLIDO"] : "";
                     user.FechaNacimiento = Acceso.Lector["FECHA_NACIMIENTO"] != DBNull.Value ? (DateTime)Acceso.Lector["FECHA_NACIMIENTO"] : DateTime.MinValue;
@@ -285,7 +316,8 @@ namespace Negocio
 
                 throw ex;
             }
-            finally {
+            finally
+            {
                 Acceso.CerrarConexion();
             }
         }

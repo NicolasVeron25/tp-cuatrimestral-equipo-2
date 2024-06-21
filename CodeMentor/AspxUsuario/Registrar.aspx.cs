@@ -67,7 +67,7 @@ namespace CodeMentor
                 
                 //ENVIAR EMAIL DE BIENVENIDA
                 var Envio = new EnvioGmail();
-                Envio.EmailUsuarioBienveida(User.Email, "Bienvenido a CodeMentor");
+                Envio.EmailUsuarioBienvenida(User.Email, "Bienvenido a CodeMentor");
                 Envio.EnviarEmail();
 
             }

@@ -22,7 +22,20 @@ namespace Negocio.ServicioEmail
             server.Port = 587;
             server.Host = "smtp.gmail.com";
         }
-        public void EmailUsuarioBienveida(string destino, string asunto)
+
+        public void EmailUsuarioRespuesta(string destino, string asunto,string mensaje)
+        {
+            email = new MailMessage();
+            email.From = new MailAddress("noresponder@Codementor.com");
+            email.To.Add(destino);
+            email.Subject = asunto;
+            email.IsBodyHtml = true;
+
+            email.Body = mensaje;
+
+        }
+
+        public void EmailUsuarioBienvenida(string destino, string asunto)
         {
             email = new MailMessage();
             email.From = new MailAddress("noresponder@Codementor.com");

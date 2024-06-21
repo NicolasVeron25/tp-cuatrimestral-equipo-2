@@ -1,6 +1,8 @@
 ﻿using Dominio;
 using Dominio.DataTransferObjects;
 using Negocio;
+
+using Negocio.ServicioEmail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,8 +45,8 @@ namespace CodeMentor.AspxAdmin
             else if ((Request.QueryString["IdModificar"] != null))
             {
                 id = int.Parse(Request.QueryString["IdModificar"]);
-               BtnModificar.Visible = true;
-             BtnGuardarCambios.Visible = false;
+                BtnModificar.Visible = true;
+                BtnGuardarCambios.Visible = false;
 
             }
             else
@@ -105,6 +107,14 @@ namespace CodeMentor.AspxAdmin
             BtnModificar.Visible = true;
             TxtRespuesta.Enabled = false;
 
+            // Envio Email a Usuario que pregunto Avisando
+            var Envio = new EnvioGmail();
+            string mensaje = $"Hola {Preg.NombreApellidoUser}! Se ha respondido a su pregunta : {Preg.TituloPregunta} en {Preg.NombreCurso} ingrese a la plataforma para ver la respuesta.";
+            var DatosGestion = new UsuariosGestion();
+            var Datos = DatosGestion.ObtenerUsuario(Preg.IdUsuario);
+            string asunto = $"Respuesta en {Preg.NombreCurso}";
+            Envio.EmailUsuarioRespuesta(Datos.Email, asunto, mensaje);
+            Envio.EnviarEmail();
             Response.Redirect("AdminRespuesta.aspx?IdModificar=" + Preg.IdPregunta, false);
         }
 
@@ -114,7 +124,7 @@ namespace CodeMentor.AspxAdmin
             BtnGuardarCambios.Visible = true;
             BtnModificar.Visible = false;
             TxtRespuestaModificar.Enabled = true;
-            
+
 
         }
 

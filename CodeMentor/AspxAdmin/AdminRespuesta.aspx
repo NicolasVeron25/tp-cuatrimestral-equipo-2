@@ -47,10 +47,7 @@
                                     <asp:Button runat="server" Text="Guardar Cambios" CssClass="btn btn-success" ID="BtnGuardarCambios" OnClick="BtnGuardarCambios_Click" />
 
                                 </div>
-
-
                             </div>
-
                             <%}
                                 else
                                 {  %>
