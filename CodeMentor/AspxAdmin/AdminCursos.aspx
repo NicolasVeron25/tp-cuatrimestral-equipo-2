@@ -14,7 +14,6 @@
                             <p class="card-text"> <%#Eval("Descripcion") %></p>
                                   <h5 class="card-title"> Requisitos </h5>
                             <p class="card-text"> <%#Eval("Requisitos") %></p>
-                            <asp:Button ID="ButtonModificar" runat="server"  CssClass="btn-success" Text="Modificar" CommandArgument='<%#Eval("IdCurso")%>' CommandName="CursoId" OnClick="ButtonModificar_Click" />
                         </div>
                     </div>
                 </div>

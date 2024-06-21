@@ -11,7 +11,7 @@ namespace CodeMentor.AspxAdmin
 {
 
 
-    public partial class AdminResponder
+    public partial class AdminRespuesta
     {
 
         /// <summary>

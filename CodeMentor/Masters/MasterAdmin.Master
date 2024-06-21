@@ -82,12 +82,14 @@
                 <div class="list-group">
                     <a href="AdminCursos.aspx"><i class="fas fa-book AcomodarIcono"></i>Cursos</a>
                     <a href="AdminLenguajes.aspx"><i class="fas fa-code AcomodarIcono "></i>Lenguajes de Programación</a>
-                    <a href="AdminCategorias.aspx"><i class="fas fa-list AcomodarIcono"></i>Categorías</a>
+                    <a href="AdminCategoria.aspx"><i class="fas fa-list AcomodarIcono"></i>Categorías</a>
                     <a href="AdminUsuarios.aspx"><i class="fas fa-users AcomodarIcono"></i>Usuarios</a>
                     <a href="AdminCertificados.aspx"><i class="fas fa-certificate AcomodarIcono"></i>Certificados</a>
                     <a href="AdminInscripciones.aspx"><i class="fas fa-address-book AcomodarIcono"></i>Inscripciones</a>
                     <a href="AdminPreguntas.aspx"><i class="fas fa-question-circle AcomodarIcono"></i>Preguntas y Respuestas</a>
                     <a href="AdminReseñas.aspx"><i class="fas fa-star AcomodarIcono"></i>Reseñas</a>
+                    <asp:Button Text="Cerrar Sesion" ID="BtnCerrarSesion"  OnClick="BtnCerrarSesion_Click" runat="server" />
+
                 </div>
             </div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

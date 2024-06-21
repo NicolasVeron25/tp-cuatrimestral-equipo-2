@@ -1,15 +1,17 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/MasterAdmin.Master" AutoEventWireup="true" CodeBehind="AdminResponder.aspx.cs" Inherits="CodeMentor.AspxAdmin.AdminResponder" %>
+﻿<%@ Page Title="Respuesta
+    " Language="C#" MasterPageFile="~/Masters/MasterAdmin.Master" AutoEventWireup="true" CodeBehind="AdminRespuesta.aspx.cs" Inherits="CodeMentor.AspxAdmin.AdminRespuesta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager runat="server" />
 
-    <asp:UpdatePanel runat="server">
-        <ContentTemplate>
-            <div class="container">
+    <div class="container">
+        <div class="row" style="margin-top:10%">
+            <asp:ScriptManager runat="server" />
 
-                <div class="row col-12" style="margin-left: 50%; margin-top: 20%">
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+
                     <div class="mb-3">
                         <h3>Responder : </h3>
                     </div>
@@ -20,8 +22,8 @@
                                 <h5 class="mb-1"><%:Preg.TituloPregunta %></h5>
                                 <div class="mb-3">
                                     <small><%:Preg.NombreApellidoUser%></small>
-                                    
-                                            </div>
+
+                                </div>
                             </div>
                             <p class="mb-1"><%:Preg.CuerpoPregunta%></p>
 
@@ -32,8 +34,8 @@
                             <div class="ml-4 mt-3 ">
                                 <div class="card" style="border-radius: 15px">
                                     <div class="card-body">
-                                       
-                                        <asp:TextBox runat="server" Id="TxtRespuestaModificar" style="background:white"  CssClass=" form-control form-text" TextMode="MultiLine" Rows="5" />
+
+                                        <asp:TextBox runat="server" ID="TxtRespuestaModificar" Style="background: white" CssClass=" form-control form-text" TextMode="MultiLine" Rows="5" />
 
                                         <small><%:Preg.FechaRespuesta %></small>
 
@@ -43,7 +45,7 @@
                                     <a href="AdminPreguntas.aspx" class="btn btn-danger">Volver</a>
                                     <asp:Button runat="server" Text="Modificar" CssClass="btn btn-primary" ID="BtnModificar" OnClick="BtnModificar_Click" />
                                     <asp:Button runat="server" Text="Guardar Cambios" CssClass="btn btn-success" ID="BtnGuardarCambios" OnClick="BtnGuardarCambios_Click" />
-                                    
+
                                 </div>
 
 
@@ -68,9 +70,10 @@
                             <%} %>
                         </div>
                     </div>
-                </div>
-            </div>
 
-        </ContentTemplate>
-    </asp:UpdatePanel>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+
+    </div>
 </asp:Content>

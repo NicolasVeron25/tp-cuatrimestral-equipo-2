@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Negocio.ServicioEmail;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -64,6 +65,10 @@ namespace CodeMentor
                 User.IdUsuario = IdInsertado;
                 Session.Add("Usuario", User);
                 
+                //ENVIAR EMAIL DE BIENVENIDA
+                var Envio = new EnvioGmail();
+                Envio.EmailUsuarioBienveida(User.Email, "Bienvenido a CodeMentor");
+                Envio.EnviarEmail();
 
             }
             catch (Exception ex)

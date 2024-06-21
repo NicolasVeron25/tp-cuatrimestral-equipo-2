@@ -60,7 +60,7 @@
                                         <small><%:preg.NombreApellidoUser%></small>
                                         <%if (preg.IdRespuesta != null)
                                         { %>
-                                        <a href="AdminResponder.aspx?IdModificar=<%:preg.IdPregunta %>">
+                                        <a href="AdminRespuesta.aspx?IdModificar=<%:preg.IdPregunta %>">
                                             <img src="https://static.thenounproject.com/png/3082103-200.png" style="width: 30px; height: 30px" />
                                         </a>
                                         <%} %>

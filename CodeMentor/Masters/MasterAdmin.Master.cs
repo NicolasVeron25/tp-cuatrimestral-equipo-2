@@ -13,5 +13,13 @@ namespace CodeMentor.Masters
         {
             //validar mediante Page solo ADMIN 
         }
+
+        protected void BtnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect(ResolveUrl("~/AspxUsuario/Ingresar.aspx"));
+
+
+        }
     }
 }

@@ -33,6 +33,8 @@ namespace CodeMentor.AspxUsuario
         }
         public void  BarraProgreso( int idCurso )
         {
+            InfoUser = Validaciones.Helper.ObtenerDatos(Session["Usuario"]);
+
             // obtengo cantidad de unidades primero
             var UserGestion = new UsuariosGestion();
             int Unidades = UserGestion.UnidadesXCurso(idCurso);
@@ -53,6 +55,8 @@ namespace CodeMentor.AspxUsuario
        
         public void LlenarLista()
         {
+            InfoUser = Validaciones.Helper.ObtenerDatos(Session["Usuario"]);
+
             var CursoGestion = new CursosGestion();
             CursosInscripto = new List<Curso>();
             CursosInscripto = CursoGestion.CursosInscripto(InfoUser.Idusuario);

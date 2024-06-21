@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace CodeMentor.AspxAdmin
 {
-    public partial class AdminInscripciones1 : System.Web.UI.Page
+    public partial class AdminCertificados : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
