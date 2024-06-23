@@ -6,9 +6,15 @@
 
     <!----------------------- CONTENEDOR PRINCIPAL -------------------------->
 
-    <div class="container d-flex justify-content-center align-items-start mt-5 mb-5">
+    <div class="container d-flex justify-content-center align-items-start  mb-5">
         <div class="row curso-contenedor">
-
+            <div class="text-center" style="margin-bottom: 3.5%">
+                <h1>¡Inscríbete en nuestro curso!</h1>
+                <p class="lead">Aprende nuevas habilidades y mejora tu conocimiento.</p>
+                <a href="Guia.aspx?ComoInscribirse=<%:CursoActual.IdCurso%>" class="btn btn-primary btn-lg">
+                    <i class="fas fa-pencil-alt"></i>Inscribirse
+</a>
+            </div>
             <!-------------------------- DETALLES DEL CURSO ---------------------------->
 
             <div class="col-md-6 mb-4">
@@ -44,6 +50,7 @@
                         <h4>Costo:</h4>
                         <p>$<%:CursoActual.Importe %></p>
                     </div>
+                  
                 </div>
             </div>
 
@@ -58,38 +65,38 @@
                         {%>
                     <% var unidadId = "unidad" + unidad.IdUnidad; %>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<%:unidadId %>" aria-expanded="true" aria-controls="<%:unidadId %>">
-                                    <%:unidad.Numero %>. <%:unidad.Nombre %>
-                                </button>
-                            </h2>
-                            <div id="<%:unidadId %>" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <ul class="list-group">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<%:unidadId %>" aria-expanded="true" aria-controls="<%:unidadId %>">
+                                <%:unidad.Numero %>. <%:unidad.Nombre %>
+                            </button>
+                        </h2>
+                        <div id="<%:unidadId %>" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <ul class="list-group">
 
-                                        <!----------------------- FOREACH DE LISTA PARA CARGAR TODAS LAS CLASES DE LA UNIDAD -------------------------->
+                                    <!----------------------- FOREACH DE LISTA PARA CARGAR TODAS LAS CLASES DE LA UNIDAD -------------------------->
 
-                                        <% if (ClasesPorUnidad.ContainsKey(unidad.IdUnidad))
-                                           {
+                                    <% if (ClasesPorUnidad.ContainsKey(unidad.IdUnidad))
+                                        {
 
-                                               foreach (var clase in ClasesPorUnidad[unidad.IdUnidad])
-                                               { %>
+                                            foreach (var clase in ClasesPorUnidad[unidad.IdUnidad])
+                                            { %>
 
-                                                    <li class="list-group-item"><%:clase.Numero %>. <%:clase.Descripcion %></li>
-                                        <%    } 
-                                           } %>
-
-                                    </ul>
-                                </div>
+                                    <li class="list-group-item"><%:clase.Numero %>. <%:clase.Descripcion %></li>
+                                    <%    }
+                                        } %>
+                                </ul>
                             </div>
                         </div>
+                    </div>
 
                     <%}%>
                 </div>
             </div>
 
         </div>
+
     </div>
 
 
@@ -148,19 +155,18 @@
         }
 
         .list-group {
-            border: none; 
-            outline: none; 
-            padding-left: 0; 
-            list-style: none; 
+            border: none;
+            outline: none;
+            padding-left: 0;
+            list-style: none;
         }
 
-            .list-group-item {
-                background-color: var(--aquamarine);
-                font-weight: bold;
-                border: none; 
-                outline: none; 
-            }
-
+        .list-group-item {
+            background-color: var(--aquamarine);
+            font-weight: bold;
+            border: none;
+            outline: none;
+        }
     </style>
 
 </asp:Content>

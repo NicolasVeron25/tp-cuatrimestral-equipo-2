@@ -4,6 +4,7 @@
 
     <div class="container mt-5">
 
+       
         <%--CURSOS SIN COMPLETAR DEL USUARIO--%>
         <div class="row">
 

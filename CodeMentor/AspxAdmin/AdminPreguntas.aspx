@@ -96,7 +96,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3" style="margin-top: 1%">
-                                        <a href="AdminResponder.aspx?Id=<%:preg.IdPregunta %>" class="btn btn-primary">Responder</a>
+                                        <a href="AdminRespuesta.aspx?Id=<%:preg.IdPregunta %>" class="btn btn-primary">Responder</a>
 
                                     </div>
                                 </div>

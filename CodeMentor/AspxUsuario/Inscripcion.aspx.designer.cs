@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CodeMentor
+namespace CodeMentor.AspxUsuario
 {
 
 
-    public partial class InicioRegistrado
+    public partial class Inscripcion
     {
     }
 }

@@ -55,7 +55,7 @@
                                 <div class="card" style="border-radius: 15px">
                                     <div class="card-body">
 
-                                        <asp:TextBox runat="server" ID="TxtRespuesta" PlaceHolder="Responda" TextMode="MultiLine" Rows="5" />
+                                        <asp:TextBox runat="server" ID="TxtRespuesta" CssClass="form-control" PlaceHolder="Responda" TextMode="MultiLine" Rows="5" />
                                     </div>
                                 </div>
                                 <div style="margin-top: 1%">
