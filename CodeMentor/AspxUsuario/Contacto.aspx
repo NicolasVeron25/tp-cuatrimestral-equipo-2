@@ -51,12 +51,12 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="TxtAsunto">Asunto:</label>
-                            <asp:TextBox ID="TxtAsunto" PlaceHolder="Ingrese el asunto  " runat="server" Style="width: 80%;background-color:white" CssClass="form-control" Required="true" />
+                            <asp:TextBox ID="TxtAsunto" PlaceHolder="Ingrese el asunto  " required="true" runat="server" Style="width: 80%;background-color:white" CssClass="form-control"  />
                         </div>
 
                         <div class="form-group">
                             <label for="txtProblema">Mensaje :</label>
-                            <asp:TextBox ID="TxtMensaje" runat="server" PlaceHolder="Ingrese su mensaje" Style="background-color: white" TextMode="MultiLine" Rows="5" CssClass="form-control" Required="true" />
+                            <asp:TextBox ID="TxtMensaje" runat="server"  PlaceHolder="Ingrese su mensaje" Style="background-color: white" TextMode="MultiLine" Rows="5" CssClass="form-control" Required="true" />
                         </div>
                         <div class="text-center">
                             <asp:Button ID="BtnEnviarMensaje" Style="margin-top: 2%" runat="server" Text="Enviar" CssClass="btn btn-primary" OnClick="BtnEnviarMensaje_Click" />

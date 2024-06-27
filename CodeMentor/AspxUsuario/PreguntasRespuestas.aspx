@@ -97,8 +97,6 @@
     </asp:Panel>
 
 
-    <asp:Panel runat="server" ID="PanelPreguntasUsuario">
-    </asp:Panel>
 
     <asp:Panel runat="server" ID="PanelNuevaPregunta">
 
@@ -113,7 +111,7 @@
                 </div>
                 <div class="form-group">
                     <label for="cuerpo">Cuerpo de la Pregunta</label>
-                    <asp:TextBox ID="TxtCuerpo" runat="server" TextMode="MultiLine" Rows="5" CssClass="form-control" placeholder="Describe tu pregunta en detalle" />
+                    <asp:TextBox ID="TxtCuerpo" runat="server" TextMode="MultiLine" Rows="5" CssClass="form-control"  placeholder="Describe tu pregunta en detalle" />
                 </div>
                 <div class="form-group " style="margin-top: 2%">
                     <asp:Button ID="BtnGuardarPregunta" runat="server" CssClass="btn btn-primary" Text="Guardar Pregunta" OnClick="BtnGuardarPregunta_Click" />

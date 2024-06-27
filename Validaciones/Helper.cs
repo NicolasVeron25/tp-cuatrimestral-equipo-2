@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Dominio.DataTransferObjects;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,19 @@ namespace Validaciones
 {
     public static class Helper
     {
-        
+        //devuelve el DTO
+        public static InfoUsuarioDto MapearUsuario(Usuario user, InformacionUsuario userDatos) //para no usar autommaping por tema de tiempos .
+        {
+            var DtoUser = new InfoUsuarioDto();
+            DtoUser.Nombre = userDatos.Nombre;
+            DtoUser.Apellido = userDatos.Apellido;
+            DtoUser.Email = user.Email;
+            DtoUser.Celular = userDatos.Celular;
+            DtoUser.FechaNacimiento = userDatos.FechaNacimiento;
+            DtoUser.Pass = user.Pass;   
+            return DtoUser;
+        }
+
         public static InformacionUsuario ObtenerDatos(object user)
         {
             var UserGestion = new UsuariosGestion();

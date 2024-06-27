@@ -42,7 +42,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.11.9.2\lib\netstandard2.0\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -75,6 +84,8 @@
     <Content Include="AspxUsuario\Contacto.aspx" />
     <Content Include="AspxUsuario\Guia.aspx" />
     <Content Include="AspxUsuario\DetalleCurso.aspx" />
+    <Content Include="AspxUsuario\Inicio.aspx" />
+    <Content Include="AspxUsuario\InicioRegistrado.aspx" />
     <Content Include="AspxUsuario\Inscripcion.aspx" />
     <Content Include="AspxUsuario\MisCursos.aspx" />
     <Content Include="AspxUsuario\PreguntaDetalle.aspx" />
@@ -97,10 +108,8 @@
     <Content Include="ContentBs\Site.css" />
     <Content Include="ContentBs\StyleSheetGlobal.css" />
     <Content Include="Content\CodeMentorStyle.css" />
-    <Content Include="AspxUsuario\Inicio.aspx" />
     <Content Include="Global.asax" />
     <Content Include="AspxUsuario\Ingresar.aspx" />
-    <Content Include="AspxUsuario\InicioRegistrado.aspx" />
     <Content Include="AspxUsuario\ModificacionUsuario.aspx" />
     <Content Include="AspxUsuario\PerfilUsuario.aspx" />
     <Content Include="AspxUsuario\Registrar.aspx" />
@@ -220,6 +229,13 @@
     <Compile Include="AspxUsuario\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AspxUsuario\InicioRegistrado.aspx.cs">
+      <DependentUpon>InicioRegistrado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxUsuario\InicioRegistrado.aspx.designer.cs">
+      <DependentUpon>InicioRegistrado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AspxUsuario\Inscripcion.aspx.cs">
       <DependentUpon>Inscripcion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -250,13 +266,6 @@
     </Compile>
     <Compile Include="AspxUsuario\Ingresar.aspx.designer.cs">
       <DependentUpon>Ingresar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AspxUsuario\InicioRegistrado.aspx.cs">
-      <DependentUpon>InicioRegistrado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AspxUsuario\InicioRegistrado.aspx.designer.cs">
-      <DependentUpon>InicioRegistrado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Masters\MasterAdmin.Master.cs">
       <DependentUpon>MasterAdmin.Master</DependentUpon>
@@ -334,6 +343,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
+    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

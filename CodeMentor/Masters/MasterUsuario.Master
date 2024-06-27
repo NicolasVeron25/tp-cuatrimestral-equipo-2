@@ -49,19 +49,11 @@
                     </div>
 
                     <%--------------------BUSCADOR--------------------%>
+                    <asp:ContentPlaceHolder runat="server" id="BusquedaCursos" >
 
-                    <div class="col-md-4 d-flex justify-content-center">
-                        <div class="d-flex" role="search">
-                            <div class="input-group">
-                                <input class="form-control" type="search" placeholder="Buscar cursos" aria-label="Search">
-                                <button id="btnBuscar" class="btn btn-outline-success bg-white" type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="dark" class="bi bi-search" viewBox="0 0 16 16">
-                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    </asp:ContentPlaceHolder>
+
+
 
                     <%--------------------BOTONES A LA DERECHA--------------------%>
 
@@ -104,29 +96,29 @@
 
         <%--------------------FOOTER--------------------%>
 
-        <footer class="footer" style="font-size:16px;padding-top:10px">
-            <div class="footer-container " style="padding:2px">
-                <div class="footer-column" style="margin-left:10%">
+        <footer class="footer" style="font-size: 16px; padding-top: 10px">
+            <div class="footer-container " style="padding: 2px">
+                <div class="footer-column" style="margin-left: 10%">
                     <h4>Educación</h4>
                     <ul>
-                        <li style="margin-top:1%"><a href="Guia.aspx">¿Cómo Inscribirse?</a></li>
-                        <li style="margin-top:1.6%"><a href="Guia.aspx?Certificado=<%:1 %>">Certificación</a></li>
+                        <li style="margin-top: 1%"><a href="Guia.aspx">¿Cómo Inscribirse?</a></li>
+                        <li style="margin-top: 1.6%"><a href="Guia.aspx?Certificado=<%:1 %>">Certificación</a></li>
                     </ul>
                 </div>
-            
-                    
-                <div class="footer-column" style="margin-left:10%">
+
+
+                <div class="footer-column" style="margin-left: 10%">
                     <h4>Ayuda</h4>
                     <ul>
-                        <li style="margin-top:1%"><a href="Contacto.aspx?Contacto=<%:1 %>">Contacto</a></li>
-                        <li style="margin-top:1.6%"><a href="Contacto.aspx?Problema=<%:1 %>">Tengo un Problema</a></li>
+                        <li style="margin-top: 1%"><a href="Contacto.aspx?Contacto=<%:1 %>">Contacto</a></li>
+                        <li style="margin-top: 1.6%"><a href="Contacto.aspx?Problema=<%:1 %>">Tengo un Problema</a></li>
                     </ul>
                 </div>
-                <div class="footer-column" style="margin-left:10%">
+                <div class="footer-column" style="margin-left: 10%">
                     <h4>Seguinos</h4>
                     <ul class="social-links">
                         <li><a href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg"  width="27" height="27" fill="currentColor" class="bi bi-facebook icon-white" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-facebook icon-white" viewBox="0 0 16 16">
                                 <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
                             </svg></a></li>
                         <li><a href="#">
@@ -145,8 +137,8 @@
                 </div>
             </div>
 
-            <div class="footer-bottom" style="padding:0.4%">
-                <p style="padding:0px;margin-top:0.5%" >&copy; 2024 CodeMentor. Todos los derechos reservados.</p>
+            <div class="footer-bottom" style="padding: 0.4%">
+                <p style="padding: 0px; margin-top: 0.5%">&copy; 2024 CodeMentor. Todos los derechos reservados.</p>
             </div>
 
         </footer>

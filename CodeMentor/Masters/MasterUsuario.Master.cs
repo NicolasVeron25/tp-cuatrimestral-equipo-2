@@ -13,7 +13,8 @@ namespace CodeMentor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           //Validar por Pagina . Porque hay Paginas que accede logueado no!.
+           //Validar acceso  por Pagina . Porque hay Paginas que accede logueado no!.
+
 
         }
 

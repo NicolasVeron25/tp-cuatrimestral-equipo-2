@@ -10,6 +10,7 @@ namespace Negocio
 {
     public class CursosGestion
     {
+        
         public List<Curso> CursosInscripto(int IdUsuario) // uso : solo mostrar los cursos que esta inscripto el usuario
         {
             ConexionBD AccesoBD = new ConexionBD();
@@ -120,7 +121,7 @@ namespace Negocio
 
         }
 
-       public void ModificarCurso(Curso curso)
+        public void ModificarCurso(Curso curso)
         {
             ConexionBD Acceso = new ConexionBD();
             try
@@ -137,7 +138,7 @@ namespace Negocio
                 Acceso.EjecutarAccion();
 
             }
-            
+
             catch (Exception ex)
             {
 

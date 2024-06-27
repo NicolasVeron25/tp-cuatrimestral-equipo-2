@@ -38,7 +38,6 @@ namespace CodeMentor
                 }
                 LLenarPreguntasRespuestas();
                 LlenarUltimasDos();
-                PanelPreguntasUsuario.Visible = false;
                 PanelNuevaPregunta.Visible = false;
 
             }
@@ -137,6 +136,17 @@ namespace CodeMentor
         protected void BtnGuardarPregunta_Click(object sender, EventArgs e)
         {
             //validar nulo vacio 
+            if(string.IsNullOrEmpty(TxtTitulo.Text) || string.IsNullOrEmpty(TxtCuerpo.Text))
+            {
+                return;
+            }
+            if(TxtTitulo.Text.Length > 150 || TxtCuerpo.Text.Length > 1700 || TxtTitulo.Text.Length<3 
+                || TxtCuerpo.Text.Length <30) //validar longitud NO SUPERE MAXIMO VARCHAR DE BD
+            {
+                return;
+            }
+
+
             var Pregunta = new Pregunta();
             Pregunta.Titulo = TxtTitulo.Text;
             Pregunta.Cuerpo = TxtCuerpo.Text;

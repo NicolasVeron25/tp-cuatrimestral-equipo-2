@@ -1,6 +1,22 @@
-﻿<%@ Page Title="Inicio" Language="C#" MasterPageFile="~/Masters/MasterUsuario.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="CodeMentor.Default" %>
+﻿<%@ Page Title="Home
+    "Language="C#" MasterPageFile="~/Masters/MasterUsuario.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="CodeMentor.AspxUsuario.Inicio" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content Id="Content3" runat="server" ContentPlaceHolderID="BusquedaCursos"> <!-- FILTRO PARA CURSOS UBICADO EN EL HEADER!-->
+    <asp:Panel runat="server" ID="PanelBusquedaCursos" CssClass="col" >
+    <div class="d-flex justify-content-center">
+        <div class="d-flex">
+            <div class="input-group" style="background: white; border-radius: 20px">
+                <asp:TextBox runat="server" Placeholder="Buscar cursos" CssClass="form-control" OnTextChanged="TxtFiltroCursos_TextChanged" ID="TxtFiltroCursos" Style="border: none; background: white" />
+                <asp:LinkButton ID="btnSearch" runat="server" CssClass="btn " OnClick="btnSearch_Click">
+                    <asp:Image ID="imgSearch" runat="server" ImageUrl="https://cdn.icon-icons.com/icons2/774/PNG/512/search_icon-icons.com_64617.png"
+                        AlternateText="Search" Style="width: 26px; height: 26px;" />
+                </asp:LinkButton>
+            </div>
+        </div>
+    </div>
+</asp:Panel>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -43,20 +59,20 @@
 
             <!----------------------- FOREACH DE CARDS PARA CARGAR TODOS LOS CURSOS -------------------------->
 
-            <% foreach (var curso in ListaCursos) { %>
-                <div class="col-md-3 mb-5">
-                    <div class="card h-100">
-                        <div class="card-img-top-wrapper">
-                            <img src="<%:curso.UrlPortada %>" class="card-img-top img-cuadrada" alt="...">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><%:curso.Nombre %></h5>
-                            <a href="DetalleCurso.aspx?idCurso=<%:curso.IdCurso %>" class="btn btnBonito">Ver curso</a>
-                        </div>
+            <% foreach (var curso in ListaCursos)
+                { %>
+            <div class="col-md-3 mb-5">
+                <div class="card h-100">
+                    <div class="card-img-top-wrapper">
+                        <img src="<%:curso.UrlPortada %>" class="card-img-top img-cuadrada" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><%:curso.Nombre %></h5>
+                        <a href="DetalleCurso.aspx?idCurso=<%:curso.IdCurso %>" class="btn btnBonito">Ver curso</a>
                     </div>
                 </div>
+            </div>
             <%}%>
-
         </div>
     </div>
 
@@ -87,4 +103,3 @@
     </style>
 
 </asp:Content>
-
