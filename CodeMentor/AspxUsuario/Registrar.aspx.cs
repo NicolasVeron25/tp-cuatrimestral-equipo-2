@@ -30,7 +30,7 @@ namespace CodeMentor
             //FALTA FOTO DE PERFIL QUE INGRESE!!
 
             //OPCION DE VER CONTRASEÑA
-     
+
 
         }
 
@@ -70,9 +70,21 @@ namespace CodeMentor
                     return; // Si usuario no es valido,
                 }
 
+                //llego aca = TODO OK
+                if (!string.IsNullOrEmpty(TxtCargaImagen.PostedFile.FileName))
+                {
+                    // GUARDAR IMAGEN
+                    string ruta = Server.MapPath("./Imagenes/Perfil/");//me ubico en la carpeta a trabajar
+                                                                       //listo, guardo!
+                                                                       //le paso como dato unico su email(es unique).ya que todavia no esta insertado!
+                    TxtCargaImagen.PostedFile.SaveAs(ruta + "Perfil-" + TxtEmail.Text + ".jpg");
+                    UserDatos.UrlFotoPerfil = "Perfil-" + TxtEmail.Text + ".jpg";
+                }
+
                 //ADMIN = DEFAULT 0 EN BD, FECHA CREACION DEFAULT EN BD
                 var UsuarioGestion = new UsuariosGestion();
                 int IdInsertado = UsuarioGestion.InsertarUsuarioSP(User.Email, User.Pass, UserDatos);
+
 
                 //GUARDAR ID EN SESSION
                 User.IdUsuario = IdInsertado;
@@ -82,6 +94,8 @@ namespace CodeMentor
                 var Envio = new EnvioGmail();
                 Envio.EmailUsuarioBienvenida(User.Email, "Bienvenido a CodeMentor");
                 Envio.EnviarEmail();
+
+
                 Response.Redirect("InicioRegistrado.aspx", false);
 
             }
@@ -92,13 +106,13 @@ namespace CodeMentor
 
         }
 
-        private bool ValidarDatosUsuario(InformacionUsuario Datos , Usuario user)
+        private bool ValidarDatosUsuario(InformacionUsuario Datos, Usuario user)
         {
             var Dto = Validaciones.Helper.MapearUsuario(user, Datos); // mapeamos el usuario con los datos a validar
 
             var Validador = new RegistroValidaciones(); // Creamos Obj de la clase que hereda de AbstractValidator <--
-              //le paso entidad a validar
-              var Resultado = Validador.Validate(Dto); // validamos la entidad
+                                                        //le paso entidad a validar
+            var Resultado = Validador.Validate(Dto); // validamos la entidad
 
             string Valido = "form-control form-control-lg bg-light fs-6 is-valid";
             string Invalido = "  is-invalid";
@@ -145,7 +159,7 @@ namespace CodeMentor
                 {
                     TxtCelular.CssClass = Valido;
                     PCelularError.Visible = false;
-                   
+
                 }
                 var errorFechaNacimiento = Resultado.Errors.FirstOrDefault(e => e.PropertyName == "FechaNacimiento");
                 if (errorFechaNacimiento != null)
@@ -159,8 +173,8 @@ namespace CodeMentor
                     TxtFechaNacimiento.CssClass = Valido;
                     PFNacimientoError.Visible = false;
                 }
-                var errorEmail = Resultado.Errors.FirstOrDefault(e => e.PropertyName == "Email");   
-                if(errorEmail != null)
+                var errorEmail = Resultado.Errors.FirstOrDefault(e => e.PropertyName == "Email");
+                if (errorEmail != null)
                 {
                     TxtEmail.CssClass += Invalido;
                     PEmailError.InnerText = errorEmail.ErrorMessage;
@@ -177,7 +191,7 @@ namespace CodeMentor
                     TxtPass.CssClass += Invalido;
                     PPassError.InnerText = errorPass.ErrorMessage;
                     PPassError.Visible = true;
-                 }
+                }
                 else
                 {
                     TxtPass.CssClass = Valido;
@@ -190,6 +204,7 @@ namespace CodeMentor
 
         }
 
+      
         private void DdlLlenarSexo()
         {
             var Sexo = new List<string>();

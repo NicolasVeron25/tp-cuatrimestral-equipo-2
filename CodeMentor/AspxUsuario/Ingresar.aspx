@@ -25,8 +25,8 @@
             <div class="col-md-6 right-box">
                 <div class="row align-items-center">
                     <div class="header-text mb-4 text-center">
-                        <h2>Bienvenido</h2>
-                        <p>¿Con ganas de aprender?</p>
+                        <h2 style="font-size:2.5rem">Bienvenido</h2>
+                        <p  style="font-size:x-large" >¿Con ganas de aprender?</p>
                     </div>
 
                     <div class="input-group mb-3">
@@ -39,13 +39,7 @@
                         <small  class="text-danger"> <asp:Label runat="server" ID="LblErrorLogin"  /></small>
                     </div>
                     <div class="input-group mb-5 d-flex justify-content-between">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="formCheck">
-                            <label for="formCheck" class="form-check-label text-secondary">
-                                <small>Recordame</small>
-                                <!-- Para esto tenemos que manjear cookies y eso en el document.. con JS. Revisar o Borrar dsps -->
-                            </label>
-                        </div>
+                       
                         <div class="forgot">
                             <small><a href="#">¿Olvidaste la contraseña?</a></small> <!-- Redirect a Aspx ResetPass-->
                         </div>

@@ -3,134 +3,100 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <link href="../Content/MisCursos.css" rel="stylesheet" />
     <!----------------------- CONTENEDOR PRINCIPAL -------------------------->
+    <div class="container bienvenida">
 
-    <div class="container Bienvenida">
-        
         <!---------------------- BIENVENIDA AL USUARIO ---------------------->
 
-        <div class="row-cols-1 RowBienvenida text-center">
-            <div>
-                <h2>¡Vamos a aprender <%: InfoUser.Nombre.ToUpperInvariant() %>!</h2>
+        <div class="container">
+            <div class="row justify-content-center bienvenida-row" style="background-color:white;">
+                <div class="col text-center">
+                    <h2 class="bienvenida-titulo" style="color: black">¡Siga Aprendiendo <%: InfoUser.Nombre.ToUpperInvariant() %>!</h2>
+                </div>
             </div>
         </div>
 
-        <% if (CursosInscripto != null) { %>
-        
-            <!------------------ MOSTRAR CURSOS INSCRIPTOS ------------------->
+        <% if (CursosInscripto != null)
+            { %>
 
-            <div class="row-cols-1 Cursando">
+        <!------------------ MOSTRAR CURSOS INSCRIPTOS ------------------->
 
-                <div style="padding: 2%">
-                    <h3 class="CursandoH3">Mis cursos:</h3>
-                </div>
+        <div class="cursando">
+            <div class="titulo-cursos">
+                <h3 class="cursando-h3">Mis cursos:</h3>
+            </div>
+            <div class="row row-cols-1 row-cols-md-4 g-4">
+                <% foreach (var curso in CursosInscripto)
+                    { %>
+                <div class="col mb-4">
+                    <% if (FinalizoCurso(curso.IdCurso))
+                        {
 
-                <div class="row col-md">
-                    <% foreach (var curso in CursosInscripto) { %>
-                        <div class="card CardCompleta">
-                            <div style="border-radius: 15px; overflow: hidden; width: 100%; height: 245px">
+                    %>
+                    <div class="card h-100 card-completa" style="margin-bottom: 0; border-radius: 22px">
+                        <%}
+                            else
+                            {   %>
+                        <div class="card  card-completa" style="margin-bottom: 0; border-radius: 22px">
+
+
+                            <%} %>
+                            <div class="card-img-top-wrapper" style="border-bottom: solid 0.3px lightgrey">
                                 <% ImageCurso.ImageUrl = curso.UrlPortada; %>
-                                <asp:Image ID="ImageCurso" class="card-img-top" Style="height: 100%; width: 100%" alt="Img Curso" runat="server" />
+                                <asp:Image ID="ImageCurso" class="card-img-top img-cuadrada" alt="Imagen del Curso" runat="server" />
                             </div>
-                            <div class="BodyCard">
-                                <div class="row" style="margin-top: 1%">
-                                    <div class="col-6">
-                                        <h5 style="margin-top: 1%" class="card-title"><%: curso.Nombre %></h5>
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="Reproduccion.aspx" Style="width: 100%" class="btn btn-outline-dark">Ir al Curso</a>
+                            <div class="card-body text-center body-card">
+                                <div class="">
+                                    <div class="curso-titulo-container">
+                                        <h5 class="curso-titulo"><%: curso.Nombre %></h5>
                                     </div>
                                 </div>
-                                <div>
-                                    <% BarraProgreso(curso.IdCurso); %>
+                                <div class="progress-section">
+                                    <% BarraProgreso(curso.IdCurso);%>
                                     <p>Progreso</p>
                                     <div class="progress">
                                         <div class="progress-bar" role="progressbar" runat="server" id="BarraProgresoCurso" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <p runat="server" id="pProgreso"></p>
                                 </div>
+                                <div class="col">
+                                    <a href="Reproduccion.aspx" class="btn btn-Card mb-2" style="width: 100%; background-color: #66b3ff; color: white;">Ir al Curso</a>
+                                    <% if (FinalizoCurso(curso.IdCurso))
+                                        {  %>
+                                    <div>
+                                        <a href="EmitirCertificado.aspx" class="btn btn-certificado mb-3">
+                                            <img src="Imagenes/Iconos/Certificado.png" alt="Certificado" class="certificado-icon" />
+                                            Emitir Certificado
+                                        </a>
+                                        <p>si tiene, mostrar iconito, o opcion de verlo u decir </p>
+                                    </div>
+                                    <%} %>
+                                </div>
                             </div>
                         </div>
-                    <% } %>
                 </div>
+                <% }
+                %>
             </div>
-        <% } else { %>
-        
-            <!------------------ SIN CURSOS INSCRIPTOS ------------------->
-
-            <div class="row col Cursando" style="background-color: white; margin: 0">
-                <div class="mb-3" style="margin-top: 3%">
-                    <h3 style="margin-left: 9.7%">No se ha inscripto a ningún curso.</h3>
-                </div>
-                <div class="mb-3" style="margin-top: 2.5%;">
-                    <a href="InicioRegistrado.aspx" class="btn btn-dark" style="margin-left: 9.8%">Ver Cursos disponibles</a>
-                </div>
-            </div>
-            <div style="margin-top: 20%"></div>
-        <% } %>
+        </div>
+        </div>
     </div>
 
-    <!------------------ ESTILOS ------------------->
 
-        <style>
-        .Bienvenida {
-            margin: 0;
-            border-radius: 10px;
-            padding: 0;
-            max-width: 100%
-        }
+    <% }
+        else
+        { %>
 
-        .Cursando {
-            border-radius: 10px;
-        }
+    <!------------------ SIN CURSOS INSCRIPTOS ------------------->
 
-        .ImgCursosInscrip {
-            margin: 1%;
-            max-width: fit-content;
-        }
-
-        .imgCard {
-            width: 100%;
-            height: 151px;
-            max-height: 100%;
-            max-width: 100%;
-        }
-
-        .BodyCard {
-            border-radius: 5px;
-            flex-direction: column;
-            justify-content: center;
-            margin-top: 8%;
-            margin-left: 2.5%;
-            margin-right: 2.5%;
-        }
-
-        .RowBienvenida {
-            padding-left: 2.7%;
-            padding-bottom: 2.7%;
-            padding-top: 2.7%
-        }
-
-        .HolaUser {
-            padding-left: 8%;
-        }
-
-        .CursandoH3 {
-
-            padding-top: 1%;
-            padding-left: 2%;
-            margin-left: 6.5%
-        }
-
-        .CardCompleta {
-            padding: 0;
-            width: 23rem;
-            margin-top: 0.5%;
-            margin-left: 10.3%;
-            height: fit-content;
-            border-radius: 20px;
-        }
-    </style>
-
+    <div class="row col cursando text-center">
+        <div class="mb-3">
+            <h3>No se ha inscripto a ningún curso.</h3>
+        </div>
+        <div class="mb-3">
+            <a href="InicioRegistrado.aspx" class="btn btn-primary">Ver Cursos disponibles</a>
+        </div>
+    </div>
+    <% } %>
 </asp:Content>

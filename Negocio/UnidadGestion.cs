@@ -9,6 +9,62 @@ namespace Negocio
 {
     public class UnidadGestion
     {
+        public List<Unidad> UnidadesFinalizadas(int idCurso, int idUser)
+        {
+
+
+            var Acceso = new ConexionBD();
+            var Unidades = new List<Unidad>();
+            try
+            {
+                //JOINEAMOS A UNIDADES X QUE AHI ESTA EL ID DEL CURSO!
+                Acceso.SetQuery("SELECT UF.IDUNIDAD FROM UNIDADES_FINALIZADAS UF INNER JOIN UNIDADES U ON U.IDUNIDAD = UF.IDUNIDAD AND  UF.IDUSUARIO = @IDUSER AND U.IDCURSO = @IDCURSO");
+                Acceso.SetParametro("@IDUSER", idUser);
+                Acceso.SetParametro("@IDCURSO", idCurso);
+                Acceso.EjecutarLectura();
+                while (Acceso.Lector.Read())
+                {
+                    Unidad unidad = new Unidad();
+                    unidad.IdUnidad = (int)Acceso.Lector["IDUNIDAD"];
+                    Unidades.Add(unidad);
+                }
+                return Unidades;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
+        public int UnidadesPorCursoCant(int curso)
+        {
+            var Acceso = new ConexionBD();
+            try
+            {
+                Acceso.SetQuery("SELECT COUNT(IDUNIDAD) AS CANTIDAD FROM UNIDADES WHERE IDCURSO = @IDCURSO");
+                Acceso.SetParametro("@IDCURSO", curso);
+                Acceso.EjecutarLectura();
+                if (Acceso.Lector.Read())
+                {
+                    return (int)Acceso.Lector["CANTIDAD"];
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
         public List<Unidad> ObtenerUnidadesPorCurso(int idCurso) // OBTENER UNIDADES DE UN CURSO
         {
             // Obtengo una lista de unidades asociados a un curso utilizando la tabla UNIDADES

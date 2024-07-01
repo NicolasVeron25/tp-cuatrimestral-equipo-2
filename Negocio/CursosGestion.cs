@@ -10,7 +10,37 @@ namespace Negocio
 {
     public class CursosGestion
     {
-        
+        public List<Curso> CursosNOInscripto(int IdUsuario) // uso : solo mostrar los cursos que esta inscripto el usuario
+        {
+            ConexionBD AccesoBD = new ConexionBD();
+
+            try
+            {
+                string query = "SELECT C.IDCURSO, C.NOMBRE, C.URL_PORTADA FROM CURSOS AS C LEFT JOIN INSCRIPCIONES AS I ON I.IDCURSO = C.IDCURSO AND I.IDUSUARIO = @IDUSER WHERE I.IDCURSO IS NULL";
+                AccesoBD.SetQuery(query);
+                AccesoBD.SetParametro("@IDUSER", IdUsuario);
+                AccesoBD.EjecutarLectura();
+                var ListCursos = new List<Curso>();
+                while (AccesoBD.Lector.Read())
+                {
+                    Curso curso = new Curso();
+                    curso.IdCurso = (int)AccesoBD.Lector["IDCURSO"];
+                    curso.Nombre = (string)AccesoBD.Lector["NOMBRE"];
+                    curso.UrlPortada = (string)AccesoBD.Lector["URL_PORTADA"];
+                    ListCursos.Add(curso);
+                }
+                return ListCursos; // List usa Interfaz Ienum asique podemos retornarla. 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+        }
         public List<Curso> CursosInscripto(int IdUsuario) // uso : solo mostrar los cursos que esta inscripto el usuario
         {
             ConexionBD AccesoBD = new ConexionBD();

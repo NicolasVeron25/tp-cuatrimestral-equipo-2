@@ -7,92 +7,92 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CodeMentor.AspxAdmin
+namespace CodeMentor.AspxUsuario
 {
 
 
-    public partial class AdminReseñas
+    public partial class EdicionPerfil
     {
 
         /// <summary>
-        /// Control ToggleCursos.
+        /// Control TxtNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor ToggleCursos;
+        protected global::System.Web.UI.WebControls.TextBox TxtNombre;
 
         /// <summary>
-        /// Control RptCursos.
+        /// Control PNombreError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptCursos;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PNombreError;
 
         /// <summary>
-        /// Control ToggleFiltros.
+        /// Control TxtApellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor ToggleFiltros;
+        protected global::System.Web.UI.WebControls.TextBox TxtApellido;
 
         /// <summary>
-        /// Control RptFiltroPuntuacion.
+        /// Control PApellidoError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptFiltroPuntuacion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PApellidoError;
 
         /// <summary>
-        /// Control BtnTodas.
+        /// Control TxtCelular.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnTodas;
+        protected global::System.Web.UI.WebControls.TextBox TxtCelular;
 
         /// <summary>
-        /// Control DivEstrellas.
+        /// Control PCelularError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivEstrellas;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PCelularError;
 
         /// <summary>
-        /// Control DivEstrellasEliminar.
+        /// Control TxtCargaImagen.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivEstrellasEliminar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile TxtCargaImagen;
 
         /// <summary>
-        /// Control BtnConfirmaEliminar.
+        /// Control ImgPerfil.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnConfirmaEliminar;
+        protected global::System.Web.UI.WebControls.Image ImgPerfil;
 
         /// <summary>
-        /// Control BtnCancelaEliminar.
+        /// Control BtnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCancelaEliminar;
+        protected global::System.Web.UI.WebControls.Button BtnGuardar;
     }
 }

@@ -12,6 +12,12 @@ namespace Validaciones.Logicas
     {
         public RegistroValidaciones()
         {
+            RuleFor(x => x.Pass)
+                .NotEmpty().WithMessage("La contraseña es requerida")
+                .MaximumLength(10).WithMessage("La contraseña debe tener menos de 10 caracteres")
+                .MinimumLength(6).WithMessage("La contraseña debe tener mas de 6 caracteres")
+                .Matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,10}$").WithMessage("La contraseña debe tener al menos una mayuscula, una minuscula y un numero");
+
             RuleFor(x => x.Nombre)
                 .NotEmpty().WithMessage("El nombre es requerido")
                 .Length(3, 50).WithMessage("El nombre debe tener entre 3 y 100 caracteres")
@@ -32,13 +38,7 @@ namespace Validaciones.Logicas
                 .NotEmpty().WithMessage("El email es requerido")
                 .Length(10, 400).WithMessage("El email debe tener entre 10 y 400 caracteres");
 
-            RuleFor(x => x.Pass)
-               .NotEmpty()
-               .WithMessage("La contraseña es requerida")
-               .MaximumLength(50)
-               .WithMessage("La contraseña no puede tener más de 50 caracteres")
-               .MinimumLength(8)
-               .WithMessage("La contraseña debe tener al menos 8 caracteres");
+           
 
             RuleFor(x => x.Celular)
                 .NotEmpty().WithMessage("El celular es requerido")
@@ -47,7 +47,10 @@ namespace Validaciones.Logicas
 
 
         }
-
+        public bool CursoExistente(int idCurso)
+        {
+            return true;
+        }
 
     }
 }

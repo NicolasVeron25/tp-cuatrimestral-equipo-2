@@ -11,31 +11,62 @@ namespace CodeMentor.AspxUsuario
 {
     public partial class InicioRegistrado : System.Web.UI.Page
     {
-        public List<Curso> ListaCursos { get; set; }
+        public List<Curso> ListaCursosInscripto { get; set; }
+        public List<Curso> ListaNoInscripto { get; set; }
+        public  Usuario UsuarioActual { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                ObtenerUsuario();
+
                 CargarCursos();
+                CargarCursosNoFinalizados();    
             }
 
+        }
+        public void CargarCursosNoFinalizados()
+        {
+           var  CursoGestion = new CursosGestion();
+            ListaNoInscripto = new List<Curso>();
+            ListaNoInscripto = CursoGestion.CursosNOInscripto(UsuarioActual.IdUsuario);
+
+        }
+
+        private void ObtenerUsuario()
+        {
+            if(Session["Usuario"] != null)
+            {
+                UsuarioActual = (Usuario)Session["Usuario"];
+                if (UsuarioActual == null)
+                {
+                    Response.Redirect("Ingresar.aspx");
+                }
+            }
+            else
+            {
+                Response.Redirect("Ingresar.aspx");
+            }
+         
         }
         public void CargarCursos()
         {
             var CursoGestion = new CursosGestion();
-            ListaCursos = CursoGestion.Listado();
+            ListaCursosInscripto = CursoGestion.CursosInscripto(UsuarioActual.IdUsuario);
         }
 
         protected void TxtFiltroCursos_TextChanged(object sender, EventArgs e)
         {
             CargarCursos();
-            ListaCursos = ListaCursos.FindAll(x => x.Nombre.ToLower().Contains(TxtFiltroCursos.Text.ToLower()));
+            ListaCursosInscripto = ListaCursosInscripto.FindAll(x => x.Nombre.ToLower().Contains(TxtFiltroCursos.Text.ToLower()));
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             CargarCursos();
-            ListaCursos = ListaCursos.FindAll(x => x.Nombre.ToLower().Contains(TxtFiltroCursos.Text.ToLower()));
+            CargarCursosNoFinalizados();
+            ListaCursosInscripto = ListaCursosInscripto.FindAll(x => x.Nombre.ToLower().Contains(TxtFiltroCursos.Text.ToLower()));
+            ListaNoInscripto = ListaNoInscripto.FindAll(x => x.Nombre.ToLower().Contains(TxtFiltroCursos.Text.ToLower()));
         }
     }
 }

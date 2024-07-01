@@ -45,8 +45,10 @@
                                 <h5 class="card-title">Última Reseña </h5>
 
                                 <p class="card-text">"<%:UltimaReseña.Descripcion %>"</p>
-                                <small><%:UltimaReseña.NombreUsuario + " " + UltimaReseña.ApellidoUsuario%></small>
-                                <small>,<%:UltimaReseña.NombreCurso %></small>
+                                <small><%:UltimaReseña.Nombre_Apellido%></small>
+                                <small> ,<%:UltimaReseña.NombreCurso %></small>
+                                <small> - <%:UltimaReseña.FechaReseña.ToString("dd/MM/yyyy")%></small>
+
                             </div>
                         <div class="align-self-center" style="margin:1%">
                             <i class="fas fa-comments fa-4x"></i>
@@ -65,7 +67,7 @@
                         <div>
                             <h5 class="card-title">Último Curso Añadido</h5>
                             <p class="card-text"><%:UltimoCurso.Nombre %></p>
-                            <small>Publicado el: <%:UltimoCurso.FechaCreacion %></small>
+                            <small>Publicado el: <%:UltimoCurso.FechaCreacion.ToString("dd/MM/yyyy")%></small>
                         </div>
                         <div class="align-self-center">
                             <i class="fas fa-book-open fa-4x"></i>

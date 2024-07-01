@@ -15,6 +15,8 @@ namespace Validaciones
         public static InfoUsuarioDto MapearUsuario(Usuario user, InformacionUsuario userDatos) //para no usar autommaping por tema de tiempos .
         {
             var DtoUser = new InfoUsuarioDto();
+            DtoUser.Idusuario = userDatos.Idusuario;
+            DtoUser.UrlFotoPerfil = userDatos.UrlFotoPerfil;
             DtoUser.Nombre = userDatos.Nombre;
             DtoUser.Apellido = userDatos.Apellido;
             DtoUser.Email = user.Email;

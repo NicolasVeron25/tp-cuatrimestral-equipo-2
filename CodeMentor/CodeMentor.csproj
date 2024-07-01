@@ -80,10 +80,15 @@
     <Content Include="AspxAdmin\AdminRespuesta.aspx" />
     <Content Include="AspxAdmin\AdminUsuarios.aspx" />
     <Content Include="AspxAdmin\BackOffice.aspx" />
-    <Content Include="AspxUsuario\Adquirir.aspx" />
     <Content Include="AspxUsuario\Contacto.aspx" />
+    <Content Include="AspxUsuario\EdicionPerfil.aspx" />
     <Content Include="AspxUsuario\Guia.aspx" />
     <Content Include="AspxUsuario\DetalleCurso.aspx" />
+    <Content Include="AspxUsuario\Imagenes\Iconos\CandadoCerrado.png" />
+    <Content Include="AspxUsuario\Imagenes\Iconos\Certificado.png" />
+    <Content Include="AspxUsuario\Imagenes\Iconos\CandadoAbiertoLlave.png" />
+    <Content Include="AspxUsuario\Imagenes\Iconos\llaveBorde.png" />
+    <Content Include="AspxUsuario\Imagenes\Iconos\llaveDorada.png" />
     <Content Include="AspxUsuario\Inicio.aspx" />
     <Content Include="AspxUsuario\InicioRegistrado.aspx" />
     <Content Include="AspxUsuario\Inscripcion.aspx" />
@@ -108,6 +113,11 @@
     <Content Include="ContentBs\Site.css" />
     <Content Include="ContentBs\StyleSheetGlobal.css" />
     <Content Include="Content\CodeMentorStyle.css" />
+    <Content Include="Content\DetalleCurso.css" />
+    <Content Include="Content\InicioNoRegis.css" />
+    <Content Include="Content\InicioRegis.css" />
+    <Content Include="Content\MisCursos.css" />
+    <Content Include="Content\ReseñasStyle.css" />
     <Content Include="Global.asax" />
     <Content Include="AspxUsuario\Ingresar.aspx" />
     <Content Include="AspxUsuario\ModificacionUsuario.aspx" />
@@ -194,19 +204,19 @@
     <Compile Include="AspxAdmin\BackOffice.aspx.designer.cs">
       <DependentUpon>BackOffice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AspxUsuario\Adquirir.aspx.cs">
-      <DependentUpon>Adquirir.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AspxUsuario\Adquirir.aspx.designer.cs">
-      <DependentUpon>Adquirir.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AspxUsuario\Contacto.aspx.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AspxUsuario\Contacto.aspx.designer.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxUsuario\EdicionPerfil.aspx.cs">
+      <DependentUpon>EdicionPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxUsuario\EdicionPerfil.aspx.designer.cs">
+      <DependentUpon>EdicionPerfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxUsuario\Guia.aspx.cs">
       <DependentUpon>Guia.aspx</DependentUpon>
@@ -353,6 +363,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="AspxUsuario\Imagenes\Perfil\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -64,7 +64,7 @@ namespace CodeMentor.AspxUsuario.Ayuda
             if (ChkPertenece.Checked == true)
             {
                 var curso = DdlCursos.SelectedItem.Text;
-                asunto = $"REPORTE DE PROBLEMA EN {curso} :  <br>";
+                asunto = $"REPORTE DE PROBLEMA EN {curso} : ";
             }
             else
             {
