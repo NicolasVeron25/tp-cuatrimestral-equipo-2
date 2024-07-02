@@ -49,7 +49,7 @@
                       
                    </div>
                             </li>
-                            <li>El monto de la inscripción es de $<%:CursoManejo.Importe %>.</li>
+                            <li>El monto de la inscripción es de $<%:CursoManejo.Importe.ToString("F2") %>.</li>
                             <li>Una vez realizada la transferencia, envía el comprobante al siguiente correo electrónico:
                       
                    <div class="alert alert-info mt-2">
@@ -58,7 +58,7 @@
                    </div>
                             </li>
                             <li>El proceso de habilitación del curso puede demorar hasta 72 horas.</li>
-                            <li>IMPORTANTE : EL EMAIL DESDE EL QUE SE ENVIE EL COMPROBANTE DEBERA SER EL MISMO POR EL QUE ACCEDIO A LA PLATAFORMA. </li>
+                            <li>IMPORTANTE : A EL EMAIL DESDE EL QUE SE ENVIE EL COMPROBANTE DEBERA SER EL MISMO POR EL QUE ACCEDIO A LA PLATAFORMA. </li>
                             <li>Recibirás un correo electrónico de confirmación una vez que tu inscripción haya sido procesada.</li>
                         </ol>
                         <div class="text-center">

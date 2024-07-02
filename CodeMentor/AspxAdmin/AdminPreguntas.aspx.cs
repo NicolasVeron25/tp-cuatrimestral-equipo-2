@@ -13,9 +13,6 @@ namespace CodeMentor.AdminAspx
 {
     public partial class AdminPreguntas : System.Web.UI.Page
     {
-
-
-
         public PreguntaRespuestaDto UltimaPregunta { get; set; }
 
         public List<PreguntaRespuestaDto> ListadoPreguntasRespuestasAdmin { get; set; }

@@ -40,13 +40,14 @@ namespace CodeMentor
                 LblPais.Text = ObtenerPais(Datos.IdPais);
                 LblCelular.Text = Datos.Celular;
                 LblSexo.Text = Datos.SexoCompleto;
-                if (Datos.UrlFotoPerfil != null)
+                if (!string.IsNullOrEmpty(Datos.UrlFotoPerfil))
                 {
-                    ImgPerfil.ImageUrl = Datos.UrlFotoPerfil;
+                    string ruta = "~/AspxUsuario/Imagenes/Perfil/" + Datos.UrlFotoPerfil; // me posiciono!
+                    ImgPerfil.ImageUrl = ruta;
                 }
                 else
                 {
-                    ImgPerfil.ImageUrl = "https://www.shutterstock.com/image-vector/image-icon-trendy-flat-style-600nw-643080895.jpg";
+                    ImgPerfil.ImageUrl = "https://blog.jumboprinters.com/wp-content/uploads/2021/09/consejos-imagenes.jpg";
                 }
             }
             catch (Exception ex)

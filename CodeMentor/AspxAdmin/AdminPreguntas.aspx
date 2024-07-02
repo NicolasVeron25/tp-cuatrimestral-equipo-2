@@ -19,7 +19,6 @@
 
             <nav class="nav nav-pills " style="margin-left: 20%; margin-bottom: 3%">
 
-
                 <asp:Button Text="Sin Responder" CssClass=" nav-item  Black btn btn-outline-dark" Style="margin-left: 1%;" runat="server" ID="BtnPreguntasSinResponder" OnClick="BtnPreguntasSinResponder_Click" />
 
                 <a class="dropdown-toggle Black btn btn-outline-dark" data-toggle="dropdown" style="margin-left: 1%" role="button" aria-haspopup="true" aria-expanded="false">Por Cursos </a>
@@ -29,7 +28,6 @@
 
                             <asp:Button Text='<%#Eval("Nombre")%>' CssClass="dropdown-item " runat="server" ID="BtnSeleccionCurso" CommandName="ObtenerCurso"
                                 CommandArgument='<%# Eval("IdCurso") %>' OnClick="BtnSeleccionCurso_Click" />
-                            <!-- Llenamos cual dll -->
 
                         </ItemTemplate>
                     </asp:Repeater>

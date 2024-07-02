@@ -12,6 +12,36 @@ namespace Negocio
     public class UsuariosGestion
     {
 
+        public void ActualizarDatos( InfoUsuarioDto datos)
+        {
+            var Acceso = new ConexionBD();
+            try
+            {
+                Acceso.SetQuery("UPDATE INFORMACION_USUARIO SET NOMBRE = @Nombre, APELLIDO = @Apellido,  CELULAR = @Celular,  URL_FOTOPERFIL = @UrlFotoPerfil WHERE IDUSUARIO = @IdUsuario");
+                Acceso.SetParametro("IdUsuario", datos.Idusuario);
+                Acceso.SetParametro("@Nombre", datos.Nombre);
+                Acceso.SetParametro("@Apellido", datos.Apellido);
+                Acceso.SetParametro("@Celular", datos.Celular);
+                if (!string.IsNullOrEmpty(datos.UrlFotoPerfil))
+                {
+                    Acceso.SetParametro("@UrlFotoPerfil", datos.UrlFotoPerfil);
+                }
+                else
+                {
+                    Acceso.SetParametro("@UrlFotoPerfil", (object)DBNull.Value); // le mando nulo sino!
+
+                }
+                Acceso.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
         //DEVUELVE EL ID INSERTADO. PORQUE ES NECESARIO PARA METERLO EN SESSION
         public Usuario ObtenerUsuario(int id)
         {
@@ -44,62 +74,8 @@ namespace Negocio
                 Acceso.CerrarConexion();
             }
         }
-        public int UnidadesXCurso(int curso)
-        {
-            var Acceso = new ConexionBD();
-            try
-            {
-                Acceso.SetQuery("SELECT COUNT(IDUNIDAD) AS CANTIDAD FROM UNIDADES WHERE IDCURSO = @IDCURSO");
-                Acceso.SetParametro("@IDCURSO", curso);
-                Acceso.EjecutarLectura();
-                if (Acceso.Lector.Read())
-                {
-                    return (int)Acceso.Lector["CANTIDAD"];
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                Acceso.CerrarConexion();
-            }
-        }
-        public List<Unidad> UnidadesFinalizadas(int idCurso, int idUser)
-        {
-
-
-            var Acceso = new ConexionBD();
-            var Unidades = new List<Unidad>();
-            try
-            {
-                //JOINEAMOS A UNIDADES X QUE AHI ESTA EL ID DEL CURSO!
-                Acceso.SetQuery("SELECT UF.IDUNIDAD FROM UNIDADES_FINALIZADAS UF INNER JOIN UNIDADES U ON U.IDUNIDAD = UF.IDUNIDAD AND  UF.IDUSUARIO = @IDUSER AND U.IDCURSO = @IDCURSO");
-                Acceso.SetParametro("@IDUSER", idUser);
-                Acceso.SetParametro("@IDCURSO", idCurso);
-                Acceso.EjecutarLectura();
-                while (Acceso.Lector.Read())
-                {
-                    Unidad unidad = new Unidad();
-                    unidad.IdUnidad = (int)Acceso.Lector["IDUNIDAD"];
-                    Unidades.Add(unidad);
-                }
-                return Unidades;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                Acceso.CerrarConexion();
-            }
-        }
+     
+    
         public int InsertarUsuarioSP(string email, string pass, InformacionUsuario datos)
         {
             var Acceso = new ConexionBD();
@@ -113,6 +89,15 @@ namespace Negocio
                 Acceso.SetParametro("@FechaNacimiento", datos.FechaNacimiento);
                 Acceso.SetParametro("@IdPais", datos.IdPais);
                 Acceso.SetParametro("@Celular", datos.Celular);
+                if (!string.IsNullOrEmpty(datos.UrlFotoPerfil))
+                {
+                    Acceso.SetParametro("@UrlFoto", datos.UrlFotoPerfil);
+                }
+                else
+                {
+                    Acceso.SetParametro("@UrlFoto", (object)DBNull.Value); // le mando nulo sino!
+
+                }
                 if (datos.Sexo == "Masculino")
                 {
                     Acceso.SetParametro("@Sexo", "M");

@@ -1,3 +1,5 @@
+SET DATEFORMAT 'YMD' -- VISTO EN SCRIPT DE EXAMEN INTEGRADOR DE LABO 3
+
 --USUARIOS
 INSERT INTO USUARIOS(EMAIL,PASS,ES_ADMIN) VALUES('user@user.com','user',0) , ('admin@admin.com','admin',1)
 GO
@@ -30,7 +32,7 @@ VALUES
 1),
 ('PROGRAMACION EN PYTHON','Este curso integral de Python está diseñado para llevarte desde los conceptos básicos de la programación hasta habilidades avanzadas en uno de los lenguajes más versátiles y demandados en la industria. Python es conocido por su simplicidad y legibilidad, lo que lo hace ideal tanto para principiantes como para programadores experimentados. A lo largo del curso, aprenderás sobre la sintaxis básica de Python, estructuras de datos, programación orientada a objetos, manejo de archivos, y trabajarás con bibliotecas populares como Pandas, NumPy, y Flask. También realizaremos proyectos prácticos para aplicar tus conocimientos en el desarrollo de aplicaciones reales, análisis de datos y automatización de tareas.',
 'No se requieren requisitos previos',10000,
-'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYZqZkpMyiN2uSuT7GAf6JSkJ44YsZqoQHdw&s',2
+'https://s3-us-west-2.amazonaws.com/devcodepro/media/blog/por-que-aprender-python.png',2
 )
 
 GO
@@ -181,6 +183,24 @@ INSERT INTO INSCRIPCIONES (IDCURSO, IDUSUARIO) VALUES
 (3, 1),
 (4, 1),
 (5, 1);
+
+--RESEÑAS
+-- C#
+INSERT INTO RESEÑAS(IDINSCRIPCION, IDCURSO, PUNTAJE, DESCRIPCION) VALUES
+(1, 1, 4, 'Excelente curso, aprendí mucho sobre C# y ahora me siento más seguro para desarrollar aplicaciones.'),
+(2, 1, 5, 'Increíble curso, el contenido estaba muy bien organizado y los ejemplos fueron muy útiles.'),
+(3, 1, 4, 'Muy buen curso para principiantes, cubre los fundamentos de C# de manera clara y concisa.');
+
+-- CSS, HTML y JS
+INSERT INTO RESEÑAS(IDINSCRIPCION, IDCURSO, PUNTAJE, DESCRIPCION) VALUES
+(2, 3, 4, 'Buen curso introductorio, me ayudó a comprender los conceptos básicos de desarrollo web.'),
+(3, 3, 3, 'El curso fue útil, pero me hubiera gustado más ejercicios prácticos para practicar.');
+
+-- JavaScript
+INSERT INTO RESEÑAS(IDINSCRIPCION, IDCURSO, PUNTAJE, DESCRIPCION) VALUES
+(3, 5, 5, '¡Excelente curso! Aprendí mucho sobre JavaScript y ahora puedo crear aplicaciones web interactivas.'),
+(1, 5, 4, 'Muy buen curso para aprender JavaScript desde cero, los ejemplos fueron muy claros y fáciles de entender.');
+
 
 --PAISES
 GO
@@ -443,10 +463,10 @@ INSERT INTO INFORMACION_USUARIO(
 )
 VALUES
 (
- 1,'USUARIO','GENERICO','2000-06-19 0:00:00',11,1165656596,'M'
+ 1,'USUARIO','GENERICO','2000-06-19',11,1165656596,'M'
 ),
 (
- 2,'ADMIN','GENERICO','2000-05-09 0:00:00',11,1189564512,'F'
+ 2,'ADMIN','GENERICO','2000-05-09',11,1189564512,'F'
 )
 GO
 -- CURSO NRO : 1
@@ -524,18 +544,17 @@ INSERT INTO RESPUESTAS(IDPREGUNTA, CUERPO) VALUES
 
 GO 
 --RESEÑAS
+--REACT
+INSERT INTO RESEÑAS(IDINSCRIPCION, IDCURSO, PUNTAJE, DESCRIPCION) VALUES
+(4, 4, 5, 'Muy buen curso para aprender React !! Me encanto!');
 -- C#
 INSERT INTO RESEÑAS(IDINSCRIPCION, IDCURSO, PUNTAJE, DESCRIPCION) VALUES
-(1, 1, 4, 'Excelente curso, aprendí mucho sobre C# y ahora me siento más seguro para desarrollar aplicaciones.'),
-(2, 1, 5, 'Increíble curso, el contenido estaba muy bien organizado y los ejemplos fueron muy útiles.'),
-(3, 1, 4, 'Muy buen curso para principiantes, cubre los fundamentos de C# de manera clara y concisa.');
+(1, 1, 4, 'Excelente curso, aprendí mucho sobre C# y ahora me siento más seguro para desarrollar aplicaciones.');
 
 -- CSS, HTML y JS
 INSERT INTO RESEÑAS(IDINSCRIPCION, IDCURSO, PUNTAJE, DESCRIPCION) VALUES
-(2, 3, 4, 'Buen curso introductorio, me ayudó a comprender los conceptos básicos de desarrollo web.'),
-(3, 3, 3, 'El curso fue útil, pero me hubiera gustado más ejercicios prácticos para practicar.');
+(3, 3, 1, 'El curso fue útil, pero me hubiera gustado más ejercicios prácticos para practicar CSS. Como soy malo pongo un 1.');
 
 -- JavaScript
 INSERT INTO RESEÑAS(IDINSCRIPCION, IDCURSO, PUNTAJE, DESCRIPCION) VALUES
-(3, 5, 5, '¡Excelente curso! Aprendí mucho sobre JavaScript y ahora puedo crear aplicaciones web interactivas.'),
-(1, 5, 4, 'Muy buen curso para aprender JavaScript desde cero, los ejemplos fueron muy claros y fáciles de entender.');
+(5, 5, 4, 'Muy buen curso para aprender JavaScript desde cero, los ejemplos fueron muy claros y fáciles de entender.');

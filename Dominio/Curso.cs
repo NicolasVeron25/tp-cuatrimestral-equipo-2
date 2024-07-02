@@ -22,7 +22,7 @@ namespace Dominio
 
         public int IdCategoria { get; set; }
 
-        public DateTime? FechaCreacion { get; set; } // ? = acepta nulos
+        public DateTime FechaCreacion { get; set; } // ? = acepta nulos
 
     }
 }
