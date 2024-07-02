@@ -7,29 +7,20 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace CodeMentor
+namespace CodeMentor.AspxUsuario
 {
 
 
-    public partial class Reproduccion
+    public partial class Prueba
     {
 
         /// <summary>
-        /// Control videoFrame.
+        /// Control btnCelebrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal videoFrame;
-
-        /// <summary>
-        /// Control RptUnidades.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptUnidades;
+        protected global::System.Web.UI.WebControls.Button btnCelebrar;
     }
 }

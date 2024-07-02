@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using Negocio;
+using Org.BouncyCastle.Asn1.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,12 @@ namespace CodeMentor
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (!IsPostBack && Request.QueryString["idClase"] == null)
             {
                 var CursoGestion = new CursosGestion();
                 var UnidadGestion = new UnidadGestion();
                 var ClaseGestion = new ClaseGestion();
 
-                try
-                {
                     //// Revisar
                     //if (!int.TryParse(Request.QueryString["idCurso"], out int idCurso))
                     //{
@@ -34,9 +33,8 @@ namespace CodeMentor
                     //}
 
                     llenarCurso();
-
+                    LlenarUnidadesRpt();
                     // Obtener la lista de unidades para el curso actual
-                    ListaUnidades = UnidadGestion.ObtenerUnidadesPorCurso(idCurso) ?? new List<Unidad>();
 
                     // Inicializar el diccionario para almacenar las clases por unidad
                     ClasesPorUnidad = new Dictionary<int, List<Clase>>();
@@ -57,12 +55,33 @@ namespace CodeMentor
                             MostrarVideo(primeraClase.UrlVideo);
                         }
                     }
+
                 }
-                catch (Exception ex)
-                {
-                    Response.Redirect("Error.aspx?mensaje=" + HttpUtility.UrlEncode(ex.Message));
-                }
+
+            if(Request.QueryString["idClase"] != null)
+            {
+                var idClase = int.Parse(Request.QueryString["idClase"]);
+                var ClaseGestion = new ClaseGestion();
+
+
+
+
+                var clase = ClaseGestion.ListarClases().FirstOrDefault(c => c.IdClase == idClase);
+
+                var GestionUnidades = new UnidadGestion();
+                ListaUnidades = GestionUnidades.Listado().Where(u => u.IdUnidad == clase.IdUnidad).ToList();
+                //llenar cursos 
+                var GestionCurso = new CursosGestion();
+                CursoActual = GestionCurso.Existencia(ListaUnidades.FirstOrDefault().IdCurso);
+
+
+                MostrarVideo(clase.UrlVideo);
             }
+        }
+        public List<Clase> ListarClases(int IdUnidad) {
+            var ClaseGestion = new ClaseGestion();
+            return ClaseGestion.ObtenerClasesPorUnidad(IdUnidad);
+
         }
 
         public void llenarCurso()
@@ -93,24 +112,16 @@ namespace CodeMentor
         public void LlenarUnidadesRpt()
         {
             var unidadGestion = new UnidadGestion();
-            RptUnidades.DataSource = unidadGestion.ObtenerUnidadesPorCurso(CursoActual.IdCurso);
-            RptUnidades.DataBind();
+            ListaUnidades = unidadGestion.ObtenerUnidadesPorCurso(int.Parse(Request.QueryString["idCurso"]));
         }
+   
 
-
-        protected void ReproducirClase_Click(object sender, EventArgs e)
-        {
-            // Llenar lo mismo que en el ispostback
-            // pero copn el id de clase que obtengo con el command argument
-
-
-            LinkButton btn = (LinkButton)sender;
-            string videoUrl = btn.CommandArgument;
-            MostrarVideo(videoUrl);
-        }
 
         private void MostrarVideo(string urlVideo)
         {
             videoFrame.Text = urlVideo;
         }
+
+    
     }
+}

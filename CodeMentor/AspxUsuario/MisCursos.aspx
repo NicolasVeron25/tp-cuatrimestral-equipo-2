@@ -53,7 +53,8 @@
                                     </div>
                                 </div>
                                 <div class="progress-section">
-                                    <% BarraProgreso(curso.IdCurso);%>
+                                    <% BarraProgreso(curso.IdCurso);
+%>
                                     <p>Progreso</p>
                                     <div class="progress">
                                         <div class="progress-bar" role="progressbar" runat="server" id="BarraProgresoCurso" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>

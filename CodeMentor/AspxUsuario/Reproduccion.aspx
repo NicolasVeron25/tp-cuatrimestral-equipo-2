@@ -55,9 +55,8 @@
 
                                     <%--eliminar foreach y usar el repeater--%>
                                     <!-- FOREACH DE LISTA PARA CARGAR TODAS LAS CLASES DE LA UNIDAD -->
-                                    <% if (ClasesPorUnidad.ContainsKey(unidad.IdUnidad))
-                                        {
-                                            foreach (var clase in ClasesPorUnidad[unidad.IdUnidad])
+                                    
+                                          <%  foreach (var clase in ListarClases(unidad.IdUnidad))
                                             { %>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
@@ -65,19 +64,14 @@
                                         </div>
                                         <div class="d-flex align-items-center">
 
-
-                                            <asp:LinkButton ID="ReproducirClase" runat="server" CommandArgument='<%: clase.%>' OnClick="ReproducirClase_Click">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-play-circle-fill me-2 icon-indigo" viewBox="0 0 16 16">
-                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
-                                                </svg>
-                                            </asp:LinkButton>
-
+                                            <a href="Reproduccion.aspx?IdClase=<%:clase.IdClase %>">ir a otra clase</a>
+                                           
 
                                             <input class="form-check-input me-1" type="checkbox" style="width: 30px; height: 30px;" value="" id="checkbox_<%: clase.IdClase %>">
                                         </div>
                                     </li>
                                     <% }
-                                        } %>
+                                         %>
                                 </ul>
                             </div>
 

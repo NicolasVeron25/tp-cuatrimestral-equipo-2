@@ -43,15 +43,18 @@ namespace Negocio
             var Acceso = new ConexionBD();
             try
             {
-                string query = "Select Id,descripcion from Clases";
+                string query = "Select IdClase,Descripcion,IdUnidad,Url_Video,Numero from Clases";
                 Acceso.SetQuery(query);
                 Acceso.EjecutarLectura();
                 var ListaClase = new List<Clase>();
                 while (Acceso.Lector.Read())
                 {
                     var clase = new Clase();
-                    clase.IdClase = (int)Acceso.Lector["Id"];
+                    clase.IdClase = (int)Acceso.Lector["IdClase"];
                     clase.Descripcion = (string)Acceso.Lector["Descripcion"];
+                    clase.IdUnidad = (int)Acceso.Lector["IdUnidad"];
+                    clase.UrlVideo = (string)Acceso.Lector["Url_Video"];
+                    clase.Numero = (int)Acceso.Lector["Numero"];
                     ListaClase.Add(clase);
                 }
                 return ListaClase;

@@ -9,6 +9,41 @@ namespace Negocio
 {
     public class UnidadGestion
     {
+
+        public List<Unidad> Listado()
+        {
+
+            var Acceso = new ConexionBD();
+            var Unidades = new List<Unidad>();
+            try
+            {
+                string query = "SELECT IDUNIDAD, NUMERO, NOMBRE, DESCRIPCION, IDCURSO FROM UNIDADES ";
+                Acceso.SetQuery(query);
+                Acceso.EjecutarLectura();
+                var ListaUnidades = new List<Unidad>();
+
+                while (Acceso.Lector.Read())
+                {
+                    var Uni = new Unidad();
+                    Uni.IdUnidad = (int)Acceso.Lector["IDUNIDAD"];
+                    Uni.Numero = (int)Acceso.Lector["NUMERO"];
+                    Uni.Nombre = (string)Acceso.Lector["NOMBRE"];
+                    Uni.Descripcion = (string)Acceso.Lector["DESCRIPCION"];
+                    Uni.IdCurso = (int)Acceso.Lector["IDCURSO"];
+                    ListaUnidades.Add(Uni);
+                }
+                return ListaUnidades;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+
+        }
         public List<Unidad> UnidadesFinalizadas(int idCurso, int idUser)
         {
 
