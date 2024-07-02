@@ -312,12 +312,10 @@ namespace Negocio
 
             try
             {
-                Acceso.SetQuery("DELETE FROM INFORMACION_USUARIO WHERE IDUSUARIO=@Id");
+
+                Acceso.SetQuery("DELETE FROM USUARIOS WHERE IDUSUARIO=@Id");
                 Acceso.SetParametro("@Id", Id);
                 Acceso.EjecutarAccion();
-                //Acceso.SetQuery("DELETE FROM USUARIOS WHERE IDUSUARIO=@Id");
-                //Acceso.SetParametro("@Id", Id);
-                //Acceso.EjecutarAccion();
 
             }
             catch (Exception ex)
@@ -329,6 +327,35 @@ namespace Negocio
             {
                 if(Acceso != null) 
                 Acceso.CerrarConexion();
+
+
+
+            }
+
+
+        }
+        public void EliminarTablaInformacion(int Id)
+        {
+            ConexionBD Acceso = new ConexionBD();
+
+            try
+            {
+                Acceso.SetQuery("DELETE FROM INFORMACION_USUARIO WHERE IDUSUARIO=@Id");
+                Acceso.SetParametro("@Id", Id);
+                Acceso.EjecutarAccion();
+                EliminarUsuario(Id);
+           
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if (Acceso != null)
+                    Acceso.CerrarConexion();
 
 
 
