@@ -39,7 +39,7 @@
                                         <h5 style="margin-top: 1%" class="card-title"><%: curso.Nombre %></h5>
                                     </div>
                                     <div class="col-6">
-                                        <a href="Reproduccion.aspx" Style="width: 100%" class="btn btn-outline-dark">Ir al Curso</a>
+                                        <a href="Reproduccion.aspx?idCurso=<%:curso.IdCurso %>" Style="width: 100%" class="btn btn-outline-dark">Ir al Curso</a>
                                     </div>
                                 </div>
                                 <div>
