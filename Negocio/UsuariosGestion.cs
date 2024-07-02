@@ -315,9 +315,9 @@ namespace Negocio
                 Acceso.SetQuery("DELETE FROM INFORMACION_USUARIO WHERE IDUSUARIO=@Id");
                 Acceso.SetParametro("@Id", Id);
                 Acceso.EjecutarAccion();
-                Acceso.SetQuery("DELETE FROM USUARIOS WHERE IDUSUARIO=@Id");
-                Acceso.SetParametro("@Id", Id);
-                Acceso.EjecutarAccion();
+                //Acceso.SetQuery("DELETE FROM USUARIOS WHERE IDUSUARIO=@Id");
+                //Acceso.SetParametro("@Id", Id);
+                //Acceso.EjecutarAccion();
 
             }
             catch (Exception ex)
