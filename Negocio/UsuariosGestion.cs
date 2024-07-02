@@ -306,6 +306,37 @@ namespace Negocio
                 Acceso.CerrarConexion();
             }
         }
+        public void EliminarUsuario(int Id)
+        {
+            ConexionBD Acceso = new ConexionBD();
+
+            try
+            {
+                Acceso.SetQuery("DELETE FROM INFORMACION_USUARIO WHERE IDUSUARIO=@Id");
+                Acceso.SetParametro("@Id", Id);
+                Acceso.EjecutarAccion();
+                Acceso.SetQuery("DELETE FROM USUARIOS WHERE IDUSUARIO=@Id");
+                Acceso.SetParametro("@Id", Id);
+                Acceso.EjecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                if(Acceso != null) 
+                Acceso.CerrarConexion();
+
+
+
+            }
+
+
+        }
+
     }
 }
 
