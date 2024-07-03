@@ -10,7 +10,7 @@
         <!---------------------- BIENVENIDA AL USUARIO ---------------------->
 
         <div class="container">
-            <div class="row justify-content-center bienvenida-row" style="background-color: white;">
+            <div class="row justify-content-center bienvenida-row" style="background-color:white;">
                 <div class="col text-center">
                     <h2 class="bienvenida-titulo" style="color: black">¡Siga Aprendiendo <%: InfoUser.Nombre.ToUpperInvariant() %>!</h2>
                 </div>
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="progress-section">
                                     <% BarraProgreso(curso.IdCurso);
-                                    %>
+%>
                                     <p>Progreso</p>
                                     <div class="progress">
                                         <div class="progress-bar" role="progressbar" runat="server" id="BarraProgresoCurso" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
@@ -66,20 +66,21 @@
                                     <% if (FinalizoCurso(curso.IdCurso))
                                         {  %>
                                     <div>
-                                        <a href="EmitirCertificado.aspx?IdCurso=<%:curso.IdCurso %>" class="btn btn-certificado mb-3">
+                                        <a href="EmitirCertificado.aspx" class="btn btn-certificado mb-3">
                                             <img src="Imagenes/Iconos/Certificado.png" alt="Certificado" class="certificado-icon" />
-                                            Descargar Certificado</a>
-
+                                            Emitir Certificado
+                                        </a>
+                                        <p>si tiene, mostrar iconito, o opcion de verlo u decir </p>
                                     </div>
                                     <%} %>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <% }
-                    %>
                 </div>
+                <% }
+                %>
             </div>
+        </div>
         </div>
     </div>
 
@@ -99,6 +100,4 @@
         </div>
     </div>
     <% } %>
-    
-
 </asp:Content>

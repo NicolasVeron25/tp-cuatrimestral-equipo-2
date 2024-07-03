@@ -7,9 +7,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
-using System.IO;
 
 namespace CodeMentor.AspxUsuario
 {
@@ -44,7 +41,7 @@ namespace CodeMentor.AspxUsuario
 
 
         }
-        public string ObtenerProgreso(int idCurso, int codigo = 0)
+        public string ObtenerProgreso(int idCurso,int codigo=0)
         {
             // obtengo cantidad de unidades primero
             var UniGestion = new UnidadGestion();
@@ -62,14 +59,14 @@ namespace CodeMentor.AspxUsuario
 
             string progreso = Progreso.ToString() + "%";
 
-
+            
             return progreso;
 
         }
         public bool FinalizoCurso(int idCurso)
         {
             //calculo en base a lo que ya esta!
-            var Completado = int.Parse(ObtenerProgreso(idCurso, 1));
+            var Completado = int.Parse(ObtenerProgreso(idCurso,1));
             if (Completado == 100)
             {
                 return true;
@@ -88,12 +85,6 @@ namespace CodeMentor.AspxUsuario
             CursosInscripto = CursoGestion.CursosInscripto(InfoUser.Idusuario);
         }
 
-
-
-
-       
     }
 
-
 }
-

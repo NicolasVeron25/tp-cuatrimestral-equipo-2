@@ -14,8 +14,9 @@ namespace Validaciones.Logicas
         {
             RuleFor(x => x.Pass)
                 .NotEmpty().WithMessage("La contraseña es requerida")
-                .MaximumLength(30).WithMessage("La contraseña debe tener menos de 10 caracteres")
-                .MinimumLength(6).WithMessage("La contraseña debe tener mas de 6 caracteres");
+                .MaximumLength(10).WithMessage("La contraseña debe tener menos de 10 caracteres")
+                .MinimumLength(6).WithMessage("La contraseña debe tener mas de 6 caracteres")
+                .Matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,10}$").WithMessage("La contraseña debe tener al menos una mayuscula, una minuscula y un numero");
 
             RuleFor(x => x.Nombre)
                 .NotEmpty().WithMessage("El nombre es requerido")
