@@ -26,66 +26,53 @@
 
             <!-- UNIDADES Y CLASES -->
             <div class="col-md-4">
-
                 <div class="accordion" id="acordeonClases">
 
-                    <asp:Repeater runat="server" ID="RptUnidades">
-                        <ItemTemplate>
-
-                            <p><%#Eval("Numero") %> </p>
-
-
-                        </ItemTemplate>
-                    </asp:Repeater>
-
-
+                    <!-- FOREACH DE LISTA PARA CARGAR TODAS LAS UNIDADES DEL CURSO -->
                     <% foreach (var unidad in ListaUnidades)
-                        { %>
-                    <% var unidadId = "unidad" + unidad.IdUnidad; %>
+                        {
+                        var unidadId = "unidad" + unidad.IdUnidad;%>
+
                     <div class="accordion-item">
+
+                        <!-- ENCABEZADO DE ACORDEON: INDICA NUMERO Y NOMBRE DE UNIDAD -->
                         <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<%: unidadId %>" aria-expanded="true" aria-controls="<%: unidadId %>">
-                                <%: unidad.Numero %>. <%: unidad.Nombre %>
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<%:unidadId%>" aria-expanded="true" aria-controls="<%:unidadId %>">
+                                <%:unidad.Numero%>. <%:unidad.Nombre%>
                             </button>
                         </h2>
-                        <div id="<%: unidadId %>" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
-                            <!-- CUERPO DEL ACORDEON -->
+
+                        <!-- CUERPO DEL ACORDEON: INDICA LAS CLASES DE LA UNIDAD-->
+                        <div id="<%:unidadId%>" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <ul class="list-group">
 
-                                    <%--eliminar foreach y usar el repeater--%>
                                     <!-- FOREACH DE LISTA PARA CARGAR TODAS LAS CLASES DE LA UNIDAD -->
-                                    
-                                          <%  foreach (var clase in ListarClases(unidad.IdUnidad))
-                                            { %>
+                                    <%  foreach (var clase in ListarClases(unidad.IdUnidad))
+                                        { %>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <div>
                                             <%: clase.Numero %>. <%: clase.Descripcion %>
                                         </div>
                                         <div class="d-flex align-items-center">
 
-                                            <a href="Reproduccion.aspx?IdClase=<%:clase.IdClase %>">ir a otra clase</a>
-                                           
-
+                                            <a href="Reproduccion.aspx?IdClase=<%:clase.IdClase %>">Reproducir</a>
                                             <input class="form-check-input me-1" type="checkbox" style="width: 30px; height: 30px;" value="" id="checkbox_<%: clase.IdClase %>">
                                         </div>
                                     </li>
-                                    <% }
-                                         %>
+                                    <%}%>
                                 </ul>
                             </div>
 
                         </div>
                     </div>
-                    <% } %>
+                    <%}%>
                 </div>
             </div>
-
-
         </div>
     </div>
 
-    <!-- BOOTSTRAP -->
+    <!-- BOOTSTRAP PARA QUE FUNCIONEN BIEN LOS DESPLEGABLES -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 
@@ -131,7 +118,3 @@
     </style>
 
 </asp:Content>
-
-
-
-

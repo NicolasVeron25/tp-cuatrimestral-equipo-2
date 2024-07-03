@@ -68,6 +68,7 @@ namespace CodeMentor.AdminAspx
             List<InfoUsuarioDto> listaUsuarios = userGestion.ListarUsuarios();
             gviewUsuarios.DataSource = listaUsuarios;
             gviewUsuarios.DataBind();
+            
             lblCantUsuarios.Text = listaUsuarios.Count.ToString();
         }
     }

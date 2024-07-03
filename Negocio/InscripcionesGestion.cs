@@ -61,7 +61,7 @@ namespace Negocio
 
             try
             {
-                string query = "SELECT i.APELLIDO , i.NOMBRE, c.NOMBRE as NombreCurso, ins.IDINSCRIPCION  FROM INFORMACION_USUARIO i INNER JOIN INSCRIPCIONES ins on ins.IDUSUARIO=i.IDUSUARIO INNER JOIN CURSOS c on c.IDCURSO=ins.IDCURSO";
+                string query = "SELECT i.APELLIDO , i.NOMBRE, c.NOMBRE as NombreCurso, ins.IDINSCRIPCION  FROM INFORMACION_USUARIO i INNER JOIN INSCRIPCIONES ins on ins.IDUSUARIO=i.IDUSUARIO INNER JOIN CURSOS c on c.IDCURSO=ins.IDCURSO WHERE ins.BAJA=0";
                 AccesoBD.SetQuery(query);
                 AccesoBD.EjecutarLectura();
                 var ListaInscripciones = new List<InscripcionesGestionDto>();
@@ -73,8 +73,6 @@ namespace Negocio
                     inscripcion.Apellido = (string)AccesoBD.Lector["APELLIDO"];
                     inscripcion.NombreCurso = (string)AccesoBD.Lector["NombreCurso"];
                     inscripcion.IdInscripcion = (int)AccesoBD.Lector["IDINSCRIPCION"];
-
-
 
                     ListaInscripciones.Add(inscripcion);
                 }
@@ -149,8 +147,8 @@ namespace Negocio
 
             try
             {
-                Acceso.SetQuery("DELETE FROM INSCRIPCIONES WHERE IDINSCRIPCION=@IDInscripcion");
-                Acceso.SetParametro("IDInscripcion", Id);
+                Acceso.SetQuery("UPDATE INSCRIPCIONES  SET BAJA=1 WHERE IDINSCRIPCION=@IDInscripcion ");
+                Acceso.SetParametro("@IDInscripcion", Id);
                 Acceso.EjecutarAccion();
 
             }

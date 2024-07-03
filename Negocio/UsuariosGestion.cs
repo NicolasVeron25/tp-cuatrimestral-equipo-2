@@ -89,6 +89,8 @@ namespace Negocio
                 Acceso.SetParametro("@FechaNacimiento", datos.FechaNacimiento);
                 Acceso.SetParametro("@IdPais", datos.IdPais);
                 Acceso.SetParametro("@Celular", datos.Celular);
+                //Acceso.SetParametro("@Baja", datos.Baja); --> creo que no es necesario por que por default es 0
+
                 if (!string.IsNullOrEmpty(datos.UrlFotoPerfil))
                 {
                     Acceso.SetParametro("@UrlFoto", datos.UrlFotoPerfil);
@@ -139,6 +141,7 @@ namespace Negocio
                     datos.IdPais = (int)Acceso.Lector["IDPAIS"];
                     datos.Celular = (string)Acceso.Lector["CELULAR"];
                     datos.Sexo = (string)Acceso.Lector["SEXO"];
+                    
                     //validamos nulidad x que es opcional la foto!
                     if (!(Acceso.Lector["URL_FOTOPERFIL"] is DBNull))
                     {
@@ -276,12 +279,13 @@ namespace Negocio
             ConexionBD Acceso = new ConexionBD();
             try
             {
-                Acceso.SetQuery("SELECT I.IDUSUARIO, I.NOMBRE, I.APELLIDO, I.FECHA_NACIMIENTO,P.NOMBRE as NOMBREPAIS,I.CELULAR,I.SEXO,I.URL_FOTOPERFIL FROM INFORMACION_USUARIO I INNER JOIN PAISES P ON P.IDPAIS=I.IDPAIS");
+                Acceso.SetQuery("SELECT I.IDUSUARIO, I.NOMBRE, I.APELLIDO, I.FECHA_NACIMIENTO,P.NOMBRE as NOMBREPAIS,I.CELULAR,I.SEXO,I.URL_FOTOPERFIL FROM INFORMACION_USUARIO I INNER JOIN PAISES P ON P.IDPAIS=I.IDPAIS INNER JOIN USUARIOS U ON U.IDUSUARIO=I.IDUSUARIO WHERE U.BAJA=0");
                 Acceso.EjecutarLectura();
                 while (Acceso.Lector.Read())
                 {
                     InfoUsuarioDto user = new InfoUsuarioDto();
-
+                    if (user.Baja==false)
+                    {
                     user.Idusuario = Acceso.Lector["IDUSUARIO"] != DBNull.Value ? (int)Acceso.Lector["IDUSUARIO"] : 0;
                     user.Nombre = Acceso.Lector["NOMBRE"] != DBNull.Value ? (string)Acceso.Lector["NOMBRE"] : "";
                     user.Apellido = Acceso.Lector["APELLIDO"] != DBNull.Value ? (string)Acceso.Lector["APELLIDO"] : "";
@@ -290,7 +294,9 @@ namespace Negocio
                     user.Celular = Acceso.Lector["CELULAR"] != DBNull.Value ? (string)Acceso.Lector["CELULAR"] : "";
                     user.Sexo = Acceso.Lector["SEXO"] != DBNull.Value ? (string)Acceso.Lector["SEXO"] : "";
                     user.UrlFotoPerfil = Acceso.Lector["URL_FOTOPERFIL"] != DBNull.Value ? (string)Acceso.Lector["URL_FOTOPERFIL"] : "";
+                        //user.Baja = Acceso.Lector["BAJA"] !=DBNull.Value ? (bool)Acceso.Lector["BAJA"] : false;
                     list.Add(user);
+                    }
 
                 }
 
@@ -312,12 +318,10 @@ namespace Negocio
 
             try
             {
-                Acceso.SetQuery("DELETE FROM INFORMACION_USUARIO WHERE IDUSUARIO=@Id");
-                Acceso.SetParametro("@Id", Id);
+
+                Acceso.SetQuery("UPDATE USUARIOS  SET BAJA=1  WHERE IDUSUARIO=@ID");
+                Acceso.SetParametro("@ID", Id);
                 Acceso.EjecutarAccion();
-                //Acceso.SetQuery("DELETE FROM USUARIOS WHERE IDUSUARIO=@Id");
-                //Acceso.SetParametro("@Id", Id);
-                //Acceso.EjecutarAccion();
 
             }
             catch (Exception ex)
@@ -336,6 +340,35 @@ namespace Negocio
 
 
         }
+        //public void EliminarTablaInformacion(int Id)
+        //{
+        //    ConexionBD Acceso = new ConexionBD();
+
+        //    try
+        //    {
+        //        Acceso.SetQuery("DELETE FROM INFORMACION_USUARIO WHERE IDUSUARIO=@Id");
+        //        Acceso.SetParametro("@Id", Id);
+        //        Acceso.EjecutarAccion();
+        //        EliminarUsuario(Id);
+           
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        if (Acceso != null)
+        //            Acceso.CerrarConexion();
+
+
+
+        //    }
+
+
+        //}
 
     }
 }

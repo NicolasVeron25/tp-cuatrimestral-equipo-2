@@ -33,13 +33,13 @@ namespace CodeMentor.AspxAdmin
         protected global::System.Web.UI.WebControls.Button btn_ModificarInscripion;
 
         /// <summary>
-        /// btn_EliminarInscripcion control.
+        /// btnEliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_EliminarInscripcion;
+        protected global::System.Web.UI.WebControls.Button btnEliminar;
 
         /// <summary>
         /// GridViewInscripciones control.
@@ -49,5 +49,14 @@ namespace CodeMentor.AspxAdmin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewInscripciones;
+
+        /// <summary>
+        /// btnOcultar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOcultar;
     }
 }

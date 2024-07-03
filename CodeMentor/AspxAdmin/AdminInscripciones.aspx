@@ -7,14 +7,14 @@
     <style>
         .center-horizontal {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px; 
         }
 
         .content-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 20px auto;
+            margin: 10px auto;
             width: 80%;
         }
 
@@ -23,21 +23,21 @@
             flex-direction: column;
             align-items: center;
             background-color: #f8f9fa;
-            padding: 20px;
+            padding: 5px; 
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
             width: 300px;
-            margin: 20px 0;
+            margin: 1px 0; 
         }
 
-        .button-container button {
+   /*     .button-container button {
             width: 100%;
-            margin: 10px 0;
-        }
+            margin: 1px 0;
+        }*/
 
         .gridview-container {
             width: 80%;
-            margin: 20px 0;
+            margin: 10px 0;
             text-align: center;
         }
 
@@ -49,7 +49,7 @@
 
         .gridview-container .grid th,
         .gridview-container .grid td {
-            padding: 10px;
+            padding: 8px; 
             border: 1px solid #ddd;
             text-align: left;
         }
@@ -68,34 +68,43 @@
         }
 
         .page-header {
-            margin: 20px 0;
+            margin: 10px 0;
             text-align: center;
         }
+
+        .row {
+            margin: 5px 5; 
+        }
     </style>
+        <div class="container mt-5 ">
+     <h2 class="mb-4" style="margin-left: 20%">ADMINISTRACION INSCRIPCIONES</h2>
+     
+                <div class="button-container center-horizontal">
+                    <h3>Acciones</h3>
+                    <asp:Panel runat="server">
+                        <asp:Button ID="btn_VerInscripciones" runat="server" CssClass="btn btn-outline-primary" OnClick="btn_VerInscripciones_Click" Text="Ver todas las inscripciones" />
+                        <asp:Button ID="btn_ModificarInscripion" runat="server" CssClass="btn btn-outline-primary" Text="Modificar Inscripción" />
+                        <asp:Button ID="btnEliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" Text="Eliminar Inscripcion" />
+                    </asp:Panel>
+                </div>
 
-    <div class="page-header">
-        <h1>ADMINISTRACION INSCRIPCIONES</h1>
-        <hr />
-    </div>
-
-    <div class="content-container">
-        <div class="button-container">
-            <h3>Acciones</h3>
-            <asp:Panel runat="server">
-                <asp:Button ID="btn_VerInscripciones" runat="server" CssClass="btn btn-outline-primary" OnClick="btn_VerInscripciones_Click" Text="Ver todas las inscripciones" />
-                <asp:Button ID="btn_ModificarInscripion" runat="server" CssClass="btn btn-outline-primary" Text="Modificar Inscripción" />
-                <asp:Button ID="btn_EliminarInscripcion" runat="server" CssClass="btn btn-outline-danger" Text="Eliminar Inscripción" />
-            </asp:Panel>
+            <div class="content-container">
+                <div class="gridview-container">
+                    <asp:GridView ID="GridViewInscripciones" DataKeyNames="IdInscripcion" CssClass="grid" runat="server" AutoGenerateColumns="false">
+                        <Columns>
+                            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                            <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                            <asp:BoundField HeaderText="Curso" DataField="NombreCurso" />
+                            <asp:TemplateField HeaderText="Eliminar">
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="chkEliminar" runat="server" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                    <asp:Button ID="btnOcultar" CssClass="btn btn-outline-dark" runat="server" Text="Ocultar grilla" OnClick="btnOcultar_Click" />
+                </div>
+            </div>
         </div>
 
-        <div class="gridview-container">
-            <asp:GridView ID="GridViewInscripciones" CssClass="grid" runat="server">
-                <Columns>
-                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                    <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                    <asp:BoundField HeaderText="Curso" DataField="NombreCurso" />
-                </Columns>
-            </asp:GridView>
-        </div>
-    </div>
 </asp:Content>

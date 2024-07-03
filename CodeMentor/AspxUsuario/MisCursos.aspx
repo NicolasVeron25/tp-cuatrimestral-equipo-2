@@ -62,7 +62,7 @@
                                     <p runat="server" id="pProgreso"></p>
                                 </div>
                                 <div class="col">
-                                    <a href="Reproduccion.aspx" class="btn btn-Card mb-2" style="width: 100%; background-color: #66b3ff; color: white;">Ir al Curso</a>
+                                    <a href="Reproduccion.aspx?IdCurso=<%:curso.IdCurso%>" class="btn btn-Card mb-2" style="width: 100%; background-color: #66b3ff; color: white;">Ir al Curso</a>
                                     <% if (FinalizoCurso(curso.IdCurso))
                                         {  %>
                                     <div>
