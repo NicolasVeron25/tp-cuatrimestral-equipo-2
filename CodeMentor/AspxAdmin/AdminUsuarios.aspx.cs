@@ -60,7 +60,7 @@ namespace CodeMentor.AdminAspx
                 {
                     //int idUsuario = Convert.ToInt32(gviewUsuarios.DataKeys[row.RowIndex].Value);
                     int idUsuario = (int)gviewUsuarios.DataKeys[row.RowIndex].Value;
-                    userGestion.EliminarUsuario(idUsuario);
+                    //userGestion.EliminarTablaInformacion(idUsuario);
                 }
             }
 
