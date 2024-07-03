@@ -7,14 +7,14 @@
     <style>
         .center-horizontal {
             text-align: center;
-            margin-top: 10px; /* Reduced margin */
+            margin-top: 10px; 
         }
 
         .content-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 10px auto; /* Reduced margin */
+            margin: 10px auto;
             width: 80%;
         }
 
@@ -23,21 +23,21 @@
             flex-direction: column;
             align-items: center;
             background-color: #f8f9fa;
-            padding: 15px; /* Reduced padding */
+            padding: 5px; 
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Reduced box shadow */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
             width: 300px;
-            margin: 1px 0; /* Reduced margin */
+            margin: 1px 0; 
         }
 
-        .button-container button {
+   /*     .button-container button {
             width: 100%;
-            margin: 1px 0; /* Reduced margin between buttons */
-        }
+            margin: 1px 0;
+        }*/
 
         .gridview-container {
             width: 80%;
-            margin: 10px 0; /* Reduced margin */
+            margin: 10px 0;
             text-align: center;
         }
 
@@ -49,7 +49,7 @@
 
         .gridview-container .grid th,
         .gridview-container .grid td {
-            padding: 8px; /* Reduced padding */
+            padding: 8px; 
             border: 1px solid #ddd;
             text-align: left;
         }
@@ -68,18 +68,18 @@
         }
 
         .page-header {
-            margin: 10px 0; /* Reduced margin */
+            margin: 10px 0;
             text-align: center;
         }
 
         .row {
-            margin: 5px 0; /* Further reduced margin */
+            margin: 5px 5; 
         }
     </style>
+        <div class="container mt-5 ">
      <h2 class="mb-4" style="margin-left: 20%">ADMINISTRACION INSCRIPCIONES</h2>
      
-        <div class="row col-8" style="margin-left: 20%; margin-bottom: 7%">
-                <div class="button-container">
+                <div class="button-container center-horizontal">
                     <h3>Acciones</h3>
                     <asp:Panel runat="server">
                         <asp:Button ID="btn_VerInscripciones" runat="server" CssClass="btn btn-outline-primary" OnClick="btn_VerInscripciones_Click" Text="Ver todas las inscripciones" />
