@@ -27,6 +27,8 @@ namespace Dominio.DataTransferObjects
 
         public string UrlFotoPerfil { get; set; }
 
+        public bool Baja { get; set; }
+
         //prop para no evaluar en todos lados!
         public string SexoCompleto
         {

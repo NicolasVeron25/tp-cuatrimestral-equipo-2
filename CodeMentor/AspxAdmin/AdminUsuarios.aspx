@@ -26,6 +26,7 @@
             <asp:Panel runat="server">
                 <asp:GridView ID="gviewUsuarios" OnSelectedIndexChanged="gviewUsuarios_SelectedIndexChanged" DataKeyNames="Idusuario" CssClass="table-bordered table-info table-warning  m-5" runat="server" AutoGenerateColumns="false">
                     <Columns>
+                   
                         <asp:BoundField HeaderText="Idusuario" DataField="Idusuario" HeaderStyle-CssClass="oculto" ItemStyle-CssClass="oculto" />
                         <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                         <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
