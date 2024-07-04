@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masters/MasterUsuario.Master" AutoEventWireup="true" CodeBehind="Reproduccion.aspx.cs" Inherits="CodeMentor.Reproduccion" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <!-- CONTENEDOR PRINCIPAL -->
@@ -16,11 +19,18 @@
                     <asp:Literal ID="videoFrame" runat="server"></asp:Literal>
                 </div>
 
+                <!-- BARRA DE PROGRESO -->
+                <div class="progress mt-4">
+                    <div id="progressBar" class="progress-bar bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+
                 <!-- TITULO -->
                 <h3 id="curso-titulo"><%: CursoActual.Nombre %></h3>
 
                 <!-- DESCRIPCION -->
                 <p id="videoDescription"><%: CursoActual.Descripcion %></p>
+
+                <%--PREGUNTAD Y RESPUESTAS--%>
 
             </div>
 
@@ -31,7 +41,7 @@
                     <!-- FOREACH DE LISTA PARA CARGAR TODAS LAS UNIDADES DEL CURSO -->
                     <% foreach (var unidad in ListaUnidades)
                         {
-                        var unidadId = "unidad" + unidad.IdUnidad;%>
+                            var unidadId = "unidad" + unidad.IdUnidad;%>
 
                     <div class="accordion-item">
 
@@ -56,7 +66,12 @@
                                         </div>
                                         <div class="d-flex align-items-center">
 
-                                            <a href="Reproduccion.aspx?IdClase=<%:clase.IdClase %>">Reproducir</a>
+                                            <a href="Reproduccion.aspx?IdClase=<%:clase.IdClase %>" class="btn btn-link text-decoration-none text-reset" role="button">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-play-circle-fill icon-indigo" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
+                                                </svg>
+                                            </a>
+
                                             <input class="form-check-input me-1" type="checkbox" style="width: 30px; height: 30px;" value="" id="checkbox_<%: clase.IdClase %>">
                                         </div>
                                     </li>
@@ -113,8 +128,19 @@
         }
 
         .icon-indigo {
-            color: var(--electric-indigo);
+            color: var(--electric-indigo); /* Cambia el color del ícono a indigo */
+            transition: color 0.3s ease; /* Agrega una transición suave al color */
         }
+
+            .icon-indigo:hover {
+                color: indigo; /* Cambia el color al pasar el mouse */
+            }
+
+        .progress {
+            height: 30px; /* Altura de la barra de progreso */
+            margin-bottom: 20px; /* Espaciado inferior */
+        }
+
     </style>
 
 </asp:Content>
