@@ -7,14 +7,14 @@
     <style>
         .center-horizontal {
             text-align: center;
-            margin-top: 10px; 
+            margin-top: 20px;
         }
 
         .content-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin: 10px auto;
+            margin: 30px auto;
             width: 80%;
         }
 
@@ -23,74 +23,68 @@
             flex-direction: column;
             align-items: center;
             background-color: #f8f9fa;
-            padding: 5px; 
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-            width: 300px;
-            margin: 1px 0; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
         }
 
-   /*     .button-container button {
-            width: 100%;
-            margin: 1px 0;
-        }*/
-
         .gridview-container {
-            width: 80%;
-            margin: 10px 0;
+            width: 100%;
+            margin: 20px 0;
             text-align: center;
         }
 
-        .gridview-container .grid {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 0 auto;
-        }
+            .gridview-container .grid {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 0 auto;
+            }
 
-        .gridview-container .grid th,
-        .gridview-container .grid td {
-            padding: 8px; 
-            border: 1px solid #ddd;
-            text-align: left;
-        }
+                .gridview-container .grid th,
+                .gridview-container .grid td {
+                    padding: 12px;
+                    border: 1px solid #ddd;
+                    text-align: left;
+                }
 
-        .gridview-container .grid th {
-            background-color: #007bff;
-            color: white;
-        }
+                .gridview-container .grid th {
+                    background-color: #007bff;
+                    color: white;
+                }
 
-        .gridview-container .grid tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+                .gridview-container .grid tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
 
-        .gridview-container .grid tr:hover {
-            background-color: #ddd;
-        }
+                .gridview-container .grid tr:hover {
+                    background-color: #ddd;
+                }
 
         .page-header {
-            margin: 10px 0;
+            margin: 30px 0;
             text-align: center;
         }
 
         .row {
-            margin: 5px 5; 
+            margin: 10px 0;
         }
     </style>
-        <div class="container mt-5 ">
-     <h2 class="mb-4" style="margin-left: 20%">ADMINISTRACION INSCRIPCIONES</h2>
-     
-                <div class="button-container center-horizontal">
-                    <h3>Acciones</h3>
-                    <asp:Panel runat="server">
-                        <asp:Button ID="btn_VerInscripciones" runat="server" CssClass="btn btn-outline-primary" OnClick="btn_VerInscripciones_Click" Text="Ver todas las inscripciones" />
-                        <asp:Button ID="btn_ModificarInscripion" runat="server" CssClass="btn btn-outline-primary" Text="Modificar Inscripción" />
-                        <asp:Button ID="btnEliminar" CssClass="btn btn-danger" OnClick="btnEliminar_Click" runat="server" Text="Eliminar Inscripcion" />
-                    </asp:Panel>
-                </div>
+    <div class="container mt-5">
+        <div class="row col">
 
+            <h2 class="mb-4 text-center">ADMINISTRACIÓN INSCRIPCIONES</h2>
+            <div class="button-container center-horizontal">
+                <h3>Acciones</h3>
+                <asp:Panel runat="server">
+                    <asp:Button ID="btn_VerInscripciones" runat="server" CssClass="btn btn-outline-primary btn-block mt-2" OnClick="btn_VerInscripciones_Click" Text="Ver todas las inscripciones" />
+                    <asp:Button ID="btn_ModificarInscripion" runat="server" CssClass="btn btn-outline-primary btn-block mt-2" Text="Modificar Inscripción" />
+                    <asp:Button ID="btnEliminar" CssClass="btn btn-danger btn-block mt-2" OnClick="btnEliminar_Click" runat="server" Text="Eliminar Inscripción" />
+                </asp:Panel>
+            </div>
             <div class="content-container">
                 <div class="gridview-container">
-                    <asp:GridView ID="GridViewInscripciones" DataKeyNames="IdInscripcion" CssClass="grid" runat="server" AutoGenerateColumns="false">
+                    <asp:GridView ID="GridViewInscripciones" DataKeyNames="IdInscripcion" CssClass="grid table table-striped" runat="server" AutoGenerateColumns="false">
                         <Columns>
                             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                             <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
@@ -102,9 +96,12 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
-                    <asp:Button ID="btnOcultar" CssClass="btn btn-outline-dark" runat="server" Text="Ocultar grilla" OnClick="btnOcultar_Click" />
+                    <asp:Button ID="btnOcultar" CssClass="btn btn-outline-dark mt-3" runat="server" Text="Ocultar grilla" OnClick="btnOcultar_Click" />
                 </div>
             </div>
         </div>
+
+
+    </div>
 
 </asp:Content>
