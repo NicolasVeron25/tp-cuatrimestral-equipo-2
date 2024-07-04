@@ -78,6 +78,35 @@ namespace Negocio
                 AccesoBD.CerrarConexion();
             }
         }
+        public List<Certificacion> ObtenerTodasLasCertificaciones() // OBTENER TODAS LAS CERTIFICACIONES
+        {
+            var AccesoBD = new ConexionBD();
+            try
+            {
+                string query = "SELECT C.IDCERTIFICACIONES, C.IDINSCRIPCION FROM CERTIFICACIONES C";
+                AccesoBD.SetQuery(query);
+                AccesoBD.EjecutarLectura();
+                var ListaCertificaciones = new List<Certificacion>();
+
+                while (AccesoBD.Lector.Read())
+                {
+                    var certi = new Certificacion();
+                    certi.IdCertificacion = (int)AccesoBD.Lector["IDCERTIFICACIONES"];
+                    certi.IdInscripcion = (int)AccesoBD.Lector["IDINSCRIPCION"];
+                    ListaCertificaciones.Add(certi);
+                }
+
+                return ListaCertificaciones;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+        }
         public void InsertarCertificacion(Certificacion certi) // ALTA CERTIFICACION
         {
             var AccesoBD = new ConexionBD();
