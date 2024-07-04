@@ -74,14 +74,14 @@ namespace CodeMentor
             else
             {
                 // Si el curso es nulo redirecciona al inicio redirigir a la pagina de inicio
-                Response.Redirect("Inicio.aspx", false);
+               //resolver mediante resolveurl --> Response.Redirect("Inicio.aspx", false);
             }
 
             if (CursoActual == null)
             {
                 // Si el curso no existe redirigir a la pagina de inicio
-                Response.Redirect("Inicio.aspx");
-                return;
+                //resolver mediante resolveurl -->  Response.Redirect("Inicio.aspx");
+                //resolver mediante resolveurl -->  return;
             }
         }
         public void llenarUniudades() // Llena las unidades por primera vez en la pagina con el id de curso que se recibe por url

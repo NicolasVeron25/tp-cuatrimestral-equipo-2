@@ -156,7 +156,7 @@ namespace Negocio
             ConexionBD Acceso = new ConexionBD();
             try
             {
-                Acceso.SetQuery("UPDATE CURSOS  SET NOMBRE=@Nombre, DESCRIPCION=@Descripcion, REQUISITOS=@Requisitos, IMPORTE=@Importe, URL_PORTADA=@UrlPortada,IDCATEGORIA=IDCATEGORIA,FECHA_CREACION=@FechaCreacion WHERE IDCURSO=@IDCURSO");
+                Acceso.SetQuery("UPDATE CURSOS  SET NOMBRE=@Nombre, DESCRIPCION=@Descripcion, REQUISITOS=@Requisitos, IMPORTE=@Importe, URL_PORTADA=@UrlPortada,IDCATEGORIA=@IdCategoria WHERE IDCURSO=@IDCURSO");
                 Acceso.SetParametro("@IDCurso", curso.IdCurso);
                 Acceso.SetParametro("@Nombre", curso.Nombre);
                 Acceso.SetParametro("@Descripcion", curso.Descripcion);
@@ -164,7 +164,6 @@ namespace Negocio
                 Acceso.SetParametro("@Importe", curso.Importe);
                 Acceso.SetParametro("@UrlPortada", curso.UrlPortada);
                 Acceso.SetParametro("@IDCategoria", curso.IdCategoria);
-                Acceso.SetParametro("@FechaCreacion", curso.FechaCreacion);
                 Acceso.EjecutarAccion();
 
             }

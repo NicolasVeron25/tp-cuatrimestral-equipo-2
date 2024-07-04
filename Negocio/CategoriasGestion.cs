@@ -9,20 +9,45 @@ namespace Negocio
 {
     public class CategoriasGestion
     {
+        public string ObtenerNombreCategoria(int id)
+        {
+            var Acceso = new ConexionBD();
+            try
+            {
+                string query = "Select Nombre from Categorias where IdCategoria = @Id";
+                Acceso.SetQuery(query);
+                Acceso.SetParametro("@Id", id);
+                Acceso.EjecutarLectura();
+                if (Acceso.Lector.Read())
+                {
+                    return (string)Acceso.Lector["Nombre"];
+                }
+                return ""; // si no encuentra nada
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
 
         public Categoria CategoriaCurso(int IdCurso)
         {
             var Acceso = new ConexionBD();
             try
             {
-                string query= "Select Id,Nombre from categorias where IdCurso = @idcurso";
+                string query= "Select cat.IdCategoria,cat.Nombre from categorias cat inner join cursos c on c.idcategoria = cat.IdCategoria where c.IdCurso = @idcurso";
                 Acceso.SetQuery(query);
                 Acceso.SetParametro("@idcurso", IdCurso);
                 Acceso.EjecutarLectura();
                 var Cat = new Categoria();
                 if (Acceso.Lector.Read())
                 {
-                    Cat.Idcategoria = (int)Acceso.Lector["Id"];
+                    Cat.Idcategoria = (int)Acceso.Lector["IdCategoria"];
                     Cat.Nombre= (string)Acceso.Lector["Nombre"]; 
                 }
                 return Cat; // si no encuentra nada, devuelve un objeto vacio
@@ -43,14 +68,14 @@ namespace Negocio
             var Acceso = new ConexionBD();
             try
             {
-                string query = "Select Id,Nombre from categorias";
+                string query = "Select IdCategoria,Nombre from categorias";
                 Acceso.SetQuery(query);
                 Acceso.EjecutarLectura();
                 var ListaCategorias = new List<Categoria>();
                 while (Acceso.Lector.Read())
                 {
                     var Cat = new Categoria();
-                    Cat.Idcategoria = (int)Acceso.Lector["Id"];
+                    Cat.Idcategoria = (int)Acceso.Lector["IdCategoria"];
                     Cat.Nombre = (string)Acceso.Lector["Nombre"];
                     ListaCategorias.Add(Cat);
                 }

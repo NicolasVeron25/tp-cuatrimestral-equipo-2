@@ -33,13 +33,23 @@ namespace Negocio
             }
         }
 
-        public int CantidadInscriptos()
+        public int CantidadInscriptos(int IdCurso=0)
         {
             ConexionBD AccesoBD = new ConexionBD();
             try
             {
-                string query = "SELECT COUNT(IDINSCRIPCION) FROM INSCRIPCIONES";
-                AccesoBD.SetQuery(query);
+                string query = "";
+                if (IdCurso == 0)
+                {
+                    query = "SELECT COUNT(IDINSCRIPCION) FROM INSCRIPCIONES";
+                }
+                else
+                {
+                    query = "SELECT COUNT(IDINSCRIPCION) FROM INSCRIPCIONES WHERE IDCURSO= @IdCurso";
+                    AccesoBD.SetParametro("@IdCurso", IdCurso);
+
+                }
+                    AccesoBD.SetQuery(query);
                 AccesoBD.EjecutarLectura();
                 AccesoBD.Lector.Read();
                 int cant = (int)AccesoBD.Lector[0];

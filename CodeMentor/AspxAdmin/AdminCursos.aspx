@@ -1,41 +1,33 @@
 ﻿<%@ Page Title="titulo" Language="C#" MasterPageFile="~/Masters/MasterAdmin.Master" AutoEventWireup="true" CodeBehind="AdminCursos.aspx.cs" Inherits="CodeMentor.AdminAspx.AdminCursos" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Repeater runat="server" ID="repRepetidor" >
-        <ItemTemplate>
-            <div class="col">
-                <div class="card">
-                    <img src="<%#Eval("UrlPortada") %>"   class="card-img-top" alt="...." />
-                    <div class="card-body">
-                        <div class="card-text">
-                    <p class="card-title"> <%#Eval("Nombre") %></p>
-                            <h5 class="card-title"> Descripcion </h5>
-                            <p class="card-text"> <%#Eval("Descripcion") %></p>
-                                  <h5 class="card-title"> Requisitos </h5>
-                            <p class="card-text"> <%#Eval("Requisitos") %></p>
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
 
-            </div>
-        </ItemTemplate>
-    </asp:Repeater>
+        <div class="row col-12">
+            <h2 class="mb-4 text-center">Cursos </h2>
+            <asp:GridView runat="server" ID="DgwCursos" OnRowCommand="DgwCursos_RowCommand" AutoGenerateColumns="False" CssClass=" form-control  table table-hover">
+                <Columns>
+                    <asp:BoundField DataField="IdCurso"  Visible="false" />
+
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre del Curso" Visible="True" />
+                    <asp:BoundField DataField="Descripcion" HeaderText="Descripción" Visible="True" />
+                    <asp:BoundField DataField="NombreCategoria" HeaderText="Categoria" Visible="True" />
+                    <asp:BoundField DataField="ImporteFormateado" HeaderText="Precio" Visible="True" />
+                    <asp:BoundField DataField="CantidadInscriptos" HeaderText="Inscriptos" Visible="True" />
+
+                    <asp:TemplateField HeaderText="Accion" Visible="True">
+                        <ItemTemplate>
+                            <asp:Button  ID="btnEditar" runat="server" Text="Visualizar" CommandName="Visualizar" CommandArgument='<%#Eval("IdCurso") %>' CssClass="btn btn-primary btn-sm " />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        <a href="AñadirCurso.aspx" class="btn btn-lg btn-primary mb-5">Agregar Curso </a>
+
+        </div>
+    </div>
+
 </asp:Content>
 
-
-  <%--      public int IdCurso { get; set; }
-
-        public string Nombre { get; set; } 
-
-        public string Descripcion { get; set; }
-
-        public string Requisitos { get; set; } 
-
-        public decimal Importe { get; set; }
-
-        public string UrlPortada { get; set; } 
-
-        public int IdCategoria { get; set; }
-
-        public DateTime? FechaCreacion { get; set; } // ? = acepta nulos--%>

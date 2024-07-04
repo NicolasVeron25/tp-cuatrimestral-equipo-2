@@ -78,6 +78,7 @@
   <ItemGroup>
     <Content Include="AspxAdmin\AdminCategoria.aspx" />
     <Content Include="AspxAdmin\AdminCertificados.aspx" />
+    <Content Include="AspxAdmin\AdminCursoRev.aspx" />
     <Content Include="AspxAdmin\AdminCursos.aspx" />
     <Content Include="AspxAdmin\AdminInscripciones.aspx" />
     <Content Include="AspxAdmin\AdminLenguajes.aspx" />
@@ -156,6 +157,13 @@
     </Compile>
     <Compile Include="AspxAdmin\AdminCertificados.aspx.designer.cs">
       <DependentUpon>AdminCertificados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxAdmin\AdminCursoRev.aspx.cs">
+      <DependentUpon>AdminCursoRev.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxAdmin\AdminCursoRev.aspx.designer.cs">
+      <DependentUpon>AdminCursoRev.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxAdmin\AdminCursos.aspx.cs">
       <DependentUpon>AdminCursos.aspx</DependentUpon>

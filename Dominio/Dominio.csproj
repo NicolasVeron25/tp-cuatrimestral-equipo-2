@@ -46,6 +46,7 @@
     <Compile Include="Clase.cs" />
     <Compile Include="Curso.cs" />
     <Compile Include="DataTransferObjects\CertificadosDto.cs" />
+    <Compile Include="DataTransferObjects\CursosAdminDto.cs" />
     <Compile Include="DataTransferObjects\InfoUsuarioDto.cs" />
     <Compile Include="DataTransferObjects\InscripcionesGestionDto.cs" />
     <Compile Include="DataTransferObjects\PreguntaRespuestaDto.cs" />

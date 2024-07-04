@@ -10,14 +10,22 @@ namespace Negocio
     public class UnidadGestion
     {
 
-        public List<Unidad> Listado()
+        public List<Unidad> Listado(int IdUnidad=0)
         {
 
             var Acceso = new ConexionBD();
             var Unidades = new List<Unidad>();
             try
             {
-                string query = "SELECT IDUNIDAD, NUMERO, NOMBRE, DESCRIPCION, IDCURSO FROM UNIDADES ";
+                string query = "";
+                if (IdUnidad == 0) {
+                    query = "SELECT IDUNIDAD, NUMERO, NOMBRE, DESCRIPCION, IDCURSO FROM UNIDADES ";
+                }
+                else
+                {
+                    query = "SELECT IDUNIDAD, NUMERO, NOMBRE, DESCRIPCION, IDCURSO FROM UNIDADES where IDUNIDAD = @IDUNIDAD";
+                    Acceso.SetParametro("@IDUNIDAD", IdUnidad);
+                }
                 Acceso.SetQuery(query);
                 Acceso.EjecutarLectura();
                 var ListaUnidades = new List<Unidad>();
