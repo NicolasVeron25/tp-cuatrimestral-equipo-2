@@ -20,7 +20,7 @@ namespace CodeMentor
 
         protected void BtnLogout_Click(object sender, EventArgs e)
         {
-            Session.Clear();//limpia la session
+            Session.Clear();//limpia la session del usuario
             Response.Redirect("Inicio.aspx", false); //redirige a la pagina de login
         }
     }

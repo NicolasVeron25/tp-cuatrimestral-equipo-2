@@ -82,7 +82,6 @@
                                     <a class="dropdown-item" href="MisCursos.aspx">Mis Cursos</a>
                                 </div>
                             </div>
-
                             <asp:Button Text="Cerrar Sesion" ID="BtnLogout" CssClass="btnMaster btn btn-primary me-md-2 " OnClick="BtnLogout_Click" runat="server" />
                             <%} %>
                         </div>

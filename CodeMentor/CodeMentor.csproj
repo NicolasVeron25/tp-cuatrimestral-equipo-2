@@ -88,11 +88,13 @@
     <Content Include="AspxAdmin\BackOffice.aspx" />
     <Content Include="AspxUsuario\Contacto.aspx" />
     <Content Include="AspxUsuario\EdicionPerfil.aspx" />
+    <Content Include="AspxUsuario\Emitir.aspx" />
     <Content Include="AspxUsuario\Guia.aspx" />
     <Content Include="AspxUsuario\DetalleCurso.aspx" />
     <Content Include="AspxUsuario\Imagenes\Iconos\CandadoCerrado.png" />
     <Content Include="AspxUsuario\Imagenes\Iconos\Certificado.png" />
     <Content Include="AspxUsuario\Imagenes\Iconos\CandadoAbiertoLlave.png" />
+    <Content Include="AspxUsuario\Imagenes\Iconos\codementor-fondonegro.png" />
     <Content Include="AspxUsuario\Imagenes\Iconos\llaveBorde.png" />
     <Content Include="AspxUsuario\Imagenes\Iconos\llaveDorada.png" />
     <Content Include="AspxUsuario\Inicio.aspx" />
@@ -224,6 +226,13 @@
     </Compile>
     <Compile Include="AspxUsuario\EdicionPerfil.aspx.designer.cs">
       <DependentUpon>EdicionPerfil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxUsuario\Emitir.aspx.cs">
+      <DependentUpon>Emitir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxUsuario\Emitir.aspx.designer.cs">
+      <DependentUpon>Emitir.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxUsuario\Guia.aspx.cs">
       <DependentUpon>Guia.aspx</DependentUpon>

@@ -29,7 +29,7 @@
             font-weight: 700;
         }
     </style>
-    <% if (Request.QueryString["ComoInscribirse"] != null )
+    <% if (Request.QueryString["ComoInscribirse"] != null)
         {
     %>
     <div class="container mt-5">
@@ -64,13 +64,16 @@
                         <div class="text-center">
                             <a href="Contacto.aspx?Contacto=<%:1%>" class="btn btn-primary btn-lg">Contactar soporte</a>
                         </div>
+                        <div class="text-center">
+                            <a class="btn btn-primary btn-lg">Solicitar Inscripción</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <%} %>
-    <%if (Request.QueryString["ComoInscribirse"] == null && Request.QueryString["Certificado"] == null )
+    <%if (Request.QueryString["ComoInscribirse"] == null && Request.QueryString["Certificado"] == null)
         {  %>
     <div class="container mt-5">
         <h1 class="text-center mb-4">¿Cómo Inscribirse en Nuestros Cursos?</h1>
@@ -121,7 +124,7 @@
                 <div class="card mb-4 step-card">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="step-icon mr-3" style="margin-right:20px">
+                            <div class="step-icon mr-3" style="margin-right: 20px">
                                 <i class="fas fa-user-check"></i>
                             </div>
                             <h2 class="card-title mb-0">Paso 1: Inscribirse Correctamente en un Curso</h2>
@@ -136,7 +139,7 @@
                 <div class="card mb-4 step-card">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="step-icon mr-3" style="margin-right:30px">
+                            <div class="step-icon mr-3" style="margin-right: 30px">
                                 <i class="fas fa-tasks"></i>
                             </div>
                             <h2 class="card-title mb-0">Paso 2: Finalizar Todas las Unidades del Curso</h2>
@@ -150,7 +153,7 @@
                 <div class="card mb-4 step-card">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="step-icon mr-3" style="margin-right:30px">
+                            <div class="step-icon mr-3" style="margin-right: 30px">
                                 <i class="fas fa-certificate"></i>
                             </div>
                             <h2 class="card-title mb-0">Paso 3: Ir a Mis Cursos y Emitir el Certificado</h2>

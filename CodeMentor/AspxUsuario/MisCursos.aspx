@@ -66,7 +66,7 @@
                                     <% if (FinalizoCurso(curso.IdCurso))
                                         {  %>
                                     <div>
-                                        <a href="EmitirCertificado.aspx" class="btn btn-certificado mb-3">
+                                        <a href="Emitir.aspx?IdCurso=<%:curso.IdCurso %>" class="btn btn-certificado mb-3">
                                             <img src="Imagenes/Iconos/Certificado.png" alt="Certificado" class="certificado-icon" />
                                             Emitir Certificado
                                         </a>

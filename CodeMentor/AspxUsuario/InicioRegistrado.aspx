@@ -28,13 +28,7 @@
                 <img src="Imagenes/Iconos/CandadoAbiertoLlave.png" class="imgIcon ml-3" style="width: 50px; height: 50px; margin-left: 2%" />
             </div>
         </div>
-        <div>
-            <h2>Generar Certificado</h2>
-            <asp:Label ID="lblNombre" runat="server" Text="Nombre:"></asp:Label>
-            <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-            <br /><br />
-            <asp:Button ID="btnGenerar" runat="server" Text="Generar PDF" OnClick="btnGenerar_Click" />
-        </div>
+        
 
 
         <!-- CURSOS SIN COMPLETAR DEL USUARIO -->
