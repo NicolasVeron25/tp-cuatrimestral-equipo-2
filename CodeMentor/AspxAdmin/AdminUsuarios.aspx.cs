@@ -6,7 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
 using Dominio.DataTransferObjects;
+using Dominio.DTOS;
 using Negocio;
+using Validaciones.Logicas;
 
 namespace CodeMentor.AdminAspx
 {
@@ -53,14 +55,32 @@ namespace CodeMentor.AdminAspx
         protected void btnConfirmaEliminacion_Click(object sender, EventArgs e)
         {
             UsuariosGestion userGestion = new UsuariosGestion();
+            InscripcionesGestionDto inscripcion = new InscripcionesGestionDto();
+
+
             foreach (GridViewRow row in gviewUsuarios.Rows)
             {
                 CheckBox chkEliminar = (CheckBox)row.FindControl("chkEliminar");
+                int idUsuario = (int)gviewUsuarios.DataKeys[row.RowIndex].Value;
+                EliminarUsuarioValidacion validador = new EliminarUsuarioValidacion();
+                    var existe = validador.Validate(inscripcion);
+                var error = existe.Errors.FirstOrDefault(x => x.PropertyName == "IdInscripcion");
                 if (chkEliminar != null && chkEliminar.Checked)
                 {
-                    //int idUsuario = Convert.ToInt32(gviewUsuarios.DataKeys[row.RowIndex].Value);
-                    int idUsuario = (int)gviewUsuarios.DataKeys[row.RowIndex].Value;
-                    userGestion.EliminarUsuario(idUsuario);
+                    if (!existe.IsValid)
+                    {
+                        userGestion.EliminarUsuario(idUsuario);
+
+                    }
+                    else
+                    {
+                        ErrorEliminar.InnerText = error.ErrorMessage;
+                        ErrorEliminar.Visible = true;
+                        // informar que el usuario esta inscripto en algun curso
+                        return;
+                    }
+
+
                 }
             }
 
@@ -68,7 +88,7 @@ namespace CodeMentor.AdminAspx
             List<InfoUsuarioDto> listaUsuarios = userGestion.ListarUsuarios();
             gviewUsuarios.DataSource = listaUsuarios;
             gviewUsuarios.DataBind();
-            
+
             lblCantUsuarios.Text = listaUsuarios.Count.ToString();
         }
     }

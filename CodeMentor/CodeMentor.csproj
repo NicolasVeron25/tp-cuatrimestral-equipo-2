@@ -100,7 +100,6 @@
     <Content Include="AspxUsuario\Imagenes\Iconos\llaveDorada.png" />
     <Content Include="AspxUsuario\Inicio.aspx" />
     <Content Include="AspxUsuario\InicioRegistrado.aspx" />
-    <Content Include="AspxUsuario\Inscripcion.aspx" />
     <Content Include="AspxUsuario\MisCursos.aspx" />
     <Content Include="AspxUsuario\PreguntaDetalle.aspx" />
     <Content Include="AspxUsuario\Prueba.aspx" />
@@ -269,13 +268,6 @@
     </Compile>
     <Compile Include="AspxUsuario\InicioRegistrado.aspx.designer.cs">
       <DependentUpon>InicioRegistrado.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AspxUsuario\Inscripcion.aspx.cs">
-      <DependentUpon>Inscripcion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AspxUsuario\Inscripcion.aspx.designer.cs">
-      <DependentUpon>Inscripcion.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxUsuario\MisCursos.aspx.cs">
       <DependentUpon>MisCursos.aspx</DependentUpon>

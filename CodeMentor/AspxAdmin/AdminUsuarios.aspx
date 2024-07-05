@@ -11,7 +11,7 @@
         <div class="row mt-4 justify-content-center">
             <!-- Botón de Ver Usuarios y Cantidad de Usuarios -->
             <div class="">
-                <div class="card text-center col-md-8" style="margin-left:16.5%;margin-bottom:2%">
+                <div class="card text-center col-md-8" style="margin-left: 16.5%; margin-bottom: 2%">
 
                     <div class="panel-container">
                         <asp:Panel runat="server">
@@ -45,6 +45,7 @@
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
+                            <p class="error " id="ErrorEliminar" visible="false" runat="server"></p>
 
                             <asp:Button ID="btnConfirmaEliminacion" CssClass="btn btn-outline-danger btn-block mt-2" Text="Confirma Eliminación" OnClick="btnConfirmaEliminacion_Click" runat="server" />
                             <asp:Button ID="btnOcultar" CssClass="btn btn-outline-secondary btn-block mt-2" runat="server" Text="Ocultar Grilla" OnClick="btnOcultar_Click" />

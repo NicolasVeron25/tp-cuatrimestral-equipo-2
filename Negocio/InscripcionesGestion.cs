@@ -179,6 +179,38 @@ namespace Negocio
 
         }
 
+        public bool Existencia(int Id)
+        {
+            ConexionBD AccesoBD = new ConexionBD();
+
+            try
+            {
+                AccesoBD.SetQuery("SELECT IDINSCRIPCION,IDCURSO,IDUSUARIO,FECHA,BAJA FROM INSCRIPCIONES WHERE IDUSUARIO=@IdUsuario");
+                AccesoBD.SetParametro("@IdUsuario", Id);
+                AccesoBD.EjecutarLectura();
+                if (AccesoBD.Lector.Read())
+                {
+         
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+
+
+        }
 
 
     }

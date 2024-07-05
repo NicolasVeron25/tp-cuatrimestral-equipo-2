@@ -31,6 +31,7 @@
     </style>
     <% if (Request.QueryString["ComoInscribirse"] != null)
         {
+            //UsuarioActual = (Usuario)["Usuario"]
     %>
     <div class="container mt-5">
         <h1 class="text-center mb-4">¿Cómo Inscribirse en Nuestros Cursos?</h1>
@@ -60,9 +61,11 @@
                             <li>El proceso de habilitación del curso puede demorar hasta 72 horas.</li>
                             <li>IMPORTANTE : A EL EMAIL DESDE EL QUE SE ENVIE EL COMPROBANTE DEBERA SER EL MISMO POR EL QUE ACCEDIO A LA PLATAFORMA. </li>
                             <li>Recibirás un correo electrónico de confirmación una vez que tu inscripción haya sido procesada.</li>
+                                <li>Debes presionar el boton Generar Inscripcion para reservar tu cupo </li>
                         </ol>
                         <div class="text-center">
                             <a href="Contacto.aspx?Contacto=<%:1%>" class="btn btn-primary btn-lg">Contactar soporte</a>
+                             <asp:Button ID="BtnGenerarInscripcion"  Cssclass="btn btn-primary btn-lg " runat="server" OnClick="BtnGenerarInscripcion_Click" Text="Generar Inscripcion" />
                         </div>
                         <div class="text-center">
                             <a class="btn btn-primary btn-lg">Solicitar Inscripción</a>
@@ -103,11 +106,14 @@
                             <li>El proceso de habilitación del curso puede demorar hasta 72 horas.</li>
                             <li>IMPORTANTE : EL EMAIL DESDE EL QUE SE ENVIE EL COMPROBANTE DEBERA SER EL MISMO POR EL QUE ACCEDIO A LA PLATAFORMA. </li>
                             <li>Recibirás un correo electrónico de confirmación una vez que tu inscripción haya sido procesada.</li>
+                        
                         </ol>
                         <div class="text-center">
                             <a href="Contacto.aspx?Contacto=<%:1%>" class="btn btn-primary btn-lg">Contactar soporte</a>
-
+                           
                         </div>
+                      <%--  <div class="text-center">
+                        </div>--%>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Negocio;
+using Dominio.DTOS;
 
 namespace Validaciones.Logicas
 {
@@ -37,7 +39,7 @@ namespace Validaciones.Logicas
                 .NotEmpty().WithMessage("El email es requerido")
                 .Length(10, 400).WithMessage("El email debe tener entre 10 y 400 caracteres");
 
-           
+
 
             RuleFor(x => x.Celular)
                 .NotEmpty().WithMessage("El celular es requerido")
@@ -50,6 +52,19 @@ namespace Validaciones.Logicas
         {
             return true;
         }
+
+    }
+
+        public class EliminarUsuarioValidacion : AbstractValidator<InscripcionesGestionDto>
+            {
+        public EliminarUsuarioValidacion()
+        {
+            InscripcionesGestion inscripciones = new InscripcionesGestion();
+            RuleFor(x => x)
+                .Must(gestion => !inscripciones.Existencia(gestion.IdInscripcion))
+                .WithMessage("El usuario se encuentra inscripto en algun curso, primero debe eliminar la inscripcion");
+        }
+
 
     }
 }
