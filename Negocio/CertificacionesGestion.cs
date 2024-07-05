@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Dominio.DataTransferObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Negocio
                     certi.IdCertificacion = idCertificacion;
                     certi.IdInscripcion = (int)AccesoBD.Lector["IDINSCRIPCION"];
                     return certi;
-                    
+
                 }
 
                 // Si no lee nada devuelve null
@@ -167,5 +168,50 @@ namespace Negocio
                 AccesoBD.CerrarConexion();
             }
         }
+        public List<CertificadosDto> ObtenerCertificacionesUsuariosCursos()
+        {
+            var AccesoBD = new ConexionBD();
+            try
+            {
+                string query = @"
+            SELECT 
+                C.IDCERTIFICACIONES AS IdCertificaciones, 
+                C.IDINSCRIPCION AS IdInscripcion, 
+                IU.NOMBRE AS NombreUsuario, 
+                IU.APELLIDO AS ApellidoUsuario, 
+                CUR.NOMBRE AS NombreCurso
+            FROM CERTIFICACIONES C
+            INNER JOIN INSCRIPCIONES I ON I.IDINSCRIPCION = C.IDINSCRIPCION
+            INNER JOIN CURSOS CUR ON CUR.IDCURSO = I.IDCURSO
+            INNER JOIN USUARIOS U ON U.IDUSUARIO = I.IDUSUARIO
+            INNER JOIN INFORMACION_USUARIO IU ON IU.IDUSUARIO = U.IDUSUARIO";
+
+                AccesoBD.SetQuery(query);
+                AccesoBD.EjecutarLectura();
+                var ListaCertificados = new List<CertificadosDto>();
+
+                while (AccesoBD.Lector.Read())
+                {
+                    var certiDto = new CertificadosDto();
+                    certiDto.IdCertificacion = (int)AccesoBD.Lector["IdCertificaciones"];
+                    certiDto.IdInscripcion = (int)AccesoBD.Lector["IdInscripcion"];
+                    certiDto.Nombre = (string)AccesoBD.Lector["NombreUsuario"];
+                    certiDto.Apellido = (string)AccesoBD.Lector["ApellidoUsuario"];
+                    certiDto.NombreCurso = (string)AccesoBD.Lector["NombreCurso"];
+                    ListaCertificados.Add(certiDto);
+                }
+
+                return ListaCertificados;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+        }
+
     }
 }

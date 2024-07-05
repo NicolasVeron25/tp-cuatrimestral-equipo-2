@@ -12,7 +12,7 @@ namespace CodeMentor.AspxAdmin
 {
     public partial class AdminCertificados : System.Web.UI.Page
     {
-        public List<Certificacion> ListaCertificaciones { get; set; }
+        public List<CertificadosDto> ListaCertificados { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -22,8 +22,8 @@ namespace CodeMentor.AspxAdmin
         }
         private void llenarCertificaciones()
         {
-            var certiicacionGestion = new CertificacionesGestion();
-            ListaCertificaciones = certiicacionGestion.ObtenerTodasLasCertificaciones();
+            var certicacionGestion = new CertificacionesGestion();
+            ListaCertificados = certicacionGestion.ObtenerCertificacionesUsuariosCursos();
         }
     }
 }

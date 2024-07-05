@@ -21,10 +21,10 @@
                 </button>
 
                 <%--LISTA DE CERTIFICACIONES--%>
-                <%foreach (var certificacion in ListaCertificaciones)
+                <%foreach (var certificado in ListaCertificados)
                     {%>
                 <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                    <%:certificacion.IdCertificacion%>
+                    <%:certificado.IdCertificacion%> , <%:certificado.Nombre %>, <%:certificado.Apellido %>, <%:certificado.NombreCurso %>
                 </li>
                 <%}%>
 
