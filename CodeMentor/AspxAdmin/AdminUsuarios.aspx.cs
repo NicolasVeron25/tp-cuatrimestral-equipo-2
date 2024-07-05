@@ -28,7 +28,7 @@ namespace CodeMentor.AdminAspx
                 btnConfirmaEliminacion.Visible = false;
                 if (listaUsuarios.Count != 0)
                 {
-                    lblCantUsuarios.Text = listaUsuarios.Count.ToString();
+                    lblCantUsuarios.Text = "Total : " +listaUsuarios.Count.ToString();
                 }
             }
         }
@@ -89,7 +89,7 @@ namespace CodeMentor.AdminAspx
             gviewUsuarios.DataSource = listaUsuarios;
             gviewUsuarios.DataBind();
 
-            lblCantUsuarios.Text = listaUsuarios.Count.ToString();
+            lblCantUsuarios.Text ="Total : " + listaUsuarios.Count.ToString();
         }
     }
 }

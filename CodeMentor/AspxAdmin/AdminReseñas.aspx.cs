@@ -66,6 +66,7 @@ namespace CodeMentor.AspxAdmin
             int IdCurso = int.Parse(valor);
             var ReseñasGestion = new ReseñaGestion();
             reseñasDtos = ReseñasGestion.ListarReseñas(IdCurso).ToList();
+
             Session.Add("IdCursoFiltro", IdCurso);
         }
 

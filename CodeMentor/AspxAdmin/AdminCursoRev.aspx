@@ -3,113 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-
-        .container-custom {
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-        }
-
-        .header-custom {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-            .header-custom h2 {
-                font-size: 2.5rem;
-                color: #2c3e50;
-                margin-bottom: 10px;
-            }
-
-        .form-control-custom {
-            margin-bottom: 20px;
-        }
-
-        .card-custom {
-            border: none;
-            margin-bottom: 20px;
-        }
-
-            .card-custom .card-body {
-                padding: 20px;
-                background-color: #f5f5f5;
-                border-radius: 8px;
-            }
-
-        .card-title-custom {
-            font-size: 1.2rem;
-            color: #2980b9;
-            margin-bottom: 10px;
-        }
-
-        .btn-custom {
-            border-radius: 8px;
-            padding: 10px 20px;
-        }
-
-        .btn-primary-custom {
-            background-color: #2980b9;
-            border: none;
-            border-radius: 8px;
-            padding: 10px 20px;
-            transition: background-color 0.3s ease;
-            color: #ffffff;
-        }
-
-            .btn-primary-custom:hover {
-                background-color: #1c5980;
-            }
-
-        .btn-danger-custom {
-            background-color: #c0392b;
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            padding: 5px 10px;
-        }
-
-            .btn-danger-custom:hover {
-                background-color: #a93226;
-            }
-
-        .accordion-custom .accordion-item {
-            border: none;
-            margin-bottom: 15px;
-        }
-
-        .accordion-header-custom {
-            background-color: #2980b9;
-            color: #ffffff;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-            .accordion-header-custom:hover {
-                background-color: #1c5980;
-            }
-
-        .accordion-body-custom {
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
-            border-radius: 8px;
-            padding: 20px;
-        }
-
-        .list-group-item-custom {
-            border: none;
-            padding: 15px;
-            border-bottom: 1px solid #dddddd;
-        }
-    </style>
+    <link href="../Content/AdminCursoRev.css" rel="stylesheet" />
     <asp:ScriptManager runat="server" />
     <div class="container container-custom">
         <div class="header-custom">
@@ -164,8 +58,7 @@
     <div class="container container-custom">
 
         <div class="d-flex justify-content-between mb-3">
-            <button class="btn btn-primary-custom w-45" data-bs-toggle="modal" data-bs-target="#modalUnidad">Añadir o editar Unidad</button>
-            <button class="btn btn-danger-custom w-45" data-bs-toggle="modal" data-bs-target="#modalEliminarUnidad">Eliminar Unidad</button>
+            <a href="EdicionCurso.aspx?" class="btn btn-primary-custom w-45">Añadir o editar Unidades</a>
         </div>
 
         <div class="accordion" id="acordeonClases">

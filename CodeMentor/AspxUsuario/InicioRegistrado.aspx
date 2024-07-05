@@ -42,7 +42,7 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title font-weight-bold"><%:curso.Nombre %></h5>
-                        <a href="DetalleCurso.aspx?idCurso=<%:curso.IdCurso %>" class="btn btn-primary btn-lg mt-3">Ver Curso</a>
+                        <a href="Reproduccion.aspx?idCurso=<%:curso.IdCurso %>" class="btn btn-primary btn-lg mt-3">Continuar Curso</a>
                     </div>
                 </div>
             </div>

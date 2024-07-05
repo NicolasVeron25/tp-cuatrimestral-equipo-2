@@ -67,6 +67,8 @@ namespace CodeMentor.AspxAdmin
         {
             int IdCurso = int.Parse(Request.QueryString["IdCurso"]);
             CursoDto = Validaciones.Helper.LlenaryMapearCursosAdminDto().FirstOrDefault(c => c.IdCurso == IdCurso);
+            Session.Add("CursoEdicion", CursoDto);
+
         }
         public List<Clase> ListarClases(int IdUnidad)
         {

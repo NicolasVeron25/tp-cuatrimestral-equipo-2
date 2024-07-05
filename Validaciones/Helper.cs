@@ -3,6 +3,7 @@ using Dominio.DataTransferObjects;
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,74 @@ namespace Validaciones
 {
     public static class Helper
     {
+        public static string SacarEmbed(string url)
+        {
+            //REEMPLAZA!
+            string urlLimpia = url.Replace("embed/", "watch?v=");
+            return urlLimpia;
+        }
+        public static string LimpiarUrlVideo(string url)
+        {
+            int startIndex = url.IndexOf("src=\"") + 5; //INDEX OF = INDICE DE DONDE COINCIDA CON LA CADENA INDICADA!
+                                                        //TOMA EL PRIMER LGUAR ,ENONTCES LE AGREGO 5! PARA QUE EMPIECE DESDE LA URL
+
+            int endIndex = url.IndexOf("\"", startIndex); // A PARTIR DE DONDE EMPIEZA MI URL , BUSCA EL PRIMER " QUE ENCUENTRE!! 
+
+            // Extraer la URL limpia
+            /* SUBSTRING = EXTRAER PARTE DE UNA CADENA DE TEXTO --> (INDICE DE INICIO, INDICE DE FIN)
+            INDICE DE FIN =  INDICE DEL " DE LA URL - INDICE DE INICIO ( A PARTIR DE DONDE EMPIEZA LA URL)
+             */
+            string urlLimpia = url.Substring(startIndex, endIndex - startIndex);
+
+            return SacarEmbed(urlLimpia);
+        }
+        public static List<PreguntaRespuestaDto> LlenaryMapearPreg_Resp(int idcurso)
+        {
+            
+
+                var UsuarioGestion = new UsuariosGestion();
+                var CursoGestion = new CursosGestion();
+                var RespGestion = new RespuestasGestion();
+                var PregGestion = new PreguntasGestion();
+
+                //recorro todas preguntas existentes 
+               var ListadoPreguntasRespuestas = new List<PreguntaRespuestaDto>();
+
+                foreach (var pregunta in PregGestion.ListadoPreguntas(idcurso))
+                {
+                    var Usuario = UsuarioGestion.ObtenerDatos(pregunta.IdUsuario);
+                    var Curso = CursoGestion.Existencia(pregunta.IdCurso);
+                    var Respuesta = RespGestion.Existencia(pregunta.IdPregunta);
+
+                    var PreguntaRespuesta = new PreguntaRespuestaDto
+                    {
+                        IdPregunta = pregunta.IdPregunta,
+                        IdCurso = pregunta.IdCurso,
+                        NombreCurso = Curso.Nombre,
+                        IdUsuario = pregunta.IdUsuario,
+                        NombreApellidoUser = Usuario.Nombre + " " + Usuario.Apellido,
+                        FechaPregunta = pregunta.Fecha,
+                        TituloPregunta = pregunta.Titulo,
+                        CuerpoPregunta = pregunta.Cuerpo,
+                        IdRespuesta = null,
+                        CuerpoRespuesta = null,
+                        FechaRespuesta = null,
+                    };
+                    if (Respuesta != null)
+                    {
+                        PreguntaRespuesta.IdRespuesta = Respuesta.IdRespuesta;
+                        PreguntaRespuesta.CuerpoRespuesta = Respuesta.Cuerpo;
+                        PreguntaRespuesta.FechaRespuesta = Respuesta.Fecha;
+                    }
+                    ListadoPreguntasRespuestas.Add(PreguntaRespuesta);
+                }
+                ListadoPreguntasRespuestas = ListadoPreguntasRespuestas.OrderByDescending(x => x.FechaPregunta).ToList(); //ORDENAMOS POR FECHA RECIENTE!
+
+            return ListadoPreguntasRespuestas;
+
+        }
+
+
         //devuelve el DTO
         public static List<CursosAdminDto> LlenaryMapearCursosAdminDto()
         {

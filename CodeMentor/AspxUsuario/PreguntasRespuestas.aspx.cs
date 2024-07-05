@@ -58,7 +58,7 @@ namespace CodeMentor
             var CursoGestion = new CursosGestion();
             try
             {
-                if (Request.QueryString["IdCurso"] == null) { Response.Redirect("InicioRegistrado.aspx"); }
+                if (Request.QueryString["IdCurso"] == null) { Response.Redirect("InicioRegistrado.aspx",false); }
 
                 int idCurso = int.Parse(Request.QueryString["IdCurso"]); // CAMBIAR A SESSION PARA RESTRINGIR ACCESO VIA URL! 
                 CursoActual = CursoGestion.Existencia(idCurso);
@@ -67,6 +67,8 @@ namespace CodeMentor
 
                     return 0;
                 }
+                Session.Add("CursoActual", CursoActual);
+
                 return 1;
             }
             catch (Exception ex)
@@ -96,14 +98,6 @@ namespace CodeMentor
             }
         }
 
-        protected void BtnVerTodas_Click(object sender, EventArgs e)
-        {
-
-            ObtenerCursoActual();
-
-            LLenarPreguntasRespuestas();
-
-        }
 
         protected void BtnVerPreguntasUsuario_Click(object sender, EventArgs e)
         {
@@ -165,49 +159,16 @@ namespace CodeMentor
         public void LLenarPreguntasRespuestas()
         {
 
-            var UsuarioGestion = new UsuariosGestion();
-            var CursoGestion = new CursosGestion();
-            var RespGestion = new RespuestasGestion();
-
-            //recorro todas preguntas existentes 
-            ListadoPreguntasRespuestas = new List<PreguntaRespuestaDto>();
-
-            foreach (var pregunta in PregGestion.ListadoPreguntas(CursoActual.IdCurso))
-            {
-                var Usuario = UsuarioGestion.ObtenerDatos(pregunta.IdUsuario);
-                var Curso = CursoGestion.Existencia(pregunta.IdCurso);
-                var Respuesta = RespGestion.Existencia(pregunta.IdPregunta);
-
-                var PreguntaRespuesta = new PreguntaRespuestaDto
-                {
-                    IdPregunta = pregunta.IdPregunta,
-                    IdCurso = pregunta.IdCurso,
-                    NombreCurso = Curso.Nombre,
-                    IdUsuario = pregunta.IdUsuario,
-                    NombreApellidoUser = Usuario.Nombre + " " + Usuario.Apellido,
-                    FechaPregunta = pregunta.Fecha,
-                    TituloPregunta = pregunta.Titulo,
-                    CuerpoPregunta = pregunta.Cuerpo,
-                    IdRespuesta = null,
-                    CuerpoRespuesta = null,
-                    FechaRespuesta = null,
-                };
-                if (Respuesta != null)
-                {
-                    PreguntaRespuesta.IdRespuesta = Respuesta.IdRespuesta;
-                    PreguntaRespuesta.CuerpoRespuesta = Respuesta.Cuerpo;
-                    PreguntaRespuesta.FechaRespuesta = Respuesta.Fecha;
-                }
-                ListadoPreguntasRespuestas.Add(PreguntaRespuesta);
-            }
-            ListadoPreguntasRespuestas = ListadoPreguntasRespuestas.OrderByDescending(x => x.FechaPregunta).ToList(); //ORDENAMOS POR FECHA RECIENTE!
+            CursoActual = (Curso)Session["CursoActual"];
+            ListadoPreguntasRespuestas =Helper.LlenaryMapearPreg_Resp(CursoActual.IdCurso);
 
         }
 
-      
-
-
-
-       
+        protected void BtnVerTodas_Click1(object sender, EventArgs e)
+        {
+            
+            ViendoUsuarios = false;
+            LLenarPreguntasRespuestas();
+        }
     }
 }

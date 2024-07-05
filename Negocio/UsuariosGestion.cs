@@ -279,7 +279,7 @@ namespace Negocio
             ConexionBD Acceso = new ConexionBD();
             try
             {
-                Acceso.SetQuery("SELECT I.IDUSUARIO, I.NOMBRE, I.APELLIDO, I.FECHA_NACIMIENTO,P.NOMBRE  as NOMBREPAIS,I.CELULAR,I.SEXO,I.URL_FOTOPERFIL FROM INFORMACION_USUARIO I INNER JOIN PAISES P ON P.IDPAIS=I.IDPAIS INNER JOIN USUARIOS U ON U.IDUSUARIO=I.IDUSUARIO WHERE U.BAJA=0");
+                Acceso.SetQuery("SELECT I.IDUSUARIO, I.NOMBRE, I.APELLIDO, I.FECHA_NACIMIENTO,P.NOMBRE  as NOMBREPAIS,I.CELULAR,I.SEXO,I.URL_FOTOPERFIL,U.Email, U.Baja FROM INFORMACION_USUARIO I INNER JOIN PAISES P ON P.IDPAIS=I.IDPAIS INNER JOIN USUARIOS U ON U.IDUSUARIO=I.IDUSUARIO ");
                 Acceso.EjecutarLectura();
                 while (Acceso.Lector.Read())
                 {
@@ -294,6 +294,8 @@ namespace Negocio
                     user.Celular = Acceso.Lector["CELULAR"] != DBNull.Value ? (string)Acceso.Lector["CELULAR"] : "";
                     user.Sexo = Acceso.Lector["SEXO"] != DBNull.Value ? (string)Acceso.Lector["SEXO"] : "";
                     user.UrlFotoPerfil = Acceso.Lector["URL_FOTOPERFIL"] != DBNull.Value ? (string)Acceso.Lector["URL_FOTOPERFIL"] : "";
+                        user.Email = Acceso.Lector["Email"] != DBNull.Value ? (string)Acceso.Lector["Email"] : "";
+                        user.Baja = Acceso.Lector["BAJA"] != DBNull.Value ? (bool)Acceso.Lector["BAJA"] : false;
                     list.Add(user);
                     }
 

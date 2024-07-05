@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Dominio.DataTransferObjects;
 using Negocio;
 using Org.BouncyCastle.Asn1.Ocsp;
 using System;
@@ -7,11 +8,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Validaciones;
 
 namespace CodeMentor
 {
     public partial class Reproduccion : System.Web.UI.Page
     {
+        public bool ViendoUsuarios { get; set; }
+
+        public InformacionUsuario UsuarioActual { get; set; }
+        public List<PreguntaRespuestaDto> ListadoPreguntasRespuestas { get; set; }
+
         public Curso CursoActual { get; set; }
         public List<Unidad> ListaUnidades { get; set; }
         public Dictionary<int, List<Clase>> ClasesPorUnidad { get; set; }
@@ -25,7 +32,8 @@ namespace CodeMentor
                 llenarCursoActual();
                 llenarUniudades();
                 llenarClases();
-
+                LlenarUltimasDos();
+                
                 // Mostrar el video de la primera clase si existe
                 if (ClasesPorUnidad.Count > 0)
                 {
@@ -49,6 +57,7 @@ namespace CodeMentor
                 //llenar cursos 
                 var GestionCurso = new CursosGestion();
                 CursoActual = GestionCurso.Existencia(ListaUnidades.FirstOrDefault().IdCurso);
+                LlenarUltimasDos();
 
                 llenarUnidades(CursoActual.IdCurso);
 
@@ -56,6 +65,37 @@ namespace CodeMentor
                 MostrarVideo(clase.UrlVideo);
             }
         }
+        public void LlenarPreguntas()
+        {
+
+           var PregGestion = new PreguntasGestion();
+            ListadoPreguntasRespuestas = Helper.LlenaryMapearPreg_Resp(CursoActual.IdCurso);
+        }
+
+        public bool ObtenerRespuesta(int idPregunta)
+        {
+            var RespuestaGestion = new RespuestasGestion();
+            try
+            {
+                var RespuestaExiste = RespuestaGestion.Existencia(idPregunta);
+                if (RespuestaExiste == null)
+                {
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public void LlenarUltimasDos()
+        {
+            LlenarPreguntas();
+            ListadoPreguntasRespuestas = ListadoPreguntasRespuestas.Take(2).ToList();
+        }
+
         public List<Clase> ListarClases(int IdUnidad)
         {
             var ClaseGestion = new ClaseGestion();
@@ -111,5 +151,12 @@ namespace CodeMentor
         {
             videoFrame.Text = urlVideo;
         }
+        public void ObtenerUsuario()
+        {
+            UsuarioActual = Validaciones.Helper.ObtenerDatos(Session["Usuario"]);
+
+        }
+
+        
     }
 }

@@ -87,6 +87,8 @@
     <Content Include="AspxAdmin\AdminRespuesta.aspx" />
     <Content Include="AspxAdmin\AdminUsuarios.aspx" />
     <Content Include="AspxAdmin\BackOffice.aspx" />
+    <Content Include="AspxAdmin\DiseñarCurso.aspx" />
+    <Content Include="AspxAdmin\EdicionCurso.aspx" />
     <Content Include="AspxUsuario\Contacto.aspx" />
     <Content Include="AspxUsuario\EdicionPerfil.aspx" />
     <Content Include="AspxUsuario\Emitir.aspx" />
@@ -98,6 +100,7 @@
     <Content Include="AspxUsuario\Imagenes\Iconos\codementor-fondonegro.png" />
     <Content Include="AspxUsuario\Imagenes\Iconos\llaveBorde.png" />
     <Content Include="AspxUsuario\Imagenes\Iconos\llaveDorada.png" />
+    <Content Include="AspxUsuario\Imagenes\Iconos\youtube.png" />
     <Content Include="AspxUsuario\Inicio.aspx" />
     <Content Include="AspxUsuario\InicioRegistrado.aspx" />
     <Content Include="AspxUsuario\MisCursos.aspx" />
@@ -121,6 +124,9 @@
     <Content Include="ContentBs\bootstrap.rtl.min.css" />
     <Content Include="ContentBs\Site.css" />
     <Content Include="ContentBs\StyleSheetGlobal.css" />
+    <Content Include="Content\AdminCursoRev.css" />
+    <Content Include="Content\AdminCursos.css" />
+    <Content Include="Content\AdminInscripciones.css" />
     <Content Include="Content\CodeMentorStyle.css" />
     <Content Include="Content\DetalleCurso.css" />
     <Content Include="Content\InicioNoRegis.css" />
@@ -219,6 +225,20 @@
     </Compile>
     <Compile Include="AspxAdmin\BackOffice.aspx.designer.cs">
       <DependentUpon>BackOffice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxAdmin\DiseñarCurso.aspx.cs">
+      <DependentUpon>DiseñarCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxAdmin\DiseñarCurso.aspx.designer.cs">
+      <DependentUpon>DiseñarCurso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxAdmin\EdicionCurso.aspx.cs">
+      <DependentUpon>EdicionCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxAdmin\EdicionCurso.aspx.designer.cs">
+      <DependentUpon>EdicionCurso.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxUsuario\Contacto.aspx.cs">
       <DependentUpon>Contacto.aspx</DependentUpon>

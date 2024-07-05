@@ -6,55 +6,54 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <!-- CONTENEDOR PRINCIPAL -->
+
     <div class="container mt-4">
         <div class="row">
 
-            <!-- VIDEO, TITULO Y DESCRIPCION -->
+            <h2 class="mb-3" id="curso-titulo"><%: CursoActual.Nombre %></h2>
+
+            <p class="mb-4" id="videoDescription"><%: CursoActual.Descripcion %></p>
             <div class="col-md-8">
 
-                <!-- VIDEO -->
-                <div class="ratio ratio-16x9 mb-4">
+                <div class="ratio ratio-16x9 mb-4 video-container">
                     <asp:Literal ID="videoFrame" runat="server"></asp:Literal>
                 </div>
 
-                <!-- BARRA DE PROGRESO -->
                 <div class="progress mt-4">
                     <div id="progressBar" class="progress-bar bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
 
-                <!-- TITULO -->
-                <h3 id="curso-titulo"><%: CursoActual.Nombre %></h3>
 
-                <!-- DESCRIPCION -->
-                <p id="videoDescription"><%: CursoActual.Descripcion %></p>
-
-                <%--PREGUNTAD Y RESPUESTAS--%>
 
             </div>
 
             <!-- UNIDADES Y CLASES -->
             <div class="col-md-4">
-                <div class="accordion" id="acordeonClases">
+                <div class="accordion" style="background-color: #e5e5e517" id="acordeonClases">
 
                     <!-- FOREACH DE LISTA PARA CARGAR TODAS LAS UNIDADES DEL CURSO -->
-                    <% foreach (var unidad in ListaUnidades)
+                    <% 
+                        int contador = 0;
+                        foreach (var unidad in ListaUnidades)
                         {
-                            var unidadId = "unidad" + unidad.IdUnidad;%>
+                            var unidadId = "unidad" + unidad.IdUnidad;
+                            bool valido = contador < 2; // logica para mostrar x cantidad desplegados
+                            contador++;
+        %>
 
                     <div class="accordion-item">
 
                         <!-- ENCABEZADO DE ACORDEON: INDICA NUMERO Y NOMBRE DE UNIDAD -->
                         <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<%:unidadId%>" aria-expanded="true" aria-controls="<%:unidadId %>">
+                            <button class="accordion-button <%= valido ? "" : "collapsed" %>" type="button" data-bs-toggle="collapse" data-bs-target="#<%:unidadId%>" aria-expanded="<%= valido %>" aria-controls="<%:unidadId %>">
                                 <%:unidad.Numero%>. <%:unidad.Nombre%>
                             </button>
                         </h2>
 
                         <!-- CUERPO DEL ACORDEON: INDICA LAS CLASES DE LA UNIDAD-->
-                        <div id="<%:unidadId%>" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+                        <div id="<%:unidadId%>" class="accordion-collapse collapse <%= valido ? "show" : "" %>" data-bs-parent="#acordeonClases">
+                            <div class="accordion-body" style="background-color: #e5e5e517">
                                 <ul class="list-group">
 
                                     <!-- FOREACH DE LISTA PARA CARGAR TODAS LAS CLASES DE LA UNIDAD -->
@@ -67,12 +66,10 @@
                                         <div class="d-flex align-items-center">
 
                                             <a href="Reproduccion.aspx?IdClase=<%:clase.IdClase %>" class="btn btn-link text-decoration-none text-reset" role="button">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-play-circle-fill icon-indigo" viewBox="0 0 16 16">
-                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
-                                                </svg>
-                                            </a>
+                                                <img src="Imagenes/Iconos/youtube.png" alt="Icono" style="width: 30px; height: 30px;" />
 
-                                            <input class="form-check-input me-1" type="checkbox" style="width: 30px; height: 30px;" value="" id="checkbox_<%: clase.IdClase %>">
+                                            </a>
+                                            <input class="form-check-input ms-2" type="checkbox" style="width: 30px; height: 30px;" value="" id="checkbox_<%: unidad.IdUnidad%>">
                                         </div>
                                     </li>
                                     <%}%>
@@ -85,14 +82,92 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="row col-8 mb-3" style="margin-top: 1%">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div>
+                    <p class="mb-0">Últimas Preguntas:</p>
+                </div>
+                <div>
+                    <a class="btn btn-primary" href="PreguntasRespuestas.aspx?IdCurso=<%:CursoActual.IdCurso %>">Realizar Pregunta</a>
+                    <a class="btn btn-secondary" href="PreguntasRespuestas.aspx?IdCurso=<%:CursoActual.IdCurso %>">Sección Preguntas y Respuestas</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="row col-8" style="margin-bottom: 7%">
+
+            <div class="list-group">
+
+                <%foreach (var preg in ListadoPreguntasRespuestas)
+                    { %>
+
+                <div class="list-group-item" style="margin-bottom: 2%; background-color: #e5e5e517; border-radius: 15px; border: solid lightgrey 1px; font-weight: normal">
+                    <div class="d-flex w-100 justify-content-between" style="margin-top: 0.8%; font-weight: normal">
+                        <h5 class="mb-1"><%:preg.TituloPregunta %></h5>
+                        <div class="mb-3">
+                            <small><%:preg.NombreApellidoUser%></small>
+
+                            <%if (!ObtenerRespuesta(preg.IdPregunta) && ViendoUsuarios)
+                                { %>
+                            <a href="PreguntaDetalle.aspx?Modificar=<%:preg.IdPregunta %>">
+                                <img src="https://static.thenounproject.com/png/3082103-200.png" style="width: 30px; height: 30px" />
+                            </a>
+
+                            <% } %>
+                        </div>
+                    </div>
+                    <p class="mb-1"><%:preg.CuerpoPregunta%></p>
+
+                    <small><%:preg.FechaPregunta %></small>
+
+                    <%if (ObtenerRespuesta(preg.IdPregunta))
+                        {  %>
+                    <div class="ml-4 mt-3">
+                        <div class="card" style="border-radius: 15px">
+                            <div class="card-body">
+                                <p class="card-text"><%:preg.CuerpoRespuesta %></p>
+
+                                <small class="text-muted">Respondido por : <%:Validaciones.Helper.ObtenerNombreAdmin() %> </small>
+                                <small><%:preg.FechaRespuesta %></small>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <%}
+                        else
+                        {  %>
+                    <div class="ml-4 mt-3">
+                        <div class="card" style="border-radius: 15px">
+                            <div class="card-body">
+                                <h6 style="color: cornflowerblue">Consulta pendiente de Respuesta.</h6>
+
+                            </div>
+                        </div>
+                    </div>
+                    <%} %>
+                </div>
+
+
+                <% } %>
+            </div>
+        </div>
+
     </div>
 
-    <!-- BOOTSTRAP PARA QUE FUNCIONEN BIEN LOS DESPLEGABLES -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+
 
     <!-- ESTILOS -->
     <style>
+        .video-container {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
         #curso-titulo {
             font-weight: bold;
             margin-top: 20px;
@@ -100,13 +175,13 @@
 
         .accordion-button {
             color: var(--white);
-            background-color: var(--electric-indigo);
+            background-color: #5689f5;
             font-weight: bold;
         }
 
             .accordion-button:not(.collapsed) {
                 color: var(--white);
-                background-color: var(--electric-indigo);
+                background-color: #5689f5;
             }
 
         .accordion-body {
@@ -127,20 +202,12 @@
             outline: none;
         }
 
-        .icon-indigo {
-            color: var(--electric-indigo); /* Cambia el color del ícono a indigo */
-            transition: color 0.3s ease; /* Agrega una transición suave al color */
-        }
 
-            .icon-indigo:hover {
-                color: indigo; /* Cambia el color al pasar el mouse */
-            }
 
         .progress {
             height: 30px; /* Altura de la barra de progreso */
             margin-bottom: 20px; /* Espaciado inferior */
         }
-
     </style>
 
 </asp:Content>

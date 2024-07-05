@@ -27,7 +27,7 @@ namespace CodeMentor.AdminAspx
         public void LlenarCursos()
         {
             ListaCursos = Validaciones.Helper.LlenaryMapearCursosAdminDto();
-            DgwCursos.DataSource = ListaCursos;
+            DgwCursos.DataSource = ListaCursos.OrderBy(x => x.Nombre);
             DgwCursos.DataBind();
         }
         protected void DgwCursos_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -43,6 +43,62 @@ namespace CodeMentor.AdminAspx
                 // Redirigir a la otra página con el ID del curso como parámetro en la URL
                 Response.Redirect("AdminCursoRev.aspx?IdCurso=" + cursoID);
             }
+        }
+     
+      
+
+        protected void ddlOrdenarPrecio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           int selectedItem = int.Parse(ddlOrdenarPrecio.SelectedValue);
+            LlenarCursos();
+            if (selectedItem == 1)
+            {
+                ListaCursos = ListaCursos.OrderBy(x => x.Importe).ToList();
+            }
+            else
+            {
+                ListaCursos = ListaCursos.OrderByDescending(x => x.Importe).ToList();
+            }
+            DgwCursos.DataSource = ListaCursos;
+            DgwCursos.DataBind();
+
+        }
+        protected void ddlOrdenarInscripciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedItem = int.Parse(ddlOrdenarInscripciones.SelectedValue);
+            LlenarCursos();
+
+            if (selectedItem == 1)
+            {
+                //ordenar x inscripciones
+                ListaCursos = ListaCursos.OrderByDescending(x => x.CantidadInscriptos).ToList();
+
+            }
+            else
+            {
+               ListaCursos = ListaCursos.OrderBy(x => x.CantidadInscriptos).ToList();
+            
+            }
+            DgwCursos.DataSource = ListaCursos;
+            DgwCursos.DataBind();
+        }
+
+        protected void ddlAZ_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedItem = int.Parse(ddlAZ.SelectedValue);
+            LlenarCursos();
+            if (selectedItem == 1)
+            {
+                ListaCursos = ListaCursos.OrderByDescending(x => x.Nombre).ToList();
+
+            }
+            else
+            {
+                ListaCursos = ListaCursos.OrderBy(x => x.Nombre).ToList();
+
+            }
+            DgwCursos.DataSource = ListaCursos;
+            DgwCursos.DataBind();
         }
     }
 }

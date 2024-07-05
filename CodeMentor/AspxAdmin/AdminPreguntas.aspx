@@ -10,10 +10,50 @@
         .Black {
             border: solid 1px black;
         }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+         .card {
+            border: none;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-text {
+            color: #333;
+        }
+        .list-group-item {
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .list-group-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
     </style>
     <asp:ScriptManager runat="server" />
-    <div class="container mt-5">
-        <h2 class="mb-4" style="margin-left: 20%">Administración de Preguntas y Respuestas</h2>
+    <div class="container mt-5" style="background:white;padding:1.7%;margin-bottom:1%; border-radius:20px">
+        <div >
+
+        <h2 class="mb-4" style="margin-left: 20%;">Administración de Preguntas y Respuestas</h2>
 
         <asp:Panel runat="server" ID="PanelNavegacion">
 
@@ -39,6 +79,7 @@
             </nav>
 
         </asp:Panel>
+        </div>
 
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
