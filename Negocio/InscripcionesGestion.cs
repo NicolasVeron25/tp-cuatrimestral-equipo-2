@@ -33,7 +33,7 @@ namespace Negocio
             }
         }
 
-        public int CantidadInscriptos(int IdCurso=0)
+        public int CantidadInscriptos(int IdCurso = 0)
         {
             ConexionBD AccesoBD = new ConexionBD();
             try
@@ -49,7 +49,7 @@ namespace Negocio
                     AccesoBD.SetParametro("@IdCurso", IdCurso);
 
                 }
-                    AccesoBD.SetQuery(query);
+                AccesoBD.SetQuery(query);
                 AccesoBD.EjecutarLectura();
                 AccesoBD.Lector.Read();
                 int cant = (int)AccesoBD.Lector[0];
@@ -190,12 +190,50 @@ namespace Negocio
                 AccesoBD.EjecutarLectura();
                 if (AccesoBD.Lector.Read())
                 {
-         
+
                     return true;
                 }
                 else
                 {
                     return false;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+
+
+        }
+        public InscripcionesGestionDto ObtenerdtoInscripciones(int Id)
+        {
+            ConexionBD AccesoBD = new ConexionBD();
+            InscripcionesGestionDto inscripto = new InscripcionesGestionDto();
+
+            try
+            {
+                AccesoBD.SetQuery("SELECT INF.NOMBRE AS NOMBREUSUARIO,INF.APELLIDO AS APELLIDOUSUARIO,C.NOMBRE AS NOMBRECURSO,I.IDINSCRIPCION AS IDINSCRIPCION,I.BAJA AS ESTADO FROM INSCRIPCIONES I INNER JOIN CURSOS C ON I.IDCURSO=C.IDCURSO INNER JOIN INFORMACION_USUARIO INF ON INF.IDUSUARIO=I.IDUSUARIO WHERE I.BAJA=0 AND I.IDUSUARIO=@IdUsuario");
+                AccesoBD.SetParametro("@IdUsuario", Id);
+                AccesoBD.EjecutarLectura();
+                if (AccesoBD.Lector.Read())
+                {
+                    inscripto.IdInscripcion = (int)AccesoBD.Lector["IDINSCRIPCION"];
+                    inscripto.Nombre = (string)AccesoBD.Lector["NOMBREUSUARIO"];
+                    inscripto.Apellido = (string)AccesoBD.Lector["APELLIDOUSUARIO"];
+                    inscripto.NombreCurso = (string)AccesoBD.Lector["NOMBRECURSO"];
+                    inscripto.Baja = (bool)AccesoBD.Lector["ESTADO"];
+
+                    return inscripto;
+                }
+                else
+                {
+                    return null;
                 }
             }
 

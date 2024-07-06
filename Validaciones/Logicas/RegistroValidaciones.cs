@@ -62,7 +62,10 @@ namespace Validaciones.Logicas
             InscripcionesGestion inscripciones = new InscripcionesGestion();
             RuleFor(x => x)
                 .Must(gestion => !inscripciones.Existencia(gestion.IdInscripcion))
-                .WithMessage("El usuario se encuentra inscripto en algun curso, primero debe eliminar la inscripcion");
+                
+                .WithMessage("El usuario se encuentra inscripto en algun curso, primero debe eliminar la inscripcion")
+             .WithName("IdInscripcion");
+
         }
 
 

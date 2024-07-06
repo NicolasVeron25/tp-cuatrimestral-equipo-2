@@ -54,15 +54,17 @@ namespace CodeMentor.AdminAspx
 
         protected void btnConfirmaEliminacion_Click(object sender, EventArgs e)
         {
-            UsuariosGestion userGestion = new UsuariosGestion();
-            InscripcionesGestionDto inscripcion = new InscripcionesGestionDto();
+            UsuariosGestion userGestion = new UsuariosGestion();       
+            InscripcionesGestion gestion = new InscripcionesGestion();
 
 
             foreach (GridViewRow row in gviewUsuarios.Rows)
             {
                 CheckBox chkEliminar = (CheckBox)row.FindControl("chkEliminar");
                 int idUsuario = (int)gviewUsuarios.DataKeys[row.RowIndex].Value;
+                InscripcionesGestionDto inscripcion =gestion.ObtenerdtoInscripciones(idUsuario);
                 EliminarUsuarioValidacion validador = new EliminarUsuarioValidacion();
+                
                     var existe = validador.Validate(inscripcion);
                 var error = existe.Errors.FirstOrDefault(x => x.PropertyName == "IdInscripcion");
                 if (chkEliminar != null && chkEliminar.Checked)
@@ -72,7 +74,7 @@ namespace CodeMentor.AdminAspx
                         userGestion.EliminarUsuario(idUsuario);
 
                     }
-                    else
+                    else if (error != null)
                     {
                         ErrorEliminar.InnerText = error.ErrorMessage;
                         ErrorEliminar.Visible = true;
