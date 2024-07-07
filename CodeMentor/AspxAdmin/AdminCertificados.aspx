@@ -3,54 +3,46 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link href="../Content/AdminCursos.css" rel="stylesheet" />
 
-    <asp:ScriptManager runat="server" />
     <%--CONTENEDOR PRINCIPAL--%>
-    <div class="container mt-5">
+    <div class="container" style="margin-top: 2%">
 
-        <%--TITULO DE LA PAGINA--%>
-        <h2 class="mb-4" style="margin-left: 47%">Certificados</h2>
-        <%--SECCION DE LENGUAJES--%>
-        <div class="row col-8" style="margin-left: 20%; margin-bottom: 7%">
+        <%--TITULO--%>
+        <div class="row">
+            <div class="col-12 text-center mb-2">
+                <h2 class="title">Certificados</h2>
+            </div>
+        </div>
 
-            <div class="list-group">
+        <%--FILTROS--%>
+        <div class="row">
+            <p class="mb-3">Ordenar por:</p>
+            <div class="col-3 d-flex align-items-center">
+                <asp:DropDownList OnSelectedIndexChanged="ddlAZ_SelectedIndexChanged" ID="ddlAZ" AutoPostBack="true" runat="server" CssClass="form-control form-select btn-secondary mb-3">
+                    <asp:ListItem Text="A-Z" Value="2" />
+                    <asp:ListItem Text="Z-A" Value="1" />
+                </asp:DropDownList>
+            </div>
+        </div>
 
-                <%--PRIMER BOTON DE LENGUAJES--%>
-                <button type="button" class="list-group-item list-group-item-action" aria-current="true" id="botonLenguajes">
-                    <h5 class="mb-1 text-lg-center">Certificados</h5>
-                </button>
-
-                <%--LISTA DE CERTIFICACIONES--%>
-                <%foreach (var certificado in ListaCertificados)
-                    {%>
-                <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                    <%:certificado.IdCertificacion%> , <%:certificado.Nombre %>, <%:certificado.Apellido %>, <%:certificado.NombreCurso %>
-                </li>
-                <%}%>
-
-                <hr />
+        <%--CERTIFICADOS--%>
+        <div class="row">
+            <div class="col-12">
+                <asp:GridView runat="server" ID="DgwCertificados" AutoGenerateColumns="False" CssClass="table-custom">
+                    <Columns>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <img src="https://i.ibb.co/Bn577Ng/certificado-icono.png" alt="Certificado Icono" width="60" height="60" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="IdCertificacion" Visible="false" />
+                        <asp:BoundField DataField="NombreCurso" HeaderText="Curso" Visible="True" />
+                        <asp:BoundField DataField="Nombre" HeaderText="Nombre Usuario" Visible="True" />
+                        <asp:BoundField DataField="Apellido" HeaderText="Apellido Usuario" Visible="True" />
+                    </Columns>
+                </asp:GridView>
             </div>
         </div>
     </div>
-
-    <%--ESTILOS--%>
-    <style>
-        #botonLenguajes {
-            background-color: lightgray;
-            color: black;
-        }
-
-        .iconoModificacion, .iconoEliminacion {
-            width: 30px;
-            height: 30px;
-            margin-left: 10px;
-        }
-
-        .list-group-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-    </style>
-
 </asp:Content>
