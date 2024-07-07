@@ -3,8 +3,6 @@ using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace CodeMentor.AspxAdmin
@@ -12,45 +10,50 @@ namespace CodeMentor.AspxAdmin
     public partial class AdminLenguajes : System.Web.UI.Page
     {
         public List<Lenguaje> ListaLenguajes { get; set; }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                CargarLenguajes();
+                llenarLenguajes();
             }
         }
-
-        private void CargarLenguajes()
+        public void llenarLenguajes()
         {
             var lenguajeGestion = new LenguajesGestion();
             ListaLenguajes = lenguajeGestion.ListarLenguajes();
-            if (ListaLenguajes == null)
-            {
-                ListaLenguajes = new List<Lenguaje>();
-            }
+            DgwLenguajes.DataSource = ListaLenguajes;
+            DgwLenguajes.DataBind();
         }
-
+        protected void DgwLenguajes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            // agregar la logica para manejar otras acciones en el Gridview
+        }
         protected void btnAgregarLenguaje_Click(object sender, EventArgs e)
         {
             var nuevoLenguaje = new Lenguaje { Nombre = txtNuevoLenguaje.Text };
             var lenguajeGestion = new LenguajesGestion();
             lenguajeGestion.InsertarLenguaje(nuevoLenguaje);
 
-            // Refrescar la lista de lenguajes
-            CargarLenguajes();
+            // Refresca la lista de lenguajes
+            llenarLenguajes();
 
-            // Refrescar la página para mostrar los cambios
+            // Refresca la paagina para mostrar los cambios
             Response.Redirect(Request.RawUrl);
         }
-        protected void btnModificarLenguaje_Click(Object sender, EventArgs e)
+        protected void ddlAZ_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        protected void btnEliminarLenguaje_Click(Object sender, EventArgs e)
-        {
-
+            int selectedItem = int.Parse(ddlAZ.SelectedValue);
+            llenarLenguajes();
+            if (selectedItem == 1)
+            {
+                ListaLenguajes = ListaLenguajes.OrderByDescending(x => x.Nombre).ToList();
+            }
+            else
+            {
+                ListaLenguajes = ListaLenguajes.OrderBy(x => x.Nombre).ToList();
+            }
+            DgwLenguajes.DataSource = ListaLenguajes;
+            DgwLenguajes.DataBind();
         }
     }
 }
