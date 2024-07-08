@@ -342,6 +342,32 @@ namespace Negocio
 
 
         }
+
+        public void CambiarContraseña(string mail, string pass)
+        {
+            ConexionBD Acceso = new ConexionBD();
+            try
+            {
+                Acceso.SetQuery("UPDATE USUARIOS SET PASS=@PASS WHERE EMAIL=@MAIL");
+                Acceso.SetParametro("@PASS", pass);
+                Acceso.SetParametro("@MAIL", mail);
+                Acceso.EjecutarAccion();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (Acceso != null)
+                    Acceso.CerrarConexion();
+
+
+
+            }
+        }
+
         //public void EliminarTablaInformacion(int Id)
         //{
         //    ConexionBD Acceso = new ConexionBD();

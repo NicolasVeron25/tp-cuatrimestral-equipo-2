@@ -107,6 +107,7 @@
     <Content Include="AspxUsuario\MisCursos.aspx" />
     <Content Include="AspxUsuario\PreguntaDetalle.aspx" />
     <Content Include="AspxUsuario\Prueba.aspx" />
+    <Content Include="AspxUsuario\RecuperarContraseña.aspx" />
     <Content Include="ContentBs\bootstrap-grid.css" />
     <Content Include="ContentBs\bootstrap-grid.min.css" />
     <Content Include="ContentBs\bootstrap-grid.rtl.css" />
@@ -317,6 +318,13 @@
     </Compile>
     <Compile Include="AspxUsuario\Prueba.aspx.designer.cs">
       <DependentUpon>Prueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxUsuario\RecuperarContraseña.aspx.cs">
+      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxUsuario\RecuperarContraseña.aspx.designer.cs">
+      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
