@@ -72,6 +72,17 @@ namespace Negocio.ServicioEmail
             email.Body = mensaje;
 
         }
+        public void EmailUsuariodeBaja(string mailUsuario, string mensaje)
+        {
+            email = new MailMessage();
+            email.To.Add("codementor.net@gmail.com");
+            email.Subject= mailUsuario;
+            email.IsBodyHtml = true;
+            email.Body= mensaje;
+
+
+        }
+
         public void EnviarEmail()
         {
             try

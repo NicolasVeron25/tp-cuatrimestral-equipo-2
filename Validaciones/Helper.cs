@@ -168,7 +168,27 @@ namespace Validaciones
             return nombre;
 
         }
-     
+
+        /*
+         *  POSIBLE METODO PARA RECUPERAR CONTRASEÑA  // habria que imprementarlo asi:
+         *                                            // **string codigo = new GeneradorCodigos().GenerarCodigoAleatorio() **               
+                 
+             public string GenerarCodigoAleatorio()
+    {
+        int longitud=8 // o la que consideremos
+        Random random = new Random();
+        const string caracteresPermitidos = "0123456789";
+        char[] codigo = new char[longitud];
+
+        for (int i = 0; i < longitud; i++)
+        {
+            codigo[i] = caracteresPermitidos[random.Next(caracteresPermitidos.Length)];
+        }
+
+        return new string(codigo);
+    }
+         */
+
 
     }
 }
