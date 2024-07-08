@@ -78,13 +78,13 @@ namespace CodeMentor.AspxUsuario
         protected global::System.Web.UI.WebControls.Label LblErrorPass;
 
         /// <summary>
-        /// confirmarPass control.
+        /// btnconfirmarPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button confirmarPass;
+        protected global::System.Web.UI.WebControls.Button btnconfirmarPass;
 
         /// <summary>
         /// BtnEnviarCodigo control.

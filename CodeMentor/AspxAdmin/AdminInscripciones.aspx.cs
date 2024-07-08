@@ -65,6 +65,7 @@ namespace CodeMentor.AspxAdmin
         protected void btnOcultar_Click(object sender, EventArgs e)
         {
             GridViewInscripciones.Visible = false;
+            btnOcultar.Visible = false;
         }
     }
 }

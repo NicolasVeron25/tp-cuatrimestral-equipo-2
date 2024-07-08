@@ -104,11 +104,11 @@ namespace Negocio
             var Acceso = new ConexionBD();
             try
             {
-                string query = "INSERT INTO INSCRIPCIONES (IDCURSO,IDUSUARIO,FECHA) VALUES(@NombreCurso,@IdUsuario,@Fecha)";
+                string query = ("INSERT INTO INSCRIPCIONES (IDCURSO,IDUSUARIO,FECHA) VALUES(@NombreCurso,@IdUsuario,GETDATE())");
                 Acceso.SetQuery(query);
                 Acceso.SetParametro("@NombreCurso", insc.IdCurso);
                 Acceso.SetParametro("@IdUsuario", insc.IdUsuario);
-                Acceso.SetParametro("@Fecha", insc.Fecha);
+                //Acceso.SetParametro("@Fecha", insc.Fecha);
 
                 Acceso.EjecutarAccion();
             }

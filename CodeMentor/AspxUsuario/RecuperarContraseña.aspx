@@ -98,9 +98,11 @@
                         <div class="input-group mb-2">
                             <asp:TextBox runat="server" type="password" CssClass="form-control form-control-lg bg-light fs-6" ClientIDMode="Static" placeholder="Repetir Contraseña" ID="TxtRepetirPass" />
                         </div>
-                        <asp:Label ID="LblErrorPass" Style="color: red; font-size: 13px" runat="server" />
-                          <asp:Button ID="confirmarPass" runat="server" Text="Confirmar" onClick="confirmarPass_Click" CssClass="btn btn-primary" />
-                    </div>
+                         <div class="text-center" style="margin-bottom: 2%">
+                        <asp:Label ID="LblErrorPass"  Style="color: red; font-size: 13px" runat="server" />
+                          <asp:Button ID="btnconfirmarPass" runat="server" Text="Confirmar Pass" onClick="confirmarPass_Click" CssClass="btn btn-primary" />
+                    
+                         </div>
                     <div class="text-center" style="margin-bottom: 2%">
                         <asp:Button ID="BtnEnviarCodigo" runat="server" Text="Enviar codigo" OnClick="BtnEnviarCodigo_Click" CssClass="btn btn-primary" />
                         <asp:Button ID="BtnConfirmarCodigo" runat="server" Text="Confirmar" onClick="BtnConfirmarCodigo_Click" CssClass="btn btn-primary" />

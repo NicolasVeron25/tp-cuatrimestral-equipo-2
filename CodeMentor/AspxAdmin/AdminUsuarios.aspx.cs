@@ -63,20 +63,22 @@ namespace CodeMentor.AdminAspx
                 CheckBox chkEliminar = (CheckBox)row.FindControl("chkEliminar");
                 int idUsuario = (int)gviewUsuarios.DataKeys[row.RowIndex].Value;
                 InscripcionesGestionDto inscripcion =gestion.ObtenerdtoInscripciones(idUsuario);
-                EliminarUsuarioValidacion validador = new EliminarUsuarioValidacion();
+                InscripcionesGestion ins = new InscripcionesGestion();
+                bool existencia = ins.Existencia(idUsuario);
+                //EliminarUsuarioValidacion validador = new EliminarUsuarioValidacion();
                 
-                    var existe = validador.Validate(inscripcion);
-                var error = existe.Errors.FirstOrDefault(x => x.PropertyName == "IdInscripcion");
+                //    var existe = validador.Validate(inscripcion);
+                //var error = existe.Errors.FirstOrDefault(x => x.PropertyName == "IdInscripcion");
                 if (chkEliminar != null && chkEliminar.Checked)
                 {
-                    if (!existe.IsValid)
+                    if (existencia==false)
                     {
                         userGestion.EliminarUsuario(idUsuario);
 
                     }
-                    else if (error != null)
+                    else 
                     {
-                        ErrorEliminar.InnerText = error.ErrorMessage;
+                        ErrorEliminar.InnerText = "El usuario tiene inscripciones activas";
                         ErrorEliminar.Visible = true;
                         // informar que el usuario esta inscripto en algun curso
                         return;

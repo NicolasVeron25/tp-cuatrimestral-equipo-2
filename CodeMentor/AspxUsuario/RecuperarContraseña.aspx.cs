@@ -14,11 +14,15 @@ namespace CodeMentor.AspxUsuario
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            TxtCodigo.Enabled = false;
-            BtnConfirmarCodigo.Visible = false;
-            TxtPass.Visible = false;
-            TxtRepetirPass.Visible = false;
-            lblErrorCodigo.Visible = false;
+            if (!IsPostBack)
+            {
+                TxtCodigo.Enabled = false;
+                BtnConfirmarCodigo.Visible = false;
+                btnconfirmarPass.Visible = false;
+                TxtPass.Visible = false;
+                TxtRepetirPass.Visible = false;
+                lblErrorCodigo.Visible = false;
+            }
         }
 
         protected void BtnEnviarCodigo_Click(object sender, EventArgs e)
@@ -51,9 +55,9 @@ namespace CodeMentor.AspxUsuario
         {
             UsuariosGestion user = new UsuariosGestion();
             string mail = TxtEmail.Text;
-            string pass = TxtPass.Text; 
+            string pass = TxtPass.Text;
 
-            user.CambiarContraseña(mail,pass)
+            user.CambiarContraseña(mail, pass);
         }
     }
 }
