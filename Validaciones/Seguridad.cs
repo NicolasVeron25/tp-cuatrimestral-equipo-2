@@ -25,7 +25,6 @@ namespace Validaciones
         {
             //     Usuario user = usuario != null ? (Usuario)usuario : null; // valida si es null o no y transforma de object a Usuario
 
-
             Usuario user;
             if(usuario != null)
             {

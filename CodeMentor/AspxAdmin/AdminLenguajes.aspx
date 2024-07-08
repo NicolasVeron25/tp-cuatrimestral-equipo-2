@@ -25,13 +25,13 @@
                 </asp:DropDownList>
             </div>
             <div class="col-3 text-end">
-                <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#modalAgregarLenguaje">Agregar</a>
+                <asp:Button Text="Agregar Lenguajes" OnClick="BtnAgregarLenguaje_Click1" class="btn btn-primary mb-3" ID="BtnAgregarLenguaje" runat="server" />
             </div>
         </div>
 
         <%--LENGUAJES--%>
         <div class="row">
-            <div class="col-12">
+            <div class="col-8">
                 <asp:GridView runat="server" ID="DgwLenguajes" OnRowCommand="DgwLenguajes_RowCommand" AutoGenerateColumns="False" CssClass="table-custom">
                     <Columns>
                         <asp:BoundField DataField="IdLenguaje" Visible="false" />
@@ -41,36 +41,65 @@
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre del Lenguaje" Visible="True" />
-                        <asp:TemplateField HeaderText="Accion" Visible="True">
+                        <asp:TemplateField HeaderText="Cursos Asociados" Visible="True">
                             <ItemTemplate>
-                                <%--<asp:Button ID="btnEditar" runat="server" Text="Visualizar" CommandName="Visualizar" CommandArgument='<%#Eval("IdCurso") %>' CssClass="btn-visualizar" />--%>
+                                <asp:Button runat="server" CssClass="btn btn-primary" Text="Ver" Style="width: 50%" CommandName="Cursos" CommandArgument='<%# Eval("IdLenguaje") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
-        </div>
+            <div class="col-4">
 
-        <%--MODAL DE AGREGAR--%>
-        <div class="modal fade" id="modalAgregarLenguaje" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Agregar lenguaje</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="txtNuevoLenguaje">Nombre:</label>
-                            <asp:TextBox ID="txtNuevoLenguaje" runat="server" CssClass="form-control" />
+                <asp:Panel runat="server" ID="PanelCursosAsociados">
+                    <h5 class="mb-4">Cursos Asociados :</h5>
+                    <asp:Repeater runat="server" ID="RptCursosLenguaje">
+                        <ItemTemplate>
+                            <label class="form-control mb-3">
+                                <%#Eval("Nombre")%>
+                            </label>
+
+                        </ItemTemplate>
+                    </asp:Repeater>
+
+                </asp:Panel>
+                <asp:Panel runat="server" ID="PanelAgregarLenguaje">
+                    <div class="card ">
+                        <div class="card-header">
+                            <h5 class="card-title">Agregar lenguaje</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nombre:</label>
+                                <asp:TextBox ID="TxtNombre" runat="server" CssClass="form-control" />
+                            </div>
+                            <asp:GridView runat="server" style="margin-top:3%;margin-bottom:1%" DataKeyNames="IdCurso" AutoGenerateColumns="false" CssClass="table-custom" ID="DgwCursosAsociar">
+                                <Columns>
+                                    <asp:BoundField DataField="IdCurso" HeaderText="IdCurso" Visible="false" />
+
+                                    <asp:BoundField DataField="Nombre" HeaderText="Curso" Visible="True" />
+
+                                    <asp:TemplateField HeaderText="Asociar" Visible="true">
+                                        <ItemTemplate>
+                                            <asp:CheckBox ID="chkAsociar" runat="server" CssClass="custom-checkbox" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                </Columns>
+
+                            </asp:GridView>
+                        </div>
+                        <div class="card-footer text-right">
+                            <asp:Button ID="BtnAgregar" runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="btnAgregarLenguaje_Click" />
+                            <asp:Button ID="BtnCancelar" runat="server" CssClass="btn btn-danger" Text="Cancelar" OnClick="BtnCancelar_Click" />
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <asp:Button ID="btnAgregarLenguaje" runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="btnAgregarLenguaje_Click" />
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Cancelar</button>
-                    </div>
-                </div>
+                </asp:Panel>
+
             </div>
         </div>
+
+
     </div>
 
 </asp:Content>

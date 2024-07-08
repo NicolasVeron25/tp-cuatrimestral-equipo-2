@@ -72,8 +72,7 @@
 
     <div class="container mt-5">
         <h1 class="text-center mb-4">Recuperar Contraseña </h1>
-        <h5 class="text-center mb-4">Presione el boton para generar codigo</h5>
-        <h5 class="text-center mb-4">le llegara al correo indicado</h5>
+        <h5 class="text-center mb-4">Presione el boton para enviar el codigo de recuperacion a su email.</h5>
         <div class="row justify-content-center" style="margin-bottom: 16%">
             <div class="col-md-8">
                 <div class="card">
@@ -113,5 +112,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </asp:Content>

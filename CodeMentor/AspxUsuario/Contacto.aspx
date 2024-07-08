@@ -3,41 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <style>
-        .styled-checkbox {
-            display: inline-flex;
-            align-items: center;
-        }
-
-            .styled-checkbox input[type="checkbox"] {
-                appearance: none;
-                width: 20px;
-                height: 20px;
-                border: 2px solid #ccc;
-                border-radius: 3px;
-                margin-right: 10px;
-                position: relative;
-                cursor: pointer;
-            }
-
-                .styled-checkbox input[type="checkbox"]:checked {
-                    background-color: #4CAF50;
-                    border-color: #4CAF50;
-                }
-
-                    .styled-checkbox input[type="checkbox"]:checked::after {
-                        content: '';
-                        position: absolute;
-                        width: 5px;
-                        height: 10px;
-                        border: solid white;
-                        border-width: 0 2px 2px 0;
-                        top: 3px;
-                        left: 7px;
-                        transform: rotate(45deg);
-                    }
-    </style>
-
+    
+    <link href="../Content/Contacto.css" rel="stylesheet" />
     <asp:ScriptManager runat="server" />
     <%if (Request.QueryString["Contacto"] != null)
         {  %>

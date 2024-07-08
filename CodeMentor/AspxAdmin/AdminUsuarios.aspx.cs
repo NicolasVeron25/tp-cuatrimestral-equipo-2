@@ -23,8 +23,6 @@ namespace CodeMentor.AdminAspx
                 listaUsuarios = userGestion.ListarUsuarios();
                 gviewUsuarios.DataSource = listaUsuarios;
                 gviewUsuarios.DataBind();
-                gviewUsuarios.Visible = false;
-                btnOcultar.Visible = false;
                 btnConfirmaEliminacion.Visible = false;
                 if (listaUsuarios.Count != 0)
                 {
@@ -33,20 +31,6 @@ namespace CodeMentor.AdminAspx
             }
         }
 
-        protected void btnVerUsuarios_Click(object sender, EventArgs e)
-        {
-            gviewUsuarios.Visible = true;
-            btnOcultar.Visible = true;
-            btnConfirmaEliminacion.Visible = true;
-            UsuariosGestion n = new UsuariosGestion();
-        }
-
-        protected void btnOcultar_Click(object sender, EventArgs e)
-        {
-            gviewUsuarios.Visible = false;
-            btnOcultar.Visible = false;
-            btnConfirmaEliminacion.Visible = false;
-        }
 
         protected void gviewUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {

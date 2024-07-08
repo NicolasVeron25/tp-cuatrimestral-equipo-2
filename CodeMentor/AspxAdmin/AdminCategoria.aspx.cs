@@ -18,6 +18,8 @@ namespace CodeMentor.AspxAdmin
             if (!IsPostBack)
             {
                 llenarCategorias();
+                PanelCursosAsociados.Visible = false;
+                PanelAgregarCat.Visible = false;
             }
         }
         public void llenarCategorias()
@@ -43,6 +45,43 @@ namespace CodeMentor.AspxAdmin
             }
             DgwCategorias.DataSource = ListaCategorias;
             DgwCategorias.DataBind();
+        }
+
+        protected void DgwCategorias_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Ver")
+            {
+                string CatId = e.CommandArgument.ToString();
+                PanelCursosAsociados.Visible = true;
+                PanelAgregarCat.Visible = false;
+                var cursosGestion = new CursosGestion();
+                var cursos = cursosGestion.ObtenerCursosPorCategoria(int.Parse(CatId));
+                RptCursosCategoria.DataSource = cursos;
+                RptCursosCategoria.DataBind();
+            }
+
+        }
+
+        protected void BtnAgregar_Panel_Click(object sender, EventArgs e)
+        {
+            PanelAgregarCat.Visible = true;
+            PanelCursosAsociados.Visible = false;
+        }
+
+        protected void BtnAgregarCat_Click(object sender, EventArgs e)
+        {
+
+            Categoria cat = new Categoria();
+            var catGestion  = new CategoriasGestion();
+            cat.Nombre = TxtNombre.Text;
+            catGestion.InsertarCategoria(cat);
+            Response.Redirect("AdminCategoria.aspx", false);
+
+        }
+
+        protected void BtnCancelarCat_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminCategoria.aspx", false);
         }
     }
 }

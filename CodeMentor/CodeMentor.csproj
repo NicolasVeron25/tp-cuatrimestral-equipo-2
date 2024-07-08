@@ -106,12 +106,8 @@
     <Content Include="AspxUsuario\InicioRegistrado.aspx" />
     <Content Include="AspxUsuario\MisCursos.aspx" />
     <Content Include="AspxUsuario\PreguntaDetalle.aspx" />
-    <Content Include="AspxUsuario\Prueba.aspx" />
-<<<<<<< HEAD
     <Content Include="AspxUsuario\Reseña.aspx" />
-=======
     <Content Include="AspxUsuario\RecuperarContraseña.aspx" />
->>>>>>> ae742a163b974d5a2ac5b714f1e9ea927a622b81
     <Content Include="ContentBs\bootstrap-grid.css" />
     <Content Include="ContentBs\bootstrap-grid.min.css" />
     <Content Include="ContentBs\bootstrap-grid.rtl.css" />
@@ -133,12 +129,21 @@
     <Content Include="Content\AdminCursoRev.css" />
     <Content Include="Content\AdminCursos.css" />
     <Content Include="Content\AdminInscripciones.css" />
+    <Content Include="Content\AdminUsuarios.css" />
     <Content Include="Content\CodeMentorStyle.css" />
+    <Content Include="Content\Contacto.css" />
     <Content Include="Content\DetalleCurso.css" />
+    <Content Include="Content\EdicionPerfil.css" />
     <Content Include="Content\EmitirCertificado.css" />
+    <Content Include="Content\ErrorUsuarioDeBaja.css" />
+    <Content Include="Content\Guia.css" />
     <Content Include="Content\InicioNoRegis.css" />
     <Content Include="Content\InicioRegis.css" />
+    <Content Include="Content\MasterAdmin.css" />
     <Content Include="Content\MisCursos.css" />
+    <Content Include="Content\PerfilUsuario.css" />
+    <Content Include="Content\Registrar.css" />
+    <Content Include="Content\Reseña.css" />
     <Content Include="Content\ReseñasStyle.css" />
     <Content Include="Global.asax" />
     <Content Include="AspxUsuario\Ingresar.aspx" />
@@ -317,28 +322,19 @@
     <Compile Include="AspxUsuario\PreguntaDetalle.aspx.designer.cs">
       <DependentUpon>PreguntaDetalle.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AspxUsuario\Prueba.aspx.cs">
-      <DependentUpon>Prueba.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AspxUsuario\Prueba.aspx.designer.cs">
-      <DependentUpon>Prueba.aspx</DependentUpon>
-    </Compile>
-<<<<<<< HEAD
     <Compile Include="AspxUsuario\Reseña.aspx.cs">
       <DependentUpon>Reseña.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AspxUsuario\Reseña.aspx.designer.cs">
       <DependentUpon>Reseña.aspx</DependentUpon>
-=======
+    </Compile>
     <Compile Include="AspxUsuario\RecuperarContraseña.aspx.cs">
       <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AspxUsuario\RecuperarContraseña.aspx.designer.cs">
       <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
->>>>>>> ae742a163b974d5a2ac5b714f1e9ea927a622b81
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
+using Validaciones;
 
 namespace CodeMentor.AspxUsuario
 {
@@ -15,6 +16,11 @@ namespace CodeMentor.AspxUsuario
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!Seguridad.Login(Session["Usuario"])){
+                Response.Redirect("Ingresar.aspx", false);
+            }
+
             var CursoGestion = new CursosGestion();
             var UnidadGestion = new UnidadGestion();
             var ClaseGestion = new ClaseGestion();

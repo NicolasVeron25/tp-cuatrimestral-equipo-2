@@ -21,7 +21,23 @@ namespace Dominio.DataTransferObjects
         public string ImporteFormateado { get { return Importe.ToString("F2"); } }
         public string UrlPortada { get; set; }
 
+        public string UrlPortadaCarpeta
+        {
+            get
+            {
+                //logica para manejo en carpetas desde aspxAdmin/imagenes/ o via url!
 
+                if (UrlPortada.ToLower().Contains("https")) //si es una url
+                {
+                    return UrlPortada;
+                }
+                else
+                {
+                    return "~/AspxAdmin/Imagenes/Cursos/" + UrlPortada;
+
+                }
+            }
+        }
         public int IdCategoria { get; set; }
 
         public string NombreCategoria { get; set; }

@@ -41,7 +41,7 @@
                     <div class="input-group mb-5 d-flex justify-content-between">
                        
                         <div class="forgot">
-                            <small><a href="#">¿Olvidaste la contraseña?</a></small> <!-- Redirect a Aspx ResetPass-->
+                            <small><a href="RecuperarContraseña.aspx">¿Olvidaste la contraseña?</a></small> <!-- Redirect a Aspx ResetPass-->
                         </div>
                     </div>
                     <div class="input-group mb-3">

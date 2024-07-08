@@ -26,6 +26,11 @@ namespace CodeMentor
         // Metodos
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Usuario"] == null)
+            {
+                Response.Redirect("Ingresar.aspx", false);
+            }
+
             if (!IsPostBack && Request.QueryString["idClase"] == null)
             {
                 

@@ -5,33 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="BusquedaCursos" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <style>
-        .container {
-            margin-top: 20px;
-        }
-
-        .card-header {
-            background-color: #343a40;
-            color: #fff;
-        }
-
-        .form-group label {
-            font-weight: bold;
-        }
-
-
-        .estrellita {
-            color: gold;
-            font-size: 1.5em;
-        }
-
-            .estrellita option {
-                color: gold;
-                font-size: 1.5rem;
-            }
-    </style>
-
+    <link href="../Content/Reseña.css" rel="stylesheet" />
+   
     <div class="container" style="margin-top: 3.5%; margin-bottom: 13%">
         <div class=" col-10 " style="margin-left: 5%">
 

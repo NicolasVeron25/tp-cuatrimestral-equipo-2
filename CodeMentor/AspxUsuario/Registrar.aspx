@@ -3,36 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <style>
-        .error {
-            color: red;
-            font-size: 14px;
-        }
-        /*------------ CONTENEDOR DE REGISTRO ------------*/
-
-        .box-area { /*MANTIENE TODO EN UN RECUADRO MAS CHICO*/
-            width: 465px;
-        }
-
-        /*------------ BOX DE REGISTRO ------------*/
-
-        .right-box {
-            padding: 40px 30px 40px 40px;
-        }
-
-        /*------------ MODIFICACIONES PARA PANTALLAS MÁS CHICAS ------------*/
-
-        @media only screen and (max-width: 768px) { /*SIN ESTAS MODIFICACIONES EL FORMULARIO SE ROMPE AL ACHICAR LA PANTALLA*/
-            .box-area {
-                margin: 0 10px;
-            }
-
-            .right-box {
-                padding: 20px;
-            }
-        }
-    </style>
+    <link href="../Content/Registrar.css" rel="stylesheet" />
+    
     <script>
 
         //Validacion de campos con Javascript

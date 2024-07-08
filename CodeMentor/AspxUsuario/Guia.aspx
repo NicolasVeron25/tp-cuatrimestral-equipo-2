@@ -3,35 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <style>
-        .step-card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-            .step-card h2 {
-                font-size: 1.5rem;
-                color: #007bff;
-            }
-
-            .step-card p {
-                font-size: 1.1rem;
-            }
-
-        .step-icon {
-            font-size: 3rem;
-            color: #007bff;
-        }
-
-        .header-title {
-            color: #343a40;
-            font-weight: 700;
-        }
-    </style>
+   
+    <link href="../Content/Guia.css" rel="stylesheet" />
     <% if (Request.QueryString["ComoInscribirse"] != null)
         {
-            //UsuarioActual = (Usuario)["Usuario"]
+
     %>
     <div class="container mt-5">
         <h1 class="text-center mb-4">¿Cómo Inscribirse en Nuestros Cursos?</h1>
@@ -59,17 +35,29 @@
                    </div>
                             </li>
                             <li>El proceso de habilitación del curso puede demorar hasta 72 horas.</li>
-                            <li>IMPORTANTE : A EL EMAIL DESDE EL QUE SE ENVIE EL COMPROBANTE DEBERA SER EL MISMO POR EL QUE ACCEDIO A LA PLATAFORMA. </li>
+                            <li>IMPORTANTE : EL EMAIL DESDE EL QUE SE ENVIE EL COMPROBANTE DEBERA SER EL MISMO POR EL QUE ACCEDIO A LA PLATAFORMA. </li>
                             <li>Recibirás un correo electrónico de confirmación una vez que tu inscripción haya sido procesada.</li>
-                                <li>Debes presionar el boton Generar Inscripcion para reservar tu cupo </li>
+                            <li>Deberas Generar  la Inscripcion para reservar tu cupo. </li>
                         </ol>
                         <div class="text-center">
-                            <a href="Contacto.aspx?Contacto=<%:1%>" class="btn btn-primary btn-lg">Contactar soporte</a>
-                             <asp:Button ID="BtnGenerarInscripcion"  Cssclass="btn btn-primary btn-lg " runat="server" OnClick="BtnGenerarInscripcion_Click" Text="Generar Inscripcion" />
+                            <%if (Session["Usuario"] == null)
+                                {%>
+
+                            <a href="Registrar.aspx" class="btn btn-primary btn-lg">Inscribirse</a>
+
+                            <a href="Contacto.aspx?Contacto=<%:1%>" class="btn btn-secondary btn-lg">Contactar soporte</a>
+
+
+                            <%}
+                                else
+                                {  %>
+                            <asp:Button ID="BtnGenerarInscripcion" CssClass="btn btn-primary btn-lg " runat="server" OnClick="BtnGenerarInscripcion_Click" Text="Generar Inscripcion" />
+
+                            <a href="Contacto.aspx?Contacto=<%:1%>" class="btn btn-secondary btn-lg">Contactar soporte</a>
+                            <h5 id="avisoIns" style="margin-top: 2%" runat="server">Solicitud de Inscripcion generada correctamente. Aguarde confirmacion al email una vez recibida la transferencia.</h5>
+                            <%} %>
                         </div>
-                        <div class="text-center">
-                            <a class="btn btn-primary btn-lg">Solicitar Inscripción</a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -106,14 +94,13 @@
                             <li>El proceso de habilitación del curso puede demorar hasta 72 horas.</li>
                             <li>IMPORTANTE : EL EMAIL DESDE EL QUE SE ENVIE EL COMPROBANTE DEBERA SER EL MISMO POR EL QUE ACCEDIO A LA PLATAFORMA. </li>
                             <li>Recibirás un correo electrónico de confirmación una vez que tu inscripción haya sido procesada.</li>
-                        
+
                         </ol>
                         <div class="text-center">
                             <a href="Contacto.aspx?Contacto=<%:1%>" class="btn btn-primary btn-lg">Contactar soporte</a>
-                           
+
                         </div>
-                      <%--  <div class="text-center">
-                        </div>--%>
+
                     </div>
                 </div>
             </div>

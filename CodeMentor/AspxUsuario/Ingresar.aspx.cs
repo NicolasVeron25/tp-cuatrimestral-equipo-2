@@ -3,9 +3,11 @@ using Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Validaciones;
 
 namespace CodeMentor
 {
@@ -13,7 +15,10 @@ namespace CodeMentor
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Seguridad.Login(Session["Usuario"]))
+            {
+                Response.Redirect("InicioRegistrado.aspx"); // si ya esta logueado , no puede volver a ingresar
+            }
             if (!IsPostBack)
             {
                 LblErrorLogin.Visible = false;

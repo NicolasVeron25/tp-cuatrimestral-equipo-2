@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
@@ -10,6 +11,86 @@ namespace Negocio
 {
     public class CursosGestion
     {
+        public List<Curso> ObtenerCursosPorCategoria (int idCat)
+        {
+            ConexionBD AccesoBD = new ConexionBD();
+
+            try
+            {
+                string query = "SELECT c.IdCurso as CursoId, c.NOMBRE,c.DESCRIPCION,c.REQUISITOS,c.IMPORTE,c.URL_PORTADA,c.IDCATEGORIA,c.FECHA_CREACION from CURSOS C WHERE C.IDCATEGORIA = @IdCat";
+                AccesoBD.SetQuery(query);
+                AccesoBD.SetParametro("@IdCat", idCat);
+                AccesoBD.EjecutarLectura();
+                var ListCursos = new List<Curso>();
+                while (AccesoBD.Lector.Read())
+                {
+                    Curso curso = new Curso();
+                    curso.IdCurso = (int)AccesoBD.Lector["CursoId"];
+                    curso.Nombre = (string)AccesoBD.Lector["NOMBRE"];
+                    curso.Descripcion = (string)AccesoBD.Lector["DESCRIPCION"];
+                    curso.Requisitos = (string)AccesoBD.Lector["REQUISITOS"];
+                    curso.Importe = (decimal)AccesoBD.Lector["IMPORTE"];
+                    curso.UrlPortada = (string)AccesoBD.Lector["URL_PORTADA"];
+                    curso.IdCategoria = (int)AccesoBD.Lector["IDCATEGORIA"];
+                    curso.FechaCreacion = (DateTime)AccesoBD.Lector["FECHA_CREACION"];
+                    ListCursos.Add(curso);
+                }
+
+                return ListCursos;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+
+
+        }
+        public List<Curso> ObtenerCursosPorLenguaje(int idLenguaje)
+        {
+            ConexionBD AccesoBD = new ConexionBD();
+
+            try
+            {
+                string query = "SELECT c.IdCurso as CursoId, c.NOMBRE,c.DESCRIPCION,c.REQUISITOS,c.IMPORTE,c.URL_PORTADA,c.IDCATEGORIA,c.FECHA_CREACION from CURSOS c inner join LENGUAJESXCURSO lc on c.IDCURSO = lc.IDCURSO where lc.idlenguaje = @idLenguaje";
+                AccesoBD.SetQuery(query);
+                AccesoBD.SetParametro("@IdLenguaje",idLenguaje);
+                AccesoBD.EjecutarLectura();
+                var ListCursos = new List<Curso>(); 
+                while( AccesoBD.Lector.Read())
+                {
+                    Curso curso = new Curso();
+                    curso.IdCurso = (int)AccesoBD.Lector["CursoId"];
+                    curso.Nombre = (string)AccesoBD.Lector["NOMBRE"];
+                    curso.Descripcion = (string)AccesoBD.Lector["DESCRIPCION"];
+                    curso.Requisitos = (string)AccesoBD.Lector["REQUISITOS"];
+                    curso.Importe = (decimal)AccesoBD.Lector["IMPORTE"];
+                    curso.UrlPortada = (string)AccesoBD.Lector["URL_PORTADA"];
+                    curso.IdCategoria = (int)AccesoBD.Lector["IDCATEGORIA"];
+                    curso.FechaCreacion = (DateTime)AccesoBD.Lector["FECHA_CREACION"];
+                    ListCursos.Add(curso);
+                }
+               
+                return ListCursos;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+
+
+        }
         public void AñadirCurso(Curso cursoInsertar)
         {
             ConexionBD AccesoBd = new ConexionBD();
@@ -73,7 +154,7 @@ namespace Negocio
 
             try
             {
-                string query = "SELECT C.IDCURSO ,C.NOMBRE,C.URL_PORTADA FROM CURSOS AS C INNER JOIN INSCRIPCIONES AS I ON I.IDCURSO = C.IDCURSO WHERE I.IDUSUARIO = @IDUSER";
+                string query = "SELECT C.IDCURSO ,C.NOMBRE,C.URL_PORTADA FROM CURSOS AS C INNER JOIN INSCRIPCIONES AS I ON I.IDCURSO = C.IDCURSO WHERE I.HABILITADA=1 AND I.IDUSUARIO = @IDUSER";
                 AccesoBD.SetQuery(query);
                 AccesoBD.SetParametro("@IDUSER", IdUsuario);
                 AccesoBD.EjecutarLectura();

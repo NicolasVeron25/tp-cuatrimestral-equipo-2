@@ -31,6 +31,7 @@ namespace CodeMentor.AspxUsuario
             string codigo= Helper.GenerarCodigoAleatorio();
             string destino = TxtEmail.Text;
             envio.EmailRecuperarPass(destino, codigo);
+            envio.EnviarEmail();
             BtnEnviarCodigo.Visible = false;
             BtnConfirmarCodigo.Visible = true;
             TxtCodigo.Enabled = true;
@@ -40,7 +41,8 @@ namespace CodeMentor.AspxUsuario
 
         protected void BtnConfirmarCodigo_Click(object sender, EventArgs e)
         {
-            if (TxtCodigo == Session["codigo"])
+            int codigo =int.Parse(Session["codigo"].ToString());
+            if (TxtCodigo.Text == codigo.ToString())
             {
                 TxtPass.Visible = true;
                 TxtRepetirPass.Visible=true;

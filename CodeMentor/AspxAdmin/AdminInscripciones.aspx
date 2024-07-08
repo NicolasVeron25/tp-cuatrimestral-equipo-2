@@ -9,35 +9,45 @@
         <div class="row col">
 
             <h2 class="mb-4 text-center">ADMINISTRACIÓN INSCRIPCIONES</h2>
-            <div class="button-container center-horizontal">
-                <h3>Acciones</h3>
-                <asp:Panel runat="server">
-                    <asp:Button ID="btn_VerInscripciones" runat="server" CssClass="btn btn-primary btn-block mt-2" OnClick="btn_VerInscripciones_Click" Text="Ver todas las inscripciones" />
-                    <asp:Button ID="btn_HabilitarInscripion" runat="server" CssClass="btn btn-primary btn-block mt-2" Text="Habilitar Inscripción" />
-                    <asp:Button ID="btnEliminar" CssClass="btn btn-danger btn-block mt-2" OnClick="btnEliminar_Click" runat="server" Text="Eliminar Inscripción" />
-                </asp:Panel>
-            </div>
             <div class="content-container">
+                <div style="width: 100%">
+                    <asp:Button Text="Todas" CssClass="btn btn-primary" runat="server" ID="BtnTodas" OnClick="BtnTodas_Click" />
+
+                    <asp:Button Text="Pendientes de Habilitacion" CssClass="btn btn-secondary" runat="server" ID="BtnPendientes" OnClick="BtnPendientes_Click" />
+                    <asp:Button Text="Habilitadas" CssClass="btn btn-secondary" runat="server" ID="Button1" OnClick="BtnHabilitados_Click" />
+
+                    <asp:Button Text="Dadas de Baja" CssClass="btn btn-secondary" runat="server" ID="BtnDadasBaja" OnClick="BtnDadasBaja_Click" />
+
+                </div>
                 <div class="gridview-container">
                     <asp:GridView ID="GridViewInscripciones" DataKeyNames="IdInscripcion" CssClass="grid table table-striped" runat="server" AutoGenerateColumns="false">
                         <Columns>
+                            <asp:BoundField HeaderText="IdInscripcion" DataField="IdInscripcion" Visible="false" />
                             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                             <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
                             <asp:BoundField HeaderText="Curso" DataField="NombreCurso" />
-                            <asp:TemplateField HeaderText="Eliminar">
+                            <asp:TemplateField HeaderText="Habilitar/Deshabilitar">
                                 <ItemTemplate>
-                                    <asp:CheckBox ID="chkEliminar" runat="server" />
+                                    <asp:CheckBox ID="chkHabilitar" runat="server" Checked='<%# Eval("Habilitada") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Habilitar">
+                            <asp:TemplateField HeaderText="Eliminar/Dar de Alta">
                                 <ItemTemplate>
-                                    <asp:CheckBox ID="chkHabilitar" runat="server" />
+                                    <asp:CheckBox ID="chkEliminar" runat="server" Checked='<%# Eval("Baja") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
+
                         </Columns>
                     </asp:GridView>
-                    <asp:Button ID="btnOcultar" CssClass="btn btn-outline-dark mt-3" runat="server" Text="Ocultar grilla" OnClick="btnOcultar_Click" />
+
                 </div>
+                <div class="col-12" style="margin-left:122%" >
+
+                    <asp:Button ID="btnHabilitar"  CssClass="btn btn-primary me-2" Text="Gestionar Habilitaciones" OnClick="btnHabilitar_Click" runat="server" />
+                    <asp:Button ID="btnConfirmarEliminacion"  CssClass="btn btn-primary me-2" Text="Gestionar Altas/Bajas" OnClick="btnConfirmarEliminacion_Click" runat="server" />
+
+                </div>
+                <h5 id="H5Info" runat="server"></h5>
             </div>
         </div>
 

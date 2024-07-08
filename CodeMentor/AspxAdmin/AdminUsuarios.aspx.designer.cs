@@ -15,15 +15,6 @@ namespace CodeMentor.AdminAspx
     {
 
         /// <summary>
-        /// Control btnVerUsuarios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerUsuarios;
-
-        /// <summary>
         /// Control lblCantUsuarios.
         /// </summary>
         /// <remarks>
@@ -58,14 +49,5 @@ namespace CodeMentor.AdminAspx
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnConfirmaEliminacion;
-
-        /// <summary>
-        /// Control btnOcultar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOcultar;
     }
 }

@@ -15,31 +15,40 @@ namespace CodeMentor.AspxAdmin
     {
 
         /// <summary>
-        /// Control btn_VerInscripciones.
+        /// Control BtnTodas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_VerInscripciones;
+        protected global::System.Web.UI.WebControls.Button BtnTodas;
 
         /// <summary>
-        /// Control btn_HabilitarInscripion.
+        /// Control BtnPendientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_HabilitarInscripion;
+        protected global::System.Web.UI.WebControls.Button BtnPendientes;
 
         /// <summary>
-        /// Control btnEliminar.
+        /// Control Button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminar;
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// Control BtnDadasBaja.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnDadasBaja;
 
         /// <summary>
         /// Control GridViewInscripciones.
@@ -51,12 +60,30 @@ namespace CodeMentor.AspxAdmin
         protected global::System.Web.UI.WebControls.GridView GridViewInscripciones;
 
         /// <summary>
-        /// Control btnOcultar.
+        /// Control btnHabilitar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOcultar;
+        protected global::System.Web.UI.WebControls.Button btnHabilitar;
+
+        /// <summary>
+        /// Control btnConfirmarEliminacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmarEliminacion;
+
+        /// <summary>
+        /// Control H5Info.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H5Info;
     }
 }

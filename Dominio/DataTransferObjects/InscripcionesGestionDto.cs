@@ -20,6 +20,8 @@ namespace Dominio.DTOS
         public int IdInscripcion { get; set; }
 
         public bool Baja { get; set; }
+        public bool Habilitada { get; set; }
+
 
     }
 }

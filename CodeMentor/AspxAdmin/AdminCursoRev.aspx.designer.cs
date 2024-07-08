@@ -69,6 +69,24 @@ namespace CodeMentor.AspxAdmin
         protected global::System.Web.UI.WebControls.TextBox TxtModifRequisitos;
 
         /// <summary>
+        /// Control ImgCurso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ImgCurso;
+
+        /// <summary>
+        /// Control TxtNuevaImagen.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile TxtNuevaImagen;
+
+        /// <summary>
         /// Control BtnModificar.
         /// </summary>
         /// <remarks>

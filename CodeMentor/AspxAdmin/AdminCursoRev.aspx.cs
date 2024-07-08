@@ -3,6 +3,7 @@ using Dominio.DataTransferObjects;
 using Negocio;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -21,13 +22,13 @@ namespace CodeMentor.AspxAdmin
 
                 LLenarCurso();
                 LLenarCategorias();
-                
+
                 DeshabiitarCampos();
             }
 
             if (Request.QueryString["idClase"] != null)
             {
-                
+
                 DdlCategorias.Visible = false;
 
                 var idClase = int.Parse(Request.QueryString["idClase"]);
@@ -61,6 +62,7 @@ namespace CodeMentor.AspxAdmin
             BtnCancelarCambios.Visible = false;
             DdlCategorias.Visible = false;
             BtnModificar.Visible = true;
+            TxtNuevaImagen.Visible = false;
         }
 
         public void LLenarCurso()
@@ -81,11 +83,11 @@ namespace CodeMentor.AspxAdmin
             DdlCategorias.DataTextField = "Nombre";
             DdlCategorias.DataValueField = "IdCategoria";
             DdlCategorias.DataSource = GestionCategorias.ListarCategorias();
-          
+
             DdlCategorias.DataBind();
             DdlCategorias.Visible = true;
         }
-      
+
         protected void BtnCancelarCambios_Click(object sender, EventArgs e)
         {
             LLenarCurso();
@@ -95,14 +97,56 @@ namespace CodeMentor.AspxAdmin
         {
             LLenarCurso();
             int con = 0;
-            //comparacion de cursos . el actual y datos ingresados
-            if(TxtModifNombre.Text != CursoDto.Nombre && TxtModifNombre.Enabled)
+
+
+            if (TxtModifNombre.Text != CursoDto.Nombre && TxtModifNombre.Enabled)
             {
+
                 CursoDto.Nombre = TxtModifNombre.Text;
+                if (TxtNuevaImagen.PostedFile != null)
+                {
+                    string ruta = Server.MapPath("./Imagenes/Cursos/"); //me ubico en la carpeta a trabajar
+
+                    // si guardo nombre, nombre contiene espacios, los limpio.
+                    string nombreLimpio = CursoDto.Nombre.Replace(" ", "_"); // reemplazo espacios por _
+                    string nombreArchivo = "Curso-" + nombreLimpio + ".jpg";
+                    string rutaCompleta = Path.Combine(ruta, nombreArchivo);
+
+
+                    if (File.Exists(rutaCompleta))
+                    {
+                        File.Delete(rutaCompleta);
+                    }
+
+                    TxtNuevaImagen.PostedFile.SaveAs(rutaCompleta);
+
+                    CursoDto.UrlPortada = nombreArchivo;
+                }
+               
             }
             else
             {
-                con++;
+                con += 2;
+                if (TxtNuevaImagen.PostedFile != null)
+                {
+                    string ruta = Server.MapPath("./Imagenes/Cursos/"); //me ubico en la carpeta a trabajar
+
+                    // si guardo nombre, nombre contiene espacios, los limpio.
+                    string nombreLimpio = CursoDto.Nombre.Replace(" ", "_"); // reemplazo espacios por _
+                    string nombreArchivo = "Curso-" + nombreLimpio + ".jpg";
+                    string rutaCompleta = Path.Combine(ruta, nombreArchivo);
+
+                    
+                    if (File.Exists(rutaCompleta))
+                    {
+                        File.Delete(rutaCompleta);
+                    }
+
+                    TxtNuevaImagen.PostedFile.SaveAs(rutaCompleta);
+
+                    CursoDto.UrlPortada = nombreArchivo;
+                }
+
             }
 
             if (TxtModifDescripcion.Text != CursoDto.Descripcion && TxtModifDescripcion.Enabled)
@@ -140,9 +184,9 @@ namespace CodeMentor.AspxAdmin
             {
                 con++;
             }
-            if (con == 5)
+            if (con == 6)
             {
-                // si contador llega a 5, no existen cambios. sino tengoque evaluar nuevamente cada campo..
+                // si contador llega a 6, no existen cambios. sino tengoque evaluar nuevamente cada campo..
                 Response.Redirect("AdminCursoRev.aspx?IdCurso=" + CursoDto.IdCurso);
             }
 
@@ -152,7 +196,7 @@ namespace CodeMentor.AspxAdmin
             Curso.Descripcion = CursoDto.Descripcion;
             Curso.Importe = CursoDto.Importe;
             Curso.IdCategoria = CursoDto.IdCategoria;
-
+            Curso.UrlPortada = CursoDto.UrlPortada;
             CursoGestion.ModificarCurso(Curso);
             Response.Redirect("AdminCursoRev.aspx?IdCurso=" + CursoDto.IdCurso);
 
@@ -164,7 +208,7 @@ namespace CodeMentor.AspxAdmin
             BtnCancelarCambios.Visible = true;
             BtnModificar.Visible = false;
             BtnGuardarCambios.Visible = true;
-            
+
             TxtModifDescripcion.Enabled = true;
             TxtModifDescripcion.Visible = true;
             TxtModifImporte.Enabled = true;
@@ -173,7 +217,7 @@ namespace CodeMentor.AspxAdmin
             TxtModifNombre.Visible = true;
             TxtModifRequisitos.Enabled = true;
             TxtModifRequisitos.Visible = true;
-
+            TxtNuevaImagen.Visible = true;
             DdlCategorias.Visible = true;
 
             TxtModifImporte.Text = CursoDto.ImporteFormateado;

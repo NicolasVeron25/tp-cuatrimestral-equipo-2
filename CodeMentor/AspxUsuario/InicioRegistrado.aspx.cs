@@ -20,6 +20,10 @@ namespace CodeMentor.AspxUsuario
         public Usuario UsuarioActual { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Usuario"] == null)
+            {
+                Response.Redirect("Ingresar.aspx",false);
+            }
             if (!IsPostBack)
             {
                 ObtenerUsuario();
@@ -29,10 +33,7 @@ namespace CodeMentor.AspxUsuario
             }
             ObtenerUsuario();
 
-            if (Session["Usuario"] == null)
-            {
-                Response.Redirect("Ingresar.aspx");
-            }
+            
             CargarCursos();
             CargarCursosNoFinalizados();
 

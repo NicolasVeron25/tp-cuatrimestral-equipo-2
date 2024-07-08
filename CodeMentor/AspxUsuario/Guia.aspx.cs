@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using CodeMentor.AspxAdmin;
+using Dominio;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -14,43 +15,56 @@ namespace CodeMentor.AspxUsuario.Ayuda
     {
         public Usuario UsuarioActual { get; set; }
         public Curso CursoManejo { get; set; }
-        //public Inscripcion inscripcion { get; set; }
+
 
         public InscripcionesGestion nuevaInscripcion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                Session.Remove("CursoSolicitud"); 
                 Obtenercurso();
-            
+                avisoIns.Visible = false;
             }
+            Obtenercurso();
         }
         public void Obtenercurso()
         {
-            if (Request.QueryString["ComoInscribirse"] == null)
+            if (Request.QueryString["ComoInscribirse"] == null && Session["CursoSolicitud"]== null)
             {
                 return;
             }
-            int idCurso = int.Parse(Request.QueryString["ComoInscribirse"]);
-            var GestionCurso = new CursosGestion();
-            if (GestionCurso.Existencia(idCurso) == null)
+            if (Session["CursoSolicitud"] == null)
             {
-                return;
+                int idCurso = int.Parse(Request.QueryString["ComoInscribirse"]);
+                var GestionCurso = new CursosGestion();
+                if (GestionCurso.Existencia(idCurso) == null)
+                {
+                    return;
+                }
+                CursoManejo = GestionCurso.Existencia(idCurso);
+                Session.Add("CursoSolicitud", CursoManejo);
             }
-
-            CursoManejo = GestionCurso.Existencia(idCurso);
-
+            else
+            {
+                CursoManejo = (Curso)Session["CursoSolicitud"];
+            }
+           
         }
 
         protected void BtnGenerarInscripcion_Click(object sender, EventArgs e)
         {
-        InscripcionesGestion inscripcion = new InscripcionesGestion();
-              Inscripcion inscripcion1 = new Inscripcion();
-            inscripcion1.IdCurso = int.Parse(Request.QueryString["ComoInscribirse"]);
-            UsuarioActual = (Usuario)Session["Usuario"];
-            inscripcion1.IdUsuario=UsuarioActual.IdUsuario;
-            inscripcion.InsertarInscripcion(inscripcion1);
 
+            Obtenercurso();
+            var inscripcionGest = new InscripcionesGestion();
+            Inscripcion inscripcion = new Inscripcion();
+            Curso curso = (Curso)Session["CursoSolicitud"];
+            inscripcion.IdCurso = curso.IdCurso;
+            UsuarioActual = (Usuario)Session["Usuario"];
+            inscripcion.IdUsuario = UsuarioActual.IdUsuario;
+            inscripcionGest.InsertarInscripcion(inscripcion);
+            BtnGenerarInscripcion.Visible = false;
+            avisoIns.Visible = true;
         }
     }
 }
