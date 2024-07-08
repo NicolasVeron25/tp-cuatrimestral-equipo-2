@@ -20,7 +20,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Content/InicioRegis.css" rel="stylesheet" />
     <div class="container " style="margin-top: 1.7%">
-
+        <%if (ListaCursosInscripto.Count > 0)
+            {  %>
         <!-- TITULO PRINCIPAL -->
         <div class="text-center mb-5">
             <div class="d-flex justify-content-center align-items-center">
@@ -49,8 +50,11 @@
             </div>
             <% } %>
         </div>
+        <%}%>
 
         <hr class="lineaBonita">
+        <%if (ListaNoInscripto.Count > 0)
+            {  %>
 
         <div class="text-center mb-3">
             <div class="d-flex justify-content-center align-items-center">
@@ -58,7 +62,6 @@
                 <img src="Imagenes/Iconos/CandadoCerrado.png" class="imgIcon ml-3" style="width: 50px; height: 50px; margin-left: 2%" />
             </div>
         </div>
-
 
         <div class="row row-cols-1 row-cols-md-4 g-4">
             <% foreach (var curso in ListaNoInscripto)
@@ -77,6 +80,7 @@
             </div>
             <% } %>
         </div>
+        <%}%>
     </div>
 
 
