@@ -33,45 +33,45 @@ namespace Validaciones
      
         public static List<PreguntaRespuestaDto> LlenaryMapearPreg_Resp(int idcurso)
         {
-            
 
-                var UsuarioGestion = new UsuariosGestion();
-                var CursoGestion = new CursosGestion();
-                var RespGestion = new RespuestasGestion();
-                var PregGestion = new PreguntasGestion();
 
-                //recorro todas preguntas existentes 
-               var ListadoPreguntasRespuestas = new List<PreguntaRespuestaDto>();
+            var UsuarioGestion = new UsuariosGestion();
+            var CursoGestion = new CursosGestion();
+            var RespGestion = new RespuestasGestion();
+            var PregGestion = new PreguntasGestion();
 
-                foreach (var pregunta in PregGestion.ListadoPreguntas(idcurso))
+            //recorro todas preguntas existentes 
+            var ListadoPreguntasRespuestas = new List<PreguntaRespuestaDto>();
+
+            foreach (var pregunta in PregGestion.ListadoPreguntas(idcurso))
+            {
+                var Usuario = UsuarioGestion.ObtenerDatos(pregunta.IdUsuario);
+                var Curso = CursoGestion.Existencia(pregunta.IdCurso);
+                var Respuesta = RespGestion.Existencia(pregunta.IdPregunta);
+
+                var PreguntaRespuesta = new PreguntaRespuestaDto
                 {
-                    var Usuario = UsuarioGestion.ObtenerDatos(pregunta.IdUsuario);
-                    var Curso = CursoGestion.Existencia(pregunta.IdCurso);
-                    var Respuesta = RespGestion.Existencia(pregunta.IdPregunta);
-
-                    var PreguntaRespuesta = new PreguntaRespuestaDto
-                    {
-                        IdPregunta = pregunta.IdPregunta,
-                        IdCurso = pregunta.IdCurso,
-                        NombreCurso = Curso.Nombre,
-                        IdUsuario = pregunta.IdUsuario,
-                        NombreApellidoUser = Usuario.Nombre + " " + Usuario.Apellido,
-                        FechaPregunta = pregunta.Fecha,
-                        TituloPregunta = pregunta.Titulo,
-                        CuerpoPregunta = pregunta.Cuerpo,
-                        IdRespuesta = null,
-                        CuerpoRespuesta = null,
-                        FechaRespuesta = null,
-                    };
-                    if (Respuesta != null)
-                    {
-                        PreguntaRespuesta.IdRespuesta = Respuesta.IdRespuesta;
-                        PreguntaRespuesta.CuerpoRespuesta = Respuesta.Cuerpo;
-                        PreguntaRespuesta.FechaRespuesta = Respuesta.Fecha;
-                    }
-                    ListadoPreguntasRespuestas.Add(PreguntaRespuesta);
+                    IdPregunta = pregunta.IdPregunta,
+                    IdCurso = pregunta.IdCurso,
+                    NombreCurso = Curso.Nombre,
+                    IdUsuario = pregunta.IdUsuario,
+                    NombreApellidoUser = Usuario.Nombre + " " + Usuario.Apellido,
+                    FechaPregunta = pregunta.Fecha,
+                    TituloPregunta = pregunta.Titulo,
+                    CuerpoPregunta = pregunta.Cuerpo,
+                    IdRespuesta = null,
+                    CuerpoRespuesta = null,
+                    FechaRespuesta = null,
+                };
+                if (Respuesta != null)
+                {
+                    PreguntaRespuesta.IdRespuesta = Respuesta.IdRespuesta;
+                    PreguntaRespuesta.CuerpoRespuesta = Respuesta.Cuerpo;
+                    PreguntaRespuesta.FechaRespuesta = Respuesta.Fecha;
                 }
-                ListadoPreguntasRespuestas = ListadoPreguntasRespuestas.OrderByDescending(x => x.FechaPregunta).ToList(); //ORDENAMOS POR FECHA RECIENTE!
+                ListadoPreguntasRespuestas.Add(PreguntaRespuesta);
+            }
+            ListadoPreguntasRespuestas = ListadoPreguntasRespuestas.OrderByDescending(x => x.FechaPregunta).ToList(); //ORDENAMOS POR FECHA RECIENTE!
 
             return ListadoPreguntasRespuestas;
 
@@ -88,11 +88,11 @@ namespace Validaciones
             var CategoriaGestion = new CategoriasGestion();
             var InscripcionGestion = new InscripcionesGestion();
             var LenguajesGestion = new LenguajesGestion();
-            
+
             //listados necesarios
             var listaCursos = cursoGestion.Listado();
             var listaCursosDto = new List<CursosAdminDto>();
-            
+
             //llenado de info
             foreach (var curso in listaCursos)
             {
@@ -107,12 +107,12 @@ namespace Validaciones
                 cursoDto.IdCategoria = curso.IdCategoria;
                 cursoDto.FechaCreacion = curso.FechaCreacion;
                 //cats
-               cursoDto.NombreCategoria = CategoriaGestion.ObtenerNombreCategoria(curso.IdCategoria);
+                cursoDto.NombreCategoria = CategoriaGestion.ObtenerNombreCategoria(curso.IdCategoria);
 
 
                 //info inscripciones
                 cursoDto.CantidadInscriptos = InscripcionGestion.CantidadInscriptos(curso.IdCurso);
-                
+
                 //info lenguajes
 
                 cursoDto.LenguajesAsociados = LenguajesGestion.ObtenerLenguajesPorCurso(curso.IdCurso);
@@ -142,7 +142,7 @@ namespace Validaciones
             DtoUser.Email = user.Email;
             DtoUser.Celular = userDatos.Celular;
             DtoUser.FechaNacimiento = userDatos.FechaNacimiento;
-            DtoUser.Pass = user.Pass;   
+            DtoUser.Pass = user.Pass;
             return DtoUser;
         }
 
@@ -158,7 +158,7 @@ namespace Validaciones
 
         }
 
-        public static string  ObtenerNombreAdmin()
+        public static string ObtenerNombreAdmin()
         {
             var UserGestion = new UsuariosGestion();
             var infoAdmin = UserGestion.ObtenerAdmin();
@@ -167,25 +167,24 @@ namespace Validaciones
 
         }
 
-        /*
-         *  POSIBLE METODO PARA RECUPERAR CONTRASEÑA  // habria que imprementarlo asi:
-         *                                            // **string codigo = new GeneradorCodigos().GenerarCodigoAleatorio() **               
-                 
-             public string GenerarCodigoAleatorio()
-    {
-        int longitud=8 // o la que consideremos
-        Random random = new Random();
-        const string caracteresPermitidos = "0123456789";
-        char[] codigo = new char[longitud];
 
-        for (int i = 0; i < longitud; i++)
+        // **string codigo = new GeneradorCodigos().GenerarCodigoAleatorio() **               
+
+        public static string GenerarCodigoAleatorio()
         {
-            codigo[i] = caracteresPermitidos[random.Next(caracteresPermitidos.Length)];
+            int longitud = 8; // o la que consideremos
+        Random random = new Random();
+            const string caracteresPermitidos = "0123456789";
+            char[] codigo = new char[longitud];
+
+            for (int i = 0; i < longitud; i++)
+            {
+                codigo[i] = caracteresPermitidos[random.Next(caracteresPermitidos.Length)];
+            }
+
+            return new string(codigo);
         }
 
-        return new string(codigo);
-    }
-         */
 
 
     }

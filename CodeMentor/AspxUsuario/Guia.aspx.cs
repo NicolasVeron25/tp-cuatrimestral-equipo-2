@@ -14,7 +14,7 @@ namespace CodeMentor.AspxUsuario.Ayuda
     {
         public Usuario UsuarioActual { get; set; }
         public Curso CursoManejo { get; set; }
-        public Inscripcion inscripcion { get; set; }
+        //public Inscripcion inscripcion { get; set; }
 
         public InscripcionesGestion nuevaInscripcion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
@@ -44,12 +44,12 @@ namespace CodeMentor.AspxUsuario.Ayuda
 
         protected void BtnGenerarInscripcion_Click(object sender, EventArgs e)
         {
-       
-              
-            inscripcion.IdCurso = int.Parse(Request.QueryString["ComoInscribirse"]);
+        InscripcionesGestion inscripcion = new InscripcionesGestion();
+              Inscripcion inscripcion1 = new Inscripcion();
+            inscripcion1.IdCurso = int.Parse(Request.QueryString["ComoInscribirse"]);
             UsuarioActual = (Usuario)Session["Usuario"];
-            inscripcion.IdUsuario=UsuarioActual.IdUsuario;
-            nuevaInscripcion.InsertarInscripcion(inscripcion);
+            inscripcion1.IdUsuario=UsuarioActual.IdUsuario;
+            inscripcion.InsertarInscripcion(inscripcion1);
 
         }
     }

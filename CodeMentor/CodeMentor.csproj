@@ -107,7 +107,11 @@
     <Content Include="AspxUsuario\MisCursos.aspx" />
     <Content Include="AspxUsuario\PreguntaDetalle.aspx" />
     <Content Include="AspxUsuario\Prueba.aspx" />
+<<<<<<< HEAD
     <Content Include="AspxUsuario\Reseña.aspx" />
+=======
+    <Content Include="AspxUsuario\RecuperarContraseña.aspx" />
+>>>>>>> ae742a163b974d5a2ac5b714f1e9ea927a622b81
     <Content Include="ContentBs\bootstrap-grid.css" />
     <Content Include="ContentBs\bootstrap-grid.min.css" />
     <Content Include="ContentBs\bootstrap-grid.rtl.css" />
@@ -320,12 +324,21 @@
     <Compile Include="AspxUsuario\Prueba.aspx.designer.cs">
       <DependentUpon>Prueba.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="AspxUsuario\Reseña.aspx.cs">
       <DependentUpon>Reseña.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AspxUsuario\Reseña.aspx.designer.cs">
       <DependentUpon>Reseña.aspx</DependentUpon>
+=======
+    <Compile Include="AspxUsuario\RecuperarContraseña.aspx.cs">
+      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxUsuario\RecuperarContraseña.aspx.designer.cs">
+      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
+>>>>>>> ae742a163b974d5a2ac5b714f1e9ea927a622b81
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
