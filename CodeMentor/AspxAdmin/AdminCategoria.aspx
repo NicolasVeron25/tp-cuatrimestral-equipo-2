@@ -29,7 +29,7 @@
 
         <%--CERTIFICADOS--%>
         <div class="row">
-            <div class="col-12">
+            <div class="col-8">
                 <asp:GridView runat="server" ID="DgwCategorias" AutoGenerateColumns="False" CssClass="table-custom">
                     <Columns>
                         <asp:TemplateField>
@@ -39,6 +39,7 @@
                         </asp:TemplateField>
                         <asp:BoundField DataField="IdCategoria" Visible="false" />
                         <asp:BoundField DataField="Nombre" HeaderText="Categoria" Visible="True" />
+                        <asp:ButtonField  Text="Editar" CommandName="Editar"  />
                     </Columns>
                 </asp:GridView>
             </div>

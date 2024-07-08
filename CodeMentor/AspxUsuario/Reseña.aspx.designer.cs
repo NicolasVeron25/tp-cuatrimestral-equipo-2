@@ -11,43 +11,52 @@ namespace CodeMentor.AspxUsuario
 {
 
 
-    public partial class ErrorUsuarioDeBaja
+    public partial class Reseña
     {
 
         /// <summary>
-        /// Control TxtEmail.
+        /// Control H2Yadejo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl H2Yadejo;
 
         /// <summary>
-        /// Control TxtMensaje.
+        /// Control DdlPuntaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtMensaje;
+        protected global::System.Web.UI.WebControls.DropDownList DdlPuntaje;
 
         /// <summary>
-        /// Control BtnEnviarMensaje.
+        /// Control TxtDescripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEnviarMensaje;
+        protected global::System.Web.UI.WebControls.TextBox TxtDescripcion;
 
         /// <summary>
-        /// Control BtnVolver.
+        /// Control EnviarReseña.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnVolver;
+        protected global::System.Web.UI.WebControls.Button EnviarReseña;
+
+        /// <summary>
+        /// Control BtnVerMas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnVerMas;
     }
 }

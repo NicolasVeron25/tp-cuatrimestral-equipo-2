@@ -11,6 +11,39 @@ namespace Negocio
 {
     public class ReseñaGestion
     {
+        public Reseña Existencia(int idcurso,int idinscripcion)
+        {
+            ConexionBD Acceso = new ConexionBD();
+            try
+            {
+                Acceso.SetQuery("SELECT IDRESEÑA,IDCURSO,IDINSCRIPCION,PUNTAJE,DESCRIPCION,FECHA FROM RESEÑAS WHERE IDCURSO=@IDCURSO AND IDINSCRIPCION = @IDINSCRIP");
+                Acceso.SetParametro("@IDCURSO", idcurso);
+                Acceso.SetParametro("@IDINSCRIP", idinscripcion);
+                Acceso.EjecutarLectura();
+                Reseña reseña = new Reseña();
+
+                if (Acceso.Lector.Read())
+                {
+                    reseña.IdReseña = (int)Acceso.Lector["IDRESEÑA"];
+                    reseña.IdCurso = (int)Acceso.Lector["IDCURSO"];
+                    reseña.IdInscripcion = (int)Acceso.Lector["IDINSCRIPCION"];
+                    reseña.Puntaje = (int)Acceso.Lector["PUNTAJE"];
+                    reseña.Descripcion = (string)Acceso.Lector["DESCRIPCION"];
+                    reseña.Fecha = (DateTime)Acceso.Lector["FECHA"];
+                }
+                return reseña;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
 
         public List<ReseñasDto> ListarReseñas(int IdCurso = 0) //devuelve todas o por curso. MANEJA DTO
         {

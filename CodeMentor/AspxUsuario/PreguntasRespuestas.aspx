@@ -15,7 +15,11 @@
         <!-- Filtros y opciones -->
         <div class="row mb-3" style="margin-top: 1%">
             <div class="col-3" style="margin-left: 20.5%">
-                <asp:TextBox runat="server" CssClass="form-control" ID="BtnFiltrarPreguntas" placeholder="Buscar" />
+                <asp:UpdatePanel runat="server">
+                    <ContentTemplate>
+                        <asp:TextBox runat="server" CssClass="form-control" ID="TxtFiltrarPreguntas" OnTextChanged="TxtFiltrarPreguntas_TextChanged" AutoPostBack="true" placeholder="Buscar" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
             </div>
             <div class="col-md-6 text-right">
                 <asp:Button runat="server" CssClass="btn btn-primary" Text="Nueva pregunta" ID="BtnAñadirPregunta" OnClick="BtnAñadirPregunta_Click" />
@@ -25,6 +29,12 @@
         </div>
     </asp:Panel>
 
+    <%if (ListadoPreguntasRespuestas != null)
+        {
+            if (ListadoPreguntasRespuestas.Count != 0)
+            {
+
+    %>
     <asp:Panel runat="server" ID="PanelPreguntas">
         <asp:UpdatePanel runat="server">
             <ContentTemplate>
@@ -60,8 +70,8 @@
                                 </div>
                             </div>
                             <% }
-                            else
-                            { %>
+                                else
+                                { %>
                             <div class="ml-4 mt-3">
                                 <div class="card respuesta-pendiente">
                                     <div class="card-body">
@@ -77,7 +87,15 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </asp:Panel>
-
+    <%}
+        }
+        else
+        {
+            if (PanelNuevaPregunta.Visible == false)
+            {  %>
+    <h3 style="margin-top: 2.1%; margin-left: 21%; margin-bottom: 21%">No se ha realizado ninguna pregunta.</h3>
+    <%}
+        } %>
     <asp:Panel runat="server" ID="PanelNuevaPregunta">
         <div class="row" style="margin-top: 5%; margin-bottom: 10%">
             <div class="col-6" style="margin-left: 20.5%">

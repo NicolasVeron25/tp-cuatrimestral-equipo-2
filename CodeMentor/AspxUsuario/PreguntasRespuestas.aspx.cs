@@ -10,12 +10,13 @@ using System.Web.UI.WebControls;
 using Microsoft.SqlServer.Server;
 using Dominio.DataTransferObjects;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace CodeMentor
 {
     public partial class PreguntasRespuestas : System.Web.UI.Page
     {
-        public bool ViendoUsuarios { get; set;}
+        public bool ViendoUsuarios { get; set; }
         public InformacionUsuario UsuarioActual { get; set; }
         public List<PreguntaRespuestaDto> ListadoPreguntasRespuestas { get; set; }
         public Curso CursoActual { get; set; }
@@ -39,7 +40,10 @@ namespace CodeMentor
                 LLenarPreguntasRespuestas();
                 LlenarUltimasDos();
                 PanelNuevaPregunta.Visible = false;
-
+                if (Request.QueryString["IdCursoNew"] != null)
+                {
+                    PanelNuevaPregunta.Visible = true;
+                }
             }
 
         }
@@ -58,9 +62,22 @@ namespace CodeMentor
             var CursoGestion = new CursosGestion();
             try
             {
-                if (Request.QueryString["IdCurso"] == null) { Response.Redirect("InicioRegistrado.aspx",false); }
+                if (Request.QueryString["IdCurso"] == null && Request.QueryString["IdCursoNew"] == null)
+                {
+                    Response.Redirect("InicioRegistrado.aspx", false);
+                }
 
-                int idCurso = int.Parse(Request.QueryString["IdCurso"]); // CAMBIAR A SESSION PARA RESTRINGIR ACCESO VIA URL! 
+                int idCurso =0;
+                if (Request.QueryString["IdCurso"] == null)
+                {
+                    idCurso = int.Parse(Request.QueryString["IdCursoNew"]);
+                }
+                else
+                {
+                    idCurso = int.Parse(Request.QueryString["IdCurso"]);
+
+                }
+
                 CursoActual = CursoGestion.Existencia(idCurso);
                 if (CursoGestion == null)
                 {
@@ -130,12 +147,12 @@ namespace CodeMentor
         protected void BtnGuardarPregunta_Click(object sender, EventArgs e)
         {
             //validar nulo vacio 
-            if(string.IsNullOrEmpty(TxtTitulo.Text) || string.IsNullOrEmpty(TxtCuerpo.Text))
+            if (string.IsNullOrEmpty(TxtTitulo.Text) || string.IsNullOrEmpty(TxtCuerpo.Text))
             {
                 return;
             }
-            if(TxtTitulo.Text.Length > 150 || TxtCuerpo.Text.Length > 1700 || TxtTitulo.Text.Length<3 
-                || TxtCuerpo.Text.Length <30) //validar longitud NO SUPERE MAXIMO VARCHAR DE BD
+            if (TxtTitulo.Text.Length > 150 || TxtCuerpo.Text.Length > 1700 || TxtTitulo.Text.Length < 3
+                || TxtCuerpo.Text.Length < 30) //validar longitud NO SUPERE MAXIMO VARCHAR DE BD
             {
                 return;
             }
@@ -160,15 +177,23 @@ namespace CodeMentor
         {
 
             CursoActual = (Curso)Session["CursoActual"];
-            ListadoPreguntasRespuestas =Helper.LlenaryMapearPreg_Resp(CursoActual.IdCurso);
+            ListadoPreguntasRespuestas = Helper.LlenaryMapearPreg_Resp(CursoActual.IdCurso);
 
         }
 
         protected void BtnVerTodas_Click1(object sender, EventArgs e)
         {
-            
+
             ViendoUsuarios = false;
             LLenarPreguntasRespuestas();
+        }
+
+        protected void TxtFiltrarPreguntas_TextChanged(object sender, EventArgs e)
+        {
+            CursoActual = (Curso)Session["CursoActual"];
+
+            ListadoPreguntasRespuestas = Helper.LlenaryMapearPreg_Resp(CursoActual.IdCurso).Where(x => x.TituloPregunta.Contains(TxtFiltrarPreguntas.Text)).ToList();
+         
         }
     }
 }

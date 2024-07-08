@@ -70,7 +70,6 @@
                                             <img src="Imagenes/Iconos/Certificado.png" alt="Certificado" class="certificado-icon" />
                                             Emitir Certificado
                                         </a>
-                                        <p>si tiene, mostrar iconito, o opcion de verlo u decir </p>
                                     </div>
                                     <%} %>
                                 </div>

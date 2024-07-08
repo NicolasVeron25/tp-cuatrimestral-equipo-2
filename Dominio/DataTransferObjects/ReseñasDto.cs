@@ -18,7 +18,6 @@ namespace Dominio.DataTransferObjects
         public string Descripcion { get; set; }
         public DateTime FechaReseña { get; set;}
         
-           
         public string UrlFotoPerfil { get; set; }
         public string FechaFormateada
         {

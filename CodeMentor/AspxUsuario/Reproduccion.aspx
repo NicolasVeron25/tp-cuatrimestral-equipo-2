@@ -40,7 +40,7 @@
                             var unidadId = "unidad" + unidad.IdUnidad;
                             bool valido = contador < 2; // logica para mostrar x cantidad desplegados
                             contador++;
-        %>
+                    %>
 
                     <div class="accordion-item">
 
@@ -83,7 +83,9 @@
             </div>
         </div>
 
-
+        <%if (ListadoPreguntasRespuestas.Count!=0)
+            {
+        %>
         <div class="row col-8 mb-3" style="margin-top: 1%">
             <div class="d-flex justify-content-between align-items-center w-100">
                 <div>
@@ -151,10 +153,23 @@
                 </div>
 
 
-                <% } %>
+                <% }
+
+                %>
             </div>
         </div>
+        <%}
+            else
+            {
+        %>
 
+
+         
+    <h3>No existen preguntas en este curso. </h3>
+                    <a class="btn btn-primary" style="margin-bottom:7%" href="PreguntasRespuestas.aspx?IdCursoNew=<%:CursoActual.IdCurso %>">Nueva Pregunta</a>
+
+
+        <%} %>
     </div>
 
 

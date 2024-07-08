@@ -4,54 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="BusquedaCursos" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-         <style>
-      
-       .containerEmitir {
-           max-width: 800px;
-           margin: 50px auto;
-           background-color: #ffffff;
-           padding: 30px;
-           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-           text-align: center;
-           border-radius: 10px;
-       }
-       h1 {
-           color: #4CAF50;
-           font-size: 36px;
-       }
-       pGracias {
-           font-size: 18px;
-           color: #333333;
-       }
-       .btnEmitir {
-           background-color: #4CAF50;
-           color: white;
-           padding: 15px 32px;
-           text-align: center;
-           text-decoration: none;
-           display: inline-block;
-           font-size: 16px;
-           margin: 20px auto;
-           cursor: pointer;
-           border: none;
-           border-radius: 4px;
-           transition: background-color 0.3s ease;
-       }
-       .btnEmitir:hover {
-           background-color: #45a049;
-       }
-       .thank-you {
-           margin-top: 30px;
-           font-size: 20px;
-           color: #666666;
-       }
-       .invitation {
-           margin-top: 20px;
-           font-size: 18px;
-           color: #333333;
-       }
-   </style>
- 
+       
+    <link href="../Content/EmitirCertificado.css" rel="stylesheet" />
        <div class="container containerEmitir" style="margin-top:10%;margin-bottom:11%">
            <h1>¡Felicitaciones!</h1>
            <p>Has finalizado el curso con éxito.</p>
@@ -60,7 +14,8 @@
                <p class="pGracias">¡Gracias por confiar en nosotros y completar este curso!</p>
            </div>
            <div class="invitation">
-               <p class="pGracias">Te invitamos a explorar más cursos en nuestra plataforma y seguir aprendiendo.</p>
+               <p class="pGracias">Te invitamos a dejar una reseña del curso! </p>
+               <asp:Button Text="Dejar Reseña" CssClass="btn btn-secondary" ID="btnDejar" OnClick="btnDejar_Click" runat="server" />
            </div>
        </div>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>

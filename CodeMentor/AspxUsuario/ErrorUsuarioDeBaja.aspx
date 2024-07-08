@@ -51,12 +51,12 @@
 
                             <div class="form-group">
                                 <label for="txtEmail">Ingrese su Email:</label>
-                                <asp:TextBox ID="TxtEmail" PlaceHolder="ejemplo@ejemplo.com" runat="server" Style="width: 80%; background-color: white" CssClass="form-control" Required="true" />
+                                <asp:TextBox ID="TxtEmail" PlaceHolder="ejemplo@ejemplo.com" runat="server" Style="width: 80%; background-color: white" CssClass="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="TxtMensaje">Mensaje:</label>
-                            <asp:TextBox ID="TxtMensaje" Style="background-color: white" PlaceHolder="Describa su situacion" runat="server" TextMode="MultiLine" Rows="5" CssClass="form-control" Required="true" />
+                            <asp:TextBox ID="TxtMensaje" Style="background-color: white" PlaceHolder="Describa su situacion" runat="server" TextMode="MultiLine" Rows="5" CssClass="form-control"  />
                         </div>
                     </div>
                     <div class="text-center" style="margin-bottom: 2%">

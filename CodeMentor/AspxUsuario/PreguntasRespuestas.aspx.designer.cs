@@ -24,13 +24,13 @@ namespace CodeMentor
         protected global::System.Web.UI.WebControls.Panel PanelUltimasPreg;
 
         /// <summary>
-        /// Control BtnFiltrarPreguntas.
+        /// Control TxtFiltrarPreguntas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox BtnFiltrarPreguntas;
+        protected global::System.Web.UI.WebControls.TextBox TxtFiltrarPreguntas;
 
         /// <summary>
         /// Control BtnAñadirPregunta.

@@ -11,9 +11,11 @@ namespace Dominio.DTOS
 
         public string Nombre { get; set; }
 
+        public int IdUsuario { get; set; }
         public string Apellido { get; set; }
 
         public string NombreCurso { get; set; }
+        public int IdCurso { get; set; }
 
         public int IdInscripcion { get; set; }
 

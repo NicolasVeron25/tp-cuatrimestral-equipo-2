@@ -15,6 +15,7 @@ namespace Dominio
         public int IdUsuario { get; set; }
 
         public DateTime? Fecha { get; set; } // SE CARGA EN BD
+        public bool Baja { get; set; }
 
 
     }

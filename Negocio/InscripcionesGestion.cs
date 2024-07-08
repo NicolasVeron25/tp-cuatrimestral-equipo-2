@@ -71,7 +71,7 @@ namespace Negocio
 
             try
             {
-                string query = "SELECT i.APELLIDO , i.NOMBRE, c.NOMBRE as NombreCurso, ins.IDINSCRIPCION  FROM INFORMACION_USUARIO i INNER JOIN INSCRIPCIONES ins on ins.IDUSUARIO=i.IDUSUARIO INNER JOIN CURSOS c on c.IDCURSO=ins.IDCURSO WHERE ins.BAJA=0";
+                string query = "SELECT i.APELLIDO , i.NOMBRE, c.NOMBRE as NombreCurso,C.IDCURSO AS C_IDCURSO, ins.IDINSCRIPCION ,i.IDUSUARIO AS IDUSER FROM INFORMACION_USUARIO i INNER JOIN INSCRIPCIONES ins on ins.IDUSUARIO=i.IDUSUARIO INNER JOIN CURSOS c on c.IDCURSO=ins.IDCURSO WHERE ins.BAJA=0";
                 AccesoBD.SetQuery(query);
                 AccesoBD.EjecutarLectura();
                 var ListaInscripciones = new List<InscripcionesGestionDto>();
@@ -80,6 +80,9 @@ namespace Negocio
                     InscripcionesGestionDto inscripcion = new InscripcionesGestionDto();
 
                     inscripcion.Nombre = (string)AccesoBD.Lector["NOMBRE"];
+                    inscripcion.IdCurso = (int)AccesoBD.Lector["C_IDCURSO"];
+                    inscripcion.IdUsuario = (int)AccesoBD.Lector["INF_IDUSER"];
+                    
                     inscripcion.Apellido = (string)AccesoBD.Lector["APELLIDO"];
                     inscripcion.NombreCurso = (string)AccesoBD.Lector["NombreCurso"];
                     inscripcion.IdInscripcion = (int)AccesoBD.Lector["IDINSCRIPCION"];
@@ -211,21 +214,60 @@ namespace Negocio
 
 
         }
-        public InscripcionesGestionDto ObtenerdtoInscripciones(int Id)
+        public Inscripcion ObtenerInscripcion(int idcurso,int iduser)
+        {
+            ConexionBD AccesoBD = new ConexionBD();
+
+            try
+            {
+                string query = "SELECT IDINSCRIPCION,IDCURSO,IDUSUARIO,FECHA,BAJA FROM INSCRIPCIONES WHERE IDUSUARIO = @IDUSER AND IDCURSO=@IDCURSO";
+                AccesoBD.SetQuery(query);
+                AccesoBD.SetParametro("@IDUSER", iduser);
+                AccesoBD.SetParametro("@IDCURSO", idcurso);
+                AccesoBD.EjecutarLectura();
+                if (AccesoBD.Lector.Read())
+                {
+                    Inscripcion inscripcion = new Inscripcion();
+                    inscripcion.IdInscripcion = (int)AccesoBD.Lector["IDINSCRIPCION"];
+                    inscripcion.IdCurso = (int)AccesoBD.Lector["IDCURSO"];
+                    inscripcion.IdUsuario = (int)AccesoBD.Lector["IDUSUARIO"];
+                    inscripcion.Fecha = (DateTime)AccesoBD.Lector["FECHA"];
+                    inscripcion.Baja = (bool)AccesoBD.Lector["BAJA"];
+                    return inscripcion;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                AccesoBD.CerrarConexion();
+            }
+        }
+        public InscripcionesGestionDto ObtenerdtoInscripciones(int Id) //ojo, devuelve la primera, puede haber mas de una inscripcion
         {
             ConexionBD AccesoBD = new ConexionBD();
             InscripcionesGestionDto inscripto = new InscripcionesGestionDto();
 
             try
             {
-                AccesoBD.SetQuery("SELECT INF.NOMBRE AS NOMBREUSUARIO,INF.APELLIDO AS APELLIDOUSUARIO,C.NOMBRE AS NOMBRECURSO,I.IDINSCRIPCION AS IDINSCRIPCION,I.BAJA AS ESTADO FROM INSCRIPCIONES I INNER JOIN CURSOS C ON I.IDCURSO=C.IDCURSO INNER JOIN INFORMACION_USUARIO INF ON INF.IDUSUARIO=I.IDUSUARIO WHERE I.BAJA=0 AND I.IDUSUARIO=@IdUsuario");
+                AccesoBD.SetQuery("SELECT INF.NOMBRE AS NOMBREUSUARIO,INF.APELLIDO AS APELLIDOUSUARIO,INF.IDUSUARIO AS INF_IDUSUARIO ,C.NOMBRE AS NOMBRECURSO,C.IDCURSO AS C_IDCURSO ,I.IDINSCRIPCION AS IDINSCRIPCION,I.BAJA AS ESTADO FROM INSCRIPCIONES I INNER JOIN CURSOS C ON I.IDCURSO=C.IDCURSO INNER JOIN INFORMACION_USUARIO INF ON INF.IDUSUARIO=I.IDUSUARIO WHERE I.BAJA=0 AND I.IDUSUARIO=@IdUsuario");
                 AccesoBD.SetParametro("@IdUsuario", Id);
                 AccesoBD.EjecutarLectura();
                 if (AccesoBD.Lector.Read())
                 {
                     inscripto.IdInscripcion = (int)AccesoBD.Lector["IDINSCRIPCION"];
+
                     inscripto.Nombre = (string)AccesoBD.Lector["NOMBREUSUARIO"];
                     inscripto.Apellido = (string)AccesoBD.Lector["APELLIDOUSUARIO"];
+                    inscripto.IdCurso = (int)AccesoBD.Lector["C_IDCURSO"];
+                    inscripto.IdUsuario = (int)AccesoBD.Lector["INF_IDUSUARIO"];
                     inscripto.NombreCurso = (string)AccesoBD.Lector["NOMBRECURSO"];
                     inscripto.Baja = (bool)AccesoBD.Lector["ESTADO"];
 

@@ -41,6 +41,7 @@ namespace CodeMentor.AspxUsuario
                 var cursoId = int.Parse(Request.QueryString["IdCurso"]);
                 var GestionCurso = new CursosGestion();
                 curso = GestionCurso.Existencia(cursoId);
+                Session.Add("IdCursoReseña", cursoId);
             }
             else
             {
@@ -115,6 +116,19 @@ namespace CodeMentor.AspxUsuario
             Response.BinaryWrite(bytes);
             Response.End();
 
+        }
+
+        protected void btnDejar_Click(object sender, EventArgs e)
+        {
+            if (Request.QueryString["IdCurso"] != null)
+            {
+                
+                var cursoId = int.Parse(Request.QueryString["IdCurso"]);
+                var GestionCurso = new CursosGestion();
+               var curso = GestionCurso.Existencia(cursoId);
+                Session.Add("IdCursoReseña", cursoId);
+                Response.Redirect("Reseña.aspx", false);
+            }
         }
     }
 }

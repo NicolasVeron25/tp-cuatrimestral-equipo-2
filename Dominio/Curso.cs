@@ -42,6 +42,7 @@ namespace Dominio
     public int IdCategoria { get; set; }
 
     public DateTime FechaCreacion { get; set; } // ? = acepta nulos
+        public bool Baja { get; set; }
 
 }
 }

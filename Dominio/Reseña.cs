@@ -17,5 +17,6 @@ namespace Dominio
         public int Puntaje { get; set; }
 
         public string Descripcion { get; set; }
+        public DateTime Fecha { get; set; }
     }
 }
