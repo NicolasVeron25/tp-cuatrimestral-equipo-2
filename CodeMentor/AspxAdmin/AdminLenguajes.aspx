@@ -35,6 +35,11 @@
                 <asp:GridView runat="server" ID="DgwLenguajes" OnRowCommand="DgwLenguajes_RowCommand" AutoGenerateColumns="False" CssClass="table-custom">
                     <Columns>
                         <asp:BoundField DataField="IdLenguaje" Visible="false" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <img src="https://i.ibb.co/tLj3k9V/codementor-isotipo-electric-indigo.png" alt="Certificado Icono" width="60" height="60" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField DataField="Nombre" HeaderText="Nombre del Lenguaje" Visible="True" />
                         <asp:TemplateField HeaderText="Accion" Visible="True">
                             <ItemTemplate>
