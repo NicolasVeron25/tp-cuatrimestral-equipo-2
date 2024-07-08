@@ -9,6 +9,28 @@ namespace Negocio
 {
     public class ClaseGestion
     {
+        
+        public void EliminarClases_Unidad(int idunidad)
+        {
+
+            var Acceso = new ConexionBD();
+            try
+            {
+                string query = "Delete from Clases where IdUnidad = @idunidad";
+                Acceso.SetQuery(query);
+                Acceso.SetParametro("@idunidad", idunidad);
+                Acceso.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
         public Clase ClaseUnidad(int IdUnidad)
         {
             var Acceso = new ConexionBD();
@@ -115,7 +137,7 @@ namespace Negocio
         {
             var Acceso = new ConexionBD();
             try
-            {  
+            {
                 // ATENCION: EN DOMINIO CLASE NO TIENE PROP DE NUMERO PERO EN LA BD SI // agrege prop numero en Dominio/Clase.cs
                 Acceso.SetQuery("INSERT INTO CLASES (IDUNIDAD,NUMERO,DESCRIPCION,DURACION,URL_VIDEO) VALUES(@IDUnidad,@Numero,@Descripcion,@Duracion,@UrlVideo)");
                 Acceso.SetParametro("@IDUnidad", clase.IdUnidad);
@@ -141,14 +163,14 @@ namespace Negocio
             var Acceso = new ConexionBD();
             try
             {
-                
+
                 Acceso.SetQuery("UPDATE CLASES SET IDUNIDAD=@IDUnidad,NUMERO=@Numero,DESCRIPCION=@Descripcion,DURACION=@Duracion,URL_VIDEO=@UrlVideo WHERE IDCLASE=@IDClase ");
                 Acceso.SetParametro("@IDUnidad", clase.IdUnidad);
                 Acceso.SetParametro("@Numero", clase.Numero);
                 Acceso.SetParametro("@Descripcion", clase.Descripcion);
                 Acceso.SetParametro("@Duracion", clase.Duracion);
                 Acceso.SetParametro("@UrlVideo", clase.UrlVideo);
-                Acceso.SetParametro("@@IDClase", clase.IdClase);
+                Acceso.SetParametro("@IDClase", clase.IdClase);
                 Acceso.EjecutarAccion();
             }
             catch (Exception ex)
@@ -169,7 +191,7 @@ namespace Negocio
             var Acceso = new ConexionBD();
             try
             {
-                string query = "Delete from Clase where IdClase = @Id";
+                string query = "Delete from Clases where IdClase = @Id";
                 Acceso.SetQuery(query);
                 Acceso.SetParametro("@Id", Id);
                 Acceso.EjecutarAccion();

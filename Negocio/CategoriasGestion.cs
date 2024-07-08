@@ -47,7 +47,7 @@ namespace Negocio
                 var Cat = new Categoria();
                 if (Acceso.Lector.Read())
                 {
-                    Cat.Idcategoria = (int)Acceso.Lector["IdCategoria"];
+                    Cat.IdCategoria = (int)Acceso.Lector["IdCategoria"];
                     Cat.Nombre= (string)Acceso.Lector["Nombre"]; 
                 }
                 return Cat; // si no encuentra nada, devuelve un objeto vacio
@@ -75,7 +75,7 @@ namespace Negocio
                 while (Acceso.Lector.Read())
                 {
                     var Cat = new Categoria();
-                    Cat.Idcategoria = (int)Acceso.Lector["IdCategoria"];
+                    Cat.IdCategoria = (int)Acceso.Lector["IdCategoria"];
                     Cat.Nombre = (string)Acceso.Lector["Nombre"];
                     ListaCategorias.Add(Cat);
                 }
@@ -121,7 +121,7 @@ namespace Negocio
                 string query = "Update Categorias set Nombre = @Nombre where Id = @Id";
                 Acceso.SetQuery(query);
                 Acceso.SetParametro("@Nombre", Cat.Nombre);
-                Acceso.SetParametro("@Id", Cat.Idcategoria);
+                Acceso.SetParametro("@Id", Cat.IdCategoria);
                 Acceso.EjecutarAccion();
             }
             catch (Exception ex)

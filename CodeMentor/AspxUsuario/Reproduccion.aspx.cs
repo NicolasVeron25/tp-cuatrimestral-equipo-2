@@ -64,6 +64,13 @@ namespace CodeMentor
                 // MUESTRO EL VIDEO
                 MostrarVideo(clase.UrlVideo);
             }
+            if (IsPostBack)
+            {
+                CursoActual = new Curso();
+                ListadoPreguntasRespuestas = new List<PreguntaRespuestaDto>();
+                ListaUnidades = new List<Unidad>();
+                ClasesPorUnidad = new Dictionary<int, List<Clase>>();
+            }
         }
         public void LlenarPreguntas()
         {
@@ -113,15 +120,14 @@ namespace CodeMentor
             }
             else
             {
-                // Si el curso es nulo redirecciona al inicio redirigir a la pagina de inicio
-               //resolver mediante resolveurl --> Response.Redirect("Inicio.aspx", false);
+              
+                Response.Redirect("Inicio.aspx", false);
             }
 
             if (CursoActual == null)
             {
-                // Si el curso no existe redirigir a la pagina de inicio
-                //resolver mediante resolveurl -->  Response.Redirect("Inicio.aspx");
-                //resolver mediante resolveurl -->  return;
+                Response.Redirect("InicioRegistrado.aspx",false);
+
             }
         }
         public void llenarUniudades() // Llena las unidades por primera vez en la pagina con el id de curso que se recibe por url
@@ -149,7 +155,7 @@ namespace CodeMentor
         }
         private void MostrarVideo(string urlVideo)
         {
-            videoFrame.Text = urlVideo;
+            videoFrame.Text = Helper.InsertarIframe(urlVideo); // la db tiene el link normal de youtube
         }
         public void ObtenerUsuario()
         {

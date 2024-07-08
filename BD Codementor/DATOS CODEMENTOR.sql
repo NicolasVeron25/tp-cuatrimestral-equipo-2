@@ -558,3 +558,6 @@ INSERT INTO RESEÑAS(IDINSCRIPCION, IDCURSO, PUNTAJE, DESCRIPCION) VALUES
 -- JavaScript
 INSERT INTO RESEÑAS(IDINSCRIPCION, IDCURSO, PUNTAJE, DESCRIPCION) VALUES
 (5, 5, 4, 'Muy buen curso para aprender JavaScript desde cero, los ejemplos fueron muy claros y fáciles de entender.');
+
+UPDATE CLASES SET URL_VIDEO ='https://www.youtube.com/watch?v=8AGLjHziXho' WHERE NUMERO =1
+UPDATE CLASES SET URL_VIDEO='https://www.youtube.com/watch?v=IAvZjI9FHSM' WHERE NUMERO=2

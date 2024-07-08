@@ -59,7 +59,10 @@
             <div class="col-md-3 mb-5">
                 <div class="card h-100 shadow-sm position-relative">
                     <div class="card-img-top-wrapper position-relative">
-                        <img src="<%:curso.UrlPortada %>" class="card-img-top img-cuadrada" alt="Imagen del curso <%:curso.Nombre %>">
+                        
+                        <% ImgCurso.ImageUrl = curso.UrlPortadaCarpeta; %>
+                        <asp:Image id="ImgCurso" runat="server" class="card-img-top img-cuadrada" alt="Imagen del curso "/>
+
                         <div class="overlay d-flex align-items-center justify-content-center">
                             <a href="DetalleCurso.aspx?idCurso=<%:curso.IdCurso %>" class="btn btn-light">Ver curso</a>
                         </div>

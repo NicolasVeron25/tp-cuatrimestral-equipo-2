@@ -122,7 +122,7 @@
                     <p class="error " id="PApellidoError" visible="false" runat="server"></p>
 
                     <div class="input-group mb-2">
-                        <asp:TextBox runat="server" type="date" CssClass="form-control form-control-lg bg-light fs-6" ClientIDMode="Static" placeholder="Fecha de Nacimiento" REQUIRED="TRUE" ID="TxtFechaNacimiento" />
+                        <asp:TextBox runat="server" type="date" CssClass="form-control form-control-lg bg-light fs-6" ClientIDMode="Static" placeholder="Fecha de Nacimiento" ID="TxtFechaNacimiento" />
                     </div>
                     <p class="error " id="PFNacimientoError" visible="false" runat="server"></p>
 
@@ -147,7 +147,7 @@
                             <asp:Label Text="Pais : " CssClass=" form-control form-label bg-light fs-6 " runat="server"></asp:Label>
                         </div>
                         <div>
-                            <asp:DropDownList runat="server" ID="DdlPais" required="true" CssClass="form-select  form-control-lg bg-light fs-6">
+                            <asp:DropDownList runat="server" ID="DdlPais"  CssClass="form-select  form-control-lg bg-light fs-6">
                             </asp:DropDownList>
 
                         </div>
@@ -163,7 +163,7 @@
                             <asp:Label Text="Sexo : " CssClass=" form-control form-label bg-light fs-6 " Style="margin-right: 20px" runat="server"></asp:Label>
                         </div>
                         <div style="margin-left: 40px">
-                            <asp:DropDownList runat="server" ID="DdlSexo" REQUIRED="TRUE" CssClass="form-select  form-control-lg bg-light fs-6">
+                            <asp:DropDownList runat="server" ID="DdlSexo"  CssClass="form-select  form-control-lg bg-light fs-6">
                             </asp:DropDownList>
 
                         </div>

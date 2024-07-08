@@ -10,29 +10,27 @@ using System.Threading.Tasks;
 
 namespace Validaciones
 {
+
     public static class Helper
     {
+        
+        public static string InsertarIframe(string urlYoutube)
+        {
+            string UrlIframe = PonerEmbed(urlYoutube);
+            return "<iframe width='560' height='315' src='"+ UrlIframe + "' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>";
+        }
+        public static string PonerEmbed(string url)
+        {
+            string urlLimpia = url.Replace("watch?v=", "embed/");
+            return urlLimpia;
+        }
         public static string SacarEmbed(string url)
         {
             //REEMPLAZA!
             string urlLimpia = url.Replace("embed/", "watch?v=");
             return urlLimpia;
         }
-        public static string LimpiarUrlVideo(string url)
-        {
-            int startIndex = url.IndexOf("src=\"") + 5; //INDEX OF = INDICE DE DONDE COINCIDA CON LA CADENA INDICADA!
-                                                        //TOMA EL PRIMER LGUAR ,ENONTCES LE AGREGO 5! PARA QUE EMPIECE DESDE LA URL
-
-            int endIndex = url.IndexOf("\"", startIndex); // A PARTIR DE DONDE EMPIEZA MI URL , BUSCA EL PRIMER " QUE ENCUENTRE!! 
-
-            // Extraer la URL limpia
-            /* SUBSTRING = EXTRAER PARTE DE UNA CADENA DE TEXTO --> (INDICE DE INICIO, INDICE DE FIN)
-            INDICE DE FIN =  INDICE DEL " DE LA URL - INDICE DE INICIO ( A PARTIR DE DONDE EMPIEZA LA URL)
-             */
-            string urlLimpia = url.Substring(startIndex, endIndex - startIndex);
-
-            return SacarEmbed(urlLimpia);
-        }
+     
         public static List<PreguntaRespuestaDto> LlenaryMapearPreg_Resp(int idcurso)
         {
             

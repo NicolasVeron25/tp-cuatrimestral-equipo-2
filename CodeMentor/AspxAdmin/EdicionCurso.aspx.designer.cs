@@ -69,6 +69,24 @@ namespace CodeMentor.AspxAdmin
         protected global::System.Web.UI.WebControls.Button BtnEliminarUnidad;
 
         /// <summary>
+        /// Control BtnConfirmarEliminacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnConfirmarEliminacion;
+
+        /// <summary>
+        /// Control PEliminanClases.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PEliminanClases;
+
+        /// <summary>
         /// Control TxtNroUnidadClase.
         /// </summary>
         /// <remarks>
@@ -148,5 +166,23 @@ namespace CodeMentor.AspxAdmin
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnEliminarClase;
+
+        /// <summary>
+        /// Control BtnConfirmarEliminarClase.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnConfirmarEliminarClase;
+
+        /// <summary>
+        /// Control PEliminaSeguro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PEliminaSeguro;
     }
 }

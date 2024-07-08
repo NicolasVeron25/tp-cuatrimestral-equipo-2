@@ -10,6 +10,32 @@ namespace Negocio
 {
     public class CursosGestion
     {
+        public void AñadirCurso(Curso cursoInsertar)
+        {
+            ConexionBD AccesoBd = new ConexionBD();
+            try
+            {
+                string query = "INSERT INTO CURSOS (NOMBRE,DESCRIPCION,REQUISITOS,IMPORTE,URL_PORTADA,IDCATEGORIA) VALUES (@NOMBRE,@DESC,@REQUISITOS,@IMPORTE,@URL,@IDCAT)";
+                AccesoBd.SetQuery(query);
+                AccesoBd.SetParametro("@NOMBRE", cursoInsertar.Nombre);
+                AccesoBd.SetParametro("@DESC", cursoInsertar.Descripcion);
+                AccesoBd.SetParametro("@IMPORTE", cursoInsertar.Importe);
+                AccesoBd.SetParametro("@REQUISITOS", cursoInsertar.Requisitos);
+                AccesoBd.SetParametro("@URL", cursoInsertar.UrlPortada);
+                AccesoBd.SetParametro("@IDCAT", cursoInsertar.IdCategoria);
+                AccesoBd.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                AccesoBd.CerrarConexion();
+
+            }
+        }
         public List<Curso> CursosNOInscripto(int IdUsuario) // uso : solo mostrar los cursos que esta inscripto el usuario
         {
             ConexionBD AccesoBD = new ConexionBD();

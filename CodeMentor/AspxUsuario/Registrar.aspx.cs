@@ -27,7 +27,6 @@ namespace CodeMentor
                 DdlLlenarSexo();
                 LblErrorPass.Visible = false;
             }
-            //FALTA FOTO DE PERFIL QUE INGRESE!!
 
             //OPCION DE VER CONTRASEÑA
 

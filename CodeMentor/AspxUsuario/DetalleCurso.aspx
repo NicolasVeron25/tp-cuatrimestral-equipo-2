@@ -11,28 +11,31 @@
             <div class="col-md-7 mb-4">
                 <div class="curso-detalles p-4 rounded ">
                     <div class="curso-imagen-wrapper mb-4 text-center">
-                        <img src="<%:CursoActual.UrlPortada %>" class="curso-imagen rounded" alt="Imagen del Curso">
+
+                        <% ImgCurso.ImageUrl = CursoActual.UrlPortadaCarpeta;  %>
+                        <asp:Image ID="ImgCurso" runat="server" class="curso-imagen rounded" alt="Imagen del curso" />
+
                     </div>
                     <div class="curso-info">
                         <div class="curso-titulo mb-3 text-center">
-                            <h2 ><%:CursoActual.Nombre %></h2>
+                            <h2><%:CursoActual.Nombre %></h2>
                         </div>
                         <div class="curso-descripcion mt-3">
-                            <h4 >Descripción:</h4>
+                            <h4>Descripción:</h4>
                             <p><%:CursoActual.Descripcion %></p>
                         </div>
                         <div class="curso-requisitos mt-3">
-                            <h4 >Requisitos:</h4>
+                            <h4>Requisitos:</h4>
                             <p><%:CursoActual.Requisitos %></p>
                         </div>
                         <div class="curso-costo-inscripcion d-flex justify-content-between align-items-center mt-3">
                             <div class="curso-costo mr-3">
-                                <h4 style="font-weight:bold">Costo:</h4>
+                                <h4 style="font-weight: bold">Costo:</h4>
                                 <p>$<%:CursoActual.Importe.ToString("F2") %></p>
                             </div>
-                            <div class="curso-inscripcion text-left" style="margin-right:10%">
+                            <div class="curso-inscripcion text-left" style="margin-right: 10%">
                                 <a href="Guia.aspx?ComoInscribirse=<%:CursoActual.IdCurso%>" class="btn btn-primary btn-lg mt-2">
-                                    <img src="Imagenes/Iconos/llaveBorde.png" style="width:30px;height:30px;margin-right:5px" />
+                                    <img src="Imagenes/Iconos/llaveBorde.png" style="width: 30px; height: 30px; margin-right: 5px" />
                                     Inscribirme
 
                                 </a>
@@ -61,9 +64,9 @@
                                         {
                                             foreach (var clase in ClasesPorUnidad[unidad.IdUnidad])
                                             { %>
-                                    <li class="list-group-item rounded mb-2" style="background-color:white" ><%:clase.Numero %>. <%:clase.Descripcion %></li>
+                                    <li class="list-group-item rounded mb-2" style="background-color: white"><%:clase.Numero %>. <%:clase.Descripcion %></li>
                                     <% }
-                                    } %>
+                                        } %>
                                 </ul>
                             </div>
                         </div>
@@ -74,5 +77,5 @@
         </div>
     </div>
 
-  
+
 </asp:Content>

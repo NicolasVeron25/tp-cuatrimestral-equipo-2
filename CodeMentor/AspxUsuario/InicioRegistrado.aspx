@@ -20,7 +20,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Content/InicioRegis.css" rel="stylesheet" />
     <div class="container " style="margin-top: 1.7%">
-       
+
         <!-- TITULO PRINCIPAL -->
         <div class="text-center mb-5">
             <div class="d-flex justify-content-center align-items-center">
@@ -28,7 +28,7 @@
                 <img src="Imagenes/Iconos/CandadoAbiertoLlave.png" class="imgIcon ml-3" style="width: 50px; height: 50px; margin-left: 2%" />
             </div>
         </div>
-        
+
 
 
         <!-- CURSOS SIN COMPLETAR DEL USUARIO -->
@@ -38,7 +38,8 @@
             <div class="col mb-4">
                 <div class="card h-100">
                     <div class="card-img-top-wrapper" style="border-bottom: solid 0.5px lightgrey">
-                        <img src="<%:curso.UrlPortada %>" class="card-img-top img-cuadrada" alt="Portada del curso">
+                        <% ImgCurso.ImageUrl = curso.UrlPortadaCarpeta; %>
+                        <asp:Image ID="ImgCurso" runat="server" class="card-img-top img-cuadrada" alt="Imagen del curso" />
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title font-weight-bold"><%:curso.Nombre %></h5>
@@ -65,7 +66,8 @@
             <div class="col mb-4">
                 <div class="card h-100">
                     <div class="card-img-top-wrapper">
-                        <img src="<%:curso.UrlPortada %>" class="card-img-top img-cuadrada" alt="Portada del curso">
+                        <% ImgNoRegis.ImageUrl = curso.UrlPortadaCarpeta; %>
+                        <asp:Image ID="ImgNoRegis" runat="server" class="card-img-top img-cuadrada" alt="Imagen del curso" />
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title font-weight-bold"><%:curso.Nombre %></h5>

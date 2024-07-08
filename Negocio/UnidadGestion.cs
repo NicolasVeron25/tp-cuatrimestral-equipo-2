@@ -10,7 +10,7 @@ namespace Negocio
     public class UnidadGestion
     {
 
-        public List<Unidad> Listado(int IdUnidad=0)
+        public List<Unidad> Listado(int IdUnidad = 0)
         {
 
             var Acceso = new ConexionBD();
@@ -18,7 +18,8 @@ namespace Negocio
             try
             {
                 string query = "";
-                if (IdUnidad == 0) {
+                if (IdUnidad == 0)
+                {
                     query = "SELECT IDUNIDAD, NUMERO, NOMBRE, DESCRIPCION, IDCURSO FROM UNIDADES ";
                 }
                 else
@@ -134,12 +135,36 @@ namespace Negocio
                     ListaUnidades.Add(Uni);
                 }
 
-                return ListaUnidades; 
+                return ListaUnidades;
 
             }
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+            finally
+            {
+                Acceso.CerrarConexion();
+            }
+        }
+
+        public void ModificarUnidad(Unidad Uni)
+        {
+
+            var Acceso = new ConexionBD();
+            try
+            {
+
+                string query = "UPDATE UNIDADES SET  NOMBRE = @Nombre, DESCRIPCION = @Descripcion WHERE IDUNIDAD = @Id";
+                Acceso.SetQuery(query);
+                Acceso.SetParametro("@Nombre", Uni.Nombre);
+                Acceso.SetParametro("@Descripcion", Uni.Descripcion);
+                Acceso.SetParametro("@Id", Uni.IdUnidad);
+                Acceso.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally
@@ -153,7 +178,7 @@ namespace Negocio
 
             try
             {
-                string query =  "INSERT INTO UNIDADES (NUMERO, NOMBRE, DESCRIPCION, IDCURSO) VALUES ( @Numero, @Nombre, @Descripcion, @IdCurso)";
+                string query = "INSERT INTO UNIDADES (NUMERO, NOMBRE, DESCRIPCION, IDCURSO) VALUES ( @Numero, @Nombre, @Descripcion, @IdCurso)";
                 Acceso.SetQuery(query);
                 Acceso.SetParametro("@Numero", Uni.Numero);
                 Acceso.SetParametro("@Nombre", Uni.Nombre);
@@ -172,19 +197,15 @@ namespace Negocio
             }
 
         }
-        public void ModificarUnidad(Unidad Uni) // MODIFICACION UNIDAD
+        
+        public void EliminarFinalizadas(int idUnidad) // BAJA UNIDAD FINALIZADA
         {
             var Acceso = new ConexionBD();
             try
             {
-
-                string query = "UPDATE UNIDADES SET NUMERO = @Numero, NOMBRE = @Nombre, DESCRIPCION = @Descripcion, IDCURSO = @IdCurso WHERE IDUNIDAD = @Id";
+                string query = "DELETE FROM UNIDADES_FINALIZADAS WHERE IDUNIDAD = @IDUNIDAD ";
                 Acceso.SetQuery(query);
-                Acceso.SetParametro("@Numero", Uni.Numero);
-                Acceso.SetParametro("@Nombre", Uni.Nombre);
-                Acceso.SetParametro("@Descripcion", Uni.Descripcion);
-                Acceso.SetParametro("@IdCurso", Uni.IdCurso);
-                Acceso.SetParametro("@Id", Uni.IdUnidad);
+                Acceso.SetParametro("@IDUNIDAD", idUnidad);
                 Acceso.EjecutarAccion();
             }
             catch (Exception ex)
@@ -196,12 +217,15 @@ namespace Negocio
                 Acceso.CerrarConexion();
             }
         }
+
         public void EliminarUnidad(int Id) // BAJA UNIDAD
         {
             var Acceso = new ConexionBD();
             try
             {
-
+                EliminarFinalizadas(Id);
+                var ClaseGestion = new ClaseGestion();
+                ClaseGestion.EliminarClases_Unidad(Id);
                 string query = "DELETE FROM UNIDADES WHERE IDUNIDAD = @Id";
                 Acceso.SetQuery(query);
                 Acceso.SetParametro("@Id", Id);

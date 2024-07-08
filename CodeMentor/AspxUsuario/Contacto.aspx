@@ -51,12 +51,12 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="TxtAsunto">Asunto:</label>
-                            <asp:TextBox ID="TxtAsunto" PlaceHolder="Ingrese el asunto  " required="true" runat="server" Style="width: 80%;background-color:white" CssClass="form-control"  />
+                            <asp:TextBox ID="TxtAsunto" PlaceHolder="Ingrese el asunto  "  runat="server" Style="width: 80%;background-color:white" CssClass="form-control"  />
                         </div>
 
                         <div class="form-group">
                             <label for="txtProblema">Mensaje :</label>
-                            <asp:TextBox ID="TxtMensaje" runat="server"  PlaceHolder="Ingrese su mensaje" Style="background-color: white" TextMode="MultiLine" Rows="5" CssClass="form-control" Required="true" />
+                            <asp:TextBox ID="TxtMensaje" runat="server"  PlaceHolder="Ingrese su mensaje" Style="background-color: white" TextMode="MultiLine" Rows="5" CssClass="form-control" />
                         </div>
                         <div class="text-center">
                             <asp:Button ID="BtnEnviarMensaje" Style="margin-top: 2%" runat="server" Text="Enviar" CssClass="btn btn-primary" OnClick="BtnEnviarMensaje_Click" />
@@ -84,7 +84,7 @@
 
                             <div class="form-group">
                                 <label for="txtProblema">Problema:</label>
-                                <asp:TextBox ID="TxtProblema" PlaceHolder="Identifique el Problema" runat="server" Style="width: 80%; background-color: white" CssClass="form-control" Required="true" />
+                                <asp:TextBox ID="TxtProblema" PlaceHolder="Identifique el Problema" runat="server" Style="width: 80%; background-color: white" CssClass="form-control"  />
                             </div>
                             <div style="margin-top: 1.3%" class="styled-checkbox">
                                 <asp:CheckBox Text="Pertenece a Curso" runat="server" ID="ChkPertenece" AutoPostBack="true" OnCheckedChanged="ChkPertenece_CheckedChanged" />
@@ -97,7 +97,7 @@
                         </div>
                         <div class="form-group">
                             <label for="TxtDescProblema">Descripción del Problema:</label>
-                            <asp:TextBox ID="TxtDescProblema" Style="background-color: white" PlaceHolder="Describa su problema con la plataforma" runat="server" TextMode="MultiLine" Rows="5" CssClass="form-control" Required="true" />
+                            <asp:TextBox ID="TxtDescProblema" Style="background-color: white" PlaceHolder="Describa su problema con la plataforma" runat="server" TextMode="MultiLine" Rows="5" CssClass="form-control" />
                         </div>
                     </div>
                     <div class="text-center" style="margin-bottom: 2%">
