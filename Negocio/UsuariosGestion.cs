@@ -186,6 +186,7 @@ namespace Negocio
                             user.Pass = password;
                             user.EsAdmin = (bool)Acceso.Lector["Es_Admin"];
                             user.FechaCreacion = (DateTime)Acceso.Lector["Fecha_Creacion"];
+                            
                             return user;
                         }
                         else

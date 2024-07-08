@@ -92,6 +92,7 @@
     <Content Include="AspxUsuario\Contacto.aspx" />
     <Content Include="AspxUsuario\EdicionPerfil.aspx" />
     <Content Include="AspxUsuario\Emitir.aspx" />
+    <Content Include="AspxUsuario\ErrorUsuarioDeBaja.aspx" />
     <Content Include="AspxUsuario\Guia.aspx" />
     <Content Include="AspxUsuario\DetalleCurso.aspx" />
     <Content Include="AspxUsuario\Imagenes\Iconos\CandadoCerrado.png" />
@@ -260,6 +261,13 @@
     </Compile>
     <Compile Include="AspxUsuario\Emitir.aspx.designer.cs">
       <DependentUpon>Emitir.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AspxUsuario\ErrorUsuarioDeBaja.aspx.cs">
+      <DependentUpon>ErrorUsuarioDeBaja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspxUsuario\ErrorUsuarioDeBaja.aspx.designer.cs">
+      <DependentUpon>ErrorUsuarioDeBaja.aspx</DependentUpon>
     </Compile>
     <Compile Include="AspxUsuario\Guia.aspx.cs">
       <DependentUpon>Guia.aspx</DependentUpon>

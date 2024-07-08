@@ -24,5 +24,11 @@ namespace CodeMentor
             Session.Clear();//limpia la session del usuario
 
         }
+        public void OcultarBotones()
+        {
+          BtnLogout.Visible = false;
+
+        }
+
     }
 }

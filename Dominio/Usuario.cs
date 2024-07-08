@@ -17,5 +17,7 @@ namespace Dominio
         public bool? EsAdmin { get; set; } //DEFAULT = 0
 
         public DateTime? FechaCreacion { get; set; } // se carga sola en la BD
+
+        public bool Baja { get; set; }
     }
 }
