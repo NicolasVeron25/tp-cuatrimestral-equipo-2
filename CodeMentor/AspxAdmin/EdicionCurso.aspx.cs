@@ -63,12 +63,7 @@ namespace CodeMentor.AspxAdmin
                         //no existe en bd
                         PUnidadNueva.Visible = true;
                         PUnidadNueva.InnerText = "Se asignara el numero en base a las unidades existentes";
-                        TxtNombreUnidad.Text = "Ingrese nueva unidad";
-                        TxtDescripcionUnidad.Text = "Ingrese descripcion de la nueva unidad";
                     }
-
-
-
                 }
                 else
                 {
@@ -76,8 +71,6 @@ namespace CodeMentor.AspxAdmin
                     TxtNumeroUnidad.Text = "0";
                     PUnidadNueva.Visible = true;
                     PUnidadNueva.InnerText = "Ingrese un valor Valido";
-                    TxtNombreUnidad.Text = "Ingrese nueva unidad";
-                    TxtDescripcionUnidad.Text = "Ingrese descripcion de la nueva unidad";
                 }
 
             }
@@ -106,13 +99,11 @@ namespace CodeMentor.AspxAdmin
                     {
                         PUnidadInvalida.InnerText = "Unidad Inexistente";
                         PUnidadInvalida.Visible = true;
-                        TxtNombreUnidadClase.Text = "Ingrese unidad Valida";
 
                     }
                 }
                 else
                 {
-                    TxtNombreUnidadClase.Text = "Ingrese unidad Valida";
                     //numero invalido
                     PUnidadInvalida.InnerText = "Ingrese un valor valido";
                     PUnidadInvalida.Visible = true;
@@ -130,24 +121,25 @@ namespace CodeMentor.AspxAdmin
             {
                 Curso = (CursosAdminDto)Session["CursoEdicion"];
 
-                if (TxtNumeroClase.Text != "" )
+                if (TxtNumeroClase.Text != "")
                 {
+                    //obtengo la clase
+                    //OJO = EL KEY ES EL NUMERO DE UNIDAD, NO EL ID
+                    //OBTENGO ID DE UNIDAD
+                    //cual vector le paso la posicion. 
+                    Unidad uni = (Unidad)Session["UnidadClase"];
+                    int numUnidad = uni.Numero;
+                    int idUnidad = Curso.Unidades.FirstOrDefault(u => u.Numero == numUnidad).IdUnidad;
                     int numeroClase = int.Parse(TxtNumeroClase.Text);
-                    if (numeroClase > 0)
+
+                    if (numeroClase > 0 && Curso.UnidadesClasesDiccionario[idUnidad].FirstOrDefault(c => c.Numero == numeroClase) != null)
                     {
-                        Unidad uni = (Unidad)Session["UnidadClase"];
-                        int numUnidad = uni.Numero;
-                        //obtengo la clase
-                        //OJO = EL KEY ES EL NUMERO DE UNIDAD, NO EL ID
-                        //OBTENGO ID DE UNIDAD
-                        int idUnidad = Curso.Unidades.FirstOrDefault(u => u.Numero == numUnidad).IdUnidad;
-                        //cual vector le paso la posicion.          
                         Clase clase = Curso.UnidadesClasesDiccionario[idUnidad].FirstOrDefault(c => c.Numero == numeroClase);
+
                         if (clase != null)
                         {
                             //quiere editar existente
                             TxtDescripcionClase.Text = clase.Descripcion;
-
                             TxtUrlVideoClase.Text = clase.UrlVideo;  // simplemente pongo el contenido de la clase normal!
                             PClaseNueva.Visible = false;
 
@@ -155,16 +147,12 @@ namespace CodeMentor.AspxAdmin
                         else
                         {
                             //quiere agregar clase nueva
-                            TxtDescripcionClase.Text = "Ingrese Descripcion";
-                            TxtUrlVideoClase.Text = "Ingrese Url Video";
                             PClaseNueva.InnerText = "Se asignara el numero en base a las clases existentes";
                             PClaseNueva.Visible = true;
                         }
                     }
                     else
                     {
-                        TxtDescripcionClase.Text = "Ingrese Descripcion";
-                        TxtUrlVideoClase.Text = "Ingrese Url Video";
                         PClaseNueva.InnerText = "Ingrese valor valido";
                         PClaseNueva.Visible = true;
                         TxtNumeroClase.Text = "0";
@@ -209,10 +197,18 @@ namespace CodeMentor.AspxAdmin
                     var unidad = new Unidad();
                     unidad.Nombre = TxtNombreUnidad.Text;
                     unidad.Descripcion = TxtDescripcionUnidad.Text;
+                    if (Curso.Unidades.Count > 0)
+                    {
+                        int ultimoNumero = Curso.Unidades.Last().Numero;
+                        unidad.Numero = ultimoNumero + 1;
+                    }
+                    else
+                    {
+                        unidad.Numero = 1;
 
-                    int ultimoNumero = Curso.Unidades.Last().Numero;
-                    unidad.Numero = ultimoNumero + 1;
+                    }
                     var unidadGestion = new UnidadGestion();
+                    unidad.IdCurso = Curso.IdCurso;
 
                     unidadGestion.InsertarUnidad(unidad);
 
@@ -227,14 +223,17 @@ namespace CodeMentor.AspxAdmin
 
         protected void BtnConfirmarEliminacion_Click(object sender, EventArgs e)
         {
-            int idEliminar = int.Parse(TxtNumeroUnidad.Text);
-            Curso = (CursosAdminDto)Session["CursoEdicion"];
-            if (Curso.Unidades.Exists(u => u.Numero == idEliminar))
-            {
-                var unidadGestion = new UnidadGestion();
-                unidadGestion.EliminarUnidad(idEliminar);
+            var unidadGestion = new UnidadGestion();
 
-                Curso.Unidades.RemoveAll(u => u.Numero == idEliminar);//actualizo la lista en session
+            int NumeroUnidad = int.Parse(TxtNumeroUnidad.Text);
+            Curso = (CursosAdminDto)Session["CursoEdicion"];
+
+            int iduni = unidadGestion.ObtenerUnidadesPorCurso(Curso.IdCurso).Where(x => x.Numero == NumeroUnidad).FirstOrDefault().IdUnidad;
+            if (Curso.Unidades.Exists(u => u.Numero == NumeroUnidad))
+            {
+                unidadGestion.EliminarUnidad(iduni,Curso.IdCurso,NumeroUnidad);
+
+                Curso.Unidades.RemoveAll(u => u.IdUnidad == iduni);//actualizo la lista en session
                 Session.Add("CursoEdicion", Curso);
                 Response.Redirect("EdicionCurso.aspx", false);
             }
@@ -261,11 +260,38 @@ namespace CodeMentor.AspxAdmin
             }
             else
             {
-                //agregar clase
+                int numeroClaseSelec;
+                bool parseResult = int.TryParse(TxtNumeroClase.Text, out numeroClaseSelec);
                 var claseNueva = new Clase();
                 claseNueva.Descripcion = TxtDescripcionClase.Text;
                 claseNueva.UrlVideo = TxtUrlVideoClase.Text;
-                claseNueva.Numero = Curso.UnidadesClasesDiccionario[idUnidad].Last().Numero + 1;
+                // Si el número de clase seleccionado no es válido, se toma como 0
+                if (!parseResult)
+                {
+                    numeroClaseSelec = 0;
+                }
+
+                if (numeroClaseSelec == 0)
+                {
+                    // Si no hay clases, se asigna el número 1 a la nueva clase
+                    if (Curso.UnidadesClasesDiccionario[idUnidad].Count == 0)
+                    {
+                        claseNueva.Numero = 1;
+                    }
+                    else
+                    {
+                        // Obtiene el último número de clase y le asigna el siguiente número
+                        int numero = Curso.UnidadesClasesDiccionario[idUnidad].Last().Numero;
+                        claseNueva.Numero = numero + 1;
+                    }
+                }
+                else
+                {
+                    // Aquí puedes agregar lógica para manejar el caso en que se seleccione un número de clase específico
+                    claseNueva.Numero = numeroClaseSelec;
+                }
+                //agregar clase
+              
                 claseNueva.IdUnidad = idUnidad;
                 claseGestion.InsertarClase(claseNueva);
                 Curso = Helper.LlenaryMapearCursosAdminDto().FirstOrDefault(c => c.IdCurso == Curso.IdCurso);
@@ -292,7 +318,6 @@ namespace CodeMentor.AspxAdmin
                 Session.Add("CursoEdicion", Curso);
                 Response.Redirect("EdicionCurso.aspx", false);
             }
-
 
         }
 

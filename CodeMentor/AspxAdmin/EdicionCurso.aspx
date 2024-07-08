@@ -52,6 +52,7 @@
                 <p style="color: red" runat="server" id="PUnidadInvalida"></p>
 
                 <asp:TextBox runat="server" Style="margin-top: 1%" ID="TxtNombreUnidadClase" CssClass="form-control" Enabled="false" Placeholder="Nombre Unidad"></asp:TextBox>
+                <p>Si desea crear una nueva, ingrese 0. Se asignara el numero siguiente al ultimo existente.</p>
 
                 <asp:TextBox runat="server" ID="TxtNumeroClase" TextMode="Number" AutoPostBack="true" CssClass="form-control mt-2" OnTextChanged="TxtNumeroClase_TextChanged" Placeholder="Número de Clase"></asp:TextBox>
                 <p id="PClaseNueva" runat="server"></p>

@@ -218,17 +218,19 @@ namespace Negocio
             }
         }
 
-        public void EliminarUnidad(int Id) // BAJA UNIDAD
+        public void EliminarUnidad(int IdUnidad,int idcurso,int numeroUnidad) // BAJA UNIDAD
         {
             var Acceso = new ConexionBD();
             try
             {
-                EliminarFinalizadas(Id);
+                EliminarFinalizadas(IdUnidad);
                 var ClaseGestion = new ClaseGestion();
-                ClaseGestion.EliminarClases_Unidad(Id);
-                string query = "DELETE FROM UNIDADES WHERE IDUNIDAD = @Id";
+                ClaseGestion.EliminarClases_Unidad(IdUnidad);
+                string query = "DELETE FROM UNIDADES WHERE NUMERO = @Nro AND @IDCURSO = IDCURSO AND IDUNIDAD= @ID";
                 Acceso.SetQuery(query);
-                Acceso.SetParametro("@Id", Id);
+                Acceso.SetParametro("@Id", IdUnidad);
+                Acceso.SetParametro("@Nro", numeroUnidad);
+                Acceso.SetParametro("@IDCURSO", idcurso);
                 Acceso.EjecutarAccion();
 
             }

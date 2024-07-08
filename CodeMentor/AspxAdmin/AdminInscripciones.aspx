@@ -31,7 +31,7 @@
                                     <asp:CheckBox ID="chkHabilitar" runat="server" Checked='<%# Eval("Habilitada") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Eliminar/Dar de Alta">
+                            <asp:TemplateField HeaderText="Baja/Alta">
                                 <ItemTemplate>
                                     <asp:CheckBox ID="chkEliminar" runat="server" Checked='<%# Eval("Baja") %>' />
                                 </ItemTemplate>

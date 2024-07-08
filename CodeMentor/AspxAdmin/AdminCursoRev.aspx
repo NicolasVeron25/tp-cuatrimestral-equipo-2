@@ -51,7 +51,7 @@
 
 
                         <% ImgCurso.ImageUrl = CursoDto.UrlPortadaCarpeta; %>
-                        <asp:Image ID="ImgCurso" runat="server" class="card-img-top img-cuadrada" style="width:280px;margin-left:20%;margin-bottom:1%" alt="Imagen del curso " />
+                        <asp:Image ID="ImgCurso" runat="server" class="card-img-top " style="width:280px;margin-left:20%;margin-bottom:1%" alt="Imagen del curso " />
                         <input type="file" id="TxtNuevaImagen" runat="server" class="form-control" style="margin-bottom:1%"/>
                     </div>
                 </div>

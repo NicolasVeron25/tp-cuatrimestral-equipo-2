@@ -23,19 +23,19 @@
     function lanzarConfeti() {
         // Confeti en el lado izquierdo
         confetti({
-            particleCount: 400,
+            particleCount: 300,
             angle: 60,
             spread: 55,
             origin: { x: 0, y: 0.6 }
         });
         confetti({
-            particleCount: 400,
+            particleCount: 300,
             angle: 60,
             spread: 55,
             origin: { x: 0, y: 0.4 }
         });
         confetti({
-            particleCount: 400,
+            particleCount: 300,
             angle: 60,
             spread: 55,
             origin: { x: 0, y: 0.8 }
@@ -43,19 +43,19 @@
 
         // Confeti en el lado derecho
         confetti({
-            particleCount: 400,
+            particleCount: 300,
             angle: 120,
             spread: 55,
             origin: { x: 1, y: 0.6 }
         });
         confetti({
-            particleCount: 400,
+            particleCount: 300,
             angle: 120,
             spread: 55,
             origin: { x: 1, y: 0.4 }
         });
         confetti({
-            particleCount: 400,
+            particleCount: 300,
             angle: 120,
             spread: 55,
             origin: { x: 1, y: 0.8 }
@@ -67,7 +67,7 @@
         const interval = setInterval(() => {
             lanzarConfeti();
             count++;
-            if (count === 4) {
+            if (count === 3) {
                 clearInterval(interval);
             }
         }, 2000); // Intervalo de 2 segundos entre lanzamientos

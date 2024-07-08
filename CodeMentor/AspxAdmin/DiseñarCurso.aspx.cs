@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Dominio.DataTransferObjects;
 using Negocio;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace CodeMentor.AspxAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (!IsPostBack)
             {
 
@@ -49,7 +51,7 @@ namespace CodeMentor.AspxAdmin
 
             var GestionCurso= new CursosGestion();
             GestionCurso.AñadirCurso(CursoInsertar);
-
+            Session.Add("CursoAñadido", CursoInsertar);
             //deshabilito todo y activo modificar
 
             BtnModificarCurso.Visible = true;
@@ -68,14 +70,22 @@ namespace CodeMentor.AspxAdmin
         protected void BtnModificarCurso_Click(object sender, EventArgs e)
         {
             var GestionCurso = new CursosGestion();
-
+           
             var Curso = GestionCurso.Listado().Last();
             Response.Redirect($"AdminCursoRev.aspx?IdCurso={Curso.IdCurso}", false);
         }
 
         protected void BtnAñadirUnidades_Click(object sender, EventArgs e)
         {
-
+            if (Session["CursoAñadido"] == null)
+            {
+               Response.Write("<script>alert('Debe guardar el curso antes de añadir unidades');</script>"); //ejecutramos un  alert de js.
+                return;
+            }
+            Curso curso = (Curso)Session["CursoAñadido"];
+            CursosAdminDto cursoDto = Helper.LlenaryMapearCursosAdminDto().Find(x => x.Nombre == curso.Nombre);
+            Session.Add("CursoEdicion", cursoDto);
+            Response.Redirect("EdicionCurso.aspx", false);
         }
     }
 }
