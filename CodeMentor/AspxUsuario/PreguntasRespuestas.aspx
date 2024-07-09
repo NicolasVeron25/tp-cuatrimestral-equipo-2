@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server" />
-
+    <link href="../Content/PreguntasRespuestas.css" rel="stylesheet" />
     <asp:Panel runat="server" ID="PanelUltimasPreg" CssClass="panel-content">
         <div class="row" style="margin-top: 2%; margin-left: 20%">
             <div class="col-6">
@@ -118,49 +118,5 @@
         </div>
     </asp:Panel>
 
-    <!-- ESTILOS -->
-    <style>
-        .panel-content {
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .pregunta-item {
-            margin-bottom: 2%;
-            border-radius: 15px;
-            border: 1px solid #ced4da;
-            background-color: #ffffff;
-            padding: 15px;
-        }
-
-            .pregunta-item h5 {
-                font-weight: bold;
-            }
-
-        .icono-editar {
-            width: 30px;
-            height: 30px;
-        }
-
-        .respuesta-card,
-        .respuesta-pendiente {
-            border-radius: 15px;
-            border: 1px solid #ced4da;
-            background-color: #e9ecef;
-            padding: 15px;
-        }
-
-            .respuesta-card .card-body,
-            .respuesta-pendiente .card-body {
-                padding: 15px;
-            }
-
-            .respuesta-pendiente .texto-pendiente {
-                color: #007bff;
-            }
-
-        .btn {
-            margin-left: 10px;
-        }
-    </style>
+    
 </asp:Content>

@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <link href="../Content/Ingresar.css" rel="stylesheet" />
     <!----------------------- CONTENEDOR PRINCIPAL -------------------------->
 
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
@@ -55,55 +55,5 @@
         </div>
     </div>
 
-    <!-------------------------- ESTILOS ---------------------------->
-
-    <style>
-        /*------------ CONTENEDOR DE LOGEO ------------*/
-
-        .box-area { /*MANTIENE TODO EN UN RECUADRO MAS CHICO*/
-            width: 930px;
-        }
-
-        /*------------ BOX DE LA IZQUIERDA ------------*/
-
-        .left-box {
-            background: var(--electric-indigo);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .full-image { /*HACE QUE LA IMAGEN OCUPE LA TOTALIDAD DE LA BOX*/
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /*------------ BOX DE LA DERECHA ------------*/
-
-        .right-box {
-            padding: 40px 30px 40px 40px;
-        }
-
-        /*------------ MODIFICACIONES PARA PANTALLAS MAS CHICAS ------------*/
-
-        @media only screen and (max-width: 768px) { /*SIN ESTAS MODIFICACIONES LA IMAGEN SE ROMPE AL ACHICAR LA PANTALLA*/
-
-            .box-area {
-                margin: 0 10px;
-            }
-
-            .left-box {
-                height: 100px;
-                overflow: hidden;
-            }
-
-            .right-box {
-                padding: 20px;
-            }
-        }
-    </style>
-
+   
 </asp:Content>

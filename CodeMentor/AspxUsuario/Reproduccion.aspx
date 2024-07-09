@@ -7,7 +7,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- CONTENEDOR PRINCIPAL -->
-
+    <link href="../Content/Reproduccion.css" rel="stylesheet" />
     <div class="container mt-4">
         <div class="row">
 
@@ -173,56 +173,6 @@
     </div>
 
 
-
-
-    <!-- ESTILOS -->
-    <style>
-        .video-container {
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        #curso-titulo {
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        .accordion-button {
-            color: var(--white);
-            background-color: #5689f5;
-            font-weight: bold;
-        }
-
-            .accordion-button:not(.collapsed) {
-                color: var(--white);
-                background-color: #5689f5;
-            }
-
-        .accordion-body {
-            background-color: var(--platinum);
-        }
-
-        .list-group {
-            border: none;
-            outline: none;
-            padding-left: 0;
-            list-style: none;
-        }
-
-        .list-group-item {
-            background-color: var(--platinum);
-            font-weight: bold;
-            border: none;
-            outline: none;
-        }
-
-
-
-        .progress {
-            height: 30px; /* Altura de la barra de progreso */
-            margin-bottom: 20px; /* Espaciado inferior */
-        }
-    </style>
+     
 
 </asp:Content>

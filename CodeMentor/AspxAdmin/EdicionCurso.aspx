@@ -3,20 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <style>
-        .card-header {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .form-container {
-            background-color: #f8f9fa;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-            border: 1px solid #dee2e6;
-        }
-    </style>
+   
+    <link href="../Content/AdminEdicionCurso.css" rel="stylesheet" />
     <asp:ScriptManager runat="server" />
     <div class="container mt-3">
         <h2 class="mb-4 text-center">Administrar Unidades y Clases del Curso</h2>
