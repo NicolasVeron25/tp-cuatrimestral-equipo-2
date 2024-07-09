@@ -27,13 +27,13 @@
 
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/79731568097599.5b50bca477735.jpg" class="d-block w-100" alt="First slide">
+                <img src="https://i.ibb.co/PgHcJ6H/banners.jpg" class="d-block w-100" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/79731568097599.5b50bca477735.jpg" class="d-block w-100" alt="Second slide">
+                <img src="https://i.ibb.co/1ZPsL2t/banners-2.jpg" class="d-block w-100" alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/79731568097599.5b50bca477735.jpg" style="height: 400px" class="d-block w-100" alt="Third slide">
+                <img src="https://i.ibb.co/vjYjBRj/banners-3.jpg" style="height: 400px" class="d-block w-100" alt="Third slide">
             </div>
         </div>
         <a class="carousel-control-prev" href="#customCarousel" role="button" data-bs-slide="prev">
@@ -47,21 +47,21 @@
     </div>
 
     <div class="container mt-5">
-     <div class="text-center heading-section">
-        <div class="background">
-            <p class="lead">Descubre nuestros cursos y mejora tus habilidades</p>
-            <p class="lead text-muted">Aprende nuevas habilidades y expande tus conocimientos con nuestros programas cuidadosamente diseñados.</p>
+        <div class="text-center heading-section">
+            <div class="background">
+                <p class="lead">Descubre nuestros cursos y mejora tus habilidades</p>
+                <p class="lead text-muted">Aprende nuevas habilidades y expande tus conocimientos con nuestros programas cuidadosamente diseñados.</p>
+            </div>
         </div>
-    </div>
         <div class="row">
             <% foreach (var curso in ListaCursos)
                 { %>
             <div class="col-md-3 mb-5">
                 <div class="card h-100 shadow-sm position-relative">
                     <div class="card-img-top-wrapper position-relative">
-                        
+
                         <% ImgCurso.ImageUrl = curso.UrlPortadaCarpeta; %>
-                        <asp:Image id="ImgCurso" runat="server" class="card-img-top img-cuadrada" alt="Imagen del curso "/>
+                        <asp:Image ID="ImgCurso" runat="server" class="card-img-top img-cuadrada" alt="Imagen del curso " />
 
                         <div class="overlay d-flex align-items-center justify-content-center">
                             <a href="DetalleCurso.aspx?idCurso=<%:curso.IdCurso %>" class="btn btn-light">Ver curso</a>
@@ -80,5 +80,5 @@
 
     </div>
 
-   
+
 </asp:Content>
